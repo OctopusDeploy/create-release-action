@@ -53,7 +53,7 @@
     "octopus-deploy",
     "github-actions"
   ],
-  "main": "lib/main.js",
+  "main": "dist/index.js",
   "name": "create-release-action",
   "repository": {
     "type": "git",
