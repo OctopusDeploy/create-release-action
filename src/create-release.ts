@@ -3,6 +3,8 @@ import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 
 function getArgs(parameters: InputParameters): string[] {
+  core.info(':symbols: Parsing inputs...')
+
   const args = ['create-release']
 
   if (parameters.apiKey.length > 0) args.push(`--apiKey=${parameters.apiKey}`)
@@ -89,8 +91,6 @@ function getArgs(parameters: InputParameters): string[] {
 export async function createRelease(
   parameters: InputParameters
 ): Promise<void> {
-  core.info('🐙 Creating release...')
-
   const args = getArgs(parameters)
 
   const options: exec.ExecOptions = {
@@ -104,5 +104,6 @@ export async function createRelease(
     silent: true
   }
 
+  core.info(':octopus: Creating a release in Octopus...')
   await exec.exec('octo', args, options)
 }
