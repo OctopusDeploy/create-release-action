@@ -1,9 +1,9 @@
 import * as octopus from '../src/create-release'
 import * as inputs from '../src/input-parameters'
 
-describe('create release', () => {
-  it('successfully create a release', async () => {
+describe('release', () => {
+  it('successfully get input parameters', async () => {
     const inputParameters = inputs.get()
-    const release = await octopus.createRelease(inputParameters)
+    expect(inputParameters != undefined)
   }, 100000)
 })
