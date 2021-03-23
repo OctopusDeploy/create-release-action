@@ -100,7 +100,8 @@ export async function createRelease(
           core.info(`${data}`)
         }
       }
-    }
+    },
+    silent: true
   }
 
   await exec.exec('octo', args, options)
