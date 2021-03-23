@@ -1,0 +1,21 @@
+name: 'build-test'
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run all
+      - name: Create Release
+        uses: ./
+        with:
+          api_key: ${{ secrets.API_KEY }}
+          server: ${{ secrets.SERVER }}
+          project: "Projects-6445"
