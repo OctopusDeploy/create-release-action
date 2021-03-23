@@ -4,20 +4,20 @@ on:
   push:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-      - run: npm run all
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: npm install
       - name: Install Octopus CLI
         uses: OctopusDeploy/install-octopus-cli-action@v1.1.1
         with:
           version: latest
+      - run: npm run all
+        with:
+          api_key: ${{ secrets.API_KEY }}
+          server: ${{ secrets.SERVER }}
+          project: "Projects-6445"
       - name: Create Release
         uses: ./
         with:
