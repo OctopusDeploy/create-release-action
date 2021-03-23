@@ -3,7 +3,7 @@ import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 
 function getArgs(parameters: InputParameters): string[] {
-  core.info(':symbols: Parsing inputs...')
+  core.info('🔣 Parsing inputs...')
 
   const args = ['create-release']
 
@@ -104,6 +104,6 @@ export async function createRelease(
     silent: true
   }
 
-  core.info(':octopus: Creating a release in Octopus...')
+  core.info('🐙 Creating a release in Octopus...')
   await exec.exec('octo', args, options)
 }
