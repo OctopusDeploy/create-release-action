@@ -9,11 +9,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run all
-      - name: Install Octopus Deploy CLI
+      - name: Install Octopus CLI
         uses: OctopusDeploy/install-octopus-cli-action@v1.1.1
         with:
           version: latest
-      - name: Create in release in Octopus Deploy
+      - name: Create a release in Octopus Deploy
         uses: ./
         with:
           api_key: ${{ secrets.API_KEY }}
