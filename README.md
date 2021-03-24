@@ -27,7 +27,7 @@ steps:
     with:
       version: latest
   - name: Create a release in Octopus Deploy 🐙
-    uses: OctopusDeploy/create-release-action@v1.0.0
+    uses: OctopusDeploy/create-release-action@v1.0.1
     with:
       api_key: ${{ secrets.API_KEY }}
       project: "Projects-123"
@@ -44,7 +44,7 @@ steps:
     with:
       version: latest
   - name: Create a release in Octopus Deploy 🐙
-    uses: OctopusDeploy/create-release-action@v1.0.0
+    uses: OctopusDeploy/create-release-action@v1.0.1
     with:
       password: ${{ secrets.PASSWORD }}
       project: "Projects-123"
