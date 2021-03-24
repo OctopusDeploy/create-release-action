@@ -4,6 +4,14 @@
 
 This is a GitHub Action to create a release in [Octopus Deploy](https://octopus.com/). It requires the [Octopus CLI](https://octopus.com/docs/octopus-rest-api/octopus-cli); please ensure to include [install-octopus-cli-action](https://github.com/OctopusDeploy/install-octopus-cli-action) in your workflow (example below) before using this GitHub Action.
 
+## Releases in Octopus Deploy
+
+A release is a snapshot of the deployment process and the associated assets (packages, scripts, variables) as they existed when the release was created. The release is given a version number, and you can deploy that release as many times as you need to, even if parts of the deployment process have changed since the release was created (those changes will be included in future releases but not in this version).
+
+When you deploy the release, you are executing the deployment process with all the associated details, as they existed when the release was created.
+
+More information about releases in Octopus Deploy: [Releases](https://octopus.com/docs/releases)
+
 ## Examples
 
 To create a release:
