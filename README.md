@@ -11,11 +11,11 @@ To create a release:
 ```yml
 steps:
   - uses: actions/checkout@v2
-  - name: Install Octopus CLI
+  - name: Install Octopus CLI 🐙
     uses: OctopusDeploy/install-octopus-cli-action@v1.1.1
     with:
       version: latest
-  - name: Create a release in Octopus Deploy
+  - name: Create a release in Octopus Deploy 🐙
     uses: OctopusDeploy/create-release-action@v1.0.0
     with:
       api_key: ${{ secrets.API_KEY }}
