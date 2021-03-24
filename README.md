@@ -42,7 +42,7 @@ The following inputs are optional:
 | `ignore_channel_rules` | Create the release ignoring any version rules specified by the channel. | `false` |
 | `ignore_existing` | Ignore existing releases if present in Octopus Deploy with the matching version number. | `false` |
 | `ignore_ssl_errors` | Ignore certificate errors when communicating with Octopus Deploy. Warning: enabling this option creates a security vulnerability. | `false` |
-| `log_level` | The log level; valid options are `verbose`, `debug`, `information`, `warning`, `error`, and `fatal`. | | `debug` |
+| `log_level` | The log level; valid options are `verbose`, `debug`, `information`, `warning`, `error`, and `fatal`. | `debug` |
 | `no_deploy_after` | Time at which scheduled deployment should expire, specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone. | |
 | `no_raw_log` | Print the raw log of failed tasks. | `false` |
 | `package` | The version number to use for a package in the release (format: `StepName:Version`, `PackageID:Version`, or `StepName:PackageName:Version`). | |
@@ -65,7 +65,7 @@ The following inputs are optional:
 | `specific_machines` | A comma-separated list of machine names to target in the deployed environment. If not specified all machines in the environment will be considered. | |
 | `tenant` | Create a deployment for the tenant with this name or ID; specify this argument multiple times to add multiple tenants or use a wildcard (`*`) to deploy to all tenants who are ready for this release (according to lifecycle). | |
 | `tenant_tag` | Create a deployment for tenants matching this tag; specify this argument multiple times to build a query/filter with multiple tags. | |
-| `timeout` | A timeout value in seconds for network operations. | | `600` |
+| `timeout` | A timeout value in seconds for network operations. | `600` |
 | `username` | The username used to authenticate with Octopus Deploy. You must provide `api_key` or `username` and `password`. It is strongly recommended to retrieve this value from a GitHub secret. | |
 | `variable` | Values for any prompted variables (format: `Label:Value`). For JSON values, embedded quotation marks should be escaped with a backslash. | |
 | `wait_for_deployment` | Wait for deployment to finish. | `false` |
