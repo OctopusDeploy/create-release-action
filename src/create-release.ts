@@ -96,8 +96,6 @@ export async function createRelease(
   const options: exec.ExecOptions = {
     listeners: {
       stdline: (data: string) => {
-        core.info(`stdline: ${data}`)
-
         if (data.includes(' created successfully!')) {
           core.info(`🎉 ${data}`)
           return
