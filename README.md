@@ -30,8 +30,26 @@ steps:
     uses: OctopusDeploy/create-release-action@v1.0.0
     with:
       api_key: ${{ secrets.API_KEY }}
-      server: ${{ secrets.SERVER }}
       project: "Projects-123"
+      server: ${{ secrets.SERVER }}
+```
+
+Here's an example that provides a `username` and `password` to authenticate to Octopus Deploy:
+
+```yml
+steps:
+  - uses: actions/checkout@v2
+  - name: Install Octopus CLI 🐙
+    uses: OctopusDeploy/install-octopus-cli-action@v1.1.1
+    with:
+      version: latest
+  - name: Create a release in Octopus Deploy 🐙
+    uses: OctopusDeploy/create-release-action@v1.0.0
+    with:
+      password: ${{ secrets.PASSWORD }}
+      project: "Projects-123"
+      server: ${{ secrets.SERVER }}
+      username: ${{ secrets.USERNAME }}
 ```
 
 ## Action Inputs
