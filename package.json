@@ -54,6 +54,7 @@
     "octopus-deploy",
     "github-actions"
   ],
+  "license": "Apache-2.0",
   "main": "lib/main.js",
   "name": "create-release-action",
   "repository": {
