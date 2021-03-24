@@ -47,10 +47,10 @@ inputs:
     description: 'Create the release ignoring any version rules specified by the channel.'
   ignore_existing:
     default: 'false'
-    description: 'Ignore existing releases if present in Octopus with the matching version number.'
+    description: 'Ignore existing releases if present in Octopus Deploy with the matching version number.'
   ignore_ssl_errors:
     default: 'false'
-    description: 'Ignore certificate errors when communicating with Octopus. Warning: enabling this option creates a security vulnerability.'
+    description: 'Ignore certificate errors when communicating with Octopus Deploy. Warning: enabling this option creates a security vulnerability.'
   log_level:
     default: 'debug'
     description: 'The log level; valid options are "verbose", "debug", "information", "warning", "error", and "fatal".'
@@ -68,7 +68,7 @@ inputs:
   packages_folder:
     description: 'The folder designated for containing packages.'
   password:
-    description: 'The password to used to authenticate with Octopus. It is strongly recommended to retrieve this value from a GitHub secret.'
+    description: 'The password to used to authenticate with Octopus Deploy. It is strongly recommended to retrieve this value from a GitHub secret.'
   progress:
     default: 'false'
     description: 'Show progress of the deployment.'
@@ -77,7 +77,7 @@ inputs:
   proxy:
     description: 'The URL of a proxy to use (i.e. https://proxy.example.com).'
   proxy_password:
-    description: 'The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret. If both the proxy_username and proxy_password are omitted and proxy URL is specified, the default credentials are used.'
+    description: 'The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret. If proxy_username and proxy_password are omitted and proxy URL is specified, the default credentials are used.'
   proxy_username:
     description: 'The username used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.'
   raw_log_file:
@@ -89,7 +89,7 @@ inputs:
   release_number:
     description: 'The number for the new release.'
   server:
-    description: 'The base URL hosting Octopus (i.e. "https://octopus.example.com/"). It is recommended to retrieve this value from an environment variable.'
+    description: 'The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). It is recommended to retrieve this value from an environment variable.'
   skip:
     description: 'Skip a step by name.'
   space:
@@ -104,7 +104,7 @@ inputs:
     default: '600'
     description: 'A timeout value in seconds for network operations.'
   username:
-    description: 'The username used to authenticate with Octopus. You must provide an apiKey or username and password. It is strongly recommended to retrieve this value from a GitHub secret.'
+    description: 'The username used to authenticate with Octopus Deploy. You must provide an apiKey or username and password. It is strongly recommended to retrieve this value from a GitHub secret.'
   variable:
     description: 'Values for any prompted variables in the format, Label:Value. For JSON values, embedded quotation marks should be escaped with a backslash.'
   wait_for_deployment:
