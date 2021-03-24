@@ -10,7 +10,10 @@ A release is a snapshot of the deployment process and the associated assets (pac
 
 When you deploy the release, you are executing the deployment process with all the associated details, as they existed when the release was created.
 
-More information about releases in Octopus Deploy: [Releases](https://octopus.com/docs/releases)
+More information about releases in Octopus Deploy:
+
+* [Releases](https://octopus.com/docs/releases)
+* [Create release](https://octopus.com/docs/octopus-rest-api/octopus-cli/create-release)
 
 ## Examples
 
