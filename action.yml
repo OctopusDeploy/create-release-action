@@ -2,7 +2,7 @@ name: 'Create Release in Octopus Deploy'
 description: 'GitHub Action to create a release in Octopus Deploy'
 author: 'Octopus Deploy'
 branding: 
-  color: 'purple'
+  color: 'blue'
   icon: 'package'
 
 inputs:
