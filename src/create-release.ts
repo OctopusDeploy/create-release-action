@@ -97,6 +97,11 @@ export async function createRelease(
     listeners: {
       stdline: (data: string) => {
         if (data.length > 0) {
+          if (data.includes(' created successfully!')) {
+            core.info(`🎉 ${data}`)
+            return
+          }
+
           if (data.includes('Octopus Deploy Command Line Tool')) {
             const version = data.split('version ')[1]
             core.info(`🐙 Using Octopus Deploy CLI ${version}...`)
