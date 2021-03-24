@@ -97,13 +97,19 @@ export async function createRelease(
     listeners: {
       stdline: (data: string) => {
         if (data.length > 0) {
-          core.info(`${data}`)
+          switch (data) {
+            case 'Creating release...':
+              core.info('🐙 Creating a release in Octopus...')
+              break
+            default:
+              core.info(`${data}`)
+              break
+          }
         }
       }
     },
     silent: true
   }
 
-  core.info('🐙 Creating a release in Octopus...')
   await exec.exec('octo', args, options)
 }

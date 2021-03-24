@@ -1737,13 +1737,18 @@ function createRelease(parameters) {
             listeners: {
                 stdline: (data) => {
                     if (data.length > 0) {
-                        core.info(`${data}`);
+                        switch (data) {
+                            case 'Creating release...':
+                                core.info('🐙 Creating a release in Octopus...');
+                                break;
+                            default:
+                                core.info(`${data}`);
+                                break;
+                        }
                     }
                 }
-            },
-            silent: true
+            }
         };
-        core.info('🐙 Creating a release in Octopus...');
         yield exec.exec('octo', args, options);
     });
 }
