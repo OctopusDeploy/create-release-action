@@ -14,7 +14,7 @@ More information about releases in Octopus Deploy: [Releases](https://octopus.co
 
 ## Examples
 
-To create a release:
+Incorporate the following actions in your workflow to create a release in Octopus Deploy using an API key, a target instance (i.e. `server`), and a project:
 
 ```yml
 steps:
