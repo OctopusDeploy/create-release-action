@@ -99,13 +99,13 @@ export async function createRelease(
         if (data.length > 0) {
           if (data.includes('Octopus Deploy Command Line Tool')) {
             const version = data.split('version ')[1]
-            core.info(`🐙 Using Octopus CLI ${version}...`)
+            core.info(`🐙 Using Octopus Deploy CLI ${version}...`)
             return
           }
 
           switch (data) {
             case 'Creating release...':
-              core.info('🐙 Creating a release in Octopus...')
+              core.info('🐙 Creating a release in Octopus Deploy...')
               break
             default:
               core.info(`${data}`)
