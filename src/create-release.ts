@@ -93,32 +93,51 @@ export async function createRelease(
 ): Promise<void> {
   const args = getArgs(parameters)
 
+  let stdout = ''
+
   const options: exec.ExecOptions = {
     listeners: {
-      stdline: (data: string) => {
-        if (data.includes(' created successfully!')) {
-          core.info(`🎉 ${data}`)
-          return
-        }
-
-        if (data.includes('Octopus Deploy Command Line Tool')) {
-          const version = data.split('version ')[1]
-          core.info(`🐙 Using Octopus Deploy CLI ${version}...`)
-          return
-        }
-
-        switch (data) {
-          case 'Creating release...':
-            core.info('🐙 Creating a release in Octopus Deploy...')
-            break
-          default:
-            core.info(`${data}`)
-            break
-        }
+      stdout: (data: Buffer) => {
+        stdout += data.toString()
       }
     },
     silent: true
   }
 
   await exec.exec('octo', args, options)
+
+  const lines = stdout.split(/\r?\n/)
+  for (const line of lines) {
+    if (line.length <= 0) continue
+
+    if (line.includes('Octopus Deploy Command Line Tool')) {
+      const version = line.split('version ')[1]
+      core.info(`🐙 Using Octopus Deploy CLI ${version}...`)
+      continue
+    }
+
+    if (line.includes('Handshaking with Octopus Server')) {
+      core.info(`🤝 Handshaking with Octopus Deploy`)
+      continue
+    }
+
+    if (line.includes('Authenticated as:')) {
+      core.info(`✅ Authenticated`)
+      continue
+    }
+
+    if (line.includes(' created successfully!')) {
+      core.info(`🎉 ${line}`)
+      continue
+    }
+
+    switch (line) {
+      case 'Creating release...':
+        core.info('🐙 Creating a release in Octopus Deploy...')
+        break
+      default:
+        core.info(`${line}`)
+        break
+    }
+  }
 }
