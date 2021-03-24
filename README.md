@@ -1,6 +1,4 @@
-This is a GitHub Action to create a release in [Octopus Deploy](https://octopus.com/).
-
-This GitHub Action requires the [Octopus CLI](https://octopus.com/docs/octopus-rest-api/octopus-cli). It will not install it for you; please use [`install-octopus-cli-action`](https://github.com/OctopusDeploy/install-octopus-cli-action).
+This is a GitHub Action to create a release in [Octopus Deploy](https://octopus.com/). It requires the [Octopus CLI](https://octopus.com/docs/octopus-rest-api/octopus-cli); please ensure to include [install-octopus-cli-action](https://github.com/OctopusDeploy/install-octopus-cli-action) in your workflow (example below) before using this GitHub Action.
 
 ## Examples
 
