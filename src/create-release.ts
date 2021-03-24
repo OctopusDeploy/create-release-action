@@ -96,26 +96,26 @@ export async function createRelease(
   const options: exec.ExecOptions = {
     listeners: {
       stdline: (data: string) => {
-        if (data.length > 0) {
-          if (data.includes(' created successfully!')) {
-            core.info(`🎉 ${data}`)
-            return
-          }
+        core.info(`stdline: ${data}`)
 
-          if (data.includes('Octopus Deploy Command Line Tool')) {
-            const version = data.split('version ')[1]
-            core.info(`🐙 Using Octopus Deploy CLI ${version}...`)
-            return
-          }
+        if (data.includes(' created successfully!')) {
+          core.info(`🎉 ${data}`)
+          return
+        }
 
-          switch (data) {
-            case 'Creating release...':
-              core.info('🐙 Creating a release in Octopus Deploy...')
-              break
-            default:
-              core.info(`${data}`)
-              break
-          }
+        if (data.includes('Octopus Deploy Command Line Tool')) {
+          const version = data.split('version ')[1]
+          core.info(`🐙 Using Octopus Deploy CLI ${version}...`)
+          return
+        }
+
+        switch (data) {
+          case 'Creating release...':
+            core.info('🐙 Creating a release in Octopus Deploy...')
+            break
+          default:
+            core.info(`${data}`)
+            break
         }
       }
     },
