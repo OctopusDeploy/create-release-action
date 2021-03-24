@@ -1737,9 +1737,18 @@ function createRelease(parameters) {
             listeners: {
                 stdline: (data) => {
                     if (data.length > 0) {
+                        if (data.includes(' created successfully!')) {
+                            core.info(`🎉 ${data}`);
+                            return;
+                        }
+                        if (data.includes('Octopus Deploy Command Line Tool')) {
+                            const version = data.split('version ')[1];
+                            core.info(`🐙 Using Octopus Deploy CLI ${version}...`);
+                            return;
+                        }
                         switch (data) {
                             case 'Creating release...':
-                                core.info('🐙 Creating a release in Octopus...');
+                                core.info('🐙 Creating a release in Octopus Deploy...');
                                 break;
                             default:
                                 core.info(`${data}`);
@@ -1747,7 +1756,8 @@ function createRelease(parameters) {
                         }
                     }
                 }
-            }
+            },
+            silent: true
         };
         yield exec.exec('octo', args, options);
     });
