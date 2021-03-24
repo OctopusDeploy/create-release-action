@@ -65,7 +65,7 @@ The following inputs are optional:
 | `specific_machines` | A comma-separated list of machine names to target in the deployed environment. If not specified all machines in the environment will be considered. | |
 | `tenant` | Create a deployment for the tenant with this name or ID; specify this argument multiple times to add multiple tenants or use a wildcard (`*`) to deploy to all tenants who are ready for this release (according to lifecycle). | |
 | `tenant_tag` | Create a deployment for tenants matching this tag; specify this argument multiple times to build a query/filter with multiple tags. | |
-| `timeout` | A timeout value in seconds for network operations. | `600` |
+| `timeout` | A timeout value for network operations (in seconds). | `600` |
 | `username` | The username used to authenticate with Octopus Deploy. You must provide `api_key` or `username` and `password`. It is strongly recommended to retrieve this value from a GitHub secret. | |
 | `variable` | Values for any prompted variables (format: `Label:Value`). For JSON values, embedded quotation marks should be escaped with a backslash. | |
 | `wait_for_deployment` | Wait for deployment to finish. | `false` |
