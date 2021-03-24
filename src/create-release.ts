@@ -99,7 +99,8 @@ export async function createRelease(
         if (data.length > 0) {
           if (data.includes('Octopus Deploy Command Line Tool')) {
             const version = data.split('version ')[1]
-            core.info(`🐙 Using Octopus CLI v${version}...`)
+            core.info(`🐙 Using Octopus CLI ${version}...`)
+            return
           }
 
           switch (data) {
