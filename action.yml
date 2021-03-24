@@ -111,4 +111,4 @@ inputs:
     description: 'Perform a dry run; do not create or deploy a release.'
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  main: 'dist/main.js'
