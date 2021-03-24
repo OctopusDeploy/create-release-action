@@ -1,3 +1,7 @@
+# GitHub Actions for Octopus Deploy: create-release-action
+
+<img alt= "" src="https://github.com/OctopusDeploy/create-release-action/raw/main/assets/github-actions-octopus.png" width="300px" />
+
 This is a GitHub Action to create a release in [Octopus Deploy](https://octopus.com/). It requires the [Octopus CLI](https://octopus.com/docs/octopus-rest-api/octopus-cli); please ensure to include [install-octopus-cli-action](https://github.com/OctopusDeploy/install-octopus-cli-action) in your workflow (example below) before using this GitHub Action.
 
 ## Examples
