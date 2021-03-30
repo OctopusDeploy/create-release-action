@@ -77,7 +77,7 @@ function getArgs(parameters: InputParameters): string[] {
   if (parameters.tenant.length > 0) args.push(`--tenant=${parameters.tenant}`)
   if (parameters.tenantTag.length > 0)
     args.push(`--tenantTag=${parameters.tenantTag}`)
-  if (parameters.logLevel.length > 0 && parameters.logLevel !== `600`)
+  if (parameters.timeout.length > 0 && parameters.timeout !== `600`)
     args.push(`--timeout=${parameters.timeout}`)
   if (parameters.username.length > 0) args.push(`--user=${parameters.username}`)
   if (parameters.variable.length > 0)
