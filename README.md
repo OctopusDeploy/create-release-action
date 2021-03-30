@@ -58,7 +58,7 @@ The following inputs are optional:
 
 | Name | Description | Default |
 | :- | :- | :-: |
-| `api_key` | The API key used to access Octopus Deploy. This value is required if credentials (`username` and `password`) are unspecified. `API-GUEST` may be used if the guest account is enabled. It is strongly recommended that this value retrieved from a GitHub secret. | |
+| `api_key` | The API key used to access Octopus Deploy. This value is required if credentials (`username` and `password`) are unspecified. `API-GUEST` may be used if the guest account is enabled. It is strongly recommended that this value be retrieved from a GitHub secret. | |
 | `cancel_on_timeout` | Cancel the deployment if `deployment_timeout` is exceeded (default: 10 minutes). | `false` |
 | `channel` | The name or ID of the channel to use for the new release. If omitted, the best channel will be selected. |  | |
 | `config_file` | The path to a configuration file of default values with one `key=value` per line. | |
@@ -66,7 +66,7 @@ The following inputs are optional:
 | `default_package_version` | Use the default version number of all packages for this release. | `false` |
 | `deploy_at` | The time at which deployment should start (scheduled deployment), specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone. | `false` |
 | `deploy_to` | The name or ID of the environment to automatically deploy to (i.e. `Production` or `Environments-1`); specify this argument multiple times to deploy to multiple environments. | |
-| `deployment_check_sleep_cycle` | The duration between between deployment status checks (format: `HH:MM:SS`). | `00:00:10` |
+| `deployment_check_sleep_cycle` | The duration between deployment status checks (format: `HH:MM:SS`). | `00:00:10` |
 | `deployment_timeout` | The duration to wait for the deployment to finish (format: `HH:MM:SS`). Note: This will not stop the deployment; the input value, `wait_for_deployment` is required. | `00:00:10` |
 | `exclude_machines` | A comma-separated list of machine names to exclude in the deployed environment. If empty, all machines in the environment will be considered. | |
 | `force` | If a project is configured to skip packages with already-installed versions, override this setting to force re-deployment. | `false` |

@@ -27,7 +27,7 @@ inputs:
     description: 'The name or ID of the environment to automatically deploy to (i.e. "Production" or "Environments-1"); specify this argument multiple times to deploy to multiple environments.'
   deployment_check_sleep_cycle:
     default: '00:00:10'
-    description: 'The duration between between deployment status checks (format: HH:MM:SS).'
+    description: 'The duration between deployment status checks (format: HH:MM:SS).'
   deployment_timeout:
     default: '00:00:10'
     description: 'The duration to wait for the deployment to finish (format: HH:MM:SS). Note: This will not stop the deployment; the input value, wait_for_deployment is required.'
