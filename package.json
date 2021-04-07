@@ -5,12 +5,14 @@
   },
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@actions/exec": "^1.0.4"
+    "@actions/exec": "^1.0.4",
+    "tmp": "^0.2.1"
   },
   "description": "GitHub Action to Create a Release in Octopus Deploy",
   "devDependencies": {
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.37",
+    "@types/tmp": "^0.2.0",
     "@typescript-eslint/parser": "^4.21.0",
     "@vercel/ncc": "^0.27.0",
     "eslint": "^7.23.0",
