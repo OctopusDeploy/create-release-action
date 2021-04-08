@@ -1,9 +1,9 @@
 import { InputParameters } from './input-parameters'
-import * as core from '@actions/core'
-import * as exec from '@actions/exec'
+import { info, setFailed } from '@actions/core'
+import { exec, ExecOptions } from '@actions/exec'
 
 function getArgs(parameters: InputParameters): string[] {
-  core.info('🔣 Parsing inputs...')
+  info('🔣 Parsing inputs...')
 
   const args = ['create-release']
 
@@ -92,41 +92,38 @@ export async function createRelease(
   parameters: InputParameters
 ): Promise<void> {
   const args = getArgs(parameters)
-  const options: exec.ExecOptions = {
+  const options: ExecOptions = {
     listeners: {
-      debug: (data: string) => {
-        core.info(`[DEBUG] ${data}`)
-      },
       stdline: (line: string) => {
         if (line.length === 0) return
 
         if (line.includes('Octopus Deploy Command Line Tool')) {
           const version = line.split('version ')[1]
-          core.info(`🐙 Using Octopus Deploy CLI ${version}...`)
+          info(`🐙 Using Octopus Deploy CLI ${version}...`)
           return
         }
 
         if (line.includes('Handshaking with Octopus Server')) {
-          core.info(`🤝 Handshaking with Octopus Deploy`)
+          info(`🤝 Handshaking with Octopus Deploy`)
           return
         }
 
         if (line.includes('Authenticated as:')) {
-          core.info(`✅ Authenticated`)
+          info(`✅ Authenticated`)
           return
         }
 
         if (line.includes(' created successfully!')) {
-          core.info(`🎉 ${line}`)
+          info(`🎉 ${line}`)
           return
         }
 
         switch (line) {
           case 'Creating release...':
-            core.info('🐙 Creating a release in Octopus Deploy...')
+            info('🐙 Creating a release in Octopus Deploy...')
             break
           default:
-            core.info(`${line}`)
+            info(`${line}`)
             break
         }
       }
@@ -135,8 +132,8 @@ export async function createRelease(
   }
 
   try {
-    await exec.exec('octo', args, options)
+    await exec('octo', args, options)
   } catch (err) {
-    core.setFailed(err)
+    setFailed(err)
   }
 }
