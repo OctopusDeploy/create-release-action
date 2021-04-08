@@ -1,4 +1,4 @@
-import {InputParameters} from './input-parameters'
+import { InputParameters } from './input-parameters'
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 
@@ -94,8 +94,11 @@ export async function createRelease(
   const args = getArgs(parameters)
   const options: exec.ExecOptions = {
     listeners: {
+      debug: (data: string) => {
+        core.info(`[DEBUG] ${data}`)
+      },
       stdline: (line: string) => {
-        if (line.length <= 0) return
+        if (line.length === 0) return
 
         if (line.includes('Octopus Deploy Command Line Tool')) {
           const version = line.split('version ')[1]
