@@ -23,11 +23,11 @@ Incorporate the following actions in your workflow to create a release in Octopu
 steps:
   - uses: actions/checkout@v2
   - name: Install Octopus CLI 🐙
-    uses: OctopusDeploy/install-octopus-cli-action@v1.1.1
+    uses: OctopusDeploy/install-octopus-cli-action@v1
     with:
       version: latest
   - name: Create a release in Octopus Deploy 🐙
-    uses: OctopusDeploy/create-release-action@v1.0.2
+    uses: OctopusDeploy/create-release-action@v1
     with:
       api_key: ${{ secrets.API_KEY }}
       project: "Projects-123"
@@ -40,11 +40,11 @@ Here's an example that provides a `username` and `password` to authenticate to O
 steps:
   - uses: actions/checkout@v2
   - name: Install Octopus CLI 🐙
-    uses: OctopusDeploy/install-octopus-cli-action@v1.1.1
+    uses: OctopusDeploy/install-octopus-cli-action@v1
     with:
       version: latest
   - name: Create a release in Octopus Deploy 🐙
-    uses: OctopusDeploy/create-release-action@v1.0.2
+    uses: OctopusDeploy/create-release-action@v1
     with:
       password: ${{ secrets.PASSWORD }}
       project: "Projects-123"
