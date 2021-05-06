@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
+    "target": "es6",
     "module": "commonjs",
-    "noImplicitAny": true,
-    "outDir": "./lib",
+    "outDir": "./out",
     "rootDir": "./src",
     "strict": true,
-    "target": "es6"
+    "noImplicitAny": true,
+    "esModuleInterop": true
   },
-  "exclude": [
-    "node_modules",
-    "**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "**/*.test.ts"]
 }

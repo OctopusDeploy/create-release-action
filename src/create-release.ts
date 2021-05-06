@@ -1,6 +1,6 @@
-import { InputParameters } from './input-parameters'
-import { info, setFailed } from '@actions/core'
-import { exec, ExecOptions } from '@actions/exec'
+import {InputParameters} from './input-parameters'
+import {info, setFailed} from '@actions/core'
+import {exec, ExecOptions} from '@actions/exec'
 
 function getArgs(parameters: InputParameters): string[] {
   info('🔣 Parsing inputs...')

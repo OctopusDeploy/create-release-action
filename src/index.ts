@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
-import * as octopus from '../src/create-release'
-import * as inputs from '../src/input-parameters'
+import * as octopus from './create-release'
+import * as inputs from './input-parameters'
 
 async function run(): Promise<void> {
   try {
