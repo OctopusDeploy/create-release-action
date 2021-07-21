@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.4](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.0.3...v1.0.4) (2021-07-21)
+
+
+### Bug Fixes
+
+* updated input variables ([c38c573](https://www.github.com/OctopusDeploy/create-release-action/commit/c38c573ec27f92eda0576452f2a4e12c08552f35))
+
 ### [1.0.3](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.0.2...v1.0.3) (2021-07-16)
 
 
