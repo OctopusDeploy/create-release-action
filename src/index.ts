@@ -1,13 +1,13 @@
-import * as core from '@actions/core'
-import * as octopus from './create-release'
-import * as inputs from './input-parameters'
+import {setFailed} from '@actions/core'
+import {createRelease} from './create-release'
+import {get} from './input-parameters'
 
 async function run(): Promise<void> {
   try {
-    const inputParameters = inputs.get()
-    await octopus.createRelease(inputParameters)
+    const inputParameters = get()
+    await createRelease(inputParameters)
   } catch (error) {
-    core.setFailed(error.message)
+    setFailed(error.message)
   }
 }
 
