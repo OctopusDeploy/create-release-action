@@ -1897,82 +1897,10 @@ exports.createRelease = createRelease;
 
 /***/ }),
 
-/***/ 361:
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getBooleanInput = void 0;
-/**
- * Gets the input value of the boolean type in the YAML specification.
- * The return value is also in boolean type.
- * ref: https://yaml.org/type/bool.html
- *
- * @param     name     name of the input to get
- * @returns   boolean
- */
-function getBooleanInput(name) {
-    const trueValue = [
-        'true',
-        'True',
-        'TRUE',
-        'yes',
-        'Yes',
-        'YES',
-        'y',
-        'Y',
-        'on',
-        'On',
-        'ON'
-    ];
-    const falseValue = [
-        'false',
-        'False',
-        'FALSE',
-        'no',
-        'No',
-        'NO',
-        'n',
-        'N',
-        'off',
-        'Off',
-        'OFF'
-    ];
-    const val = (process.env[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '').trim();
-    if (trueValue.includes(val))
-        return true;
-    if (falseValue.includes(val))
-        return false;
-    return false;
-}
-exports.getBooleanInput = getBooleanInput;
-
-
-/***/ }),
-
 /***/ 148:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -1983,17 +1911,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core = __importStar(__nccwpck_require__(186));
-const octopus = __importStar(__nccwpck_require__(34));
-const inputs = __importStar(__nccwpck_require__(519));
+const core_1 = __nccwpck_require__(186);
+const create_release_1 = __nccwpck_require__(34);
+const input_parameters_1 = __nccwpck_require__(519);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const inputParameters = inputs.get();
-            yield octopus.createRelease(inputParameters);
+            const inputParameters = input_parameters_1.get();
+            yield create_release_1.createRelease(inputParameters);
         }
         catch (error) {
-            core.setFailed(error.message);
+            core_1.setFailed(error.message);
         }
     });
 }
@@ -2003,79 +1931,59 @@ run();
 /***/ }),
 
 /***/ 519:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.get = void 0;
-const core = __importStar(__nccwpck_require__(186));
-const get_boolean_input_1 = __nccwpck_require__(361);
+const core_1 = __nccwpck_require__(186);
 function get() {
     return {
-        apiKey: core.getInput('api_key'),
-        cancelOnTimeout: get_boolean_input_1.getBooleanInput('cancel_on_timeout'),
-        channel: core.getInput('channel'),
-        configFile: core.getInput('config_file'),
-        debug: get_boolean_input_1.getBooleanInput('debug'),
-        defaultPackageVersion: get_boolean_input_1.getBooleanInput('default_package_version'),
-        deployAt: core.getInput('deploy_at'),
-        deployTo: core.getInput('deploy_to'),
-        deploymentCheckSleepCycle: core.getInput('deployment_check_sleep_cycle'),
-        deploymentTimeout: core.getInput('deployment_timeout'),
-        excludeMachines: core.getInput('exclude_machines'),
-        force: get_boolean_input_1.getBooleanInput('force'),
-        forcePackageDownload: get_boolean_input_1.getBooleanInput('force_package_download'),
-        guidedFailure: core.getInput('guided_failure'),
-        ignoreChannelRules: get_boolean_input_1.getBooleanInput('ignore_channel_rules'),
-        ignoreExisting: get_boolean_input_1.getBooleanInput('ignore_existing'),
-        ignoreSslErrors: get_boolean_input_1.getBooleanInput('ignore_ssl_errors'),
-        logLevel: core.getInput('log_level'),
-        noDeployAfter: core.getInput('no_deploy_after'),
-        noRawLog: get_boolean_input_1.getBooleanInput('no_raw_log'),
-        package: core.getInput('package'),
-        packagePrerelease: core.getInput('package_prerelease'),
-        packageVersion: core.getInput('package_version'),
-        packagesFolder: core.getInput('packages_folder'),
-        password: core.getInput('password'),
-        progress: get_boolean_input_1.getBooleanInput('progress'),
-        project: core.getInput('project'),
-        proxy: core.getInput('proxy'),
-        proxyPassword: core.getInput('proxy_password'),
-        proxyUsername: core.getInput('proxy_username'),
-        rawLogFile: core.getInput('raw_log_file'),
-        releaseNotes: core.getInput('release_notes'),
-        releaseNotesFile: core.getInput('release_notes_file'),
-        releaseNumber: core.getInput('release_number'),
-        server: core.getInput('server'),
-        skip: core.getInput('skip'),
-        space: core.getInput('space'),
-        specificMachines: core.getInput('specific_machines'),
-        tenant: core.getInput('tenant'),
-        tenantTag: core.getInput('tenant_tag'),
-        timeout: core.getInput('timeout'),
-        username: core.getInput('user'),
-        variable: core.getInput('variable'),
-        waitForDeployment: get_boolean_input_1.getBooleanInput('wait_for_deployment'),
-        whatIf: get_boolean_input_1.getBooleanInput('what_if')
+        apiKey: core_1.getInput('api_key'),
+        cancelOnTimeout: core_1.getBooleanInput('cancel_on_timeout'),
+        channel: core_1.getInput('channel'),
+        configFile: core_1.getInput('config_file'),
+        debug: core_1.getBooleanInput('debug'),
+        defaultPackageVersion: core_1.getBooleanInput('default_package_version'),
+        deployAt: core_1.getInput('deploy_at'),
+        deployTo: core_1.getInput('deploy_to'),
+        deploymentCheckSleepCycle: core_1.getInput('deployment_check_sleep_cycle'),
+        deploymentTimeout: core_1.getInput('deployment_timeout'),
+        excludeMachines: core_1.getInput('exclude_machines'),
+        force: core_1.getBooleanInput('force'),
+        forcePackageDownload: core_1.getBooleanInput('force_package_download'),
+        guidedFailure: core_1.getInput('guided_failure'),
+        ignoreChannelRules: core_1.getBooleanInput('ignore_channel_rules'),
+        ignoreExisting: core_1.getBooleanInput('ignore_existing'),
+        ignoreSslErrors: core_1.getBooleanInput('ignore_ssl_errors'),
+        logLevel: core_1.getInput('log_level'),
+        noDeployAfter: core_1.getInput('no_deploy_after'),
+        noRawLog: core_1.getBooleanInput('no_raw_log'),
+        package: core_1.getInput('package'),
+        packagePrerelease: core_1.getInput('package_prerelease'),
+        packageVersion: core_1.getInput('package_version'),
+        packagesFolder: core_1.getInput('packages_folder'),
+        password: core_1.getInput('password'),
+        progress: core_1.getBooleanInput('progress'),
+        project: core_1.getInput('project'),
+        proxy: core_1.getInput('proxy'),
+        proxyPassword: core_1.getInput('proxy_password'),
+        proxyUsername: core_1.getInput('proxy_username'),
+        rawLogFile: core_1.getInput('raw_log_file'),
+        releaseNotes: core_1.getInput('release_notes'),
+        releaseNotesFile: core_1.getInput('release_notes_file'),
+        releaseNumber: core_1.getInput('release_number'),
+        server: core_1.getInput('server'),
+        skip: core_1.getInput('skip'),
+        space: core_1.getInput('space'),
+        specificMachines: core_1.getInput('specific_machines'),
+        tenant: core_1.getInput('tenant'),
+        tenantTag: core_1.getInput('tenant_tag'),
+        timeout: core_1.getInput('timeout'),
+        username: core_1.getInput('user'),
+        variable: core_1.getInput('variable'),
+        waitForDeployment: core_1.getBooleanInput('wait_for_deployment'),
+        whatIf: core_1.getBooleanInput('what_if')
     };
 }
 exports.get = get;
