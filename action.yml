@@ -39,6 +39,10 @@ inputs:
   force_package_download:
     default: 'false'
     description: 'Force download of installed packages.'
+  git_ref:
+    description: 'Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects.'
+  git_commit:
+    description: 'Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter.'
   guided_failure:
     default: 'false'
     description: 'Use Guided Failure mode.'

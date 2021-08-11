@@ -14,6 +14,8 @@ export interface InputParameters {
   excludeMachines: string
   force: boolean
   forcePackageDownload: boolean
+  gitRef: string
+  gitCommit: string
   guidedFailure: string
   ignoreChannelRules: boolean
   ignoreExisting: boolean
@@ -63,6 +65,8 @@ export function get(): InputParameters {
     excludeMachines: getInput('exclude_machines'),
     force: getBooleanInput('force'),
     forcePackageDownload: getBooleanInput('force_package_download'),
+    gitRef: getInput('git_ref'),
+    gitCommit: getInput('git_commit'),
     guidedFailure: getInput('guided_failure'),
     ignoreChannelRules: getBooleanInput('ignore_channel_rules'),
     ignoreExisting: getBooleanInput('ignore_existing'),
