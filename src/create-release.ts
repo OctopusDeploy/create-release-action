@@ -41,6 +41,8 @@ function getArgs(parameters: InputParameters): string[] {
   if (parameters.ignoreSslErrors) args.push(`--ignoreSslErrors`)
   if (parameters.logLevel.length > 0 && parameters.logLevel !== `debug`)
     args.push(`--logLevel=${parameters.logLevel}`)
+  if (parameters.gitRef.length > 0) args.push(`--gitRef=${parameters.gitRef}`)
+  if (parameters.gitCommit.length > 0) args.push(`--gitCommit=${parameters.project}`)
   if (parameters.noDeployAfter.length > 0)
     args.push(`--noDeployAfter=${parameters.noDeployAfter}`)
   if (parameters.noRawLog) args.push(`--noRawLog`)
