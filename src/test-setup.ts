@@ -1,7 +1,7 @@
-import * as tmp from 'tmp'
+import {dirSync, setGracefulCleanup} from 'tmp'
 
-tmp.setGracefulCleanup()
-const tmpdir = tmp.dirSync({template: 'create-release-XXXXXX'})
+setGracefulCleanup()
+const tmpdir = dirSync({template: 'create-release-XXXXXX'})
 
 process.env = Object.assign(process.env, {
   INPUT_API_KEY: process.env['OCTOPUS_APIKEY'],
