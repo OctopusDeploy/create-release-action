@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 351:
+/***/ 241:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 
@@ -134,7 +134,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __nccwpck_require__(351);
+const command_1 = __nccwpck_require__(241);
 const file_command_1 = __nccwpck_require__(717);
 const utils_1 = __nccwpck_require__(278);
 const os = __importStar(__nccwpck_require__(87));
@@ -621,7 +621,7 @@ const os = __importStar(__nccwpck_require__(87));
 const events = __importStar(__nccwpck_require__(614));
 const child = __importStar(__nccwpck_require__(129));
 const path = __importStar(__nccwpck_require__(622));
-const io = __importStar(__nccwpck_require__(436));
+const io = __importStar(__nccwpck_require__(351));
 const ioUtil = __importStar(__nccwpck_require__(962));
 const timers_1 = __nccwpck_require__(213);
 /* eslint-disable @typescript-eslint/unbound-method */
@@ -1415,7 +1415,7 @@ function isUnixExecutable(stats) {
 
 /***/ }),
 
-/***/ 436:
+/***/ 351:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 
@@ -1748,8 +1748,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createRelease = void 0;
-const core_1 = __nccwpck_require__(186);
 const exec_1 = __nccwpck_require__(514);
+const core_1 = __nccwpck_require__(186);
 function getArgs(parameters) {
     core_1.info('🔣 Parsing inputs...');
     const args = ['create-release'];
@@ -1791,6 +1791,10 @@ function getArgs(parameters) {
         args.push(`--ignoreSslErrors`);
     if (parameters.logLevel.length > 0 && parameters.logLevel !== `debug`)
         args.push(`--logLevel=${parameters.logLevel}`);
+    if (parameters.gitRef.length > 0)
+        args.push(`--gitRef=${parameters.gitRef}`);
+    if (parameters.gitCommit.length > 0)
+        args.push(`--gitCommit=${parameters.gitCommit}`);
     if (parameters.noDeployAfter.length > 0)
         args.push(`--noDeployAfter=${parameters.noDeployAfter}`);
     if (parameters.noRawLog)
@@ -1911,9 +1915,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core_1 = __nccwpck_require__(186);
 const create_release_1 = __nccwpck_require__(34);
 const input_parameters_1 = __nccwpck_require__(519);
+const core_1 = __nccwpck_require__(186);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -1952,6 +1956,8 @@ function get() {
         excludeMachines: core_1.getInput('exclude_machines'),
         force: core_1.getBooleanInput('force'),
         forcePackageDownload: core_1.getBooleanInput('force_package_download'),
+        gitRef: core_1.getInput('git_ref'),
+        gitCommit: core_1.getInput('git_commit'),
         guidedFailure: core_1.getInput('guided_failure'),
         ignoreChannelRules: core_1.getBooleanInput('ignore_channel_rules'),
         ignoreExisting: core_1.getBooleanInput('ignore_existing'),
