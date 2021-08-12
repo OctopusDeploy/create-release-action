@@ -1,5 +1,18 @@
 # Changelog
 
+### [1.0.5](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.0.4...v1.0.5) (2021-08-12)
+
+
+### Bug Fixes
+
+* updated tests to return valid results ([3172be8](https://www.github.com/OctopusDeploy/create-release-action/commit/3172be8ee824441609c02b674b99276c33c39068))
+
+
+### Miscellaneous Chores
+
+* release 1.0.5 ([ab2c22b](https://www.github.com/OctopusDeploy/create-release-action/commit/ab2c22b1d7aa78dffe981b43b1db6e0fd623ae3c))
+* release 1.0.5 ([7bb274b](https://www.github.com/OctopusDeploy/create-release-action/commit/7bb274b32b00848e4013dd2a733f4e0cb24b000e))
+
 ### [1.0.4](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.0.3...v1.0.4) (2021-07-21)
 
 
