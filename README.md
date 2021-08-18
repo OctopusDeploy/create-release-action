@@ -71,8 +71,8 @@ The following inputs are optional:
 | `exclude_machines` | A comma-separated list of machine names to exclude in the deployed environment. If empty, all machines in the environment will be considered. | |
 | `force` | If a project is configured to skip packages with already-installed versions, override this setting to force re-deployment. | `false` |
 | `force_package_download` | Force download of installed packages. | `false` |
-| `gitCommit` | Git commit to use when creating the release. Use in conjunction with the `gitRef` parameter to select any previous commit. | |
-| `gitRef` | Git reference to use when creating the release. | |
+| `git_commit` | Git commit to use when creating the release. Use in conjunction with the `gitRef` parameter to select any previous commit. | |
+| `git_ref` | Git reference to use when creating the release. | |
 | `guided_failure` | Use [Guided Failure mode](https://octopus.com/docs/releases/guided-failures). | `false` |
 | `ignore_channel_rules` | Create the release ignoring any version rules specified by the channel. | `false` |
 | `ignore_existing` | Ignore existing releases if present in Octopus Deploy with the matching version number. | `false` |
