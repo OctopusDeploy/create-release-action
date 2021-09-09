@@ -64,7 +64,7 @@ inputs:
     default: 'false'
     description: 'Print the raw log of failed tasks.'
   package:
-    description: 'The version number to use for a package in the release (format: StepName:Version or PackageID:Version or StepName:PackageName:Version).'
+    description: 'Comma-separated list of version numbers to use for a package in the release (format: StepName:Version or PackageID:Version or StepName:PackageName:Version).'
   package_prerelease:
     description: 'Pre-release for latest version of all packages to use for this release.'
   package_version:

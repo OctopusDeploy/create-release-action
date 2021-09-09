@@ -48,7 +48,7 @@ function getArgs(parameters: InputParameters): string[] {
     args.push(`--noDeployAfter=${parameters.noDeployAfter}`)
   if (parameters.noRawLog) args.push(`--noRawLog`)
   if (parameters.package.length > 0)
-    args.push(`--package=${parameters.package}`)
+    parameters.package.split(",").map(p => args.push(`--package=${p}`))
   if (parameters.packagePrerelease.length > 0)
     args.push(`--packagePrerelease=${parameters.packagePrerelease}`)
   if (parameters.packageVersion.length > 0)
