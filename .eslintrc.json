@@ -1,30 +1,33 @@
 {
-  "plugins": ["jest", "@typescript-eslint"],
+  "env": {
+    "es6": true,
+    "jest/globals": true,
+    "node": true
+  },
   "extends": ["plugin:github/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 9,
-    "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "sourceType": "module"
   },
+  "plugins": ["jest", "@typescript-eslint"],
   "rules": {
-    "camelcase": "error",
-    "eslint-comments/no-use": "error",
-    "i18n-text/no-en": "off",
-    "import/no-namespace": "error",
-    "no-unused-vars": "error",
-    "semi": "off",
     "@typescript-eslint/array-type": "error",
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/ban-ts-comment": "error",
     "@typescript-eslint/consistent-type-assertions": "error",
-    "@typescript-eslint/explicit-member-accessibility": [
-      "error",
-      {"accessibility": "no-public"}
-    ],
     "@typescript-eslint/explicit-function-return-type": [
       "error",
-      {"allowExpressions": true}
+      {
+        "allowExpressions": true
+      }
+    ],
+    "@typescript-eslint/explicit-member-accessibility": [
+      "error",
+      {
+        "accessibility": "no-public"
+      }
     ],
     "@typescript-eslint/func-call-spacing": ["error", "never"],
     "@typescript-eslint/no-array-constructor": "error",
@@ -51,11 +54,12 @@
     "@typescript-eslint/restrict-plus-operands": "error",
     "@typescript-eslint/semi": ["error", "never"],
     "@typescript-eslint/type-annotation-spacing": "error",
-    "@typescript-eslint/unbound-method": "error"
-  },
-  "env": {
-    "es6": true,
-    "jest/globals": true,
-    "node": true
+    "@typescript-eslint/unbound-method": "error",
+    "camelcase": "error",
+    "eslint-comments/no-use": "error",
+    "i18n-text/no-en": "off",
+    "import/no-namespace": "error",
+    "no-unused-vars": "error",
+    "semi": "off"
   }
 }
