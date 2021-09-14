@@ -133,7 +133,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
+exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
 const command_1 = __nccwpck_require__(241);
 const file_command_1 = __nccwpck_require__(717);
 const utils_1 = __nccwpck_require__(278);
@@ -311,19 +311,30 @@ exports.debug = debug;
 /**
  * Adds an error issue
  * @param message error issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
  */
-function error(message) {
-    command_1.issue('error', message instanceof Error ? message.toString() : message);
+function error(message, properties = {}) {
+    command_1.issueCommand('error', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
 }
 exports.error = error;
 /**
- * Adds an warning issue
+ * Adds a warning issue
  * @param message warning issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
  */
-function warning(message) {
-    command_1.issue('warning', message instanceof Error ? message.toString() : message);
+function warning(message, properties = {}) {
+    command_1.issueCommand('warning', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
 }
 exports.warning = warning;
+/**
+ * Adds a notice issue
+ * @param message notice issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
+ */
+function notice(message, properties = {}) {
+    command_1.issueCommand('notice', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+}
+exports.notice = notice;
 /**
  * Writes info to log with console.log.
  * @param message info message
@@ -455,7 +466,7 @@ exports.issueCommand = issueCommand;
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.toCommandValue = void 0;
+exports.toCommandProperties = exports.toCommandValue = void 0;
 /**
  * Sanitizes an input into a string so it can be passed into issueCommand safely
  * @param input input to sanitize into a string
@@ -470,6 +481,25 @@ function toCommandValue(input) {
     return JSON.stringify(input);
 }
 exports.toCommandValue = toCommandValue;
+/**
+ *
+ * @param annotationProperties
+ * @returns The command properties to send with the actual annotation command
+ * See IssueCommandProperties: https://github.com/actions/runner/blob/main/src/Runner.Worker/ActionCommandManager.cs#L646
+ */
+function toCommandProperties(annotationProperties) {
+    if (!Object.keys(annotationProperties).length) {
+        return {};
+    }
+    return {
+        title: annotationProperties.title,
+        line: annotationProperties.startLine,
+        endLine: annotationProperties.endLine,
+        col: annotationProperties.startColumn,
+        endColumn: annotationProperties.endColumn
+    };
+}
+exports.toCommandProperties = toCommandProperties;
 //# sourceMappingURL=utils.js.map
 
 /***/ }),
@@ -1751,7 +1781,7 @@ exports.createRelease = void 0;
 const exec_1 = __nccwpck_require__(514);
 const core_1 = __nccwpck_require__(186);
 function getArgs(parameters) {
-    core_1.info('🔣 Parsing inputs...');
+    (0, core_1.info)('🔣 Parsing inputs...');
     const args = ['create-release'];
     if (parameters.apiKey.length > 0)
         args.push(`--apiKey=${parameters.apiKey}`);
@@ -1861,27 +1891,27 @@ function createRelease(parameters) {
                         return;
                     if (line.includes('Octopus Deploy Command Line Tool')) {
                         const version = line.split('version ')[1];
-                        core_1.info(`🐙 Using Octopus Deploy CLI ${version}...`);
+                        (0, core_1.info)(`🐙 Using Octopus Deploy CLI ${version}...`);
                         return;
                     }
                     if (line.includes('Handshaking with Octopus Server')) {
-                        core_1.info(`🤝 Handshaking with Octopus Deploy`);
+                        (0, core_1.info)(`🤝 Handshaking with Octopus Deploy`);
                         return;
                     }
                     if (line.includes('Authenticated as:')) {
-                        core_1.info(`✅ Authenticated`);
+                        (0, core_1.info)(`✅ Authenticated`);
                         return;
                     }
                     if (line.includes(' created successfully!')) {
-                        core_1.info(`🎉 ${line}`);
+                        (0, core_1.info)(`🎉 ${line}`);
                         return;
                     }
                     switch (line) {
                         case 'Creating release...':
-                            core_1.info('🐙 Creating a release in Octopus Deploy...');
+                            (0, core_1.info)('🐙 Creating a release in Octopus Deploy...');
                             break;
                         default:
-                            core_1.info(`${line}`);
+                            (0, core_1.info)(`${line}`);
                             break;
                     }
                 }
@@ -1889,10 +1919,12 @@ function createRelease(parameters) {
             silent: true
         };
         try {
-            yield exec_1.exec('octo', args, options);
+            yield (0, exec_1.exec)('octo', args, options);
         }
-        catch (err) {
-            core_1.setFailed(err);
+        catch (e) {
+            if (e instanceof Error) {
+                (0, core_1.setFailed)(e);
+            }
         }
     });
 }
@@ -1921,11 +1953,13 @@ const core_1 = __nccwpck_require__(186);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const inputParameters = input_parameters_1.get();
-            yield create_release_1.createRelease(inputParameters);
+            const inputParameters = (0, input_parameters_1.get)();
+            yield (0, create_release_1.createRelease)(inputParameters);
         }
-        catch (error) {
-            core_1.setFailed(error.message);
+        catch (e) {
+            if (e instanceof Error) {
+                (0, core_1.setFailed)(e);
+            }
         }
     });
 }
@@ -1943,53 +1977,54 @@ exports.get = void 0;
 const core_1 = __nccwpck_require__(186);
 function get() {
     return {
-        apiKey: core_1.getInput('api_key'),
-        cancelOnTimeout: core_1.getBooleanInput('cancel_on_timeout'),
-        channel: core_1.getInput('channel'),
-        configFile: core_1.getInput('config_file'),
-        debug: core_1.getBooleanInput('debug'),
-        defaultPackageVersion: core_1.getBooleanInput('default_package_version'),
-        deployAt: core_1.getInput('deploy_at'),
-        deployTo: core_1.getInput('deploy_to'),
-        deploymentCheckSleepCycle: core_1.getInput('deployment_check_sleep_cycle'),
-        deploymentTimeout: core_1.getInput('deployment_timeout'),
-        excludeMachines: core_1.getInput('exclude_machines'),
-        force: core_1.getBooleanInput('force'),
-        forcePackageDownload: core_1.getBooleanInput('force_package_download'),
-        gitRef: core_1.getInput('git_ref'),
-        gitCommit: core_1.getInput('git_commit'),
-        guidedFailure: core_1.getInput('guided_failure'),
-        ignoreChannelRules: core_1.getBooleanInput('ignore_channel_rules'),
-        ignoreExisting: core_1.getBooleanInput('ignore_existing'),
-        ignoreSslErrors: core_1.getBooleanInput('ignore_ssl_errors'),
-        logLevel: core_1.getInput('log_level'),
-        noDeployAfter: core_1.getInput('no_deploy_after'),
-        noRawLog: core_1.getBooleanInput('no_raw_log'),
-        package: core_1.getInput('package'),
-        packagePrerelease: core_1.getInput('package_prerelease'),
-        packageVersion: core_1.getInput('package_version'),
-        packagesFolder: core_1.getInput('packages_folder'),
-        password: core_1.getInput('password'),
-        progress: core_1.getBooleanInput('progress'),
-        project: core_1.getInput('project'),
-        proxy: core_1.getInput('proxy'),
-        proxyPassword: core_1.getInput('proxy_password'),
-        proxyUsername: core_1.getInput('proxy_username'),
-        rawLogFile: core_1.getInput('raw_log_file'),
-        releaseNotes: core_1.getInput('release_notes'),
-        releaseNotesFile: core_1.getInput('release_notes_file'),
-        releaseNumber: core_1.getInput('release_number'),
-        server: core_1.getInput('server'),
-        skip: core_1.getInput('skip'),
-        space: core_1.getInput('space'),
-        specificMachines: core_1.getInput('specific_machines'),
-        tenant: core_1.getInput('tenant'),
-        tenantTag: core_1.getInput('tenant_tag'),
-        timeout: core_1.getInput('timeout'),
-        username: core_1.getInput('user'),
-        variable: core_1.getInput('variable'),
-        waitForDeployment: core_1.getBooleanInput('wait_for_deployment'),
-        whatIf: core_1.getBooleanInput('what_if')
+        apiKey: (0, core_1.getInput)('api_key'),
+        cancelOnTimeout: (0, core_1.getBooleanInput)('cancel_on_timeout'),
+        channel: (0, core_1.getInput)('channel'),
+        configFile: (0, core_1.getInput)('config_file'),
+        debug: (0, core_1.getBooleanInput)('debug'),
+        defaultPackageVersion: (0, core_1.getBooleanInput)('default_package_version'),
+        deployAt: (0, core_1.getInput)('deploy_at'),
+        deployTo: (0, core_1.getInput)('deploy_to'),
+        deploymentCheckSleepCycle: (0, core_1.getInput)('deployment_check_sleep_cycle'),
+        deploymentTimeout: (0, core_1.getInput)('deployment_timeout'),
+        excludeMachines: (0, core_1.getInput)('exclude_machines'),
+        force: (0, core_1.getBooleanInput)('force'),
+        forcePackageDownload: (0, core_1.getBooleanInput)('force_package_download'),
+        gitRef: (0, core_1.getInput)('git_ref'),
+        gitCommit: (0, core_1.getInput)('git_commit'),
+        guidedFailure: (0, core_1.getInput)('guided_failure'),
+        ignoreChannelRules: (0, core_1.getBooleanInput)('ignore_channel_rules'),
+        ignoreExisting: (0, core_1.getBooleanInput)('ignore_existing'),
+        ignoreSslErrors: (0, core_1.getBooleanInput)('ignore_ssl_errors'),
+        logLevel: (0, core_1.getInput)('log_level'),
+        noDeployAfter: (0, core_1.getInput)('no_deploy_after'),
+        noRawLog: (0, core_1.getBooleanInput)('no_raw_log'),
+        package: (0, core_1.getInput)('package'),
+        packages: (0, core_1.getMultilineInput)('packages'),
+        packagePrerelease: (0, core_1.getInput)('package_prerelease'),
+        packageVersion: (0, core_1.getInput)('package_version'),
+        packagesFolder: (0, core_1.getInput)('packages_folder'),
+        password: (0, core_1.getInput)('password'),
+        progress: (0, core_1.getBooleanInput)('progress'),
+        project: (0, core_1.getInput)('project'),
+        proxy: (0, core_1.getInput)('proxy'),
+        proxyPassword: (0, core_1.getInput)('proxy_password'),
+        proxyUsername: (0, core_1.getInput)('proxy_username'),
+        rawLogFile: (0, core_1.getInput)('raw_log_file'),
+        releaseNotes: (0, core_1.getInput)('release_notes'),
+        releaseNotesFile: (0, core_1.getInput)('release_notes_file'),
+        releaseNumber: (0, core_1.getInput)('release_number'),
+        server: (0, core_1.getInput)('server'),
+        skip: (0, core_1.getInput)('skip'),
+        space: (0, core_1.getInput)('space'),
+        specificMachines: (0, core_1.getInput)('specific_machines'),
+        tenant: (0, core_1.getInput)('tenant'),
+        tenantTag: (0, core_1.getInput)('tenant_tag'),
+        timeout: (0, core_1.getInput)('timeout'),
+        username: (0, core_1.getInput)('user'),
+        variable: (0, core_1.getInput)('variable'),
+        waitForDeployment: (0, core_1.getBooleanInput)('wait_for_deployment'),
+        whatIf: (0, core_1.getBooleanInput)('what_if')
     };
 }
 exports.get = get;
