@@ -6,8 +6,10 @@ async function run(): Promise<void> {
   try {
     const inputParameters = get()
     await createRelease(inputParameters)
-  } catch (error) {
-    setFailed(error.message)
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      setFailed(e)
+    }
   }
 }
 

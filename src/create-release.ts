@@ -136,7 +136,9 @@ export async function createRelease(
 
   try {
     await exec('octo', args, options)
-  } catch (err) {
-    setFailed(err)
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      setFailed(e)
+    }
   }
 }
