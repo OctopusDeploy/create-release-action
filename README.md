@@ -81,6 +81,7 @@ The following inputs are optional:
 | `no_deploy_after` | Time at which scheduled deployment should expire, specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone. | |
 | `no_raw_log` | Print the raw log of failed tasks. | `false` |
 | `package` | The version number to use for a package in the release (format: `StepName:Version`, `PackageID:Version`, or `StepName:PackageName:Version`). | |
+| `packages` | Multi-line list of version numbers to use for a package in the release (format: `StepName:Version`, `PackageID:Version`, or `StepName:PackageName:Version`). | |
 | `package_prerelease` | Pre-release for latest version of all packages to use for this release. | |
 | `package_version` | The version number of all packages to use for this release. | |
 | `packages_folder` | The folder designated for containing packages. | |

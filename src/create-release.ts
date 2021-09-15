@@ -1,6 +1,6 @@
-import {ExecOptions, exec} from '@actions/exec'
-import {info, setFailed} from '@actions/core'
-import {InputParameters} from './input-parameters'
+import { ExecOptions, exec } from '@actions/exec'
+import { info, setFailed } from '@actions/core'
+import { InputParameters } from './input-parameters'
 
 function getArgs(parameters: InputParameters): string[] {
   info('🔣 Parsing inputs...')
@@ -49,6 +49,8 @@ function getArgs(parameters: InputParameters): string[] {
   if (parameters.noRawLog) args.push(`--noRawLog`)
   if (parameters.package.length > 0)
     args.push(`--package=${parameters.package}`)
+  if (parameters.packages.length > 0)
+    parameters.packages.map(p => args.push(`--package=${p}`))
   if (parameters.packagePrerelease.length > 0)
     args.push(`--packagePrerelease=${parameters.packagePrerelease}`)
   if (parameters.packageVersion.length > 0)
