@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.7](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.0.6...v1.0.7) (2021-09-15)
+
+
+### Bug Fixes
+
+* updated error handling ([3a1aa24](https://www.github.com/OctopusDeploy/create-release-action/commit/3a1aa24196373d8f88fa3db7004286fd3d90a7ab))
+
 ### [1.0.6](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.0.4...v1.0.6) (2021-08-12)
 
 
