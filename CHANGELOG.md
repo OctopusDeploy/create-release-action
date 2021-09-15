@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.0.6...v1.1.0) (2021-09-15)
+
+
+### Features
+
+* added support for packages input ([2bf1c08](https://www.github.com/OctopusDeploy/create-release-action/commit/2bf1c08fb09d805750cbf74a2a3ad836bbfb3f41))
+
+
+### Bug Fixes
+
+* updated error handling ([3a1aa24](https://www.github.com/OctopusDeploy/create-release-action/commit/3a1aa24196373d8f88fa3db7004286fd3d90a7ab))
+
 ### [1.0.6](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.0.4...v1.0.6) (2021-08-12)
 
 
