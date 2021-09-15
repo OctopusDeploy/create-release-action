@@ -1,7 +1,7 @@
 name: 'Create Release in Octopus Deploy'
 description: 'GitHub Action to create a release in Octopus Deploy'
 author: 'Octopus Deploy'
-branding: 
+branding:
   color: 'blue'
   icon: 'package'
 
@@ -69,6 +69,8 @@ inputs:
     description: 'Pre-release for latest version of all packages to use for this release.'
   package_version:
     description: 'The version number of all packages to use for this release.'
+  packages:
+    description: 'A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted.'
   packages_folder:
     description: 'The folder designated for containing packages.'
   password:

@@ -1,4 +1,4 @@
-import {getBooleanInput, getInput} from '@actions/core'
+import {getBooleanInput, getInput, getMultilineInput} from '@actions/core'
 
 export interface InputParameters {
   apiKey: string
@@ -25,6 +25,7 @@ export interface InputParameters {
   noRawLog: boolean
   package: string
   packagePrerelease: string
+  packages: string[]
   packageVersion: string
   packagesFolder: string
   password: string
@@ -75,6 +76,7 @@ export function get(): InputParameters {
     noDeployAfter: getInput('no_deploy_after'),
     noRawLog: getBooleanInput('no_raw_log'),
     package: getInput('package'),
+    packages: getMultilineInput('packages'),
     packagePrerelease: getInput('package_prerelease'),
     packageVersion: getInput('package_version'),
     packagesFolder: getInput('packages_folder'),
