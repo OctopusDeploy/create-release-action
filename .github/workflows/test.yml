@@ -21,4 +21,4 @@ jobs:
         with:
           api_key: ${{ secrets.API_KEY }}
           server: ${{ secrets.SERVER }}
-          project: "Projects-7341"
+          project: 'Projects-7341'
