@@ -1831,6 +1831,8 @@ function getArgs(parameters) {
         args.push(`--noRawLog`);
     if (parameters.package.length > 0)
         args.push(`--package=${parameters.package}`);
+    if (parameters.packages.length > 0)
+        parameters.packages.map(p => args.push(`--package=${p}`));
     if (parameters.packagePrerelease.length > 0)
         args.push(`--packagePrerelease=${parameters.packagePrerelease}`);
     if (parameters.packageVersion.length > 0)
@@ -2000,7 +2002,7 @@ function get() {
         noDeployAfter: (0, core_1.getInput)('no_deploy_after'),
         noRawLog: (0, core_1.getBooleanInput)('no_raw_log'),
         package: (0, core_1.getInput)('package'),
-        packages: (0, core_1.getMultilineInput)('packages'),
+        packages: (0, core_1.getMultilineInput)('packages').map(p => p.trim()),
         packagePrerelease: (0, core_1.getInput)('package_prerelease'),
         packageVersion: (0, core_1.getInput)('package_version'),
         packagesFolder: (0, core_1.getInput)('packages_folder'),
