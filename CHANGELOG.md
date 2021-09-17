@@ -1,5 +1,22 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.1.0...v1.1.1) (2021-09-17)
+
+
+### Features
+
+* updated tests ([505b877](https://www.github.com/OctopusDeploy/create-release-action/commit/505b8771e1b92a30399bdb73937d0ff7dbda4463))
+
+
+### Bug Fixes
+
+* trimmed input from multiline inputs ([282dd50](https://www.github.com/OctopusDeploy/create-release-action/commit/282dd509d9e5d0831e966113b091d2453bc0d979))
+
+
+### Miscellaneous Chores
+
+* release 1.1.1 ([fcaee1a](https://www.github.com/OctopusDeploy/create-release-action/commit/fcaee1a7a1e3678e31f0ee0e882ebd778edc1b0a))
+
 ## [1.1.0](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.0.6...v1.1.0) (2021-09-15)
 
 
