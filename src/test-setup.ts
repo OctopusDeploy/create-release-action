@@ -1,9 +1,10 @@
-import {dirSync, setGracefulCleanup} from 'tmp'
+import { dirSync, setGracefulCleanup } from 'tmp'
 
 setGracefulCleanup()
-const tmpdir = dirSync({template: 'create-release-XXXXXX'})
+const tmpdir = dirSync({ template: 'create-release-XXXXXX' })
 
 process.env = Object.assign(process.env, {
+  GITHUB_ACTION: '1',
   INPUT_API_KEY: process.env['OCTOPUS_APIKEY'],
   INPUT_CANCEL_ON_TIMEOUT: false,
   INPUT_DEBUG: false,
@@ -14,12 +15,12 @@ process.env = Object.assign(process.env, {
   INPUT_IGNORE_EXISTING: false,
   INPUT_IGNORE_SSL_ERRORS: false,
   INPUT_NO_RAW_LOG: false,
+  INPUT_PACKAGES: ' foo:1.2.3-quux \n bar:4.5.6-xyzzy \n ',
   INPUT_PROGRESS: false,
+  INPUT_PROJECT: 'Projects-7341',
+  INPUT_SERVER: process.env['OCTOPUS_URL'],
   INPUT_WAIT_FOR_DEPLOYMENT: false,
   INPUT_WHAT_IF: false,
-  INPUT_SERVER: process.env['OCTOPUS_URL'],
-  INPUT_PROJECT: 'Projects-7341',
   RUNNER_TEMP: tmpdir.name,
-  RUNNER_TOOL_CACHE: tmpdir.name,
-  GITHUB_ACTION: '1'
+  RUNNER_TOOL_CACHE: tmpdir.name
 })
