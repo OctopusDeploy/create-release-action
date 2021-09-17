@@ -9,17 +9,17 @@ inputs:
   api_key:
     description: 'The API key used to access Octopus Deploy. You must provide an API key or username and password. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.'
   cancel_on_timeout:
-    default: 'false'
+    default: false
     description: 'Cancel the deployment if the deployment_timeout is exceeded (the default timeout is 10 minutes).'
   channel:
     description: 'The name or ID of the channel to use for the new release. If omitted, the best channel will be selected.'
   config_file:
     description: 'The path to a configuration file of default values with one "key=value" per line.'
   debug:
-    default: 'false'
+    default: false
     description: 'Enable debug logging.'
   default_package_version:
-    default: 'false'
+    default: false
     description: 'Use the default version number of all packages for this release.'
   deploy_at:
     description: 'The time at which deployment should start (scheduled deployment), specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.'
@@ -34,26 +34,26 @@ inputs:
   exclude_machines:
     description: 'A comma-separated list of machine names to exclude in the deployed environment. If empty, all machines in the environment will be considered.'
   force:
-    default: 'false'
+    default: false
     description: 'If a project is configured to skip packages with already-installed versions, override this setting to force re-deployment.'
   force_package_download:
-    default: 'false'
+    default: false
     description: 'Force download of installed packages.'
   git_ref:
     description: 'Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects.'
   git_commit:
     description: 'Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter.'
   guided_failure:
-    default: 'false'
+    default: false
     description: 'Use Guided Failure mode.'
   ignore_channel_rules:
-    default: 'false'
+    default: false
     description: 'Create the release ignoring any version rules specified by the channel.'
   ignore_existing:
-    default: 'false'
+    default: false
     description: 'Ignore existing releases if present in Octopus Deploy with the matching version number.'
   ignore_ssl_errors:
-    default: 'false'
+    default: false
     description: 'Ignore certificate errors when communicating with Octopus Deploy. Warning: enabling this option creates a security vulnerability.'
   log_level:
     default: 'debug'
@@ -61,7 +61,7 @@ inputs:
   no_deploy_after:
     description: 'Time at which scheduled deployment should expire, specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.'
   no_raw_log:
-    default: 'false'
+    default: false
     description: 'Print the raw log of failed tasks.'
   package:
     description: 'The version number to use for a package in the release (format: StepName:Version or PackageID:Version or StepName:PackageName:Version).'
@@ -76,7 +76,7 @@ inputs:
   password:
     description: 'The password to used to authenticate with Octopus Deploy. It is strongly recommended to retrieve this value from a GitHub secret.'
   progress:
-    default: 'false'
+    default: false
     description: 'Show progress of the deployment.'
   project:
     description: 'The name or ID of the project associated with this release.'
@@ -107,17 +107,17 @@ inputs:
   tenant_tag:
     description: 'Create a deployment for tenants matching this tag; specify this argument multiple times to build a query/filter with multiple tags.'
   timeout:
-    default: '600'
+    default: 600
     description: 'A timeout value in seconds for network operations.'
   username:
     description: 'The username used to authenticate with Octopus Deploy. You must provide an apiKey or username and password. It is strongly recommended to retrieve this value from a GitHub secret.'
   variable:
     description: 'Values for any prompted variables in the format, Label:Value. For JSON values, embedded quotation marks should be escaped with a backslash.'
   wait_for_deployment:
-    default: 'false'
+    default: false
     description: 'Wait for deployment to finish.'
   what_if:
-    default: 'false'
+    default: false
     description: 'Perform a dry run; do not create or deploy a release.'
 
 runs:
