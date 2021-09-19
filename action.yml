@@ -64,6 +64,7 @@ inputs:
     default: false
     description: 'Print the raw log of failed tasks.'
   package:
+    deprecationMessage: 'Please use the input parameter, "packages" instead; it supports multi-list lists with the same format.'
     description: 'The version number to use for a package in the release (format: StepName:Version or PackageID:Version or StepName:PackageName:Version).'
   package_prerelease:
     description: 'Pre-release for latest version of all packages to use for this release.'
