@@ -10,7 +10,7 @@
   },
   "description": "GitHub Action to Create a Release in Octopus Deploy",
   "devDependencies": {
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^27.0.3",
     "@types/node": "^16.9.4",
     "@types/tmp": "^0.2.1",
     "@typescript-eslint/parser": "^4.31.1",
