@@ -1,6 +1,6 @@
-import {createRelease} from './create-release'
-import {get} from './input-parameters'
-import {setFailed} from '@actions/core'
+import { createRelease } from './create-release'
+import { get } from './input-parameters'
+import { setFailed } from '@actions/core'
 
 async function run(): Promise<void> {
   try {
