@@ -2,12 +2,36 @@ name: 'build-test'
 on:
   pull_request:
   push:
+env:
+  SA_PASSWORD: 'yourStrong45@Password'
+  ADMIN_API_KEY: 'API-ZPJJ0PC4MFKXZPTITE151VRR3IMCJRW'
+  SERVER_URL: 'http://localhost:8080'
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest]
+    runs-on: ubuntu-latest
+    services:
+      sqlserver:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        env:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: ${{ env.SA_PASSWORD }}
+          MSSQL_PID: Developer
+        options: >-
+          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P \"$SA_PASSWORD\" -Q \"SELECT 1\" || exit 1"
+          --health-interval 10s
+          --health-timeout 3s
+          --health-retries 10
+          --health-start-period 10s
+      octopusserver:
+        image: octopusdeploy/octopusdeploy
+        env:
+          ACCEPT_EULA: Y
+          DB_CONNECTION_STRING: 'Server=sqlserver;Database=OctopusDeploy;User Id=sa;Password=${{ env.SA_PASSWORD }};'
+          ADMIN_API_KEY: ${{ env.ADMIN_API_KEY }}
+          ENABLE_USAGE: N
+          OCTOPUS_SERVER_BASE64_LICENSE: ${{ secrets.OCTOPUS_SERVER_BASE64_LICENSE }}
+        ports:
+          - 8080:8080
     steps:
       - uses: actions/checkout@v2
       - run: npm install
@@ -16,9 +40,18 @@ jobs:
         with:
           version: latest
       - run: npm run all
-      - name: Create a release in Octopus Deploy
-        uses: ./
+        name: Compile and run tests
+      - run: |
+          curl '${{ env.SERVER_URL }}/api/configuration/webportal/values' -X 'PUT' -H 'Content-Type: application/json' -H 'X-Octopus-ApiKey: ${{ env.ADMIN_API_KEY }}' --data-binary '{"Security":{"CorsWhitelist":"http://localhost,${{ env.SERVER_URL }}","ReferrerPolicy":"no-referrer","ContentSecurityPolicyEnabled":true,"HttpStrictTransportSecurityEnabled":false,"HttpStrictTransportSecurityMaxAge":31556926,"XOptions":{"XFrameOptionAllowFrom":null,"XFrameOptions":"None"}}}' -o /dev/null -s -w "%{http_code}\n"
+        name: Add server url to CORS
+      - run: octo create-project --name Testing --projectGroup "Default Project Group" --lifecycle "Default Lifecycle" --server ${{ env.SERVER_URL }} --apiKey ${{ env.ADMIN_API_KEY }}
+        name: Create a project for the test
+      - run: |
+          curl '${{ env.SERVER_URL }}/api/Spaces-1/projects/Projects-1/deploymentprocesses' -X 'PUT' -H 'Content-Type: application/json' -H 'X-Octopus-ApiKey: ${{ env.ADMIN_API_KEY }}' --data-binary '{"SpaceId":"Spaces-1","ProjectId":"Projects-1","Steps":[{"Condition":"Success","StartTrigger":"StartAfterPrevious","PackageRequirement":"LetOctopusDecide","Properties":{},"Id":"850db9a1-8898-47dd-a84e-a5de9c4f3a00","Actions":[{"CanBeUsedForProjectVersioning":true,"IsDisabled":false,"Notes":null,"IsRequired":true,"Properties":{"Octopus.Action.RunOnServer":"true","Octopus.Action.Script.ScriptSource":"Inline","Octopus.Action.Script.ScriptBody":"Write-Host '\''Hello world, using PowerShell'\''\n\n#TODO: Experiment with steps of your own :)\n\nWrite-Host '\''[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'\''","Octopus.Action.Script.Syntax":"PowerShell"},"ActionType":"Octopus.Script","ExcludedEnvironments":[],"Channels":[],"Environments":[],"Packages":[],"WorkerPoolId":null,"WorkerPoolVariable":null,"TenantTags":[],"Condition":"Success","Id":"cbfaa33d-bdcd-42a3-92b4-3c4ce37cfcba","Name":"Hello world (using PowerShell)","Container":{"FeedId":null,"Image":null}}],"Name":"Hello world (using PowerShell)","Links":{}},{"Condition":"Success","StartTrigger":"StartWithPrevious","PackageRequirement":"LetOctopusDecide","Properties":{},"Id":"495139b3-cb3f-4e50-a918-560f30e1e970","Actions":[{"CanBeUsedForProjectVersioning":true,"IsDisabled":false,"Notes":null,"IsRequired":true,"Properties":{"Octopus.Action.RunOnServer":"true","Octopus.Action.Script.ScriptSource":"Inline","Octopus.Action.Script.ScriptBody":"echo '\''Hello world, using Bash'\''\n\n#TODO: Experiment with steps of your own :)\n\necho '\''[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'\''","Octopus.Action.Script.Syntax":"Bash"},"ActionType":"Octopus.Script","ExcludedEnvironments":[],"Channels":[],"Environments":[],"Packages":[],"WorkerPoolId":null,"WorkerPoolVariable":null,"TenantTags":[],"Condition":"Success","Id":"b0a1f4c6-d4e5-4a5f-ab34-6eacf304d465","Name":"Hello world (using Bash)","Container":{"FeedId":null,"Image":null}}],"Name":"Hello world (using Bash)"}]}' -o /dev/null -s -w "%{http_code}\n"
+        name: Create deployment process
+      - uses: ./
+        name: Create a release in Octopus Deploy
         with:
-          api_key: ${{ secrets.API_KEY }}
-          server: ${{ secrets.SERVER }}
-          project: 'Projects-7341'
+          api_key: ${{ env.ADMIN_API_KEY }}
+          server: ${{ env.SERVER_URL }}
+          project: 'Testing'

@@ -9,8 +9,3 @@ test('get input parameters', () => {
   expect(inputParameters.packages).toContain('foo:1.2.3-quux')
   expect(inputParameters.packages).toContain('bar:4.5.6-xyzzy')
 })
-
-test('create a release', () => {
-  const inputParameters = inputs.get()
-  return octopus.createRelease(inputParameters)
-}, 100000)
