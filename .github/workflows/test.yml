@@ -2,12 +2,36 @@ name: 'build-test'
 on:
   pull_request:
   push:
+env:
+  SA_PASSWORD: 'yourStrong45@Password'
+  ADMIN_API_KEY: 'API-ZPJJ0PC4MFKXZPTITE151VRR3IMCJRW'
+  SERVER_URL: 'http://localhost:8080'
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest]
+    runs-on: ubuntu-latest
+    services:
+      sqlserver:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        env:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: ${{ env.SA_PASSWORD }}
+          MSSQL_PID: Developer
+        options: >-
+          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P \"$SA_PASSWORD\" -Q \"SELECT 1\" || exit 1"
+          --health-interval 10s
+          --health-timeout 3s
+          --health-retries 10
+          --health-start-period 10s
+      octopusserver:
+        image: octopusdeploy/octopusdeploy
+        env:
+          ACCEPT_EULA: Y
+          DB_CONNECTION_STRING: 'Server=sqlserver;Database=OctopusDeploy;User Id=sa;Password=${{ env.SA_PASSWORD }};'
+          ADMIN_API_KEY: ${{ env.ADMIN_API_KEY }}
+          ENABLE_USAGE: N
+          OCTOPUS_SERVER_BASE64_LICENSE: ${{ secrets.OCTOPUS_SERVER_BASE64_LICENSE }}
+        ports:
+          - 8080:8080
     steps:
       - uses: actions/checkout@v2
       - run: npm install
@@ -16,9 +40,15 @@ jobs:
         with:
           version: latest
       - run: npm run all
+        name: Compile and run tests
+      - run: |
+          curl '${{ env.SERVER_URL }}/api/configuration/webportal/values' -X 'PUT' -H 'Content-Type: application/json' -H 'X-Octopus-ApiKey: ${{ env.ADMIN_API_KEY }}' --data-binary '{"Security":{"CorsWhitelist":"http://localhost,${{ env.SERVER_URL }}","ReferrerPolicy":"no-referrer","ContentSecurityPolicyEnabled":true,"HttpStrictTransportSecurityEnabled":false,"HttpStrictTransportSecurityMaxAge":31556926,"XOptions":{"XFrameOptionAllowFrom":null,"XFrameOptions":"None"}}}' -o /dev/null -s -w "%{http_code}\n"
+        name: Add server url to CORS
+      - run: octo create-project --name Testing --projectGroup "Default Project Group" --lifecycle "Default Lifecycle" --server ${{ env.SERVER_URL }} --apiKey ${{ env.ADMIN_API_KEY }}
+        name: Create a project for the test
       - name: Create a release in Octopus Deploy
         uses: ./
         with:
-          api_key: ${{ secrets.API_KEY }}
-          server: ${{ secrets.SERVER }}
-          project: 'Projects-7341'
+          api_key: ${{ env.ADMIN_API_KEY }}
+          server: ${{ env.SERVER_URL }}
+          project: 'Testing'
