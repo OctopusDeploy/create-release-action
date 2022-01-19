@@ -12,7 +12,7 @@
   "devDependencies": {
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.10",
-    "@types/tmp": "^0.2.2",
+    "@types/tmp": "^0.2.3",
     "@typescript-eslint/parser": "^5.10.0",
     "@vercel/ncc": "^0.31.1",
     "eslint": "^8.3.0",
