@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.2](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.1.1...v1.1.2) (2022-02-28)
+
+
+### Bug Fixes
+
+* --guidedFailure flag set to 'false' is evaluated as boolean true ([789ffc8](https://www.github.com/OctopusDeploy/create-release-action/commit/789ffc8a64b20656d5d9e2b71a4db71bec9f2c35))
+
 ### [1.1.1](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.1.0...v1.1.1) (2021-09-17)
 
 
