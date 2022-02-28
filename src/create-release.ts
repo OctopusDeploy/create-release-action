@@ -35,7 +35,11 @@ function getArgs(parameters: InputParameters): string[] {
     args.push(`--excludeMachines=${parameters.excludeMachines}`)
   if (parameters.force) args.push(`--force`)
   if (parameters.forcePackageDownload) args.push(`--forcePackageDownload`)
-  if (parameters.guidedFailure) args.push(`--guidedFailure=True`)
+  if (
+    parameters.guidedFailure &&
+    parameters.guidedFailure.toLowerCase() === 'true'
+  )
+    args.push(`--guidedFailure=True`)
   if (parameters.ignoreChannelRules) args.push(`--ignoreChannelRules`)
   if (parameters.ignoreExisting) args.push(`--ignoreExisting`)
   if (parameters.ignoreSslErrors) args.push(`--ignoreSslErrors`)
