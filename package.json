@@ -11,10 +11,10 @@
   "description": "GitHub Action to Create a Release in Octopus Deploy",
   "devDependencies": {
     "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.23",
+    "@types/node": "^17.0.25",
     "@types/tmp": "^0.2.3",
-    "@typescript-eslint/parser": "^5.18.0",
-    "@vercel/ncc": "^0.33.3",
+    "@typescript-eslint/parser": "^5.20.0",
+    "@vercel/ncc": "^0.33.4",
     "eslint": "^8.13.0",
     "eslint-plugin-github": "^4.3.6",
     "eslint-plugin-jest": "^26.1.4",
