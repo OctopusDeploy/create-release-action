@@ -1,5 +1,13 @@
 # Changelog
 
+### [1.1.3](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.1.2...v1.1.3) (2022-05-04)
+
+
+### Bug Fixes
+
+* updated deprecation message to fix typo ([18bd3d3](https://www.github.com/OctopusDeploy/create-release-action/commit/18bd3d3ee699201cb48b0a154f1eee2f7ef021b6))
+* updated reference ([75d67a3](https://www.github.com/OctopusDeploy/create-release-action/commit/75d67a3d3f26a730ed3c00bbd75b17ec5b7fca65))
+
 ### [1.1.2](https://www.github.com/OctopusDeploy/create-release-action/compare/v1.1.1...v1.1.2) (2022-02-28)
 
 
