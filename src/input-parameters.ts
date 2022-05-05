@@ -43,10 +43,13 @@ export interface InputParameters {
   space: string
   specificMachines: string
   tenant: string
+  tenants: string[]
   tenantTag: string
+  tenantTags: string[]
   timeout: string
   username: string
   variable: string
+  variables: string[]
   waitForDeployment: boolean
   whatIf: boolean
 }
@@ -95,10 +98,13 @@ export function get(): InputParameters {
     space: getInput('space'),
     specificMachines: getInput('specific_machines'),
     tenant: getInput('tenant'),
+    tenants: getMultilineInput('tenants').map(p => p.trim()),
     tenantTag: getInput('tenant_tag'),
+    tenantTags: getMultilineInput('tenant_tags').map(p => p.trim()),
     timeout: getInput('timeout'),
     username: getInput('user'),
     variable: getInput('variable'),
+    variables: getMultilineInput('variables').map(p => p.trim()),
     waitForDeployment: getBooleanInput('wait_for_deployment'),
     whatIf: getBooleanInput('what_if')
   }

@@ -3217,14 +3217,20 @@ function getArgs(parameters) {
         args.push(`--specificMachines=${parameters.specificMachines}`);
     if (parameters.tenant.length > 0)
         args.push(`--tenant=${parameters.tenant}`);
+    if (parameters.tenants.length > 0)
+        parameters.tenants.map(t => args.push(`--tenant=${t}`));
     if (parameters.tenantTag.length > 0)
         args.push(`--tenantTag=${parameters.tenantTag}`);
+    if (parameters.tenantTags.length > 0)
+        parameters.tenantTags.map(t => args.push(`--tenantTag=${t}`));
     if (parameters.timeout.length > 0 && parameters.timeout !== `600`)
         args.push(`--timeout=${parameters.timeout}`);
     if (parameters.username.length > 0)
         args.push(`--user=${parameters.username}`);
     if (parameters.variable.length > 0)
         args.push(`--variable=${parameters.variable}`);
+    if (parameters.variables.length > 0)
+        parameters.variables.map(v => args.push(`--variable=${v}`));
     if (parameters.waitForDeployment)
         args.push(`--waitForDeployment`);
     if (parameters.whatIf)
@@ -3371,10 +3377,13 @@ function get() {
         space: (0, core_1.getInput)('space'),
         specificMachines: (0, core_1.getInput)('specific_machines'),
         tenant: (0, core_1.getInput)('tenant'),
+        tenants: (0, core_1.getMultilineInput)('tenants').map(p => p.trim()),
         tenantTag: (0, core_1.getInput)('tenant_tag'),
+        tenantTags: (0, core_1.getMultilineInput)('tenant_tags').map(p => p.trim()),
         timeout: (0, core_1.getInput)('timeout'),
         username: (0, core_1.getInput)('user'),
         variable: (0, core_1.getInput)('variable'),
+        variables: (0, core_1.getMultilineInput)('variables').map(p => p.trim()),
         waitForDeployment: (0, core_1.getBooleanInput)('wait_for_deployment'),
         whatIf: (0, core_1.getBooleanInput)('what_if')
     };
