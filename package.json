@@ -22,7 +22,7 @@
     "jest-circus": "^28.0.3",
     "js-yaml": "^4.1.0",
     "prettier": "2.6.2",
-    "ts-jest": "^28.0.1",
+    "ts-jest": "^28.0.4",
     "typescript": "^4.6.4"
   },
   "homepage": "https://github.com/OctopusDeploy/create-release-action#readme",
