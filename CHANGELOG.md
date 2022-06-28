@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.4](https://github.com/OctopusDeploy/create-release-action/compare/v1.1.3...v1.1.4) (2022-06-28)
+
+
+### Features
+
+* Updated build pipeline ([#282](https://github.com/OctopusDeploy/create-release-action/issues/282)) ([80b6272](https://github.com/OctopusDeploy/create-release-action/commit/80b62723c789e9a7b4ca4b580f1b986540db0ce0))
+
+
+### Bug Fixes
+
+* updated README ([63d0581](https://github.com/OctopusDeploy/create-release-action/commit/63d0581c16acc09da66beaab126def241fccb78e))
+
+
+### Miscellaneous Chores
+
+* release 1.1.4 ([f2bcab1](https://github.com/OctopusDeploy/create-release-action/commit/f2bcab125425aedae05db3dffff986d3c07a5b15))
+
 ### [1.1.3](https://github.com/OctopusDeploy/create-release-action/compare/v1.1.2...v1.1.3) (2022-05-04)
 
 
