@@ -5,8 +5,8 @@ on:
     # Daily 5am australian/brisbane time (7pm UTC)
     - cron: '0 19 * * *'
 env:
-  SA_PASSWORD: 'yourStrong45@Password'
-  ADMIN_API_KEY: 'API-ZPJJ0PC4MFKXZPTITE151VRR3IMCJRW'
+  SA_PASSWORD: ${{ secrets.DB_IMAGE_SA_PASSWORD }}
+  ADMIN_API_KEY: ${{ secrets.OD_IMAGE_ADMIN_API_KEY }}
   SERVER_URL: 'http://localhost:8080'
 jobs:
   test:
