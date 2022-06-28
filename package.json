@@ -20,6 +20,7 @@
     "eslint-plugin-jest": "^26.1.5",
     "jest": "^28.0.3",
     "jest-circus": "^28.0.3",
+    "jest-junit": "^14.0.0",
     "js-yaml": "^4.1.0",
     "prettier": "2.6.2",
     "ts-jest": "^28.0.1",
@@ -47,6 +48,15 @@
     },
     "verbose": true
   },
+  "jest-junit": {
+    "outputDirectory": "reports",
+    "outputName": "jest-junit.xml",
+    "ancestorSeperator": " > ",
+    "uniqueOutputName": "false",
+    "suiteNameTemplate": "{filepath}",
+    "classNameTemplate": "{classname}",
+    "titleTemplate": "{title}"
+  },
   "keywords": [
     "cli",
     "deployment",
@@ -54,7 +64,7 @@
     "github-actions"
   ],
   "license": "Apache-2.0",
-  "main": "out/index.js",
+  "main": "src/index.ts",
   "name": "create-release-action",
   "repository": {
     "type": "git",
@@ -66,8 +76,8 @@
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "prebuild": "eslint src/**/*.ts",
-    "postbuild": "ncc build -o dist",
-    "test": "jest"
+    "postbuild": "ncc build out/index.js -o dist",
+    "test": "jest --ci --reporters=default --reporters=jest-junit"
   },
   "version": "1.1.3"
 }

@@ -1,10 +1,12 @@
 name: 'build-test'
 on:
-  pull_request:
   push:
+  schedule:
+    # Daily 5am australian/brisbane time (7pm UTC)
+    - cron: '0 19 * * *'
 env:
-  SA_PASSWORD: 'yourStrong45@Password'
-  ADMIN_API_KEY: 'API-ZPJJ0PC4MFKXZPTITE151VRR3IMCJRW'
+  SA_PASSWORD: ${{ secrets.DB_IMAGE_SA_PASSWORD }}
+  ADMIN_API_KEY: ${{ secrets.OD_IMAGE_ADMIN_API_KEY }}
   SERVER_URL: 'http://localhost:8080'
 jobs:
   test:
@@ -32,26 +34,31 @@ jobs:
           OCTOPUS_SERVER_BASE64_LICENSE: ${{ secrets.OCTOPUS_SERVER_BASE64_LICENSE }}
         ports:
           - 8080:8080
+    # https://github.com/dorny/test-reporter/issues/168
+    permissions:
+      statuses: write
+      checks: write
     steps:
       - uses: actions/checkout@v3
-      - run: npm install
-      - name: Install Octopus CLI
-        uses: OctopusDeploy/install-octopus-cli-action@v1.2.0
+
+      - name: Install Octopus CLI 🐙
+        uses: OctopusDeploy/install-octopus-cli-action@v1
         with:
           version: '*'
-      - run: npm run all
-        name: Compile and run tests
-      - run: |
-          curl '${{ env.SERVER_URL }}/api/configuration/webportal/values' -X 'PUT' -H 'Content-Type: application/json' -H 'X-Octopus-ApiKey: ${{ env.ADMIN_API_KEY }}' --data-binary '{"Security":{"CorsWhitelist":"http://localhost,${{ env.SERVER_URL }}","ReferrerPolicy":"no-referrer","ContentSecurityPolicyEnabled":true,"HttpStrictTransportSecurityEnabled":false,"HttpStrictTransportSecurityMaxAge":31556926,"XOptions":{"XFrameOptionAllowFrom":null,"XFrameOptions":"None"}}}' -o /dev/null -s -w "%{http_code}\n"
-        name: Add server url to CORS
-      - run: octo create-project --name Testing --projectGroup "Default Project Group" --lifecycle "Default Lifecycle" --server ${{ env.SERVER_URL }} --apiKey ${{ env.ADMIN_API_KEY }}
-        name: Create a project for the test
-      - run: |
-          curl '${{ env.SERVER_URL }}/api/Spaces-1/projects/Projects-1/deploymentprocesses' -X 'PUT' -H 'Content-Type: application/json' -H 'X-Octopus-ApiKey: ${{ env.ADMIN_API_KEY }}' --data-binary '{"SpaceId":"Spaces-1","ProjectId":"Projects-1","Steps":[{"Condition":"Success","StartTrigger":"StartAfterPrevious","PackageRequirement":"LetOctopusDecide","Properties":{},"Id":"850db9a1-8898-47dd-a84e-a5de9c4f3a00","Actions":[{"CanBeUsedForProjectVersioning":true,"IsDisabled":false,"Notes":null,"IsRequired":true,"Properties":{"Octopus.Action.RunOnServer":"true","Octopus.Action.Script.ScriptSource":"Inline","Octopus.Action.Script.ScriptBody":"Write-Host '\''Hello world, using PowerShell'\''\n\n#TODO: Experiment with steps of your own :)\n\nWrite-Host '\''[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'\''","Octopus.Action.Script.Syntax":"PowerShell"},"ActionType":"Octopus.Script","ExcludedEnvironments":[],"Channels":[],"Environments":[],"Packages":[],"WorkerPoolId":null,"WorkerPoolVariable":null,"TenantTags":[],"Condition":"Success","Id":"cbfaa33d-bdcd-42a3-92b4-3c4ce37cfcba","Name":"Hello world (using PowerShell)","Container":{"FeedId":null,"Image":null}}],"Name":"Hello world (using PowerShell)","Links":{}},{"Condition":"Success","StartTrigger":"StartWithPrevious","PackageRequirement":"LetOctopusDecide","Properties":{},"Id":"495139b3-cb3f-4e50-a918-560f30e1e970","Actions":[{"CanBeUsedForProjectVersioning":true,"IsDisabled":false,"Notes":null,"IsRequired":true,"Properties":{"Octopus.Action.RunOnServer":"true","Octopus.Action.Script.ScriptSource":"Inline","Octopus.Action.Script.ScriptBody":"echo '\''Hello world, using Bash'\''\n\n#TODO: Experiment with steps of your own :)\n\necho '\''[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'\''","Octopus.Action.Script.Syntax":"Bash"},"ActionType":"Octopus.Script","ExcludedEnvironments":[],"Channels":[],"Environments":[],"Packages":[],"WorkerPoolId":null,"WorkerPoolVariable":null,"TenantTags":[],"Condition":"Success","Id":"b0a1f4c6-d4e5-4a5f-ab34-6eacf304d465","Name":"Hello world (using Bash)","Container":{"FeedId":null,"Image":null}}],"Name":"Hello world (using Bash)"}]}' -o /dev/null -s -w "%{http_code}\n"
-        name: Create deployment process
-      - uses: ./
-        name: Create a release in Octopus Deploy
+
+      - name: Install package dependencies
+        run: npm install
+
+      - name: Compile and run tests
+        env:
+          OCTOPUS_TEST_URL: ${{ env.SERVER_URL }}
+          OCTOPUS_TEST_APIKEY: ${{ env.ADMIN_API_KEY }}
+        run: npm run all
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
         with:
-          api_key: ${{ env.ADMIN_API_KEY }}
-          server: ${{ env.SERVER_URL }}
-          project: 'Testing'
+          name: JEST Tests
+          path: 'reports/jest-*.xml'
+          reporter: jest-junit
