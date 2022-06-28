@@ -22,7 +22,7 @@ jobs:
             | awk -F: '{ print $2 }' \
             | sed 's/[", ]//g' \
             | awk -F. '{ print $1 }')
-          sed -i "s/\(uses: OctopusDeploy/create-release-action@\).*/\1v${MAJOR_VERSION}/g" README.md
+          sed -i "s/\(uses: OctopusDeploy\/create-release-action@\).*/\1v${MAJOR_VERSION}/g" README.md
       - name: commit
         run: |-
           git config --global user.name "team-integrations-fnm-bot"
