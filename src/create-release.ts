@@ -1,5 +1,5 @@
-import { ExecOptions, exec } from '@actions/exec'
-import { info, setFailed } from '@actions/core'
+import { info, setFailed, warning } from '@actions/core'
+import { exec, ExecOptions } from '@actions/exec'
 import { InputParameters } from './input-parameters'
 
 function getArgs(parameters: InputParameters): string[] {
@@ -51,8 +51,15 @@ function getArgs(parameters: InputParameters): string[] {
   if (parameters.noDeployAfter.length > 0)
     args.push(`--noDeployAfter=${parameters.noDeployAfter}`)
   if (parameters.noRawLog) args.push(`--noRawLog`)
-  if (parameters.package.length > 0)
+
+  // deprecated
+  if (parameters.package.length > 0) {
+    warning(
+      `"package" input option specified. This option is deprecated and will be removed in a future release. Please use "packages" instead.`
+    )
     args.push(`--package=${parameters.package}`)
+  }
+
   if (parameters.packages.length > 0)
     parameters.packages.map(p => args.push(`--package=${p}`))
   if (parameters.packagePrerelease.length > 0)
@@ -83,14 +90,42 @@ function getArgs(parameters: InputParameters): string[] {
   if (parameters.space.length > 0) args.push(`--space=${parameters.space}`)
   if (parameters.specificMachines.length > 0)
     args.push(`--specificMachines=${parameters.specificMachines}`)
-  if (parameters.tenant.length > 0) args.push(`--tenant=${parameters.tenant}`)
-  if (parameters.tenantTag.length > 0)
+
+  // deprecated
+  if (parameters.tenant.length > 0) {
+    warning(
+      `"tenant" input option specified. This option is deprecated and will be removed in a future release. Please use "tenants" instead.`
+    )
+    args.push(`--tenant=${parameters.tenant}`)
+  }
+
+  if (parameters.tenants.length > 0)
+    parameters.tenants.map(t => args.push(`--tenant=${t}`))
+
+  // deprecated
+  if (parameters.tenantTag.length > 0) {
+    warning(
+      `"tenant_tag" input option specified. This option is deprecated and will be removed in a future release. Please use "tenant_tags" instead.`
+    )
     args.push(`--tenantTag=${parameters.tenantTag}`)
+  }
+
+  if (parameters.tenantTags.length > 0)
+    parameters.tenantTags.map(t => args.push(`--tenantTag=${t}`))
   if (parameters.timeout.length > 0 && parameters.timeout !== `600`)
     args.push(`--timeout=${parameters.timeout}`)
   if (parameters.username.length > 0) args.push(`--user=${parameters.username}`)
-  if (parameters.variable.length > 0)
+
+  // deprecated
+  if (parameters.variable.length > 0) {
+    warning(
+      `"variable" input option specified. This option is deprecated and will be removed in a future release. Please use "variables" instead.`
+    )
     args.push(`--variable=${parameters.variable}`)
+  }
+
+  if (parameters.variables.length > 0)
+    parameters.variables.map(v => args.push(`--variable=${v}`))
   if (parameters.waitForDeployment) args.push(`--waitForDeployment`)
   if (parameters.whatIf) args.push(`--whatIf`)
 
