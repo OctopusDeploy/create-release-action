@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/OctopusDeploy/create-release-action/compare/v1.1.4...v1.2.0) (2022-07-01)
+
+
+### Features
+
+* added multiple input support for tenants, tenant tags, and variables ([#260](https://github.com/OctopusDeploy/create-release-action/issues/260)) ([04615c8](https://github.com/OctopusDeploy/create-release-action/commit/04615c8854f754c0275e372a8d1be800de4bf13b))
+
 ## [1.1.4](https://github.com/OctopusDeploy/create-release-action/compare/v1.1.3...v1.1.4) (2022-06-28)
 
 
