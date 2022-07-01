@@ -4,27 +4,27 @@
     "url": "https://github.com/OctopusDeploy/create-release-action/issues"
   },
   "dependencies": {
-    "@actions/core": "^1.7.0",
+    "@actions/core": "^1.9.0",
     "@actions/exec": "^1.1.1",
     "tmp": "^0.2.1"
   },
   "description": "GitHub Action to Create a Release in Octopus Deploy",
   "devDependencies": {
-    "@types/jest": "^27.5.0",
-    "@types/node": "^17.0.31",
+    "@types/jest": "^28.1.4",
+    "@types/node": "^18.0.0",
     "@types/tmp": "^0.2.3",
-    "@typescript-eslint/parser": "^5.22.0",
-    "@vercel/ncc": "^0.33.4",
-    "eslint": "^8.14.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "@vercel/ncc": "^0.34.0",
+    "eslint": "^8.18.0",
     "eslint-plugin-github": "^4.3.6",
-    "eslint-plugin-jest": "^26.1.5",
-    "jest": "^28.0.3",
-    "jest-circus": "^28.0.3",
+    "eslint-plugin-jest": "^26.5.3",
+    "jest": "^28.1.2",
+    "jest-circus": "^28.1.2",
     "jest-junit": "^14.0.0",
     "js-yaml": "^4.1.0",
-    "prettier": "2.6.2",
-    "ts-jest": "^28.0.1",
-    "typescript": "^4.6.4"
+    "prettier": "2.7.1",
+    "ts-jest": "^28.0.5",
+    "typescript": "^4.7.4"
   },
   "homepage": "https://github.com/OctopusDeploy/create-release-action#readme",
   "jest": {
