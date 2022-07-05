@@ -109,3 +109,7 @@ The following inputs are optional:
 | `variables`                    | Multi-line list of values for any prompted variables (format: `Label:Value`). For JSON values, embedded quotation marks should be escaped with a backslash. Supports multiple values, one per line.                                                                  |            |
 | `wait_for_deployment`          | Wait for deployment to finish.                                                                                                                                                                                                                                       |  `false`   |
 | `what_if`                      | Perform a dry run; do not create or deploy a release.                                                                                                                                                                                                                |  `false`   |
+
+## 🤝 Contributions
+
+Contributions are welcome! :heart: Please read our [Contributing Guide](./github/CONTRIBUTING.md) for information about how to get involved in this project.
