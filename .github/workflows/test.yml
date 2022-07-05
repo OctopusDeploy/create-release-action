@@ -1,13 +1,8 @@
 name: 'build-test'
 on:
   push:
-    paths:
-      - '.github/dependabot.yml'
-      - '.github/workflows/**'
-      - 'action.yml'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'src/**'
+    paths-ignore:
+      - '**.md'
   schedule:
     # Daily 5am australian/brisbane time (7pm UTC)
     - cron: '0 19 * * *'
