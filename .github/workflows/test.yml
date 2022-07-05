@@ -57,7 +57,7 @@ jobs:
 
       - name: Test Report
         uses: dorny/test-reporter@v1
-        if: success()
+        if: success() || failure()
         with:
           name: JEST Tests
           path: 'reports/jest-*.xml'
