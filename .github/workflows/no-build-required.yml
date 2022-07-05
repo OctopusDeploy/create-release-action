@@ -1,13 +1,8 @@
 name: 'build-test'
 on:
   pull_request:
-    paths-ignore:
-      - '.github/dependabot.yml'
-      - '.github/workflows/**'
-      - 'action.yml'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'src/**'
+    path:
+      - '**.md'
 jobs:
   test:
     runs-on: ubuntu-latest
