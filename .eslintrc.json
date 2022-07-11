@@ -61,5 +61,9 @@
     "import/no-namespace": "error",
     "no-unused-vars": "error",
     "semi": "off"
+  },
+  // eslint doesn't know about the global NodeJS variable
+  "globals": {
+    "NodeJS": true
   }
 }

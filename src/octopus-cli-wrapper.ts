@@ -25,7 +25,7 @@ export class OctopusCliWrapper {
   }
 
   // When the Octopus CLI writes to stdout, we capture the text via this function
-  stdline(line: string) {
+  stdline(line: string): void {
     if (line.length === 0) {
       return
     }
@@ -68,9 +68,9 @@ export class OctopusCliWrapper {
     inputObsoleteEnvKey: string,
     inputNewEnvKey: string,
     valueHandler: (value: string) => void
-  ) {
+  ): void {
     // we always want to log the warning for a deprecated environment variable, even if the parameter comes in via inputParameter
-    var result: any
+    let result: string | undefined
 
     const deprecatedValue = this.env[inputObsoleteEnvKey]
     if (deprecatedValue && deprecatedValue.length > 0) {
@@ -91,7 +91,11 @@ export class OctopusCliWrapper {
   }
 
   // Picks up a config value from GHA Input or environment
-  pickupConfigurationValue(inputParameter: string, inputNewEnvKey: string, valueHandler: (value: string) => void) {
+  pickupConfigurationValue(
+    inputParameter: string,
+    inputNewEnvKey: string,
+    valueHandler: (value: string) => void
+  ): void {
     if (inputParameter.length > 0) {
       valueHandler(inputParameter)
     } else {
@@ -175,7 +179,7 @@ export class OctopusCliWrapper {
 
     const options: ExecOptions = {
       listeners: {
-        stdline: this.stdline
+        stdline: input => this.stdline(input)
       },
       env: cliLaunchConfiguration.env,
       silent: true
