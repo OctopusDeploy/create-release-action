@@ -74,3 +74,25 @@ test('all the parameters', () => {
     '--space=Space-61'
   ])
 })
+
+describe('pickup api key', () => {
+  let infoMessages: string[]
+  let warnMessages: string[]
+  let w: OctopusCliWrapper
+  beforeEach(() => {
+    infoMessages = []
+    warnMessages = []
+    w = new OctopusCliWrapper(infoMessages.push, warnMessages.push)
+  })
+
+  test('pickup api key from input', () => {
+    var i = makeInputParameters()
+    i.apiKey = 'API FOOBAR'
+
+    const launchInfo = w.generateLaunchConfig({}, i)
+    expect(launchInfo.args).toEqual([''])
+    expect(launchInfo.env).toEqual({
+      OCTOPUS_CLI_API_KEY: 'API FOOBAR'
+    })
+  })
+})
