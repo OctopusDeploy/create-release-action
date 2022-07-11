@@ -1,26 +1,5 @@
-import { InputParameters } from '../../src/input-parameters'
+import { InputParameters, makeInputParameters } from '../../src/input-parameters'
 import { OctopusCliWrapper } from '../../src/octopus-cli-wrapper'
-
-function makeInputParameters(): InputParameters {
-  return {
-    project: '',
-    apiKey: '',
-    channel: '',
-    gitRef: '',
-    gitCommit: '',
-    ignoreExisting: false,
-    packages: [],
-    packageVersion: '',
-    proxy: '',
-    proxyPassword: '',
-    proxyUsername: '',
-    releaseNotes: '',
-    releaseNotesFile: '',
-    releaseNumber: '',
-    server: '',
-    space: ''
-  }
-}
 
 test('no parameters', () => {
   const w = new OctopusCliWrapper(makeInputParameters(), {}, console.info, console.warn)
