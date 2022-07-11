@@ -23,16 +23,13 @@ function makeInputParameters(): InputParameters {
 }
 
 test('no parameters', () => {
-  const w = new OctopusCliWrapper({}, console.info, console.warn)
+  const w = new OctopusCliWrapper(makeInputParameters(), {}, console.info, console.warn)
 
-  var i = makeInputParameters()
-  const launchInfo = w.generateLaunchConfig(i)
+  const launchInfo = w.generateLaunchConfig()
   expect(launchInfo.args).toEqual(['create-release'])
 })
 
 test('all the parameters', () => {
-  const w = new OctopusCliWrapper({}, console.info, console.warn)
-
   var i = makeInputParameters()
   i.project = 'projectZ'
   i.apiKey = 'API FOOBAR'
@@ -51,7 +48,9 @@ test('all the parameters', () => {
   i.server = 'http://octopusServer'
   i.space = 'Space-61'
 
-  const launchInfo = w.generateLaunchConfig(i)
+  const w = new OctopusCliWrapper(i, {}, console.info, console.warn)
+
+  const launchInfo = w.generateLaunchConfig()
   expect(launchInfo.env).toEqual({
     OCTOPUS_CLI_API_KEY: 'API FOOBAR',
     OCTOPUS_CLI_SERVER: 'http://octopusServer'
@@ -78,18 +77,18 @@ test('all the parameters', () => {
 describe('pickup api key', () => {
   let infoMessages: string[]
   let warnMessages: string[]
-  let w: OctopusCliWrapper
   beforeEach(() => {
     infoMessages = []
     warnMessages = []
-    w = new OctopusCliWrapper({}, infoMessages.push, warnMessages.push)
   })
 
   test('pickup api key from input', () => {
     var i = makeInputParameters()
     i.apiKey = 'API FOOBAR'
 
-    const launchInfo = w.generateLaunchConfig(i)
+    const w = new OctopusCliWrapper(i, {}, infoMessages.push, warnMessages.push)
+
+    const launchInfo = w.generateLaunchConfig()
     expect(launchInfo.args).toEqual(['create-release'])
     expect(launchInfo.env).toEqual({
       OCTOPUS_CLI_API_KEY: 'API FOOBAR'

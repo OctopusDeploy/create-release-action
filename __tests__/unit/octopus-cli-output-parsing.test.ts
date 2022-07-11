@@ -1,3 +1,4 @@
+import { makeInputParameters } from '../../src/input-parameters'
 import { OctopusCliWrapper } from '../../src/octopus-cli-wrapper'
 
 var infoMessages: string[]
@@ -8,6 +9,7 @@ beforeEach(() => {
   infoMessages = []
   warnMessages = []
   w = new OctopusCliWrapper(
+    makeInputParameters(),
     {},
     msg => infoMessages.push(msg),
     msg => warnMessages.push(msg)

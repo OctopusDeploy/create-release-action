@@ -1,7 +1,7 @@
 import * as inputs from '../../src/input-parameters'
 
 test('get input parameters', () => {
-  const inputParameters = inputs.get()
+  const inputParameters = inputs.getInputParameters()
   expect(inputParameters).toBeDefined()
   expect(inputParameters.packages).toBeDefined()
   expect(inputParameters.packages).toHaveLength(2)

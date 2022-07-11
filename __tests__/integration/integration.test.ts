@@ -1,5 +1,4 @@
-import { createRelease } from '../../src/create-release'
-import { InputParameters } from '../../src/input-parameters'
+import { makeInputParameters } from '../../src/input-parameters'
 import { OctopusCliWrapper } from '../../src/octopus-cli-wrapper'
 
 // NOTE: These tests assume Octopus is running and connectable.
@@ -13,30 +12,7 @@ import { OctopusCliWrapper } from '../../src/octopus-cli-wrapper'
 // Useful hint for Powershell:
 //    $env:PATH += ";C:\Dev\OctopusCLI\source\Octo\bin\Debug\net6.0"
 
-function makeInputParameters(): InputParameters {
-  return {
-    project: '',
-    apiKey: '',
-    channel: '',
-    gitRef: '',
-    gitCommit: '',
-    ignoreExisting: false,
-    packages: [],
-    packageVersion: '',
-    proxy: '',
-    proxyPassword: '',
-    proxyUsername: '',
-    releaseNotes: '',
-    releaseNotesFile: '',
-    releaseNumber: '',
-    server: '',
-    space: ''
-  }
-}
-
 test('can create a release', async () => {
-  const w = new OctopusCliWrapper({}, console.info, console.warn)
-  const env: { [key: string]: string } = {}
-  const inputParameters = makeInputParameters()
-  const result = await createRelease(w, inputParameters)
+  const w = new OctopusCliWrapper(makeInputParameters(), {}, console.info, console.warn)
+  const result = await w.createRelease()
 })

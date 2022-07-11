@@ -30,7 +30,7 @@ export interface InputParameters {
   space: string
 }
 
-export function get(): InputParameters {
+export function getInputParameters(): InputParameters {
   return {
     apiKey: getInput('api_key'),
     channel: getInput('channel'),
@@ -48,5 +48,26 @@ export function get(): InputParameters {
     releaseNumber: getInput('release_number'),
     server: getInput('server'),
     space: getInput('space')
+  }
+}
+
+export function makeInputParameters(): InputParameters {
+  return {
+    project: '',
+    apiKey: '',
+    channel: '',
+    gitRef: '',
+    gitCommit: '',
+    ignoreExisting: false,
+    packages: [],
+    packageVersion: '',
+    proxy: '',
+    proxyPassword: '',
+    proxyUsername: '',
+    releaseNotes: '',
+    releaseNotesFile: '',
+    releaseNumber: '',
+    server: '',
+    space: ''
   }
 }
