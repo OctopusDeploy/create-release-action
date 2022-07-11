@@ -36,7 +36,8 @@ test('all the parameters', () => {
   i.channel = 'channelZ'
   i.gitRef = 'abcdefg'
   i.gitCommit = '0123456'
-  ;(i.ignoreExisting = true), (i.packages = ['p1'])
+  i.ignoreExisting = true
+  i.packages = ['p1']
   i.packageVersion = '5.2-pre'
   i.proxy = 'some-proxy'
   i.proxyPassword = 'some-proxy-pass'
