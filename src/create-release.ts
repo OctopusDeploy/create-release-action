@@ -1,25 +1,29 @@
 import { info, setFailed, warning } from '@actions/core'
 import { exec, ExecOptions } from '@actions/exec'
 import { InputParameters } from './input-parameters'
-import { OctopusCliWrapper, generateCommandLine } from './octopus-cli-wrapper'
+import { OctopusCliWrapper } from './octopus-cli-wrapper'
 
 export async function createRelease(
+  cliWrapper: OctopusCliWrapper,
+  env: { [key: string]: string } | NodeJS.ProcessEnv,
   parameters: InputParameters
 ): Promise<void> {
-  const octopusCliWrapper = new OctopusCliWrapper(msg => info(msg))
-
   info('🔣 Parsing inputs...')
-  const args = generateCommandLine(parameters)
+  const cliLaunchConfiguration = cliWrapper.generateLaunchConfig(
+    env,
+    parameters
+  )
 
   const options: ExecOptions = {
     listeners: {
-      stdline: octopusCliWrapper.processLine
+      stdline: cliWrapper.stdline
     },
+    env: cliLaunchConfiguration.env,
     silent: true
   }
 
   try {
-    await exec('octo', args, options)
+    await exec('octo', cliLaunchConfiguration.args, options)
   } catch (e: unknown) {
     if (e instanceof Error) {
       setFailed(e)

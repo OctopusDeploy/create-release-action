@@ -1,5 +1,5 @@
 import { InputParameters } from '../../src/input-parameters'
-import { generateCommandLine } from '../../src/octopus-cli-wrapper'
+import { OctopusCliWrapper } from '../../src/octopus-cli-wrapper'
 
 function makeInputParameters(): InputParameters {
   return {
@@ -23,13 +23,16 @@ function makeInputParameters(): InputParameters {
 }
 
 test('no parameters', () => {
-  var i = makeInputParameters()
+  const w = new OctopusCliWrapper(console.info, console.warn)
 
-  const strings = generateCommandLine(i)
-  expect(strings).toEqual(['create-release'])
+  var i = makeInputParameters()
+  const launchInfo = w.generateLaunchConfig({}, i)
+  expect(launchInfo.args).toEqual(['create-release'])
 })
 
 test('all the parameters', () => {
+  const w = new OctopusCliWrapper(console.info, console.warn)
+
   var i = makeInputParameters()
   i.project = 'projectZ'
   i.apiKey = 'API FOOBAR'
@@ -48,10 +51,13 @@ test('all the parameters', () => {
   i.server = 'http://octopusServer'
   i.space = 'Space-61'
 
-  const strings = generateCommandLine(i)
-  expect(strings).toEqual([
+  const launchInfo = w.generateLaunchConfig({}, i)
+  expect(launchInfo.env).toEqual({
+    OCTOPUS_CLI_API_KEY: 'API FOOBAR'
+  })
+
+  expect(launchInfo.args).toEqual([
     'create-release',
-    '--apiKey=API FOOBAR',
     '--channel=channelZ',
     '--ignoreExisting',
     '--gitRef=abcdefg',
