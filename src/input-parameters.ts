@@ -51,7 +51,7 @@ export function getInputParameters(): InputParameters {
   }
 }
 
-export function makeInputParameters(override: { [key: string]: any } | undefined = undefined): InputParameters {
+export function makeInputParameters(override: Partial<InputParameters> | undefined = undefined): InputParameters {
   const template = {
     project: '',
     apiKey: '',

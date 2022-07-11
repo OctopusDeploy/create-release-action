@@ -39,8 +39,8 @@ test('all the parameters', () => {
   expect(launchInfo.args).toEqual([
     'create-release',
     '--proxy=some-proxy',
-    '--proxyPass=some-proxy-pass',
     '--proxyUser=some-proxy-user',
+    '--proxyPass=some-proxy-pass',
     '--space=Space-61',
     '--channel=channelZ',
     '--ignoreExisting',
@@ -54,6 +54,7 @@ test('all the parameters', () => {
   ])
 })
 
+// this is an indirect test of pickupConfigurationValueExtended
 describe('pickup api key', () => {
   let infoMessages: string[]
   let warnMessages: string[]
@@ -63,10 +64,8 @@ describe('pickup api key', () => {
   })
 
   test('api key from input', () => {
-    var i = makeInputParameters({ apiKey: 'API FromInput' })
-
     const w = new OctopusCliWrapper(
-      i,
+      makeInputParameters({ apiKey: 'API FromInput' }),
       {},
       m => infoMessages.push(m),
       m => warnMessages.push(m)
@@ -180,3 +179,127 @@ describe('pickup api key', () => {
     ])
   })
 })
+
+// because this shares logic with api key, we don't need all the exhaustive unit test cases for it
+test('pickup host', () => {
+  let infoMessages: string[] = []
+  let warnMessages: string[] = []
+
+  const w = new OctopusCliWrapper(
+    makeInputParameters({ server: 'server-FromInput' }),
+    { OCTOPUS_CLI_SERVER: 'server-FromDeprecatedEnv', OCTOPUS_HOST: 'server-FromEnv' },
+    m => infoMessages.push(m),
+    m => warnMessages.push(m)
+  )
+
+  const launchInfo = w.generateLaunchConfig()
+  expect(launchInfo.args).toEqual(['create-release'])
+  expect(launchInfo.env).toEqual({
+    OCTOPUS_CLI_SERVER: 'server-FromInput'
+  })
+
+  expect(infoMessages).toEqual([])
+  expect(warnMessages).toEqual(['Detected Deprecated OCTOPUS_CLI_SERVER environment variable. Prefer OCTOPUS_HOST'])
+})
+
+describe('pickup proxy settings', () => {
+  // we can test all 3 proxy settings in one go because there's not much danger of this missing a bug here
+  let messages: string[] = []
+
+  test('pickup from input', () => {
+    const w = new OctopusCliWrapper(
+      makeInputParameters({
+        proxy: 'proxy-FromInput',
+        proxyUsername: 'proxyUser-FromInput',
+        proxyPassword: 'proxyPass-FromInput'
+      }),
+      {},
+      m => messages.push(m),
+      m => messages.push(m)
+    )
+
+    const launchInfo = w.generateLaunchConfig()
+    expect(launchInfo.args).toEqual([
+      'create-release',
+      '--proxy=proxy-FromInput',
+      '--proxyUser=proxyUser-FromInput',
+      '--proxyPass=proxyPass-FromInput'
+    ])
+    expect(launchInfo.env).toEqual({})
+
+    expect(messages).toEqual([]) // no messages so we don't need to disambiguate types
+  })
+
+  test('pickup from env', () => {
+    const w = new OctopusCliWrapper(
+      makeInputParameters(),
+      {
+        OCTOPUS_PROXY: 'proxy-FromEnv',
+        OCTOPUS_PROXY_USERNAME: 'proxyUser-FromEnv',
+        OCTOPUS_PROXY_PASSWORD: 'proxyPass-FromEnv'
+      },
+      m => messages.push(m),
+      m => messages.push(m)
+    )
+
+    const launchInfo = w.generateLaunchConfig()
+    expect(launchInfo.args).toEqual([
+      'create-release',
+      '--proxy=proxy-FromEnv',
+      '--proxyUser=proxyUser-FromEnv',
+      '--proxyPass=proxyPass-FromEnv'
+    ])
+    expect(launchInfo.env).toEqual({})
+
+    expect(messages).toEqual([]) // no messages so we don't need to disambiguate types
+  })
+
+  test('input wins over env', () => {
+    const w = new OctopusCliWrapper(
+      makeInputParameters({
+        proxy: 'proxy-FromInput',
+        proxyUsername: 'proxyUser-FromInput',
+        proxyPassword: 'proxyPass-FromInput'
+      }),
+      {
+        OCTOPUS_PROXY: 'proxy-FromEnv',
+        OCTOPUS_PROXY_USERNAME: 'proxyUser-FromEnv',
+        OCTOPUS_PROXY_PASSWORD: 'proxyPass-FromEnv'
+      },
+      m => messages.push(m),
+      m => messages.push(m)
+    )
+
+    const launchInfo = w.generateLaunchConfig()
+    expect(launchInfo.args).toEqual([
+      'create-release',
+      '--proxy=proxy-FromInput',
+      '--proxyUser=proxyUser-FromInput',
+      '--proxyPass=proxyPass-FromInput'
+    ])
+    expect(launchInfo.env).toEqual({})
+
+    expect(messages).toEqual([]) // no messages so we don't need to disambiguate types
+  })
+})
+
+// because this shares logic with proxy, we don't need all the exhaustive unit test cases for it
+test('pickup space', () => {
+  let messages: string[] = []
+
+  const w = new OctopusCliWrapper(
+    makeInputParameters({ space: 'space-FromInput' }),
+    { OCTOPUS_SPACE: 'space-FromEnv' },
+    m => messages.push(m),
+    m => messages.push(m)
+  )
+
+  const launchInfo = w.generateLaunchConfig()
+  expect(launchInfo.args).toEqual(['create-release', '--space=space-FromInput'])
+  expect(launchInfo.env).toEqual({})
+
+  expect(messages).toEqual([])
+})
+
+// other options such as releaseNotes are simple string values with no environment variable behaviour.
+// they are already covered by 'test all the parameters' so no need for specific tests for them

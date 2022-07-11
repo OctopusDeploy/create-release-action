@@ -127,11 +127,11 @@ export class OctopusCliWrapper {
 
     this.pickupConfigurationValue(parameters.proxy, 'OCTOPUS_PROXY', value => launchArgs.push(`--proxy=${value}`))
 
-    this.pickupConfigurationValue(parameters.proxyPassword, 'OCTOPUS_PROXY_PASSWORD', value =>
-      launchArgs.push(`--proxyPass=${value}`)
-    )
     this.pickupConfigurationValue(parameters.proxyUsername, 'OCTOPUS_PROXY_USERNAME', value =>
       launchArgs.push(`--proxyUser=${value}`)
+    )
+    this.pickupConfigurationValue(parameters.proxyPassword, 'OCTOPUS_PROXY_PASSWORD', value =>
+      launchArgs.push(`--proxyPass=${value}`)
     )
 
     this.pickupConfigurationValue(parameters.space, 'OCTOPUS_SPACE', value => launchArgs.push(`--space=${value}`))
