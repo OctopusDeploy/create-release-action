@@ -69,19 +69,24 @@ export class OctopusCliWrapper {
     inputNewEnvKey: string,
     valueHandler: (value: string) => void
   ) {
+    // we always want to log the warning for a deprecated environment variable, even if the parameter comes in via inputParameter
+    var result: any
+
+    const deprecatedValue = this.env[inputObsoleteEnvKey]
+    if (deprecatedValue && deprecatedValue.length > 0) {
+      this.logWarn(`Detected Deprecated ${inputObsoleteEnvKey} environment variable. Prefer ${inputNewEnvKey}`)
+      result = deprecatedValue
+    }
+    const value = this.env[inputNewEnvKey]
+    // deliberately not 'else if' because if both OCTOPUS_CLI_API_KEY and OCTOPUS_API_KEY are set we want the latter to win
+    if (value && value.length > 0) {
+      result = value
+    }
     if (inputParameter.length > 0) {
-      valueHandler(inputParameter)
-    } else {
-      const deprecatedValue = this.env[inputObsoleteEnvKey]
-      const value = this.env[inputNewEnvKey]
-      if (deprecatedValue && deprecatedValue.length > 0) {
-        this.logWarn(`Detected Deprecated ${inputObsoleteEnvKey} environment variable. Prefer ${inputNewEnvKey}`)
-        valueHandler(deprecatedValue)
-      }
-      // deliberately not 'else if' because if both OCTOPUS_CLI_API_KEY and OCTOPUS_API_KEY are set we want the latter to win
-      if (value && value.length > 0) {
-        valueHandler(value)
-      }
+      result = inputParameter
+    }
+    if (result) {
+      valueHandler(result)
     }
   }
 

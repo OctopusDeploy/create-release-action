@@ -9,23 +9,24 @@ test('no parameters', () => {
 })
 
 test('all the parameters', () => {
-  var i = makeInputParameters()
-  i.project = 'projectZ'
-  i.apiKey = 'API FOOBAR'
-  i.channel = 'channelZ'
-  i.gitRef = 'abcdefg'
-  i.gitCommit = '0123456'
-  i.ignoreExisting = true
-  i.packages = ['p1']
-  i.packageVersion = '5.2-pre'
-  i.proxy = 'some-proxy'
-  i.proxyPassword = 'some-proxy-pass'
-  i.proxyUsername = 'some-proxy-user'
-  i.releaseNotes = 'Release Notes: !'
-  i.releaseNotesFile = '/tmp/release-notes'
-  i.releaseNumber = '987'
-  i.server = 'http://octopusServer'
-  i.space = 'Space-61'
+  var i = makeInputParameters({
+    project: 'projectZ',
+    apiKey: 'API FOOBAR',
+    channel: 'channelZ',
+    gitRef: 'abcdefg',
+    gitCommit: '0123456',
+    ignoreExisting: true,
+    packages: ['p1'],
+    packageVersion: '5.2-pre',
+    proxy: 'some-proxy',
+    proxyPassword: 'some-proxy-pass',
+    proxyUsername: 'some-proxy-user',
+    releaseNotes: 'Release Notes: !',
+    releaseNotesFile: '/tmp/release-notes',
+    releaseNumber: '987',
+    server: 'http://octopusServer',
+    space: 'Space-61'
+  })
 
   const w = new OctopusCliWrapper(i, {}, console.info, console.warn)
 
@@ -61,16 +62,121 @@ describe('pickup api key', () => {
     warnMessages = []
   })
 
-  test('pickup api key from input', () => {
-    var i = makeInputParameters()
-    i.apiKey = 'API FOOBAR'
+  test('api key from input', () => {
+    var i = makeInputParameters({ apiKey: 'API FromInput' })
 
-    const w = new OctopusCliWrapper(i, {}, infoMessages.push, warnMessages.push)
+    const w = new OctopusCliWrapper(
+      i,
+      {},
+      m => infoMessages.push(m),
+      m => warnMessages.push(m)
+    )
 
     const launchInfo = w.generateLaunchConfig()
     expect(launchInfo.args).toEqual(['create-release'])
     expect(launchInfo.env).toEqual({
-      OCTOPUS_CLI_API_KEY: 'API FOOBAR'
+      OCTOPUS_CLI_API_KEY: 'API FromInput'
     })
+
+    expect(infoMessages).toEqual([])
+    expect(warnMessages).toEqual([])
+  })
+
+  test('api key from new env var', () => {
+    const w = new OctopusCliWrapper(
+      makeInputParameters(),
+      { OCTOPUS_API_KEY: 'API FromEnv' },
+      m => infoMessages.push(m),
+      m => warnMessages.push(m)
+    )
+
+    const launchInfo = w.generateLaunchConfig()
+    expect(launchInfo.args).toEqual(['create-release'])
+    expect(launchInfo.env).toEqual({
+      OCTOPUS_CLI_API_KEY: 'API FromEnv'
+    })
+
+    expect(infoMessages).toEqual([])
+    expect(warnMessages).toEqual([])
+  })
+
+  test('api key from deprecated env var', () => {
+    const w = new OctopusCliWrapper(
+      makeInputParameters(),
+      { OCTOPUS_CLI_API_KEY: 'API FromDeprecatedEnv' },
+      m => infoMessages.push(m),
+      m => warnMessages.push(m)
+    )
+
+    const launchInfo = w.generateLaunchConfig()
+    expect(launchInfo.args).toEqual(['create-release'])
+    expect(launchInfo.env).toEqual({
+      OCTOPUS_CLI_API_KEY: 'API FromDeprecatedEnv'
+    })
+
+    expect(infoMessages).toEqual([])
+    expect(warnMessages).toEqual([
+      'Detected Deprecated OCTOPUS_CLI_API_KEY environment variable. Prefer OCTOPUS_API_KEY'
+    ])
+  })
+
+  test('input wins over env', () => {
+    const w = new OctopusCliWrapper(
+      makeInputParameters({ apiKey: 'API FromInput' }),
+      { OCTOPUS_API_KEY: 'API FromEnv' },
+      m => infoMessages.push(m),
+      m => warnMessages.push(m)
+    )
+
+    const launchInfo = w.generateLaunchConfig()
+    expect(launchInfo.args).toEqual(['create-release'])
+    expect(launchInfo.env).toEqual({
+      OCTOPUS_CLI_API_KEY: 'API FromInput'
+    })
+
+    expect(infoMessages).toEqual([])
+    expect(warnMessages).toEqual([])
+  })
+
+  test('env wins over deprecated env', () => {
+    const w = new OctopusCliWrapper(
+      makeInputParameters(),
+      { OCTOPUS_API_KEY: 'API FromEnv', OCTOPUS_CLI_API_KEY: 'API FromDeprecatedEnv' },
+      m => infoMessages.push(m),
+      m => warnMessages.push(m)
+    )
+
+    const launchInfo = w.generateLaunchConfig()
+    expect(launchInfo.args).toEqual(['create-release'])
+    expect(launchInfo.env).toEqual({
+      OCTOPUS_CLI_API_KEY: 'API FromEnv'
+    })
+
+    expect(infoMessages).toEqual([])
+    expect(warnMessages).toEqual([
+      // still logs the warning even though we aren't using OCTOPUS_CLI_API_KEY
+      'Detected Deprecated OCTOPUS_CLI_API_KEY environment variable. Prefer OCTOPUS_API_KEY'
+    ])
+  })
+
+  test('input wins over both env and deprecated env', () => {
+    const w = new OctopusCliWrapper(
+      makeInputParameters({ apiKey: 'API FromInput' }),
+      { OCTOPUS_API_KEY: 'API FromEnv', OCTOPUS_CLI_API_KEY: 'API FromDeprecatedEnv' },
+      m => infoMessages.push(m),
+      m => warnMessages.push(m)
+    )
+
+    const launchInfo = w.generateLaunchConfig()
+    expect(launchInfo.args).toEqual(['create-release'])
+    expect(launchInfo.env).toEqual({
+      OCTOPUS_CLI_API_KEY: 'API FromInput'
+    })
+
+    expect(infoMessages).toEqual([])
+    expect(warnMessages).toEqual([
+      // still logs the warning even though we aren't using OCTOPUS_CLI_API_KEY
+      'Detected Deprecated OCTOPUS_CLI_API_KEY environment variable. Prefer OCTOPUS_API_KEY'
+    ])
   })
 })

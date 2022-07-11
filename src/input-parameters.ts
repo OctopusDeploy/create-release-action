@@ -51,8 +51,8 @@ export function getInputParameters(): InputParameters {
   }
 }
 
-export function makeInputParameters(): InputParameters {
-  return {
+export function makeInputParameters(override: { [key: string]: any } | undefined = undefined): InputParameters {
+  const template = {
     project: '',
     apiKey: '',
     channel: '',
@@ -70,4 +70,9 @@ export function makeInputParameters(): InputParameters {
     server: '',
     space: ''
   }
+
+  if (override) {
+    Object.assign(template, override)
+  }
+  return template
 }
