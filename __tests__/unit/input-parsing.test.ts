@@ -1,4 +1,4 @@
-import * as inputs from '../src/input-parameters'
+import * as inputs from '../../src/input-parameters'
 
 test('get input parameters', () => {
   const inputParameters = inputs.get()

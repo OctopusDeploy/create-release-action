@@ -1,4 +1,4 @@
-import { OctopusCliWrapper } from '../src/octopus-cli-wrapper'
+import { OctopusCliWrapper } from '../../src/octopus-cli-wrapper'
 
 var logOutput: string[]
 var w: OctopusCliWrapper
