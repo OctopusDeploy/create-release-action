@@ -3,16 +3,9 @@ import { exec, ExecOptions } from '@actions/exec'
 import { InputParameters } from './input-parameters'
 import { OctopusCliWrapper } from './octopus-cli-wrapper'
 
-export async function createRelease(
-  cliWrapper: OctopusCliWrapper,
-  env: { [key: string]: string } | NodeJS.ProcessEnv,
-  parameters: InputParameters
-): Promise<void> {
+export async function createRelease(cliWrapper: OctopusCliWrapper, parameters: InputParameters): Promise<void> {
   info('🔣 Parsing inputs...')
-  const cliLaunchConfiguration = cliWrapper.generateLaunchConfig(
-    env,
-    parameters
-  )
+  const cliLaunchConfiguration = cliWrapper.generateLaunchConfig(parameters)
 
   const options: ExecOptions = {
     listeners: {

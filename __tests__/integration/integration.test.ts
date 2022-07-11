@@ -35,8 +35,8 @@ function makeInputParameters(): InputParameters {
 }
 
 test('can create a release', async () => {
-  const w = new OctopusCliWrapper(console.info, console.warn)
+  const w = new OctopusCliWrapper({}, console.info, console.warn)
   const env: { [key: string]: string } = {}
   const inputParameters = makeInputParameters()
-  const result = await createRelease(w, env, inputParameters)
+  const result = await createRelease(w, inputParameters)
 })

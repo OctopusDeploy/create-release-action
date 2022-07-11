@@ -8,6 +8,7 @@ beforeEach(() => {
   infoMessages = []
   warnMessages = []
   w = new OctopusCliWrapper(
+    {},
     msg => infoMessages.push(msg),
     msg => warnMessages.push(msg)
   )
@@ -33,10 +34,7 @@ test('thing created successfully', () => {
   w.stdline('Fish created successfully!')
   w.stdline('Banana created successfully!')
 
-  expect(infoMessages).toEqual([
-    '🎉 Fish created successfully!',
-    '🎉 Banana created successfully!'
-  ])
+  expect(infoMessages).toEqual(['🎉 Fish created successfully!', '🎉 Banana created successfully!'])
 })
 
 test('thing creating release', () => {

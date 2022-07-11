@@ -23,15 +23,15 @@ function makeInputParameters(): InputParameters {
 }
 
 test('no parameters', () => {
-  const w = new OctopusCliWrapper(console.info, console.warn)
+  const w = new OctopusCliWrapper({}, console.info, console.warn)
 
   var i = makeInputParameters()
-  const launchInfo = w.generateLaunchConfig({}, i)
+  const launchInfo = w.generateLaunchConfig(i)
   expect(launchInfo.args).toEqual(['create-release'])
 })
 
 test('all the parameters', () => {
-  const w = new OctopusCliWrapper(console.info, console.warn)
+  const w = new OctopusCliWrapper({}, console.info, console.warn)
 
   var i = makeInputParameters()
   i.project = 'projectZ'
@@ -51,27 +51,27 @@ test('all the parameters', () => {
   i.server = 'http://octopusServer'
   i.space = 'Space-61'
 
-  const launchInfo = w.generateLaunchConfig({}, i)
+  const launchInfo = w.generateLaunchConfig(i)
   expect(launchInfo.env).toEqual({
-    OCTOPUS_CLI_API_KEY: 'API FOOBAR'
+    OCTOPUS_CLI_API_KEY: 'API FOOBAR',
+    OCTOPUS_CLI_SERVER: 'http://octopusServer'
   })
 
   expect(launchInfo.args).toEqual([
     'create-release',
+    '--proxy=some-proxy',
+    '--proxyPass=some-proxy-pass',
+    '--proxyUser=some-proxy-user',
+    '--space=Space-61',
     '--channel=channelZ',
     '--ignoreExisting',
     '--gitRef=abcdefg',
     '--gitCommit=0123456',
     '--package=p1',
     '--packageVersion=5.2-pre',
-    '--proxy=some-proxy',
-    '--proxyPass=some-proxy-pass',
-    '--proxyUser=some-proxy-user',
     '--releaseNotes=Release Notes: !',
     '--releaseNotesFile=/tmp/release-notes',
-    '--releaseNumber=987',
-    '--server=http://octopusServer',
-    '--space=Space-61'
+    '--releaseNumber=987'
   ])
 })
 
@@ -82,15 +82,15 @@ describe('pickup api key', () => {
   beforeEach(() => {
     infoMessages = []
     warnMessages = []
-    w = new OctopusCliWrapper(infoMessages.push, warnMessages.push)
+    w = new OctopusCliWrapper({}, infoMessages.push, warnMessages.push)
   })
 
   test('pickup api key from input', () => {
     var i = makeInputParameters()
     i.apiKey = 'API FOOBAR'
 
-    const launchInfo = w.generateLaunchConfig({}, i)
-    expect(launchInfo.args).toEqual([''])
+    const launchInfo = w.generateLaunchConfig(i)
+    expect(launchInfo.args).toEqual(['create-release'])
     expect(launchInfo.env).toEqual({
       OCTOPUS_CLI_API_KEY: 'API FOOBAR'
     })

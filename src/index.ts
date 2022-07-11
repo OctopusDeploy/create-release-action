@@ -6,12 +6,13 @@ import { OctopusCliWrapper } from './octopus-cli-wrapper'
 async function run(): Promise<void> {
   try {
     const wrapper = new OctopusCliWrapper(
+      process.env,
       msg => info(msg),
       msg => warning(msg)
     )
     const env = process.env
     const inputParameters = get()
-    await createRelease(wrapper, env, inputParameters)
+    await createRelease(wrapper, inputParameters)
   } catch (e: unknown) {
     if (e instanceof Error) {
       setFailed(e)
