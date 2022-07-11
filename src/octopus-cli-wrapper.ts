@@ -2,16 +2,19 @@ import { setFailed } from '@actions/core'
 import { exec, ExecOptions } from '@actions/exec'
 import { InputParameters } from './input-parameters'
 
+// environment variables can either be a NodeJS.ProcessEnv or a plain old object with string keys/values for testing
+type EnvVars = { [key: string]: string } | NodeJS.ProcessEnv
+
 export class OctopusCliWrapper {
   inputParameters: InputParameters
   // environment variables at the time the wrapper was created
-  env: { [key: string]: string } | NodeJS.ProcessEnv
+  env: EnvVars
   logInfo: (message: string) => void
   logWarn: (message: string) => void
 
   constructor(
     parameters: InputParameters,
-    env: { [key: string]: string } | NodeJS.ProcessEnv,
+    env: EnvVars,
     logInfo: (message: string) => void,
     logWarn: (message: string) => void
   ) {
