@@ -1,6 +1,7 @@
 import { info, setFailed, warning } from '@actions/core'
 import { exec, ExecOptions } from '@actions/exec'
 import { InputParameters } from './input-parameters'
+import { OctopusCliWrapper } from './octopus-cli-wrapper'
 
 function getArgs(parameters: InputParameters): string[] {
   info('🔣 Parsing inputs...')
@@ -58,42 +59,11 @@ function getArgs(parameters: InputParameters): string[] {
 export async function createRelease(
   parameters: InputParameters
 ): Promise<void> {
+  const octopusCliWrapper = new OctopusCliWrapper(msg => info(msg))
   const args = getArgs(parameters)
   const options: ExecOptions = {
     listeners: {
-      stdline: (line: string) => {
-        if (line.length === 0) return
-
-        if (line.includes('Octopus Deploy Command Line Tool')) {
-          const version = line.split('version ')[1]
-          info(`🐙 Using Octopus Deploy CLI ${version}...`)
-          return
-        }
-
-        if (line.includes('Handshaking with Octopus Server')) {
-          info(`🤝 Handshaking with Octopus Deploy`)
-          return
-        }
-
-        if (line.includes('Authenticated as:')) {
-          info(`✅ Authenticated`)
-          return
-        }
-
-        if (line.includes(' created successfully!')) {
-          info(`🎉 ${line}`)
-          return
-        }
-
-        switch (line) {
-          case 'Creating release...':
-            info('🐙 Creating a release in Octopus Deploy...')
-            break
-          default:
-            info(`${line}`)
-            break
-        }
-      }
+      stdline: (line: string) => octopusCliWrapper.processLine(line)
     },
     silent: true
   }
