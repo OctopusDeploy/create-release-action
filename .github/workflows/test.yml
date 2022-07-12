@@ -52,6 +52,7 @@ jobs:
         run: npm install
 
       - name: Compile and run tests
+        id: npm_tests
         env:
           OCTOPUS_TEST_URL: ${{ env.SERVER_URL }}
           OCTOPUS_TEST_APIKEY: ${{ env.ADMIN_API_KEY }}
@@ -64,3 +65,14 @@ jobs:
           name: JEST Tests
           path: 'reports/jest-*.xml'
           reporter: jest-junit
+
+      - name: GitHub Action self-test
+        id: self_test
+        uses: ./
+        with:
+          server: ${{ env.SERVER_URL }}
+          api_key: ${{ env.ADMIN_API_KEY }}
+          project: ${{ steps.npm_tests.outputs.gha_selftest_project_name }} # see integration.test.ts
+
+      - name: Echo package number from self-test
+        run: echo "Release Created [${{ steps.self_test.outputs.release_number }}]"

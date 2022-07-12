@@ -6,6 +6,7 @@ import { Client, ClientConfiguration, Repository } from '@octopusdeploy/api-clie
 import { randomBytes } from 'crypto'
 import { CleanupHelper } from './cleanup-helper.test'
 import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/runConditionForAction'
+import { setOutput } from '@actions/core'
 
 // NOTE: These tests assume Octopus is running and connectable.
 // In the build pipeline they are run as part of a build.yml file which populates
@@ -118,7 +119,13 @@ describe('integration tests', () => {
 
     await repository.deploymentProcesses.saveToProject(project, deploymentProcess)
 
-    globalCleanup.add(() => repository.projects.del(project))
+    if (process.env.GITHUB_ACTIONS) {
+      // Sneaky: if we are running inside github actions, we *do not* cleanup the octopus server project data.
+      // rather, we leave it lying around and setOutput the random project name so the GHA self-test can use it
+      setOutput('gha_selftest_project_name', localProjectName)
+    } else {
+      globalCleanup.add(() => repository.projects.del(project))
+    }
   })
 
   afterAll(() => globalCleanup.cleanup())
