@@ -189,6 +189,7 @@ export class OctopusCliWrapper {
     }
 
     try {
+      this.logInfo(`⚠️ launchConfig=[${JSON.stringify(cliLaunchConfiguration)}]`)
       await exec('octo', cliLaunchConfiguration.args, options)
     } catch (e: unknown) {
       if (e instanceof Error) {
