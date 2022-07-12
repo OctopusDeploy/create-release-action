@@ -22,7 +22,7 @@ import { setOutput } from '@actions/core'
 const octoExecutable = process.env.OCTOPUS_TEST_CLI_PATH || 'octo' // if 'octo' isn't in your system path, you can override it for tests here
 
 const apiClientConfig: ClientConfiguration = {
-  apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-45R1Y10C3FRTS8RFQCWCW16DUE5IU3',
+  apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
   apiUri: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050'
 }
 
