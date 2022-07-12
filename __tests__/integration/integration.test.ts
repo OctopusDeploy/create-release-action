@@ -13,12 +13,12 @@ import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/run
 // containers that are also running. AND it assumes that 'octo' is in your PATH
 //
 // If you want to run these locally outside the build pipeline, you need to launch
-// octopus yourself, and set OCTOPUS_CLI_PATH, OCTOPUS_TEST_URL and OCTOPUS_TEST_APIKEY appropriately,
+// octopus yourself, and set OCTOPUS_TEST_CLI_PATH, OCTOPUS_TEST_URL and OCTOPUS_TEST_APIKEY appropriately,
 // and put octo in your path somewhere.
 // all resources created by this script have a GUID in
 // their name so we they don't clash with prior test runs
 
-const octoExecutable = process.env.OCTOPUS_CLI_PATH || 'octo' // if 'octo' isn't in your system path, you can override it for tests here
+const octoExecutable = process.env.OCTOPUS_TEST_CLI_PATH || 'octo' // if 'octo' isn't in your system path, you can override it for tests here
 
 const apiClientConfig: ClientConfiguration = {
   apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-45R1Y10C3FRTS8RFQCWCW16DUE5IU3',
