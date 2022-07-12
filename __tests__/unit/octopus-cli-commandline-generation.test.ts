@@ -10,7 +10,7 @@ test('no parameters', () => {
 
 test('all the parameters', () => {
   var i = makeInputParameters({
-    project: 'projectZ',
+    project: 'projectQ',
     apiKey: 'API FOOBAR',
     channel: 'channelZ',
     gitRef: 'abcdefg',
@@ -42,6 +42,7 @@ test('all the parameters', () => {
     '--proxyUser=some-proxy-user',
     '--proxyPass=some-proxy-pass',
     '--space=Space-61',
+    '--project=projectQ',
     '--channel=channelZ',
     '--ignoreExisting',
     '--gitRef=abcdefg',

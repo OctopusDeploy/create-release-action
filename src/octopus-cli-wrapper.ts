@@ -140,6 +140,9 @@ export class OctopusCliWrapper {
 
     this.pickupConfigurationValue(parameters.space, 'OCTOPUS_SPACE', value => launchArgs.push(`--space=${value}`))
 
+    if (parameters.project.length > 0) {
+      launchArgs.push(`--project=${parameters.project}`)
+    }
     if (parameters.channel.length > 0) {
       launchArgs.push(`--channel=${parameters.channel}`)
     }
