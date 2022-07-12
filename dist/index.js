@@ -3517,7 +3517,7 @@ class OctopusCliWrapper {
     // This invokes the CLI to do the work.
     // Returns the release number assigned by the octopus server
     // This shells out to 'octo' and expects to be running in GHA, so you can't unit test it; integration tests only.
-    createRelease() {
+    createRelease(octoExecutable = 'octo') {
         return __awaiter(this, void 0, void 0, function* () {
             const cliLaunchConfiguration = this.generateLaunchConfig();
             const options = {
@@ -3528,7 +3528,7 @@ class OctopusCliWrapper {
                 silent: true
             };
             try {
-                yield (0, exec_1.exec)('octo', cliLaunchConfiguration.args, options);
+                yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
                 return this.outputReleaseNumber;
             }
             catch (e) {
