@@ -33,7 +33,7 @@ export class OctopusCliWrapper {
       return
     }
 
-    if (line == 'Creating release...') {
+    if (line === 'Creating release...') {
       this.logInfo('🐙 Creating a release in Octopus Deploy...')
       return
     }
@@ -55,7 +55,7 @@ export class OctopusCliWrapper {
     }
 
     const releaseMatch = line.match('^Release (.+) created successfully!$')
-    if (releaseMatch && releaseMatch.length == 2) {
+    if (releaseMatch && releaseMatch.length === 2) {
       this.outputReleaseNumber = releaseMatch[1]
       this.logInfo(`🎉 ${line}`)
       return
@@ -181,7 +181,7 @@ export class OctopusCliWrapper {
   // This invokes the CLI to do the work.
   // Returns the release number assigned by the octopus server
   // This shells out to 'octo' and expects to be running in GHA, so you can't unit test it; integration tests only.
-  async createRelease(octoExecutable: string = 'octo'): Promise<string | undefined> {
+  async createRelease(octoExecutable = 'octo'): Promise<string | undefined> {
     const cliLaunchConfiguration = this.generateLaunchConfig()
     const options: ExecOptions = {
       listeners: {

@@ -3409,7 +3409,7 @@ class OctopusCliWrapper {
         if (line.length === 0) {
             return;
         }
-        if (line == 'Creating release...') {
+        if (line === 'Creating release...') {
             this.logInfo('🐙 Creating a release in Octopus Deploy...');
             return;
         }
@@ -3427,7 +3427,7 @@ class OctopusCliWrapper {
             return;
         }
         const releaseMatch = line.match('^Release (.+) created successfully!$');
-        if (releaseMatch && releaseMatch.length == 2) {
+        if (releaseMatch && releaseMatch.length === 2) {
             this.outputReleaseNumber = releaseMatch[1];
             this.logInfo(`🎉 ${line}`);
             return;
