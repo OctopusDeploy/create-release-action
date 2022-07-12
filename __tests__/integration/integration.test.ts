@@ -232,7 +232,7 @@ describe('integration tests', () => {
     expectMatchAll(infos, [
       /Octopus CLI, version .*/,
       'Detected automation environment: "NoneOrUnknown"',
-      'The API key you provided was not valid. Please double-check your API key and try again. For instructions on finding your API key, please visit: https://oc.to/ApiKey',
+      /The API key you provided was not valid. Please double-check your API key and try again. For instructions on finding your API key, please visit:/, // partial match because the URL might be oc.to or g.octopushq.com depending on how old the CLI is
       'Exit code: -5'
     ])
   })
