@@ -3479,6 +3479,9 @@ class OctopusCliWrapper {
         this.pickupConfigurationValue(parameters.proxyUsername, 'OCTOPUS_PROXY_USERNAME', value => launchArgs.push(`--proxyUser=${value}`));
         this.pickupConfigurationValue(parameters.proxyPassword, 'OCTOPUS_PROXY_PASSWORD', value => launchArgs.push(`--proxyPass=${value}`));
         this.pickupConfigurationValue(parameters.space, 'OCTOPUS_SPACE', value => launchArgs.push(`--space=${value}`));
+        if (parameters.project.length > 0) {
+            launchArgs.push(`--project=${parameters.project}`);
+        }
         if (parameters.channel.length > 0) {
             launchArgs.push(`--channel=${parameters.channel}`);
         }
@@ -3512,7 +3515,6 @@ class OctopusCliWrapper {
     // This invokes the CLI to do the work
     createRelease() {
         return __awaiter(this, void 0, void 0, function* () {
-            this.logInfo('🔣 Parsing inputs...');
             const cliLaunchConfiguration = this.generateLaunchConfig();
             const options = {
                 listeners: {
