@@ -63,7 +63,7 @@ steps:
 
 | Name | Description |
 | :--- | :---------- |
-| `created_release_number` | The release number assigned to the Release in Octopus Deploy |
+| `release_number` | The release number assigned to the Release in Octopus Deploy |
 
 ## 🤝 Contributions
 

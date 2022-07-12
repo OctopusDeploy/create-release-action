@@ -42,7 +42,7 @@ inputs:
     description: 'Path to a file that contains release notes for the new release. Supports Markdown files.'
 
 outputs:
-  created_release_number:
+  release_number:
     description: 'The release number assigned to the Release in Octopus Deploy'
 
 runs:

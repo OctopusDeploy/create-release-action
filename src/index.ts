@@ -13,7 +13,7 @@ async function run(): Promise<void> {
     const allocatedReleaseNumber = await wrapper.createRelease()
 
     if (allocatedReleaseNumber) {
-      setOutput('created_release_number', allocatedReleaseNumber)
+      setOutput('release_number', allocatedReleaseNumber)
     }
   } catch (e: unknown) {
     if (e instanceof Error) {
