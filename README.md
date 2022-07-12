@@ -59,11 +59,11 @@ steps:
 | `release_notes` | The release notes associated with the new release (Markdown is supported). |
 | `release_notes_file` | Path to a file that contains release notes for the new release. Supports Markdown files. |
 
-## 📥 Outputs
+## 📤 Outputs
 
 | Name | Description |
 | :--- | :---------- |
-| `release_number` | The release number assigned to the Release in Octopus Deploy |
+| `release_number` | The release number assigned to the Release in Octopus Deploy. Use this if you wish to refer to the release later in your script. |
 
 ## 🤝 Contributions
 

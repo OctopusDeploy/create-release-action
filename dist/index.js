@@ -3306,7 +3306,7 @@ function run() {
             const wrapper = new octopus_cli_wrapper_1.OctopusCliWrapper((0, input_parameters_1.getInputParameters)(), process.env, msg => (0, core_1.info)(msg), msg => (0, core_1.warning)(msg));
             const allocatedReleaseNumber = yield wrapper.createRelease();
             if (allocatedReleaseNumber) {
-                (0, core_1.setOutput)('created_release_number', allocatedReleaseNumber);
+                (0, core_1.setOutput)('release_number', allocatedReleaseNumber);
             }
         }
         catch (e) {
