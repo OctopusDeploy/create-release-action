@@ -3304,7 +3304,10 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const wrapper = new octopus_cli_wrapper_1.OctopusCliWrapper((0, input_parameters_1.getInputParameters)(), process.env, msg => (0, core_1.info)(msg), msg => (0, core_1.warning)(msg));
-            yield wrapper.createRelease();
+            const allocatedReleaseNumber = yield wrapper.createRelease();
+            if (allocatedReleaseNumber) {
+                (0, core_1.setOutput)('created_release_number', allocatedReleaseNumber);
+            }
         }
         catch (e) {
             if (e instanceof Error) {
@@ -3406,6 +3409,10 @@ class OctopusCliWrapper {
         if (line.length === 0) {
             return;
         }
+        if (line == 'Creating release...') {
+            this.logInfo('🐙 Creating a release in Octopus Deploy...');
+            return;
+        }
         if (line.includes('Octopus Deploy Command Line Tool')) {
             const version = line.split('version ')[1];
             this.logInfo(`🐙 Using Octopus Deploy CLI ${version}...`);
@@ -3419,18 +3426,14 @@ class OctopusCliWrapper {
             this.logInfo(`✅ Authenticated`);
             return;
         }
-        if (line.includes(' created successfully!')) {
+        const releaseMatch = line.match('^Release (.+) created successfully!$');
+        if (releaseMatch && releaseMatch.length == 2) {
+            this.outputReleaseNumber = releaseMatch[1];
             this.logInfo(`🎉 ${line}`);
             return;
         }
-        switch (line) {
-            case 'Creating release...':
-                this.logInfo('🐙 Creating a release in Octopus Deploy...');
-                break;
-            default:
-                this.logInfo(`${line}`);
-                break;
-        }
+        // everything else just pass-through
+        this.logInfo(line);
     }
     // Picks up a config value from GHA Input or environment, supports mapping
     // of an obsolete env var to a newer one (e.g. OCTOPUS_CLI_SERVER vs OCTOPUS_HOST)
@@ -3511,8 +3514,9 @@ class OctopusCliWrapper {
         }
         return { args: launchArgs, env: launchEnv };
     }
-    // NOT UNIT TESTABLE. This shells out to 'octo' and expects to be running in GHA
-    // This invokes the CLI to do the work
+    // This invokes the CLI to do the work.
+    // Returns the release number assigned by the octopus server
+    // This shells out to 'octo' and expects to be running in GHA, so you can't unit test it; integration tests only.
     createRelease() {
         return __awaiter(this, void 0, void 0, function* () {
             const cliLaunchConfiguration = this.generateLaunchConfig();
@@ -3525,11 +3529,13 @@ class OctopusCliWrapper {
             };
             try {
                 yield (0, exec_1.exec)('octo', cliLaunchConfiguration.args, options);
+                return this.outputReleaseNumber;
             }
             catch (e) {
                 if (e instanceof Error) {
                     (0, core_1.setFailed)(e);
                 }
+                return undefined;
             }
         });
     }

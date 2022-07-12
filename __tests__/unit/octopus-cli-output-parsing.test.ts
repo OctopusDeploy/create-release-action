@@ -32,11 +32,31 @@ test('standard commandline processing', () => {
   ])
 })
 
-test('thing created successfully', () => {
-  w.stdline('Fish created successfully!')
-  w.stdline('Banana created successfully!')
+test('picks up release number for output - auto-generated number format', () => {
+  expect(w.outputReleaseNumber).toBeUndefined()
 
-  expect(infoMessages).toEqual(['🎉 Fish created successfully!', '🎉 Banana created successfully!'])
+  w.stdline('Release 0.0.1 created successfully!')
+
+  expect(w.outputReleaseNumber).toEqual('0.0.1')
+  expect(infoMessages).toEqual(['🎉 Release 0.0.1 created successfully!'])
+})
+
+test('picks up release number for output - specific number format', () => {
+  expect(w.outputReleaseNumber).toBeUndefined()
+
+  w.stdline('Release 3.5.2 created successfully!')
+
+  expect(w.outputReleaseNumber).toEqual('3.5.2')
+  expect(infoMessages).toEqual(['🎉 Release 3.5.2 created successfully!'])
+})
+
+test('picks up release number for output - specific number format with pre tag', () => {
+  expect(w.outputReleaseNumber).toBeUndefined()
+
+  w.stdline('Release 3.5.2-prerelease.20220712133703 created successfully!')
+
+  expect(w.outputReleaseNumber).toEqual('3.5.2-prerelease.20220712133703')
+  expect(infoMessages).toEqual(['🎉 Release 3.5.2-prerelease.20220712133703 created successfully!'])
 })
 
 test('thing creating release', () => {
@@ -46,7 +66,7 @@ test('thing creating release', () => {
 })
 
 test('other lines just get passed through', () => {
-  w.stdline('Creating release...!') // note trailing ! means the earlier thing doesn't matc
+  w.stdline('Creating release...!') // note trailing ! means the earlier thing doesn't match
   w.stdline('foo')
   w.stdline('bar')
   w.stdline('baz')

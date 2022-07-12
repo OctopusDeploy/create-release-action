@@ -1,5 +1,5 @@
 import { getInputParameters } from './input-parameters'
-import { info, warning, setFailed } from '@actions/core'
+import { info, warning, setFailed, setOutput } from '@actions/core'
 import { OctopusCliWrapper } from './octopus-cli-wrapper'
 
 async function run(): Promise<void> {
@@ -10,7 +10,11 @@ async function run(): Promise<void> {
       msg => info(msg),
       msg => warning(msg)
     )
-    await wrapper.createRelease()
+    const allocatedReleaseNumber = await wrapper.createRelease()
+
+    if (allocatedReleaseNumber) {
+      setOutput('created_release_number', allocatedReleaseNumber)
+    }
   } catch (e: unknown) {
     if (e instanceof Error) {
       setFailed(e)

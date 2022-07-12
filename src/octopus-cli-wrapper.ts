@@ -12,6 +12,9 @@ export class OctopusCliWrapper {
   logInfo: (message: string) => void
   logWarn: (message: string) => void
 
+  // if we parse CLI output and see a release number, it will get stashed here for later retrival
+  outputReleaseNumber: string | undefined
+
   constructor(
     parameters: InputParameters,
     env: EnvVars,
@@ -27,6 +30,11 @@ export class OctopusCliWrapper {
   // When the Octopus CLI writes to stdout, we capture the text via this function
   stdline(line: string): void {
     if (line.length === 0) {
+      return
+    }
+
+    if (line == 'Creating release...') {
+      this.logInfo('🐙 Creating a release in Octopus Deploy...')
       return
     }
 
@@ -46,19 +54,15 @@ export class OctopusCliWrapper {
       return
     }
 
-    if (line.includes(' created successfully!')) {
+    const releaseMatch = line.match('^Release (.+) created successfully!$')
+    if (releaseMatch && releaseMatch.length == 2) {
+      this.outputReleaseNumber = releaseMatch[1]
       this.logInfo(`🎉 ${line}`)
       return
     }
 
-    switch (line) {
-      case 'Creating release...':
-        this.logInfo('🐙 Creating a release in Octopus Deploy...')
-        break
-      default:
-        this.logInfo(`${line}`)
-        break
-    }
+    // everything else just pass-through
+    this.logInfo(line)
   }
 
   // Picks up a config value from GHA Input or environment, supports mapping
@@ -174,9 +178,10 @@ export class OctopusCliWrapper {
     return { args: launchArgs, env: launchEnv }
   }
 
-  // NOT UNIT TESTABLE. This shells out to 'octo' and expects to be running in GHA
-  // This invokes the CLI to do the work
-  async createRelease(): Promise<void> {
+  // This invokes the CLI to do the work.
+  // Returns the release number assigned by the octopus server
+  // This shells out to 'octo' and expects to be running in GHA, so you can't unit test it; integration tests only.
+  async createRelease(): Promise<string | undefined> {
     const cliLaunchConfiguration = this.generateLaunchConfig()
     const options: ExecOptions = {
       listeners: {
@@ -188,10 +193,12 @@ export class OctopusCliWrapper {
 
     try {
       await exec('octo', cliLaunchConfiguration.args, options)
+      return this.outputReleaseNumber
     } catch (e: unknown) {
       if (e instanceof Error) {
         setFailed(e)
       }
+      return undefined
     }
   }
 }
