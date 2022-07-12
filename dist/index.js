@@ -3395,7 +3395,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OctopusCliWrapper = void 0;
-const core_1 = __nccwpck_require__(514);
 const exec_1 = __nccwpck_require__(642);
 class OctopusCliWrapper {
     constructor(parameters, env, logInfo, logWarn) {
@@ -3533,9 +3532,16 @@ class OctopusCliWrapper {
             }
             catch (e) {
                 if (e instanceof Error) {
-                    (0, core_1.setFailed)(e);
+                    // catch some particular messages and rethrow more convenient ones
+                    if (e.message.includes('Unable to locate executable file')) {
+                        throw new Error('Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.');
+                    }
+                    if (e.message.includes('failed with exit code')) {
+                        throw new Error('Octopus CLI returned an error code. Please check your GitHub actions log for more detail');
+                    }
                 }
-                return undefined;
+                // rethrow, so our Promise is rejected. The GHA shim in index.ts will catch this and call setFailed
+                throw e;
             }
         });
     }

@@ -1,4 +1,3 @@
-import { setFailed } from '@actions/core'
 import { exec, ExecOptions } from '@actions/exec'
 import { InputParameters } from './input-parameters'
 
@@ -196,9 +195,18 @@ export class OctopusCliWrapper {
       return this.outputReleaseNumber
     } catch (e: unknown) {
       if (e instanceof Error) {
-        setFailed(e)
+        // catch some particular messages and rethrow more convenient ones
+        if (e.message.includes('Unable to locate executable file')) {
+          throw new Error(
+            'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
+          )
+        }
+        if (e.message.includes('failed with exit code')) {
+          throw new Error('Octopus CLI returned an error code. Please check your GitHub actions log for more detail')
+        }
       }
-      return undefined
+      // rethrow, so our Promise is rejected. The GHA shim in index.ts will catch this and call setFailed
+      throw e
     }
   }
 }

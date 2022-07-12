@@ -44,42 +44,35 @@ describe('integration tests', () => {
   const globalCleanup = new CleanupHelper()
 
   const localProjectName = `project${runId}`
+  const standardInputParameters = makeInputParameters({
+    project: localProjectName,
+    apiKey: apiClientConfig.apiKey,
+    server: apiClientConfig.apiUri
+  })
 
   let apiClient: Client
   beforeAll(async () => {
     apiClient = await Client.create(apiClientConfig)
 
-    const systemRepo = new Repository(apiClient)
-
-    // const teamRepo = new TeamRepository(client)
-    // const teams = await teamRepo.all()
-    // const team = teams.length > 0 ? teams[0] : undefined
-    // if (!team) {
-    //   throw new Error("Can't find first team")
-    // }
-
-    // const spaceRepo = new SpaceRepository(client)
-    // const space = await spaceRepo.create({ Name: `test-${id}`, SpaceManagersTeams: [team.Id] })
-
-    // console.log(`created space test-${id}`)
+    const repository = new Repository(apiClient)
 
     // pre-reqs: We need a project, which needs to have a deployment process
 
-    const lifeCycles = await systemRepo.lifecycles.all()
+    const lifeCycles = await repository.lifecycles.all()
     const lifeCycle = lifeCycles.length > 0 ? lifeCycles[0] : undefined
     if (!lifeCycle) throw new Error("Can't find first lifecycle")
 
-    const projectGroups = await systemRepo.projectGroups.all()
+    const projectGroups = await repository.projectGroups.all()
     const projectGroup = projectGroups.length > 0 ? projectGroups[0] : undefined
     if (!projectGroup) throw new Error("Can't find first projectGroup")
 
-    const project = await systemRepo.projects.create({
+    const project = await repository.projects.create({
       Name: localProjectName,
       LifecycleId: lifeCycle.Id,
       ProjectGroupId: projectGroup.Id
     })
 
-    const deploymentProcess = await systemRepo.deploymentProcesses.get(project.DeploymentProcessId, undefined)
+    const deploymentProcess = await repository.deploymentProcesses.get(project.DeploymentProcessId, undefined)
 
     deploymentProcess.Steps = [
       {
@@ -123,9 +116,9 @@ describe('integration tests', () => {
       }
     ]
 
-    await systemRepo.deploymentProcesses.saveToProject(project, deploymentProcess)
+    await repository.deploymentProcesses.saveToProject(project, deploymentProcess)
 
-    globalCleanup.add(() => systemRepo.projects.del(project))
+    globalCleanup.add(() => repository.projects.del(project))
   })
 
   afterAll(() => globalCleanup.cleanup())
@@ -134,11 +127,7 @@ describe('integration tests', () => {
     const messages: string[] = []
 
     const w = new OctopusCliWrapper(
-      makeInputParameters({
-        project: localProjectName,
-        apiKey: apiClientConfig.apiKey,
-        server: apiClientConfig.apiUri
-      }),
+      standardInputParameters,
       {},
       m => messages.push(m),
       m => messages.push(m)
@@ -168,6 +157,83 @@ describe('integration tests', () => {
       "Channel: 'Default' (this is the default channel)",
       '🐙 Creating a release in Octopus Deploy...',
       '🎉 Release 0.0.1 created successfully!'
+    ])
+  })
+
+  test('fails with error if CLI executable not found', async () => {
+    const messages: string[] = []
+
+    const w = new OctopusCliWrapper(
+      standardInputParameters,
+      {},
+      m => messages.push(m),
+      m => messages.push(m)
+    )
+
+    await expect(() => w.createRelease('not-octo')).rejects.toThrow(
+      'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
+    )
+
+    expect(messages).toEqual([])
+  })
+
+  test('fails with error if CLI returns an error code', async () => {
+    const infos: string[] = []
+    const warnings: string[] = []
+
+    const w = new OctopusCliWrapper(
+      makeInputParameters({
+        // missing required 'project'
+        apiKey: apiClientConfig.apiKey,
+        server: apiClientConfig.apiUri
+      }),
+      {},
+      m => infos.push(m),
+      m => warnings.push(m)
+    )
+
+    await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
+      'Octopus CLI returned an error code. Please check your GitHub actions log for more detail'
+    )
+
+    expect(warnings).toEqual([])
+    expectMatchAll(infos, [
+      /Octopus CLI, version .*/,
+      'Detected automation environment: "NoneOrUnknown"',
+      'Space name unspecified, process will run in the default space context',
+      '🤝 Handshaking with Octopus Deploy',
+      /Handshake successful. Octopus version: .*/,
+      '✅ Authenticated',
+      'Please specify a project name or ID using the parameter: --project=XYZ',
+      'Exit code: -1'
+    ])
+  })
+
+  test('fails with error if CLI returns an error code (bad auth)', async () => {
+    const infos: string[] = []
+    const warnings: string[] = []
+
+    const w = new OctopusCliWrapper(
+      makeInputParameters({
+        project: localProjectName,
+        apiKey: apiClientConfig.apiKey + 'ZZZ',
+        server: apiClientConfig.apiUri
+      }),
+      {},
+      m => infos.push(m),
+      m => warnings.push(m)
+    )
+
+    await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
+      'Octopus CLI returned an error code. Please check your GitHub actions log for more detail'
+    )
+
+    expect(warnings).toEqual([])
+    expectMatchAll(infos, [
+      /Octopus CLI, version .*/,
+      'Detected automation environment: "NoneOrUnknown"',
+      'The API key you provided was not valid. Please double-check your API key and try again. For instructions on finding your API key, please visit: https://oc.to/ApiKey',
+      'Exit code: -5'
     ])
   })
 })
