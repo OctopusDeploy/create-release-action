@@ -72,9 +72,9 @@ describe('integration tests', () => {
       LifecycleId: lifeCycle.Id,
       ProjectGroupId: projectGroup.Id
     })
+    globalCleanup.add(() => repository.projects.del(project))
 
     const deploymentProcess = await repository.deploymentProcesses.get(project.DeploymentProcessId, undefined)
-
     deploymentProcess.Steps = [
       {
         Condition: RunCondition.Success,
@@ -118,17 +118,17 @@ describe('integration tests', () => {
     ]
 
     await repository.deploymentProcesses.saveToProject(project, deploymentProcess)
+  })
 
+  afterAll(() => {
     if (process.env.GITHUB_ACTIONS) {
       // Sneaky: if we are running inside github actions, we *do not* cleanup the octopus server project data.
       // rather, we leave it lying around and setOutput the random project name so the GHA self-test can use it
       setOutput('gha_selftest_project_name', localProjectName)
     } else {
-      globalCleanup.add(() => repository.projects.del(project))
+      globalCleanup.cleanup()
     }
   })
-
-  afterAll(() => globalCleanup.cleanup())
 
   test('can create a release', async () => {
     const messages: string[] = []
