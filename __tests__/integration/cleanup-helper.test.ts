@@ -8,8 +8,13 @@ export class CleanupHelper {
   }
 
   async cleanup(): Promise<void> {
+    // FIFO cleanup is the whole point of this class; test setup data is almost
+    // always hierarchial where we create the parent, then attach a child to it,
+    // requiring that we delete the child before the parent when cleaning up.
     const toExecute = [...this.#actions]
+    toExecute.reverse()
     this.#actions = []
+
     for (let a of toExecute) {
       try {
         const result = a()
