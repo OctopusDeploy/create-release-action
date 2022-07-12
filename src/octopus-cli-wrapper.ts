@@ -178,7 +178,10 @@ export class OctopusCliWrapper {
   // This invokes the CLI to do the work
   async createRelease(): Promise<void> {
     this.logInfo('🔣 Parsing inputs...')
+
+    this.logInfo(`⚠️ inputParams=${JSON.stringify(this.inputParameters)}`)
     const cliLaunchConfiguration = this.generateLaunchConfig()
+    this.logInfo(`⚠️ launchConfig=${JSON.stringify(cliLaunchConfiguration)}`)
 
     const options: ExecOptions = {
       listeners: {
@@ -189,7 +192,6 @@ export class OctopusCliWrapper {
     }
 
     try {
-      this.logInfo(`⚠️ launchConfig=[${JSON.stringify(cliLaunchConfiguration)}]`)
       await exec('octo', cliLaunchConfiguration.args, options)
     } catch (e: unknown) {
       if (e instanceof Error) {
