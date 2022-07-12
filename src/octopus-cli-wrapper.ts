@@ -177,7 +177,7 @@ export class OctopusCliWrapper {
   // NOT UNIT TESTABLE. This shells out to 'octo' and expects to be running in GHA
   // This invokes the CLI to do the work
   async createRelease(): Promise<void> {
-    this.logInfo('🔣 Parsing inputs...')
+    this.logInfo('🔣⚠️⚠️⚠️⚠️ Parsing inputs...')
 
     this.logInfo(`⚠️ inputParams=${JSON.stringify(this.inputParameters)}`)
     const cliLaunchConfiguration = this.generateLaunchConfig()
