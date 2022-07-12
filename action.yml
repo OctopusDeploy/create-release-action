@@ -7,9 +7,20 @@ branding:
 
 inputs:
   project:
-    description: 'Required: The name or ID of the project associated with this release.'
+    description: 'The name or ID of the project associated with this release.'
+    required: true
   api_key:
-    description: 'Optional: The API key used to access Octopus Deploy. An API key is required, but you should use the OCTOPUS_API_KEY environment variable instead of this. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.'
+    description: 'The API key used to access Octopus Deploy. An API key is required, but you may also use the OCTOPUS_API_KEY environment variable. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.'
+  server:
+    description: 'The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The Server URL is required, but you may also use the OCTOPUS_HOST environment variable.'
+  release_number:
+    description: 'The number for the new release. If omitted, Octopus Deploy will generate a release number.'
+  space:
+    description: 'The name or ID of a space within which this command will be executed. If omitted, the default space will be used.'
+  package_version:
+    description: 'The version number of all packages to use for this release.'
+  packages:
+    description: 'A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted.'
   channel:
     description: 'The name or ID of the channel to use for the new release. If omitted, the best channel will be selected.'
   git_ref:
@@ -19,26 +30,16 @@ inputs:
   ignore_existing:
     default: false
     description: 'Ignore existing releases if present in Octopus Deploy with the matching version number.'
-  package_version:
-    description: 'The version number of all packages to use for this release.'
-  packages:
-    description: 'A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted.'
   proxy:
-    description: 'The URL of a proxy to use (i.e. https://proxy.example.com).'
-  proxy_password:
-    description: 'The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret. If proxy_username and proxy_password are omitted and proxy URL is specified, the default credentials are used.'
+    description: 'The URL of a proxy to use (i.e. https://proxy.example.com). You may also use the OCTOPUS_PROXY environment variable.'
   proxy_username:
-    description: 'The username used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.'
+    description: 'The username used to connect to a proxy. You may also use the OCTOPUS_PROXY_USERNAME environment variable. It is strongly recommended to retrieve this value from a GitHub secret.'
+  proxy_password:
+    description: 'The password used to connect to a proxy. You may also use the OCTOPUS_PROXY_PASSWORD environment variable. It is strongly recommended to retrieve this value from a GitHub secret. If proxy_username and proxy_password are omitted and proxy URL is specified, the default credentials are used.'
   release_notes:
     description: 'The release notes associated with the new release (Markdown is supported).'
   release_notes_file:
     description: 'Path to a file that contains release notes for the new release. Supports Markdown files.'
-  release_number:
-    description: 'The number for the new release.'
-  server:
-    description: 'The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). It is recommended to retrieve this value from an environment variable.'
-  space:
-    description: 'The name or ID of a space within which this command will be executed. If omitted, the default space will be used.'
 
 runs:
   using: 'node12'
