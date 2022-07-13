@@ -69,9 +69,10 @@ jobs:
       - name: GitHub Action self-test
         id: self_test
         uses: ./
+        env:
+          OCTOPUS_HOST: ${{ env.SERVER_URL }}
+          OCTOPUS_API_KEY: ${{ env.ADMIN_API_KEY }}
         with:
-          server: ${{ env.SERVER_URL }}
-          api_key: ${{ env.ADMIN_API_KEY }}
           project: ${{ steps.npm_tests.outputs.gha_selftest_project_name }} # see integration.test.ts
 
       - name: Echo package number from self-test
