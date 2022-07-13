@@ -3282,198 +3282,6 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 34:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.createRelease = void 0;
-const core_1 = __nccwpck_require__(186);
-const exec_1 = __nccwpck_require__(514);
-function getArgs(parameters) {
-    (0, core_1.info)('🔣 Parsing inputs...');
-    const args = ['create-release'];
-    if (parameters.apiKey.length > 0)
-        args.push(`--apiKey=${parameters.apiKey}`);
-    if (parameters.cancelOnTimeout)
-        args.push(`--cancelOnTimeout`);
-    if (parameters.channel.length > 0)
-        args.push(`--channel=${parameters.channel}`);
-    if (parameters.configFile.length > 0)
-        args.push(`--configFile=${parameters.configFile}`);
-    if (parameters.debug)
-        args.push(`--debug`);
-    if (parameters.defaultPackageVersion)
-        args.push(`--defaultPackageVersion`);
-    if (parameters.deployAt.length > 0)
-        args.push(`--deployAt=${parameters.deployAt}`);
-    if (parameters.deployTo.length > 0)
-        args.push(`--deployTo=${parameters.deployTo}`);
-    if (parameters.deploymentCheckSleepCycle.length > 0 &&
-        parameters.deploymentCheckSleepCycle !== `00:00:10`)
-        args.push(`--deploymentCheckSleepCycle=${parameters.deploymentCheckSleepCycle}`);
-    if (parameters.deploymentTimeout.length > 0 &&
-        parameters.deploymentTimeout !== `00:00:10`)
-        args.push(`--deploymentTimeout=${parameters.deploymentTimeout}`);
-    if (parameters.excludeMachines.length > 0)
-        args.push(`--excludeMachines=${parameters.excludeMachines}`);
-    if (parameters.force)
-        args.push(`--force`);
-    if (parameters.forcePackageDownload)
-        args.push(`--forcePackageDownload`);
-    if (parameters.guidedFailure &&
-        parameters.guidedFailure.toLowerCase() === 'true')
-        args.push(`--guidedFailure=True`);
-    if (parameters.ignoreChannelRules)
-        args.push(`--ignoreChannelRules`);
-    if (parameters.ignoreExisting)
-        args.push(`--ignoreExisting`);
-    if (parameters.ignoreSslErrors)
-        args.push(`--ignoreSslErrors`);
-    if (parameters.logLevel.length > 0 && parameters.logLevel !== `debug`)
-        args.push(`--logLevel=${parameters.logLevel}`);
-    if (parameters.gitRef.length > 0)
-        args.push(`--gitRef=${parameters.gitRef}`);
-    if (parameters.gitCommit.length > 0)
-        args.push(`--gitCommit=${parameters.gitCommit}`);
-    if (parameters.noDeployAfter.length > 0)
-        args.push(`--noDeployAfter=${parameters.noDeployAfter}`);
-    if (parameters.noRawLog)
-        args.push(`--noRawLog`);
-    // deprecated
-    if (parameters.package.length > 0) {
-        (0, core_1.warning)(`"package" input option specified. This option is deprecated and will be removed in a future release. Please use "packages" instead.`);
-        args.push(`--package=${parameters.package}`);
-    }
-    if (parameters.packages.length > 0)
-        parameters.packages.map(p => args.push(`--package=${p}`));
-    if (parameters.packagePrerelease.length > 0)
-        args.push(`--packagePrerelease=${parameters.packagePrerelease}`);
-    if (parameters.packageVersion.length > 0)
-        args.push(`--packageVersion=${parameters.packageVersion}`);
-    if (parameters.packagesFolder.length > 0)
-        args.push(`--packagesFolder=${parameters.packagesFolder}`);
-    if (parameters.password.length > 0)
-        args.push(`--pass=${parameters.password}`);
-    if (parameters.progress)
-        args.push(`--progress`);
-    if (parameters.project.length > 0)
-        args.push(`--project=${parameters.project}`);
-    if (parameters.proxy.length > 0)
-        args.push(`--proxy=${parameters.proxy}`);
-    if (parameters.proxyPassword.length > 0)
-        args.push(`--proxyPass=${parameters.proxyPassword}`);
-    if (parameters.proxyUsername.length > 0)
-        args.push(`--proxyUser=${parameters.proxyUsername}`);
-    if (parameters.rawLogFile.length > 0)
-        args.push(`--rawLogFile=${parameters.rawLogFile}`);
-    if (parameters.releaseNotes.length > 0)
-        args.push(`--releaseNotes=${parameters.releaseNotes}`);
-    if (parameters.releaseNotesFile.length > 0)
-        args.push(`--releaseNotesFile=${parameters.releaseNotesFile}`);
-    if (parameters.releaseNumber.length > 0)
-        args.push(`--releaseNumber=${parameters.releaseNumber}`);
-    if (parameters.server.length > 0)
-        args.push(`--server=${parameters.server}`);
-    if (parameters.skip.length > 0)
-        args.push(`--skip=${parameters.skip}`);
-    if (parameters.space.length > 0)
-        args.push(`--space=${parameters.space}`);
-    if (parameters.specificMachines.length > 0)
-        args.push(`--specificMachines=${parameters.specificMachines}`);
-    // deprecated
-    if (parameters.tenant.length > 0) {
-        (0, core_1.warning)(`"tenant" input option specified. This option is deprecated and will be removed in a future release. Please use "tenants" instead.`);
-        args.push(`--tenant=${parameters.tenant}`);
-    }
-    if (parameters.tenants.length > 0)
-        parameters.tenants.map(t => args.push(`--tenant=${t}`));
-    // deprecated
-    if (parameters.tenantTag.length > 0) {
-        (0, core_1.warning)(`"tenant_tag" input option specified. This option is deprecated and will be removed in a future release. Please use "tenant_tags" instead.`);
-        args.push(`--tenantTag=${parameters.tenantTag}`);
-    }
-    if (parameters.tenantTags.length > 0)
-        parameters.tenantTags.map(t => args.push(`--tenantTag=${t}`));
-    if (parameters.timeout.length > 0 && parameters.timeout !== `600`)
-        args.push(`--timeout=${parameters.timeout}`);
-    if (parameters.username.length > 0)
-        args.push(`--user=${parameters.username}`);
-    // deprecated
-    if (parameters.variable.length > 0) {
-        (0, core_1.warning)(`"variable" input option specified. This option is deprecated and will be removed in a future release. Please use "variables" instead.`);
-        args.push(`--variable=${parameters.variable}`);
-    }
-    if (parameters.variables.length > 0)
-        parameters.variables.map(v => args.push(`--variable=${v}`));
-    if (parameters.waitForDeployment)
-        args.push(`--waitForDeployment`);
-    if (parameters.whatIf)
-        args.push(`--whatIf`);
-    return args;
-}
-function createRelease(parameters) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const args = getArgs(parameters);
-        const options = {
-            listeners: {
-                stdline: (line) => {
-                    if (line.length === 0)
-                        return;
-                    if (line.includes('Octopus Deploy Command Line Tool')) {
-                        const version = line.split('version ')[1];
-                        (0, core_1.info)(`🐙 Using Octopus Deploy CLI ${version}...`);
-                        return;
-                    }
-                    if (line.includes('Handshaking with Octopus Server')) {
-                        (0, core_1.info)(`🤝 Handshaking with Octopus Deploy`);
-                        return;
-                    }
-                    if (line.includes('Authenticated as:')) {
-                        (0, core_1.info)(`✅ Authenticated`);
-                        return;
-                    }
-                    if (line.includes(' created successfully!')) {
-                        (0, core_1.info)(`🎉 ${line}`);
-                        return;
-                    }
-                    switch (line) {
-                        case 'Creating release...':
-                            (0, core_1.info)('🐙 Creating a release in Octopus Deploy...');
-                            break;
-                        default:
-                            (0, core_1.info)(`${line}`);
-                            break;
-                    }
-                }
-            },
-            silent: true
-        };
-        try {
-            yield (0, exec_1.exec)('octo', args, options);
-        }
-        catch (e) {
-            if (e instanceof Error) {
-                (0, core_1.setFailed)(e);
-            }
-        }
-    });
-}
-exports.createRelease = createRelease;
-
-
-/***/ }),
-
 /***/ 148:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -3489,14 +3297,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const create_release_1 = __nccwpck_require__(34);
 const input_parameters_1 = __nccwpck_require__(519);
 const core_1 = __nccwpck_require__(186);
+const octopus_cli_wrapper_1 = __nccwpck_require__(856);
+const fs_1 = __nccwpck_require__(147);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const inputParameters = (0, input_parameters_1.get)();
-            yield (0, create_release_1.createRelease)(inputParameters);
+            const wrapper = new octopus_cli_wrapper_1.OctopusCliWrapper((0, input_parameters_1.getInputParameters)(), process.env, msg => (0, core_1.info)(msg), msg => (0, core_1.warning)(msg));
+            const allocatedReleaseNumber = yield wrapper.createRelease();
+            if (allocatedReleaseNumber) {
+                (0, core_1.setOutput)('release_number', allocatedReleaseNumber);
+            }
+            const stepSummaryFile = process.env.GITHUB_STEP_SUMMARY;
+            if (stepSummaryFile && allocatedReleaseNumber) {
+                (0, fs_1.writeFileSync)(stepSummaryFile, `🐙 Octopus Deploy Created Release **${allocatedReleaseNumber}** in Project **${wrapper.inputParameters.project}**.`);
+            }
         }
         catch (e) {
             if (e instanceof Error) {
@@ -3516,64 +3332,226 @@ run();
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.get = void 0;
+exports.makeInputParameters = exports.getInputParameters = void 0;
 const core_1 = __nccwpck_require__(186);
-function get() {
+function getInputParameters() {
     return {
         apiKey: (0, core_1.getInput)('api_key'),
-        cancelOnTimeout: (0, core_1.getBooleanInput)('cancel_on_timeout'),
         channel: (0, core_1.getInput)('channel'),
-        configFile: (0, core_1.getInput)('config_file'),
-        debug: (0, core_1.getBooleanInput)('debug'),
-        defaultPackageVersion: (0, core_1.getBooleanInput)('default_package_version'),
-        deployAt: (0, core_1.getInput)('deploy_at'),
-        deployTo: (0, core_1.getInput)('deploy_to'),
-        deploymentCheckSleepCycle: (0, core_1.getInput)('deployment_check_sleep_cycle'),
-        deploymentTimeout: (0, core_1.getInput)('deployment_timeout'),
-        excludeMachines: (0, core_1.getInput)('exclude_machines'),
-        force: (0, core_1.getBooleanInput)('force'),
-        forcePackageDownload: (0, core_1.getBooleanInput)('force_package_download'),
         gitRef: (0, core_1.getInput)('git_ref'),
         gitCommit: (0, core_1.getInput)('git_commit'),
-        guidedFailure: (0, core_1.getInput)('guided_failure'),
-        ignoreChannelRules: (0, core_1.getBooleanInput)('ignore_channel_rules'),
         ignoreExisting: (0, core_1.getBooleanInput)('ignore_existing'),
-        ignoreSslErrors: (0, core_1.getBooleanInput)('ignore_ssl_errors'),
-        logLevel: (0, core_1.getInput)('log_level'),
-        noDeployAfter: (0, core_1.getInput)('no_deploy_after'),
-        noRawLog: (0, core_1.getBooleanInput)('no_raw_log'),
-        package: (0, core_1.getInput)('package'),
         packages: (0, core_1.getMultilineInput)('packages').map(p => p.trim()),
-        packagePrerelease: (0, core_1.getInput)('package_prerelease'),
         packageVersion: (0, core_1.getInput)('package_version'),
-        packagesFolder: (0, core_1.getInput)('packages_folder'),
-        password: (0, core_1.getInput)('password'),
-        progress: (0, core_1.getBooleanInput)('progress'),
         project: (0, core_1.getInput)('project'),
         proxy: (0, core_1.getInput)('proxy'),
         proxyPassword: (0, core_1.getInput)('proxy_password'),
         proxyUsername: (0, core_1.getInput)('proxy_username'),
-        rawLogFile: (0, core_1.getInput)('raw_log_file'),
         releaseNotes: (0, core_1.getInput)('release_notes'),
         releaseNotesFile: (0, core_1.getInput)('release_notes_file'),
         releaseNumber: (0, core_1.getInput)('release_number'),
         server: (0, core_1.getInput)('server'),
-        skip: (0, core_1.getInput)('skip'),
-        space: (0, core_1.getInput)('space'),
-        specificMachines: (0, core_1.getInput)('specific_machines'),
-        tenant: (0, core_1.getInput)('tenant'),
-        tenants: (0, core_1.getMultilineInput)('tenants').map(p => p.trim()),
-        tenantTag: (0, core_1.getInput)('tenant_tag'),
-        tenantTags: (0, core_1.getMultilineInput)('tenant_tags').map(p => p.trim()),
-        timeout: (0, core_1.getInput)('timeout'),
-        username: (0, core_1.getInput)('user'),
-        variable: (0, core_1.getInput)('variable'),
-        variables: (0, core_1.getMultilineInput)('variables').map(p => p.trim()),
-        waitForDeployment: (0, core_1.getBooleanInput)('wait_for_deployment'),
-        whatIf: (0, core_1.getBooleanInput)('what_if')
+        space: (0, core_1.getInput)('space')
     };
 }
-exports.get = get;
+exports.getInputParameters = getInputParameters;
+function makeInputParameters(override = undefined) {
+    const template = {
+        project: '',
+        apiKey: '',
+        channel: '',
+        gitRef: '',
+        gitCommit: '',
+        ignoreExisting: false,
+        packages: [],
+        packageVersion: '',
+        proxy: '',
+        proxyPassword: '',
+        proxyUsername: '',
+        releaseNotes: '',
+        releaseNotesFile: '',
+        releaseNumber: '',
+        server: '',
+        space: ''
+    };
+    if (override) {
+        Object.assign(template, override);
+    }
+    return template;
+}
+exports.makeInputParameters = makeInputParameters;
+
+
+/***/ }),
+
+/***/ 856:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.OctopusCliWrapper = void 0;
+const exec_1 = __nccwpck_require__(514);
+class OctopusCliWrapper {
+    constructor(parameters, env, logInfo, logWarn) {
+        this.inputParameters = parameters;
+        this.env = env;
+        this.logInfo = logInfo;
+        this.logWarn = logWarn;
+    }
+    // When the Octopus CLI writes to stdout, we capture the text via this function
+    stdline(line) {
+        if (line.length === 0) {
+            return;
+        }
+        if (line === 'Creating release...') {
+            this.logInfo('🐙 Creating a release in Octopus Deploy...');
+            return;
+        }
+        if (line.includes('Octopus Deploy Command Line Tool')) {
+            const version = line.split('version ')[1];
+            this.logInfo(`🐙 Using Octopus Deploy CLI ${version}...`);
+            return;
+        }
+        if (line.includes('Handshaking with Octopus Server')) {
+            this.logInfo(`🤝 Handshaking with Octopus Deploy`);
+            return;
+        }
+        if (line.includes('Authenticated as:')) {
+            this.logInfo(`✅ Authenticated`);
+            return;
+        }
+        const releaseMatch = line.match('^Release (.+) created successfully!$');
+        if (releaseMatch && releaseMatch.length === 2) {
+            this.outputReleaseNumber = releaseMatch[1];
+            this.logInfo(`🎉 ${line}`);
+            return;
+        }
+        // everything else just pass-through
+        this.logInfo(line);
+    }
+    // Picks up a config value from GHA Input or environment, supports mapping
+    // of an obsolete env var to a newer one (e.g. OCTOPUS_CLI_SERVER vs OCTOPUS_HOST)
+    pickupConfigurationValueExtended(inputParameter, inputObsoleteEnvKey, inputNewEnvKey, valueHandler) {
+        // we always want to log the warning for a deprecated environment variable, even if the parameter comes in via inputParameter
+        let result;
+        const deprecatedValue = this.env[inputObsoleteEnvKey];
+        if (deprecatedValue && deprecatedValue.length > 0) {
+            this.logWarn(`Detected Deprecated ${inputObsoleteEnvKey} environment variable. Prefer ${inputNewEnvKey}`);
+            result = deprecatedValue;
+        }
+        const value = this.env[inputNewEnvKey];
+        // deliberately not 'else if' because if both OCTOPUS_CLI_API_KEY and OCTOPUS_API_KEY are set we want the latter to win
+        if (value && value.length > 0) {
+            result = value;
+        }
+        if (inputParameter.length > 0) {
+            result = inputParameter;
+        }
+        if (result) {
+            valueHandler(result);
+        }
+    }
+    // Picks up a config value from GHA Input or environment
+    pickupConfigurationValue(inputParameter, inputNewEnvKey, valueHandler) {
+        if (inputParameter.length > 0) {
+            valueHandler(inputParameter);
+        }
+        else {
+            const value = this.env[inputNewEnvKey];
+            if (value && value.length > 0) {
+                valueHandler(value);
+            }
+        }
+    }
+    // Converts incoming environment and inputParameters into a set of commandline args + env vars to run the Octopus CLI
+    generateLaunchConfig() {
+        // Note: this is specialised to only work for create-release, but feels like it wants to be more generic and reusable?
+        // Given we have multiple github actions and each lives in its own repo, what's our strategy for sharing here?
+        const launchArgs = ['create-release'];
+        const launchEnv = {};
+        const parameters = this.inputParameters;
+        this.pickupConfigurationValueExtended(parameters.apiKey, 'OCTOPUS_CLI_API_KEY', 'OCTOPUS_API_KEY', value => (launchEnv['OCTOPUS_CLI_API_KEY'] = value));
+        this.pickupConfigurationValueExtended(parameters.server, 'OCTOPUS_CLI_SERVER', 'OCTOPUS_HOST', value => (launchEnv['OCTOPUS_CLI_SERVER'] = value));
+        this.pickupConfigurationValue(parameters.proxy, 'OCTOPUS_PROXY', value => launchArgs.push(`--proxy=${value}`));
+        this.pickupConfigurationValue(parameters.proxyUsername, 'OCTOPUS_PROXY_USERNAME', value => launchArgs.push(`--proxyUser=${value}`));
+        this.pickupConfigurationValue(parameters.proxyPassword, 'OCTOPUS_PROXY_PASSWORD', value => launchArgs.push(`--proxyPass=${value}`));
+        this.pickupConfigurationValue(parameters.space, 'OCTOPUS_SPACE', value => launchArgs.push(`--space=${value}`));
+        if (parameters.project.length > 0) {
+            launchArgs.push(`--project=${parameters.project}`);
+        }
+        if (parameters.channel.length > 0) {
+            launchArgs.push(`--channel=${parameters.channel}`);
+        }
+        if (parameters.ignoreExisting) {
+            launchArgs.push(`--ignoreExisting`);
+        }
+        if (parameters.gitRef.length > 0) {
+            launchArgs.push(`--gitRef=${parameters.gitRef}`);
+        }
+        if (parameters.gitCommit.length > 0) {
+            launchArgs.push(`--gitCommit=${parameters.gitCommit}`);
+        }
+        if (parameters.packages.length > 0) {
+            parameters.packages.map(p => launchArgs.push(`--package=${p}`));
+        }
+        if (parameters.packageVersion.length > 0) {
+            launchArgs.push(`--packageVersion=${parameters.packageVersion}`);
+        }
+        if (parameters.releaseNotes.length > 0) {
+            launchArgs.push(`--releaseNotes=${parameters.releaseNotes}`);
+        }
+        if (parameters.releaseNotesFile.length > 0) {
+            launchArgs.push(`--releaseNotesFile=${parameters.releaseNotesFile}`);
+        }
+        if (parameters.releaseNumber.length > 0) {
+            launchArgs.push(`--releaseNumber=${parameters.releaseNumber}`);
+        }
+        return { args: launchArgs, env: launchEnv };
+    }
+    // This invokes the CLI to do the work.
+    // Returns the release number assigned by the octopus server
+    // This shells out to 'octo' and expects to be running in GHA, so you can't unit test it; integration tests only.
+    createRelease(octoExecutable = 'octo') {
+        return __awaiter(this, void 0, void 0, function* () {
+            const cliLaunchConfiguration = this.generateLaunchConfig();
+            const options = {
+                listeners: {
+                    stdline: input => this.stdline(input)
+                },
+                env: cliLaunchConfiguration.env,
+                silent: true
+            };
+            try {
+                yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
+                return this.outputReleaseNumber;
+            }
+            catch (e) {
+                if (e instanceof Error) {
+                    // catch some particular messages and rethrow more convenient ones
+                    if (e.message.includes('Unable to locate executable file')) {
+                        throw new Error('Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.');
+                    }
+                    if (e.message.includes('failed with exit code')) {
+                        throw new Error('Octopus CLI returned an error code. Please check your GitHub actions log for more detail');
+                    }
+                }
+                // rethrow, so our Promise is rejected. The GHA shim in index.ts will catch this and call setFailed
+                throw e;
+            }
+        });
+    }
+}
+exports.OctopusCliWrapper = OctopusCliWrapper;
 
 
 /***/ }),

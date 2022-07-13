@@ -8,7 +8,7 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 9,
-    "project": "./tsconfig.json",
+    "project": "./tsconfig.eslint.json",
     "sourceType": "module"
   },
   "plugins": ["jest", "@typescript-eslint"],
@@ -61,5 +61,18 @@
     "import/no-namespace": "error",
     "no-unused-vars": "error",
     "semi": "off"
-  }
+  },
+  // eslint doesn't know about the global NodeJS variable
+  "globals": {
+    "NodeJS": true
+  },
+  "overrides": [
+    {
+      "files": "__tests__/**/*.ts",
+      "env": {"jest": true, "node": true},
+      "rules": {
+        "filenames/match-regex": 0
+      }
+    }
+  ]
 }
