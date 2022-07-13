@@ -40,7 +40,7 @@ steps:
       project: 'MyProject'
 ```
 
-## 📥 Environment Variables
+## ✍️ Environment Variables
 
 | Name | Description |
 | :--- | :---------- |
@@ -49,7 +49,7 @@ steps:
 | `OCTOPUS_PROXY` | The URL of a proxy to use (i.e. `https://proxy.example.com`). If `OCTOPUS_PROXY_USERNAME` and `OCTOPUS_PROXY_PASSWORD` are omitted, the default credentials are used. It is strongly recommended that this value retrieved from a GitHub secret. |
 | `OCTOPUS_PROXY_PASSWORD` | The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret. |
 | `OCTOPUS_PROXY_USERNAME` | The username used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.|
-| `OCTOPUS_SPACE` | The ID of a space within which this command will be executed. If omitted, the default space will be used. |
+| `OCTOPUS_SPACE` | The ID of a space within which this command will be executed. |
 
 ## 📥 Inputs
 
@@ -59,7 +59,7 @@ steps:
 | `api_key` | The API key used to access Octopus Deploy. An API key is required, but you may also use the `OCTOPUS_API_KEY` environment variable. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret. |
 | `server` | The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The Server URL is required, but you may also use the `OCTOPUS_HOST` environment variable. |
 | `release_number` | The number for the new release. If omitted, Octopus Deploy will generate a release number. |
-| `space` | The name or ID of a space within which this command will be executed. If omitted, the default space will be used. |
+| `space` | The name or ID of a space within which this command will be executed. |
 | `package_version` | The version number of all packages to use for this release. |
 | `packages` | A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted. |
 | `channel` | The name or ID of the channel to use for the new release. If omitted, the best channel will be selected. |

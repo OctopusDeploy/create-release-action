@@ -16,7 +16,7 @@ inputs:
   release_number:
     description: 'The number for the new release. If omitted, Octopus Deploy will generate a release number.'
   space:
-    description: 'The name or ID of a space within which this command will be executed. If omitted, the default space will be used.'
+    description: 'The name or ID of a space within which this command will be executed.'
   package_version:
     description: 'The version number of all packages to use for this release.'
   packages:
