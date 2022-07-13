@@ -15,13 +15,57 @@ More information about releases in Octopus Deploy:
 - [Releases](https://octopus.com/docs/releases)
 - [Create release](https://octopus.com/docs/octopus-rest-api/octopus-cli/create-release)
 
+## Migrating from v1 to v2
+
+The number of input parameters have been greatly reduced in v2 of this action. This change was made to reflect the majority of use cases observed across GitHub repositories.
+
+Please note that the the following input parameters have been removed in v2 of this action:
+
+- `cancel_on_timeout`
+- `config_file`
+- `debug`
+- `default_package_version`
+- `deploy_to`
+- `deploy_at`
+- `deployment_check_sleep_cycle`
+- `deployment_timeout`
+- `exclude_machines`
+- `force`
+- `force_package_download`
+- `guided_failure`
+- `ignore_channel_rules`
+- `ignore_ssl_errors`
+- `log_level`
+- `no_raw_log`
+- `package`
+- `package_prerelease`
+- `packages_folder`
+- `password`
+- `progress`
+- `raw_log_file`
+- `skip`
+- `specific_machines`
+- `tenant`
+- `tenants`
+- `tenant_tag`
+- `tenant_tags`
+- `timeout`
+- `user`
+- `variable`
+- `variables`
+- `wait_for_deployment`
+- `what_if`
+
+If you are using the `deploy_to` input parameter then it is recommended that you modify the associated lifecycle to deploy to the environment referenced by this value automatically.
+
+This action strongly encourages the using a combination of secrets and environment variables for sensitive values such as the Octopus host or the API key. For that reason, we have modified the action to encourage users environment variables (see YAML example below).
+
 ## Examples
 
 Incorporate the following actions in your workflow to create a release in Octopus Deploy using an API key, a target instance (i.e. `server`), and a project:
 
 ```yml
 env:
-  
 
 steps:
   # ...
@@ -42,40 +86,40 @@ steps:
 
 ## ✍️ Environment Variables
 
-| Name | Description |
-| :--- | :---------- |
-| `OCTOPUS_API_KEY` | The API key used to access Octopus Deploy. `API-GUEST` may be used if the guest account is enabled. It is strongly recommended that this value retrieved from a GitHub secret. |
-| `OCTOPUS_HOST` | The base URL hosting Octopus Deploy (i.e. `https://octopus.example.com`). It is strongly recommended that this value retrieved from a GitHub secret. |
-| `OCTOPUS_PROXY` | The URL of a proxy to use (i.e. `https://proxy.example.com`). If `OCTOPUS_PROXY_USERNAME` and `OCTOPUS_PROXY_PASSWORD` are omitted, the default credentials are used. It is strongly recommended that this value retrieved from a GitHub secret. |
-| `OCTOPUS_PROXY_PASSWORD` | The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret. |
-| `OCTOPUS_PROXY_USERNAME` | The username used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.|
-| `OCTOPUS_SPACE` | The ID of a space within which this command will be executed. |
+| Name                     | Description                                                                                                                                                                                                                                      |
+| :----------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `OCTOPUS_API_KEY`        | The API key used to access Octopus Deploy. `API-GUEST` may be used if the guest account is enabled. It is strongly recommended that this value retrieved from a GitHub secret.                                                                   |
+| `OCTOPUS_HOST`           | The base URL hosting Octopus Deploy (i.e. `https://octopus.example.com`). It is strongly recommended that this value retrieved from a GitHub secret.                                                                                             |
+| `OCTOPUS_PROXY`          | The URL of a proxy to use (i.e. `https://proxy.example.com`). If `OCTOPUS_PROXY_USERNAME` and `OCTOPUS_PROXY_PASSWORD` are omitted, the default credentials are used. It is strongly recommended that this value retrieved from a GitHub secret. |
+| `OCTOPUS_PROXY_PASSWORD` | The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.                                                                                                                                 |
+| `OCTOPUS_PROXY_USERNAME` | The username used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.                                                                                                                                 |
+| `OCTOPUS_SPACE`          | The ID of a space within which this command will be executed.                                                                                                                                                                                    |
 
 ## 📥 Inputs
 
-| Name | Description |
-| :--- | :---------- |
-| `project` | **Required.** The name or ID of the project associated with this release. |
-| `api_key` | The API key used to access Octopus Deploy. An API key is required, but you may also use the `OCTOPUS_API_KEY` environment variable. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret. |
-| `server` | The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The Server URL is required, but you may also use the `OCTOPUS_HOST` environment variable. |
-| `release_number` | The number for the new release. If omitted, Octopus Deploy will generate a release number. |
-| `space` | The name or ID of a space within which this command will be executed. |
-| `package_version` | The version number of all packages to use for this release. |
-| `packages` | A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted. |
-| `channel` | The name or ID of the channel to use for the new release. If omitted, the best channel will be selected. |
-| `git_ref` | Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects. |
-| `git_commit` | Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter. |
-| `ignore_existing` | Ignore existing releases if present in Octopus Deploy with the matching version number. Defaults to **false** |
-| `proxy` | The URL of a proxy to use (i.e. https://proxy.example.com). You may also use the `OCTOPUS_PROXY` environment variable. |
-| `proxy_username` | The username used to connect to a proxy. You may also use the `OCTOPUS_PROXY_USERNAME` environment variable. It is strongly recommended to retrieve this value from a GitHub secret. |
-| `proxy_password` | The password used to connect to a proxy. You may also use the `OCTOPUS_PROXY_PASSWORD` environment variable. It is strongly recommended to retrieve this value from a GitHub secret. If proxy_username and proxy_password are omitted and proxy URL is specified, the default credentials are used. |
-| `release_notes` | The release notes associated with the new release (Markdown is supported). |
-| `release_notes_file` | Path to a file that contains release notes for the new release. Supports Markdown files. |
+| Name                 | Description                                                                                                                                                                                                                                                                                                                     |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `project`            | **Required.** The name or ID of the project associated with this release.                                                                                                                                                                                                                                                       |
+| `api_key`            | The API key used to access Octopus Deploy. An API key is required, but you may also use the `OCTOPUS_API_KEY` environment variable. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.                                                 |
+| `server`             | The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The Server URL is required, but you may also use the `OCTOPUS_HOST` environment variable.                                                                                                                                                            |
+| `release_number`     | The number for the new release. If omitted, Octopus Deploy will generate a release number.                                                                                                                                                                                                                                      |
+| `space`              | The name or ID of a space within which this command will be executed.                                                                                                                                                                                                                                                           |
+| `package_version`    | The version number of all packages to use for this release.                                                                                                                                                                                                                                                                     |
+| `packages`           | A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("\*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted. |
+| `channel`            | The name or ID of the channel to use for the new release. If omitted, the best channel will be selected.                                                                                                                                                                                                                        |
+| `git_ref`            | Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects.                                                                                                                                                                                       |
+| `git_commit`         | Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter.                                                                                                                                                                  |
+| `ignore_existing`    | Ignore existing releases if present in Octopus Deploy with the matching version number. Defaults to **false**                                                                                                                                                                                                                   |
+| `proxy`              | The URL of a proxy to use (i.e. https://proxy.example.com). You may also use the `OCTOPUS_PROXY` environment variable.                                                                                                                                                                                                          |
+| `proxy_username`     | The username used to connect to a proxy. You may also use the `OCTOPUS_PROXY_USERNAME` environment variable. It is strongly recommended to retrieve this value from a GitHub secret.                                                                                                                                            |
+| `proxy_password`     | The password used to connect to a proxy. You may also use the `OCTOPUS_PROXY_PASSWORD` environment variable. It is strongly recommended to retrieve this value from a GitHub secret. If proxy_username and proxy_password are omitted and proxy URL is specified, the default credentials are used.                             |
+| `release_notes`      | The release notes associated with the new release (Markdown is supported).                                                                                                                                                                                                                                                      |
+| `release_notes_file` | Path to a file that contains release notes for the new release. Supports Markdown files.                                                                                                                                                                                                                                        |
 
 ## 📤 Outputs
 
-| Name | Description |
-| :--- | :---------- |
+| Name             | Description                                                                                                                      |
+| :--------------- | :------------------------------------------------------------------------------------------------------------------------------- |
 | `release_number` | The release number assigned to the Release in Octopus Deploy. Use this if you wish to refer to the release later in your script. |
 
 ## 🤝 Contributions
