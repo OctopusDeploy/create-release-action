@@ -21,7 +21,7 @@ Incorporate the following actions in your workflow to create a release in Octopu
 
 ```yml
 env:
-  OCTOPUS_HOST: ${{ secrets.SERVER }}
+  
 
 steps:
   # ...
@@ -32,11 +32,24 @@ steps:
 
   - name: Create a release in Octopus Deploy 🐙
     uses: OctopusDeploy/create-release-action@v2
+    env:
+      OCTOPUS_API_KEY: ${{ secrets.API_KEY  }}
+      OCTOPUS_HOST: ${{ secrets.SERVER }}
+      OCTOPUS_SPACE: 'Spaces-1'
     with:
-      api_key: ${{ secrets.API_KEY }}
       project: 'MyProject'
 ```
 
+## 📥 Environment Variables
+
+| Name | Description |
+| :--- | :---------- |
+| `OCTOPUS_API_KEY` | The API key used to access Octopus Deploy. `API-GUEST` may be used if the guest account is enabled. It is strongly recommended that this value retrieved from a GitHub secret. |
+| `OCTOPUS_HOST` | The base URL hosting Octopus Deploy (i.e. `https://octopus.example.com`). It is strongly recommended that this value retrieved from a GitHub secret. |
+| `OCTOPUS_PROXY` | The URL of a proxy to use (i.e. `https://proxy.example.com`). If `OCTOPUS_PROXY_USERNAME` and `OCTOPUS_PROXY_PASSWORD` are omitted, the default credentials are used. It is strongly recommended that this value retrieved from a GitHub secret. |
+| `OCTOPUS_PROXY_PASSWORD` | The password used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret. |
+| `OCTOPUS_PROXY_USERNAME` | The username used to connect to a proxy. It is strongly recommended to retrieve this value from a GitHub secret.|
+| `OCTOPUS_SPACE` | The ID of a space within which this command will be executed. If omitted, the default space will be used. |
 
 ## 📥 Inputs
 
