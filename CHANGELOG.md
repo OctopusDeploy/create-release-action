@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.0.0](https://github.com/OctopusDeploy/create-release-action/compare/v1.2.0...v2.0.0) (2022-07-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* The action now has an output release_number, which returns the Release Number assigned by the Octopus server. You can use this for future steps in your workflow if you would like to do additional things with the release.
+* The action would previously ignore errors from the underlying Octopus CLI. These are now correctly reported through the action.
+* Release 2.0
+
+### Features
+
+* Release 2.0 ([e04cfc9](https://github.com/OctopusDeploy/create-release-action/commit/e04cfc9bfa1472677ae0c4809e08c7db306b277f))
+* The action now has an output release_number, which returns the Release Number assigned by the Octopus server. You can use this for future steps in your workflow if you would like to do additional things with the release. ([e04cfc9](https://github.com/OctopusDeploy/create-release-action/commit/e04cfc9bfa1472677ae0c4809e08c7db306b277f))
+* The action now supports loading some options from environment variables: OCTOPUS_HOST, OCTOPUS_API_KEY, OCTOPUS_PROXY, OCTOPUS_PROXY_USERNAME, OCTOPUS_PROXY_PASSWORD, OCTOPUS_SPACE. Action inputs remain supported. ([e04cfc9](https://github.com/OctopusDeploy/create-release-action/commit/e04cfc9bfa1472677ae0c4809e08c7db306b277f))
+
+
+### Bug Fixes
+
+* The action would previously ignore errors from the underlying Octopus CLI. These are now correctly reported through the action. ([e04cfc9](https://github.com/OctopusDeploy/create-release-action/commit/e04cfc9bfa1472677ae0c4809e08c7db306b277f))
+
 ## [1.2.0](https://github.com/OctopusDeploy/create-release-action/compare/v1.1.4...v1.2.0) (2022-07-01)
 
 
