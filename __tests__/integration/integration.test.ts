@@ -4,7 +4,7 @@ import { OctopusCliWrapper } from '../../src/octopus-cli-wrapper'
 import { PackageRequirement, RunCondition, StartTrigger } from '@octopusdeploy/message-contracts'
 import { Client, ClientConfiguration, Repository } from '@octopusdeploy/api-client'
 import { randomBytes } from 'crypto'
-import { CleanupHelper } from './cleanup-helper.test'
+import { CleanupHelper } from './cleanup-helper'
 import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/runConditionForAction'
 import { setOutput } from '@actions/core'
 
