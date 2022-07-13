@@ -59,12 +59,10 @@ describe('integration tests', () => {
 
     // pre-reqs: We need a project, which needs to have a deployment process
 
-    const lifeCycles = await repository.lifecycles.all()
-    const lifeCycle = lifeCycles.length > 0 ? lifeCycles[0] : undefined
+    const lifeCycle = (await repository.lifecycles.all())[0]
     if (!lifeCycle) throw new Error("Can't find first lifecycle")
 
-    const projectGroups = await repository.projectGroups.all()
-    const projectGroup = projectGroups.length > 0 ? projectGroups[0] : undefined
+    const projectGroup = (await repository.projectGroups.all())[0]
     if (!projectGroup) throw new Error("Can't find first projectGroup")
 
     const project = await repository.projects.create({

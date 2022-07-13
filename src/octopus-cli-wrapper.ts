@@ -111,8 +111,6 @@ export class OctopusCliWrapper {
 
   // Converts incoming environment and inputParameters into a set of commandline args + env vars to run the Octopus CLI
   generateLaunchConfig(): CliLaunchConfiguration {
-    // Note: this is specialised to only work for create-release, but feels like it wants to be more generic and reusable?
-    // Given we have multiple github actions and each lives in its own repo, what's our strategy for sharing here?
     const launchArgs: string[] = ['create-release']
     const launchEnv: { [key: string]: string } = {}
 

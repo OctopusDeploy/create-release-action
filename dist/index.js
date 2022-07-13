@@ -3311,7 +3311,7 @@ function run() {
             }
             const stepSummaryFile = process.env.GITHUB_STEP_SUMMARY;
             if (stepSummaryFile && allocatedReleaseNumber) {
-                (0, fs_1.writeFileSync)(stepSummaryFile, `🐙 Octopus Deploy Created Release Created Release ${allocatedReleaseNumber} in Project ${wrapper.inputParameters.project}.`);
+                (0, fs_1.writeFileSync)(stepSummaryFile, `🐙 Octopus Deploy Created Release **${allocatedReleaseNumber}** in Project **${wrapper.inputParameters.project}**.`);
             }
         }
         catch (e) {
