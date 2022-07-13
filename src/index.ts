@@ -21,7 +21,7 @@ async function run(): Promise<void> {
     if (stepSummaryFile && allocatedReleaseNumber) {
       writeFileSync(
         stepSummaryFile,
-        `🐙 Octopus Deploy Created Release Created Release ${allocatedReleaseNumber} in Project ${wrapper.inputParameters.project}.`
+        `🐙 Octopus Deploy Created Release **${allocatedReleaseNumber}** in Project **${wrapper.inputParameters.project}**.`
       )
     }
   } catch (e: unknown) {
