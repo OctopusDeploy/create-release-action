@@ -36,10 +36,3 @@ export class CleanupHelper {
     // if a cleanup added more cleanups, the second phase wouldn't run; that doesn't make sense anyway
   }
 }
-
-test('cleanup helper', () => {
-  // dummy test; if we add the .test suffix to the file, then jest complains
-  // if it doesn't have any tests in it.
-  // If we DON'T add the .test suffix, then ncc build tries to package it for
-  // customer use, which we also don't want
-})
