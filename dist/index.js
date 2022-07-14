@@ -3531,7 +3531,7 @@ class OctopusCliWrapper {
                 silent: true
             };
             try {
-                const exitCode = yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
+                const exitCode = yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args);
                 this.logInfo(`Octopus CLI succeeded with exit code ${exitCode}`);
                 return this.outputReleaseNumber;
             }
