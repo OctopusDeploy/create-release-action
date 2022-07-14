@@ -3527,11 +3527,11 @@ class OctopusCliWrapper {
                 listeners: {
                     stdline: input => this.stdline(input)
                 },
-                // env: cliLaunchConfiguration.env,
+                env: cliLaunchConfiguration.env,
                 silent: true
             };
-            process.env.OCTOPUS_CLI_API_KEY = cliLaunchConfiguration.env.OCTOPUS_CLI_API_KEY;
-            process.env.OCTOPUS_CLI_SERVER = cliLaunchConfiguration.env.OCTOPUS_CLI_SERVER;
+            // process.env.OCTOPUS_CLI_API_KEY = cliLaunchConfiguration.env.OCTOPUS_CLI_API_KEY
+            // process.env.OCTOPUS_CLI_SERVER = cliLaunchConfiguration.env.OCTOPUS_CLI_SERVER
             try {
                 const exitCode = yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
                 this.logInfo(`Octopus CLI succeeded with exit code ${exitCode}`);
