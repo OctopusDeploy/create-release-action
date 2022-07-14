@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 351:
+/***/ 459:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -28,7 +28,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.issue = exports.issueCommand = void 0;
 const os = __importStar(__nccwpck_require__(37));
-const utils_1 = __nccwpck_require__(278);
+const utils_1 = __nccwpck_require__(737);
 /**
  * Commands
  *
@@ -100,7 +100,7 @@ function escapeProperty(s) {
 
 /***/ }),
 
-/***/ 186:
+/***/ 514:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -135,12 +135,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __nccwpck_require__(351);
-const file_command_1 = __nccwpck_require__(717);
-const utils_1 = __nccwpck_require__(278);
+const command_1 = __nccwpck_require__(459);
+const file_command_1 = __nccwpck_require__(503);
+const utils_1 = __nccwpck_require__(737);
 const os = __importStar(__nccwpck_require__(37));
 const path = __importStar(__nccwpck_require__(17));
-const oidc_utils_1 = __nccwpck_require__(41);
+const oidc_utils_1 = __nccwpck_require__(131);
 /**
  * The code to exit an action
  */
@@ -418,17 +418,17 @@ exports.getIDToken = getIDToken;
 /**
  * Summary exports
  */
-var summary_1 = __nccwpck_require__(327);
+var summary_1 = __nccwpck_require__(72);
 Object.defineProperty(exports, "summary", ({ enumerable: true, get: function () { return summary_1.summary; } }));
 /**
  * @deprecated use core.summary
  */
-var summary_2 = __nccwpck_require__(327);
+var summary_2 = __nccwpck_require__(72);
 Object.defineProperty(exports, "markdownSummary", ({ enumerable: true, get: function () { return summary_2.markdownSummary; } }));
 /**
  * Path exports
  */
-var path_utils_1 = __nccwpck_require__(981);
+var path_utils_1 = __nccwpck_require__(964);
 Object.defineProperty(exports, "toPosixPath", ({ enumerable: true, get: function () { return path_utils_1.toPosixPath; } }));
 Object.defineProperty(exports, "toWin32Path", ({ enumerable: true, get: function () { return path_utils_1.toWin32Path; } }));
 Object.defineProperty(exports, "toPlatformPath", ({ enumerable: true, get: function () { return path_utils_1.toPlatformPath; } }));
@@ -436,7 +436,7 @@ Object.defineProperty(exports, "toPlatformPath", ({ enumerable: true, get: funct
 
 /***/ }),
 
-/***/ 717:
+/***/ 503:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -467,7 +467,7 @@ exports.issueCommand = void 0;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const fs = __importStar(__nccwpck_require__(147));
 const os = __importStar(__nccwpck_require__(37));
-const utils_1 = __nccwpck_require__(278);
+const utils_1 = __nccwpck_require__(737);
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
@@ -485,7 +485,7 @@ exports.issueCommand = issueCommand;
 
 /***/ }),
 
-/***/ 41:
+/***/ 131:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -501,9 +501,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OidcClient = void 0;
-const http_client_1 = __nccwpck_require__(255);
-const auth_1 = __nccwpck_require__(526);
-const core_1 = __nccwpck_require__(186);
+const http_client_1 = __nccwpck_require__(563);
+const auth_1 = __nccwpck_require__(38);
+const core_1 = __nccwpck_require__(514);
 class OidcClient {
     static createHttpClient(allowRetry = true, maxRetry = 10) {
         const requestOptions = {
@@ -569,7 +569,7 @@ exports.OidcClient = OidcClient;
 
 /***/ }),
 
-/***/ 981:
+/***/ 964:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -634,7 +634,7 @@ exports.toPlatformPath = toPlatformPath;
 
 /***/ }),
 
-/***/ 327:
+/***/ 72:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -924,7 +924,7 @@ exports.summary = _summary;
 
 /***/ }),
 
-/***/ 278:
+/***/ 737:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -971,7 +971,7 @@ exports.toCommandProperties = toCommandProperties;
 
 /***/ }),
 
-/***/ 514:
+/***/ 642:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1007,7 +1007,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getExecOutput = exports.exec = void 0;
 const string_decoder_1 = __nccwpck_require__(576);
-const tr = __importStar(__nccwpck_require__(159));
+const tr = __importStar(__nccwpck_require__(97));
 /**
  * Exec a command.
  * Output will be streamed to the live console.
@@ -1081,7 +1081,7 @@ exports.getExecOutput = getExecOutput;
 
 /***/ }),
 
-/***/ 159:
+/***/ 97:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1120,8 +1120,8 @@ const os = __importStar(__nccwpck_require__(37));
 const events = __importStar(__nccwpck_require__(361));
 const child = __importStar(__nccwpck_require__(81));
 const path = __importStar(__nccwpck_require__(17));
-const io = __importStar(__nccwpck_require__(436));
-const ioUtil = __importStar(__nccwpck_require__(962));
+const io = __importStar(__nccwpck_require__(723));
+const ioUtil = __importStar(__nccwpck_require__(826));
 const timers_1 = __nccwpck_require__(512);
 /* eslint-disable @typescript-eslint/unbound-method */
 const IS_WINDOWS = process.platform === 'win32';
@@ -1706,7 +1706,7 @@ class ExecState extends events.EventEmitter {
 
 /***/ }),
 
-/***/ 526:
+/***/ 38:
 /***/ (function(__unused_webpack_module, exports) {
 
 "use strict";
@@ -1794,7 +1794,7 @@ exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHand
 
 /***/ }),
 
-/***/ 255:
+/***/ 563:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1832,8 +1832,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HttpClient = exports.isHttps = exports.HttpClientResponse = exports.HttpClientError = exports.getProxyUrl = exports.MediaTypes = exports.Headers = exports.HttpCodes = void 0;
 const http = __importStar(__nccwpck_require__(685));
 const https = __importStar(__nccwpck_require__(687));
-const pm = __importStar(__nccwpck_require__(835));
-const tunnel = __importStar(__nccwpck_require__(294));
+const pm = __importStar(__nccwpck_require__(285));
+const tunnel = __importStar(__nccwpck_require__(784));
 var HttpCodes;
 (function (HttpCodes) {
     HttpCodes[HttpCodes["OK"] = 200] = "OK";
@@ -2406,7 +2406,7 @@ const lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCa
 
 /***/ }),
 
-/***/ 835:
+/***/ 285:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2474,7 +2474,7 @@ exports.checkBypass = checkBypass;
 
 /***/ }),
 
-/***/ 962:
+/***/ 826:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2683,7 +2683,7 @@ function isUnixExecutable(stats) {
 
 /***/ }),
 
-/***/ 436:
+/***/ 723:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2708,7 +2708,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const childProcess = __importStar(__nccwpck_require__(81));
 const path = __importStar(__nccwpck_require__(17));
 const util_1 = __nccwpck_require__(837);
-const ioUtil = __importStar(__nccwpck_require__(962));
+const ioUtil = __importStar(__nccwpck_require__(826));
 const exec = util_1.promisify(childProcess.exec);
 /**
  * Copies a file or folder.
@@ -3002,15 +3002,15 @@ function copyFile(srcFile, destFile, force) {
 
 /***/ }),
 
-/***/ 294:
+/***/ 784:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = __nccwpck_require__(219);
+module.exports = __nccwpck_require__(936);
 
 
 /***/ }),
 
-/***/ 219:
+/***/ 936:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -3282,7 +3282,7 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 148:
+/***/ 902:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3297,9 +3297,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const input_parameters_1 = __nccwpck_require__(519);
-const core_1 = __nccwpck_require__(186);
-const octopus_cli_wrapper_1 = __nccwpck_require__(856);
+const input_parameters_1 = __nccwpck_require__(518);
+const core_1 = __nccwpck_require__(514);
+const octopus_cli_wrapper_1 = __nccwpck_require__(741);
 const fs_1 = __nccwpck_require__(147);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -3326,14 +3326,14 @@ run();
 
 /***/ }),
 
-/***/ 519:
+/***/ 518:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.makeInputParameters = exports.getInputParameters = void 0;
-const core_1 = __nccwpck_require__(186);
+const core_1 = __nccwpck_require__(514);
 function getInputParameters() {
     return {
         apiKey: (0, core_1.getInput)('api_key'),
@@ -3384,7 +3384,7 @@ exports.makeInputParameters = makeInputParameters;
 
 /***/ }),
 
-/***/ 856:
+/***/ 741:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3400,7 +3400,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OctopusCliWrapper = void 0;
-const exec_1 = __nccwpck_require__(514);
+const exec_1 = __nccwpck_require__(642);
 class OctopusCliWrapper {
     constructor(parameters, env, logInfo, logWarn) {
         this.inputParameters = parameters;
@@ -3522,6 +3522,7 @@ class OctopusCliWrapper {
     createRelease(octoExecutable = 'octo') {
         return __awaiter(this, void 0, void 0, function* () {
             const cliLaunchConfiguration = this.generateLaunchConfig();
+            this.logInfo(JSON.stringify({ exe: octoExecutable, config: cliLaunchConfiguration }));
             const options = {
                 listeners: {
                     stdline: input => this.stdline(input)
@@ -3530,7 +3531,8 @@ class OctopusCliWrapper {
                 silent: true
             };
             try {
-                yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
+                const exitCode = yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
+                this.logInfo(`Octopus CLI succeeded with exit code ${exitCode}`);
                 return this.outputReleaseNumber;
             }
             catch (e) {
@@ -3539,9 +3541,9 @@ class OctopusCliWrapper {
                     if (e.message.includes('Unable to locate executable file')) {
                         throw new Error('Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.');
                     }
-                    if (e.message.includes('failed with exit code')) {
-                        throw new Error('Octopus CLI returned an error code. Please check your GitHub actions log for more detail');
-                    }
+                    // if (e.message.includes('failed with exit code')) {
+                    //   throw new Error('Octopus CLI returned an error code. Please check your GitHub actions log for more detail')
+                    // }
                 }
                 // rethrow, so our Promise is rejected. The GHA shim in index.ts will catch this and call setFailed
                 throw e;
@@ -3700,7 +3702,7 @@ module.exports = require("util");
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(148);
+/******/ 	var __webpack_exports__ = __nccwpck_require__(902);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()

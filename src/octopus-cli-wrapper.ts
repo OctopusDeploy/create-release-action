@@ -180,6 +180,9 @@ export class OctopusCliWrapper {
   // This shells out to 'octo' and expects to be running in GHA, so you can't unit test it; integration tests only.
   async createRelease(octoExecutable = 'octo'): Promise<string | undefined> {
     const cliLaunchConfiguration = this.generateLaunchConfig()
+
+    this.logInfo(JSON.stringify({ exe: octoExecutable, config: cliLaunchConfiguration }))
+
     const options: ExecOptions = {
       listeners: {
         stdline: input => this.stdline(input)
@@ -189,7 +192,8 @@ export class OctopusCliWrapper {
     }
 
     try {
-      await exec(octoExecutable, cliLaunchConfiguration.args, options)
+      const exitCode = await exec(octoExecutable, cliLaunchConfiguration.args, options)
+      this.logInfo(`Octopus CLI succeeded with exit code ${exitCode}`)
       return this.outputReleaseNumber
     } catch (e: unknown) {
       if (e instanceof Error) {
@@ -199,9 +203,9 @@ export class OctopusCliWrapper {
             'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
           )
         }
-        if (e.message.includes('failed with exit code')) {
-          throw new Error('Octopus CLI returned an error code. Please check your GitHub actions log for more detail')
-        }
+        // if (e.message.includes('failed with exit code')) {
+        //   throw new Error('Octopus CLI returned an error code. Please check your GitHub actions log for more detail')
+        // }
       }
       // rethrow, so our Promise is rejected. The GHA shim in index.ts will catch this and call setFailed
       throw e
