@@ -191,6 +191,9 @@ export class OctopusCliWrapper {
       silent: true
     }
 
+    process.env.OCTOPUS_CLI_API_KEY = cliLaunchConfiguration.env.OCTOPUS_CLI_API_KEY
+    process.env.OCTOPUS_CLI_SERVER = cliLaunchConfiguration.env.OCTOPUS_CLI_SERVER
+
     try {
       const exitCode = await exec(octoExecutable, cliLaunchConfiguration.args, options)
       this.logInfo(`Octopus CLI succeeded with exit code ${exitCode}`)
