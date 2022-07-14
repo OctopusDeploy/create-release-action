@@ -187,12 +187,12 @@ export class OctopusCliWrapper {
       listeners: {
         stdline: input => this.stdline(input)
       },
-      env: cliLaunchConfiguration.env,
+      // env: cliLaunchConfiguration.env,
       silent: true
     }
 
     try {
-      const exitCode = await exec(octoExecutable, cliLaunchConfiguration.args)
+      const exitCode = await exec(octoExecutable, cliLaunchConfiguration.args, options)
       this.logInfo(`Octopus CLI succeeded with exit code ${exitCode}`)
       return this.outputReleaseNumber
     } catch (e: unknown) {

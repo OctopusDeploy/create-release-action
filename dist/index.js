@@ -3527,11 +3527,11 @@ class OctopusCliWrapper {
                 listeners: {
                     stdline: input => this.stdline(input)
                 },
-                env: cliLaunchConfiguration.env,
+                // env: cliLaunchConfiguration.env,
                 silent: true
             };
             try {
-                const exitCode = yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args);
+                const exitCode = yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
                 this.logInfo(`Octopus CLI succeeded with exit code ${exitCode}`);
                 return this.outputReleaseNumber;
             }
