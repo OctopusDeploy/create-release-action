@@ -3522,16 +3522,15 @@ class OctopusCliWrapper {
     createRelease(octoExecutable = 'octo') {
         return __awaiter(this, void 0, void 0, function* () {
             const cliLaunchConfiguration = this.generateLaunchConfig();
-            this.logInfo(JSON.stringify({ exe: octoExecutable, config: cliLaunchConfiguration }));
+            const envCopy = Object.assign({}, process.env);
+            Object.assign(envCopy, cliLaunchConfiguration.env);
             const options = {
                 listeners: {
                     stdline: input => this.stdline(input)
                 },
-                env: cliLaunchConfiguration.env,
+                env: envCopy,
                 silent: true
             };
-            // process.env.OCTOPUS_CLI_API_KEY = cliLaunchConfiguration.env.OCTOPUS_CLI_API_KEY
-            // process.env.OCTOPUS_CLI_SERVER = cliLaunchConfiguration.env.OCTOPUS_CLI_SERVER
             try {
                 const exitCode = yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
                 this.logInfo(`Octopus CLI succeeded with exit code ${exitCode}`);
@@ -3543,9 +3542,6 @@ class OctopusCliWrapper {
                     if (e.message.includes('Unable to locate executable file')) {
                         throw new Error('Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.');
                     }
-                    // if (e.message.includes('failed with exit code')) {
-                    //   throw new Error('Octopus CLI returned an error code. Please check your GitHub actions log for more detail')
-                    // }
                 }
                 // rethrow, so our Promise is rejected. The GHA shim in index.ts will catch this and call setFailed
                 throw e;
