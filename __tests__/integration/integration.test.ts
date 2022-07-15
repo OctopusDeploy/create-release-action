@@ -20,10 +20,10 @@ import { platform } from 'os'
 // all resources created by this script have a GUID in
 // their name so we they don't clash with prior test runs
 
-const octoExecutable = process.env.OCTOPUS_TEST_CLI_PATH || 'C:/Dev/OctopusCLI/source/Octo/bin/Debug/net6.0/octo.exe' // 'octo' // if 'octo' isn't in your system path, you can override it for tests here
+const octoExecutable = process.env.OCTOPUS_TEST_CLI_PATH || 'octo' // if 'octo' isn't in your system path, you can override it for tests here
 
 const apiClientConfig: ClientConfiguration = {
-  apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-CH2CRPDPGINVXMKOY2DFIIIGRPROV',
+  apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
   apiUri: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050'
 }
 
