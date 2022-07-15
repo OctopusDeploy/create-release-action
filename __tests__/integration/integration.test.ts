@@ -7,6 +7,7 @@ import { randomBytes } from 'crypto'
 import { CleanupHelper } from './cleanup-helper'
 import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/runConditionForAction'
 import { setOutput } from '@actions/core'
+import { platform } from 'os'
 
 // NOTE: These tests assume Octopus is running and connectable.
 // In the build pipeline they are run as part of a build.yml file which populates
@@ -19,10 +20,10 @@ import { setOutput } from '@actions/core'
 // all resources created by this script have a GUID in
 // their name so we they don't clash with prior test runs
 
-const octoExecutable = process.env.OCTOPUS_TEST_CLI_PATH || 'octo' // if 'octo' isn't in your system path, you can override it for tests here
+const octoExecutable = process.env.OCTOPUS_TEST_CLI_PATH || 'C:/Dev/OctopusCLI/source/Octo/bin/Debug/net6.0/octo.exe' // 'octo' // if 'octo' isn't in your system path, you can override it for tests here
 
 const apiClientConfig: ClientConfiguration = {
-  apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-CH2CRPDPGINVXMKOY2DFIIIGRPROV',
   apiUri: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050'
 }
 
@@ -182,6 +183,31 @@ describe('integration tests', () => {
     expect(messages).toEqual([])
   })
 
+  test('fails picks up stderr from executable as well as return codes', async () => {
+    const infoMessages: string[] = []
+    const warnMessages: string[] = []
+
+    const w = new OctopusCliWrapper(
+      standardInputParameters,
+      {},
+      m => infoMessages.push(m),
+      m => warnMessages.push(m)
+    )
+
+    const isWindows = platform().includes('win')
+
+    const failingExecutable = isWindows
+      ? `${__dirname}\\erroring_executable.cmd`
+      : `${__dirname}/erroring_executable.sh`
+
+    await expect(() => w.createRelease(failingExecutable)).rejects.toThrow(
+      `The process '${failingExecutable}' failed with exit code 4294967295` // 4294967295 is -1
+    )
+
+    expect(infoMessages).toEqual(['An informational Message'])
+    expect(warnMessages).toEqual(['An error message ']) // trailing space is deliberate because of windows bat file
+  })
+
   test('fails with error if CLI returns an error code', async () => {
     const infos: string[] = []
     const warnings: string[] = []
@@ -198,7 +224,7 @@ describe('integration tests', () => {
     )
 
     await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
-      'Octopus CLI returned an error code. Please check your GitHub actions log for more detail'
+      `The process '${octoExecutable}' failed with exit code 4294967295`
     )
 
     expect(warnings).toEqual([])
@@ -230,7 +256,7 @@ describe('integration tests', () => {
     )
 
     await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
-      'Octopus CLI returned an error code. Please check your GitHub actions log for more detail'
+      `The process '${octoExecutable}' failed with exit code 4294967291`
     )
 
     expect(warnings).toEqual([])

@@ -26,6 +26,13 @@ export class OctopusCliWrapper {
     this.logWarn = logWarn
   }
 
+  errline(line: string): void {
+    if (line.length === 0) {
+      return
+    }
+    this.logWarn(line)
+  }
+
   // When the Octopus CLI writes to stdout, we capture the text via this function
   stdline(line: string): void {
     if (line.length === 0) {
@@ -186,15 +193,15 @@ export class OctopusCliWrapper {
 
     const options: ExecOptions = {
       listeners: {
-        stdline: input => this.stdline(input)
+        stdline: input => this.stdline(input),
+        errline: input => this.errline(input)
       },
       env: envCopy,
       silent: true
     }
 
     try {
-      const exitCode = await exec(octoExecutable, cliLaunchConfiguration.args, options)
-      this.logInfo(`Octopus CLI succeeded with exit code ${exitCode}`)
+      await exec(octoExecutable, cliLaunchConfiguration.args, options)
       return this.outputReleaseNumber
     } catch (e: unknown) {
       if (e instanceof Error) {

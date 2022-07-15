@@ -32,6 +32,16 @@ test('standard commandline processing', () => {
   ])
 })
 
+test('standard error processing also removes blank lines', () => {
+  w.errline('')
+  w.errline('FAILED')
+  w.errline('')
+
+  expect(infoMessages).toEqual([])
+  expect(warnMessages).toEqual(['FAILED'])
+  warnMessages = [] // so the afterEach doesn't trip
+})
+
 test('picks up release number for output - auto-generated number format', () => {
   expect(w.outputReleaseNumber).toBeUndefined()
 
