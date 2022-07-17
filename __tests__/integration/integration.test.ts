@@ -145,7 +145,7 @@ describe('integration tests', () => {
 
     expectMatchAll(messages, [
       /Octopus CLI, version .*/,
-      'Detected automation environment: "NoneOrUnknown"',
+      /Detected automation environment/, // Locally this detects "NoneOrUnknown", in GHA it detects "GitHubActions"
       'Space name unspecified, process will run in the default space context',
       '🤝 Handshaking with Octopus Deploy',
       /Handshake successful. Octopus version: .*/,
@@ -230,7 +230,7 @@ describe('integration tests', () => {
     expect(warnings).toEqual([])
     expectMatchAll(infos, [
       /Octopus CLI, version .*/,
-      'Detected automation environment: "NoneOrUnknown"',
+      /Detected automation environment/,
       'Space name unspecified, process will run in the default space context',
       '🤝 Handshaking with Octopus Deploy',
       /Handshake successful. Octopus version: .*/,
@@ -262,7 +262,7 @@ describe('integration tests', () => {
     expect(warnings).toEqual([])
     expectMatchAll(infos, [
       /Octopus CLI, version .*/,
-      'Detected automation environment: "NoneOrUnknown"',
+      /Detected automation environment/,
       /The API key you provided was not valid. Please double-check your API key and try again. For instructions on finding your API key, please visit:/, // partial match because the URL might be oc.to or g.octopushq.com depending on how old the CLI is
       'Exit code: -5'
     ])
