@@ -22,6 +22,8 @@ import { platform } from 'os'
 
 const octoExecutable = process.env.OCTOPUS_TEST_CLI_PATH || 'octo' // if 'octo' isn't in your system path, you can override it for tests here
 
+const isWindows = platform().includes('win')
+
 const apiClientConfig: ClientConfiguration = {
   apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
   apiUri: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050'
@@ -194,14 +196,13 @@ describe('integration tests', () => {
       m => warnMessages.push(m)
     )
 
-    const isWindows = platform().includes('win')
-
     const failingExecutable = isWindows
       ? `${__dirname}\\erroring_executable.cmd`
       : `${__dirname}/erroring_executable.sh`
 
+    const expectedExitCode = 37
     await expect(() => w.createRelease(failingExecutable)).rejects.toThrow(
-      `The process '${failingExecutable}' failed with exit code 4294967295` // 4294967295 is -1
+      `The process '${failingExecutable}' failed with exit code ${expectedExitCode}`
     )
 
     expect(infoMessages).toEqual(['An informational Message'])
@@ -223,8 +224,9 @@ describe('integration tests', () => {
       m => warnings.push(m)
     )
 
+    const expectedExitCode = isWindows ? 4294967295 : 255 // Process should return -1 which maps to 4294967295 on windows or 255 on linux
     await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
-      `The process '${octoExecutable}' failed with exit code 4294967295`
+      `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
     )
 
     expect(warnings).toEqual([])
@@ -255,8 +257,9 @@ describe('integration tests', () => {
       m => warnings.push(m)
     )
 
+    const expectedExitCode = isWindows ? 4294967291 : 2 // Process should return -3 which maps to 4294967291 on windows or 2 on linux
     await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
-      `The process '${octoExecutable}' failed with exit code 4294967291`
+      `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
     )
 
     expect(warnings).toEqual([])
