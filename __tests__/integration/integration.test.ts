@@ -1,6 +1,6 @@
-import { getInputParameters, makeInputParameters } from '../../src/input-parameters'
+import { makeInputParameters } from '../../src/input-parameters'
 import { createRelease } from '../../src/index'
-import { CliInputs, OctopusCliOutputHandler } from '../../src/octopus-cli-wrapper'
+import { CliInputs } from '../../src/octopus-cli-wrapper'
 // we use the Octopus API client to setup and teardown integration test data, it doesn't form part of create-release-action at this point
 import { PackageRequirement, RunCondition, StartTrigger } from '@octopusdeploy/message-contracts'
 import { Client, ClientConfiguration, Repository } from '@octopusdeploy/api-client'
@@ -8,9 +8,10 @@ import { randomBytes } from 'crypto'
 import { CleanupHelper } from './cleanup-helper'
 import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/runConditionForAction'
 import { setOutput } from '@actions/core'
-import { platform } from 'os'
+import { platform, tmpdir } from 'os'
 import { CaptureOutput } from '../test-helpers'
-import exp from 'constants'
+import { chmodSync, mkdirSync, rmSync, writeFileSync } from 'fs'
+import { join as pathJoin } from 'path'
 
 // NOTE: These tests assume Octopus is running and connectable.
 // In the build pipeline they are run as part of a build.yml file which populates
@@ -191,18 +192,32 @@ describe('integration tests', () => {
   test('fails picks up stderr from executable as well as return codes', async () => {
     const output = new CaptureOutput()
 
-    const failingExecutable = isWindows
-      ? `${__dirname}\\erroring_executable.cmd`
-      : `${__dirname}/erroring_executable.sh`
+    let tmpDirPath = pathJoin(tmpdir(), runId)
+    mkdirSync(tmpDirPath)
+
+    let exePath: string
+    if (isWindows) {
+      const fileContents =
+        '@echo off\n' + 'echo An informational Message\n' + 'echo An error message 1>&2\n' + 'exit /b 37'
+      exePath = pathJoin(tmpDirPath, 'erroring_executable.cmd')
+      writeFileSync(exePath, fileContents)
+    } else {
+      const fileContents = 'echo An informational Message\n' + '>&2 echo "An error message "\n' + '(exit 37)'
+      exePath = pathJoin(tmpDirPath, 'erroring_executable.sh')
+      writeFileSync(exePath, fileContents)
+      chmodSync(exePath, '755')
+    }
 
     const expectedExitCode = 37
     try {
-      await createRelease(standardCliInputs, output, failingExecutable)
+      await createRelease(standardCliInputs, output, exePath)
       throw new Error('should not get here: expecting createRelease to throw an exception')
     } catch (err: any) {
       expect(err.message).toMatch(
         new RegExp(`The process .*erroring_executable.* failed with exit code ${expectedExitCode}`)
       )
+    } finally {
+      rmSync(tmpDirPath, { recursive: true })
     }
 
     expect(output.infos).toEqual(['An informational Message'])
