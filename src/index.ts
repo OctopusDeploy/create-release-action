@@ -75,4 +75,6 @@ async function run(): Promise<void> {
   }
 }
 
-run()
+if (process.env.GITHUB_ACTIONS) {
+  run()
+}

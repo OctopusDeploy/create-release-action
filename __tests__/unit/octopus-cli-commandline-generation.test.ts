@@ -1,6 +1,5 @@
 import { makeInputParameters } from '../../src/input-parameters'
 import { generateLaunchConfig } from '../../src/octopus-cli-wrapper'
-import { CaptureOutput } from '../test-helpers'
 
 test('no parameters', () => {
   const launchInfo = generateLaunchConfig({ parameters: makeInputParameters(), env: {} }, console)

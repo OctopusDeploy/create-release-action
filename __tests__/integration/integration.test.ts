@@ -47,11 +47,6 @@ function expectMatchAll(actual: string[], expected: (string | RegExp)[]) {
 
 describe('integration tests', () => {
   const runId = randomBytes(16).toString('hex')
-  // we are an integration test running real nodejs here
-  const realInputs: CliInputs = {
-    env: process.env,
-    parameters: getInputParameters()
-  }
 
   const globalCleanup = new CleanupHelper()
 
@@ -61,6 +56,11 @@ describe('integration tests', () => {
     apiKey: apiClientConfig.apiKey,
     server: apiClientConfig.apiUri
   })
+
+  const standardCliInputs: CliInputs = {
+    env: process.env,
+    parameters: standardInputParameters
+  }
 
   let apiClient: Client
   beforeAll(async () => {
@@ -141,7 +141,7 @@ describe('integration tests', () => {
 
   test('can create a release', async () => {
     const output = new CaptureOutput()
-    const result = await createRelease(realInputs, output, octoExecutable)
+    const result = await createRelease(standardCliInputs, output, octoExecutable)
 
     // The first release in the project, so it should always have 0.0.1
     expect(result).toEqual('0.0.1')
@@ -171,7 +171,7 @@ describe('integration tests', () => {
 
   test('fails with error if CLI executable not found', async () => {
     const output = new CaptureOutput()
-    await expect(() => createRelease(realInputs, output, 'not-octo')).rejects.toThrow(
+    await expect(() => createRelease(standardCliInputs, output, 'not-octo')).rejects.toThrow(
       'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
     )
 
@@ -186,7 +186,7 @@ describe('integration tests', () => {
       : `${__dirname}/erroring_executable.sh`
 
     const expectedExitCode = 37
-    await expect(() => createRelease(realInputs, output, failingExecutable)).rejects.toThrow(
+    await expect(() => createRelease(standardCliInputs, output, failingExecutable)).rejects.toThrow(
       `The process '${failingExecutable}' failed with exit code ${expectedExitCode}`
     )
 
@@ -198,7 +198,15 @@ describe('integration tests', () => {
     const output = new CaptureOutput()
 
     const expectedExitCode = isWindows ? 4294967295 : 255 // Process should return -1 which maps to 4294967295 on windows or 255 on linux
-    await expect(() => createRelease(realInputs, output, octoExecutable)).rejects.toThrow(
+    const cliInputs = {
+      parameters: makeInputParameters({
+        // no project
+        apiKey: apiClientConfig.apiKey,
+        server: apiClientConfig.apiUri
+      }),
+      env: {}
+    }
+    await expect(() => createRelease(cliInputs, output, octoExecutable)).rejects.toThrow(
       `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
     )
 
@@ -219,7 +227,17 @@ describe('integration tests', () => {
     const output = new CaptureOutput()
 
     const expectedExitCode = isWindows ? 4294967291 : 2 // Process should return -3 which maps to 4294967291 on windows or 2 on linux
-    await expect(() => createRelease(realInputs, output, octoExecutable)).rejects.toThrow(
+
+    const cliInputs = {
+      parameters: makeInputParameters({
+        project: localProjectName,
+        apiKey: apiClientConfig.apiKey + 'ZZZ',
+        server: apiClientConfig.apiUri
+      }),
+      env: {}
+    }
+
+    await expect(() => createRelease(cliInputs, output, octoExecutable)).rejects.toThrow(
       `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
     )
 
