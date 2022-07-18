@@ -83,5 +83,5 @@
     "test:unit": "jest --ci --reporters=default --reporters=jest-junit --testPathPattern=__tests__/unit",
     "test:integration": "jest --ci --reporters=default --reporters=jest-junit --testPathPattern=__tests__/integration"
   },
-  "version": "2.0.0"
+  "version": "2.0.1"
 }

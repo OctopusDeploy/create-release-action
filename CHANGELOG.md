@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1](https://github.com/OctopusDeploy/create-release-action/compare/v2.0.0...v2.0.1) (2022-07-18)
+
+
+### Bug Fixes
+
+* Environment variables from the GitHub action context were not passed through to the underlying Octopus CLI ([d43577d](https://github.com/OctopusDeploy/create-release-action/commit/d43577d3aa0a92195c1b124a440e3e67eea3c2a7)), closes [#318](https://github.com/OctopusDeploy/create-release-action/issues/318)
+* StdError and the process exit code returned by the CLI are now shown in Github Action runs ([d43577d](https://github.com/OctopusDeploy/create-release-action/commit/d43577d3aa0a92195c1b124a440e3e67eea3c2a7))
+
 ## [2.0.0](https://github.com/OctopusDeploy/create-release-action/compare/v1.2.0...v2.0.0) (2022-07-13)
 
 
