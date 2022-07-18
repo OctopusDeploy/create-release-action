@@ -3346,56 +3346,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.createRelease = void 0;
 const input_parameters_1 = __nccwpck_require__(519);
 const core_1 = __nccwpck_require__(186);
 const octopus_cli_wrapper_1 = __nccwpck_require__(856);
 const fs_1 = __nccwpck_require__(147);
-const exec_1 = __nccwpck_require__(514);
-// This invokes the CLI to do the work.
-// Returns the release number assigned by the octopus server
-// This shells out to 'octo' and expects to be running in GHA, so you can't unit test it; integration tests only.
-function createRelease(inputs, output, octoExecutable) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const outputHandler = new octopus_cli_wrapper_1.OctopusCliOutputHandler(output);
-        const cliLaunchConfiguration = (0, octopus_cli_wrapper_1.generateLaunchConfig)(inputs, output);
-        // the launch config will only have the specific few env vars that the script wants to set.
-        // Need to merge with the rest of the environment variables, otherwise we will pass a
-        // stripped environment through to the CLI and it won't have meaningful things like HOME and PATH
-        const envCopy = Object.assign({}, process.env);
-        Object.assign(envCopy, cliLaunchConfiguration.env);
-        const options = {
-            listeners: {
-                stdline: input => outputHandler.stdline(input),
-                errline: input => outputHandler.errline(input)
-            },
-            env: envCopy,
-            silent: true
-        };
-        try {
-            yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
-            return outputHandler.outputReleaseNumber;
-        }
-        catch (e) {
-            if (e instanceof Error) {
-                // catch some particular messages and rethrow more convenient ones
-                if (e.message.includes('Unable to locate executable file')) {
-                    throw new Error(`Octopus CLI executable missing. Ensure you have added the 'OctopusDeploy/install-octopus-cli-action@v1' step to your GitHub actions workflow.\nError: ${e.message}`);
-                }
-            }
-            // rethrow, so our Promise is rejected. The GHA shim in index.ts will catch this and call setFailed
-            throw e;
-        }
-    });
-}
-exports.createRelease = createRelease;
 // GitHub actions entrypoint
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const inputs = { parameters: (0, input_parameters_1.getInputParameters)(), env: process.env };
             const outputs = { info: s => (0, core_1.info)(s), warn: s => (0, core_1.warning)(s) };
-            const allocatedReleaseNumber = yield createRelease(inputs, outputs, 'octo');
+            const allocatedReleaseNumber = yield (0, octopus_cli_wrapper_1.createRelease)(inputs, outputs, 'octo');
             if (allocatedReleaseNumber) {
                 (0, core_1.setOutput)('release_number', allocatedReleaseNumber);
             }
@@ -3411,9 +3372,7 @@ function run() {
         }
     });
 }
-if (process.env.GITHUB_ACTIONS) {
-    run();
-}
+run();
 
 
 /***/ }),
@@ -3477,12 +3436,22 @@ exports.makeInputParameters = makeInputParameters;
 /***/ }),
 
 /***/ 856:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.OctopusCliOutputHandler = exports.generateLaunchConfig = void 0;
+exports.createRelease = exports.OctopusCliOutputHandler = exports.generateLaunchConfig = void 0;
+const exec_1 = __nccwpck_require__(514);
 const cli_util_1 = __nccwpck_require__(996);
 // Converts incoming environment and inputParameters into a set of commandline args + env vars to run the Octopus CLI
 function generateLaunchConfig(inputs, output) {
@@ -3574,6 +3543,43 @@ class OctopusCliOutputHandler {
     }
 }
 exports.OctopusCliOutputHandler = OctopusCliOutputHandler;
+// This invokes the CLI to do the work.
+// Returns the release number assigned by the octopus server
+// This shells out to 'octo' and expects to be running in GHA, so you can't unit test it; integration tests only.
+function createRelease(inputs, output, octoExecutable) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const outputHandler = new OctopusCliOutputHandler(output);
+        const cliLaunchConfiguration = generateLaunchConfig(inputs, output);
+        // the launch config will only have the specific few env vars that the script wants to set.
+        // Need to merge with the rest of the environment variables, otherwise we will pass a
+        // stripped environment through to the CLI and it won't have meaningful things like HOME and PATH
+        const envCopy = Object.assign({}, process.env);
+        Object.assign(envCopy, cliLaunchConfiguration.env);
+        const options = {
+            listeners: {
+                stdline: input => outputHandler.stdline(input),
+                errline: input => outputHandler.errline(input)
+            },
+            env: envCopy,
+            silent: true
+        };
+        try {
+            yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
+            return outputHandler.outputReleaseNumber;
+        }
+        catch (e) {
+            if (e instanceof Error) {
+                // catch some particular messages and rethrow more convenient ones
+                if (e.message.includes('Unable to locate executable file')) {
+                    throw new Error(`Octopus CLI executable missing. Ensure you have added the 'OctopusDeploy/install-octopus-cli-action@v1' step to your GitHub actions workflow.\nError: ${e.message}`);
+                }
+            }
+            // rethrow, so our Promise is rejected. The GHA shim in index.ts will catch this and call setFailed
+            throw e;
+        }
+    });
+}
+exports.createRelease = createRelease;
 
 
 /***/ }),

@@ -1,6 +1,5 @@
 import { makeInputParameters } from '../../src/input-parameters'
-import { createRelease } from '../../src/index'
-import { CliInputs } from '../../src/octopus-cli-wrapper'
+import { CliInputs, createRelease } from '../../src/octopus-cli-wrapper'
 // we use the Octopus API client to setup and teardown integration test data, it doesn't form part of create-release-action at this point
 import { PackageRequirement, RunCondition, StartTrigger } from '@octopusdeploy/message-contracts'
 import { Client, ClientConfiguration, Repository } from '@octopusdeploy/api-client'
@@ -29,7 +28,7 @@ const octoExecutable = process.env.OCTOPUS_TEST_CLI_PATH || 'octo' // if 'octo' 
 const isWindows = platform().includes('win')
 
 const apiClientConfig: ClientConfiguration = {
-  apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
   apiUri: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050'
 }
 
