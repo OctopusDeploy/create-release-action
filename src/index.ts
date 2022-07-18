@@ -11,9 +11,10 @@ import { CliOutput } from './cli-util'
 export async function createRelease(
   inputs: CliInputs,
   output: CliOutput,
-  wrapper: OctopusCliOutputHandler,
-  octoExecutable = 'octo'
+  octoExecutable: string
 ): Promise<string | undefined> {
+  const outputHandler = new OctopusCliOutputHandler(output)
+
   const cliLaunchConfiguration = generateLaunchConfig(inputs, output)
 
   // the launch config will only have the specific few env vars that the script wants to set.
@@ -24,8 +25,8 @@ export async function createRelease(
 
   const options: ExecOptions = {
     listeners: {
-      stdline: input => wrapper.stdline(input),
-      errline: input => wrapper.errline(input)
+      stdline: input => outputHandler.stdline(input),
+      errline: input => outputHandler.errline(input)
     },
     env: envCopy,
     silent: true
@@ -33,7 +34,7 @@ export async function createRelease(
 
   try {
     await exec(octoExecutable, cliLaunchConfiguration.args, options)
-    return wrapper.outputReleaseNumber
+    return outputHandler.outputReleaseNumber
   } catch (e: unknown) {
     if (e instanceof Error) {
       // catch some particular messages and rethrow more convenient ones
@@ -54,9 +55,7 @@ async function run(): Promise<void> {
     const inputs: CliInputs = { parameters: getInputParameters(), env: process.env }
     const outputs: CliOutput = { info: s => info(s), warn: s => warning(s) }
 
-    const outputHandler = new OctopusCliOutputHandler(outputs)
-
-    const allocatedReleaseNumber = await createRelease(inputs, outputs, outputHandler)
+    const allocatedReleaseNumber = await createRelease(inputs, outputs, 'octo')
 
     if (allocatedReleaseNumber) {
       setOutput('release_number', allocatedReleaseNumber)

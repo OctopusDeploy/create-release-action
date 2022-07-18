@@ -9,7 +9,7 @@ import { CleanupHelper } from './cleanup-helper'
 import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/runConditionForAction'
 import { setOutput } from '@actions/core'
 import { platform } from 'os'
-import { CliOutput } from '../../src/cli-util'
+import { CaptureOutput } from '../test-helpers'
 
 // NOTE: These tests assume Octopus is running and connectable.
 // In the build pipeline they are run as part of a build.yml file which populates
@@ -140,16 +140,13 @@ describe('integration tests', () => {
   })
 
   test('can create a release', async () => {
-    const messages: string[] = []
-    const output: CliOutput = { info: m => messages.push(m), warn: m => messages.push(m) }
-
-    const w = new OctopusCliOutputHandler(output)
-    const result = await createRelease(realInputs, output, w, octoExecutable)
+    const output = new CaptureOutput()
+    const result = await createRelease(realInputs, output, octoExecutable)
 
     // The first release in the project, so it should always have 0.0.1
     expect(result).toEqual('0.0.1')
 
-    expectMatchAll(messages, [
+    expectMatchAll(output.getAllMessages(), [
       /Octopus CLI, version .*/,
       /Detected automation environment/, // Locally this detects "NoneOrUnknown", in GHA it detects "GitHubActions"
       'Space name unspecified, process will run in the default space context',
@@ -173,52 +170,40 @@ describe('integration tests', () => {
   })
 
   test('fails with error if CLI executable not found', async () => {
-    const messages: string[] = []
-    const output: CliOutput = { info: m => messages.push(m), warn: m => messages.push(m) }
-
-    const w = new OctopusCliOutputHandler(output)
-
-    await expect(() => createRelease(realInputs, output, w, 'not-octo')).rejects.toThrow(
+    const output = new CaptureOutput()
+    await expect(() => createRelease(realInputs, output, 'not-octo')).rejects.toThrow(
       'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
     )
 
-    expect(messages).toEqual([])
+    expect(output.getAllMessages()).toEqual([])
   })
 
   test('fails picks up stderr from executable as well as return codes', async () => {
-    const infoMessages: string[] = []
-    const warnMessages: string[] = []
-
-    const output: CliOutput = { info: m => infoMessages.push(m), warn: m => warnMessages.push(m) }
-    const w = new OctopusCliOutputHandler(output)
+    const output = new CaptureOutput()
 
     const failingExecutable = isWindows
       ? `${__dirname}\\erroring_executable.cmd`
       : `${__dirname}/erroring_executable.sh`
 
     const expectedExitCode = 37
-    await expect(() => createRelease(realInputs, output, w, failingExecutable)).rejects.toThrow(
+    await expect(() => createRelease(realInputs, output, failingExecutable)).rejects.toThrow(
       `The process '${failingExecutable}' failed with exit code ${expectedExitCode}`
     )
 
-    expect(infoMessages).toEqual(['An informational Message'])
-    expect(warnMessages).toEqual(['An error message ']) // trailing space is deliberate because of windows bat file
+    expect(output.infos).toEqual(['An informational Message'])
+    expect(output.warns).toEqual(['An error message ']) // trailing space is deliberate because of windows bat file
   })
 
   test('fails with error if CLI returns an error code', async () => {
-    const infos: string[] = []
-    const warnings: string[] = []
-    const output: CliOutput = { info: m => infos.push(m), warn: m => warnings.push(m) }
-
-    const w = new OctopusCliOutputHandler(output)
+    const output = new CaptureOutput()
 
     const expectedExitCode = isWindows ? 4294967295 : 255 // Process should return -1 which maps to 4294967295 on windows or 255 on linux
-    await expect(() => createRelease(realInputs, output, w, octoExecutable)).rejects.toThrow(
+    await expect(() => createRelease(realInputs, output, octoExecutable)).rejects.toThrow(
       `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
     )
 
-    expect(warnings).toEqual([])
-    expectMatchAll(infos, [
+    expect(output.warns).toEqual([])
+    expectMatchAll(output.infos, [
       /Octopus CLI, version .*/,
       /Detected automation environment/,
       'Space name unspecified, process will run in the default space context',
@@ -231,19 +216,15 @@ describe('integration tests', () => {
   })
 
   test('fails with error if CLI returns an error code (bad auth)', async () => {
-    const infos: string[] = []
-    const warnings: string[] = []
-    const output: CliOutput = { info: m => infos.push(m), warn: m => warnings.push(m) }
-
-    const w = new OctopusCliOutputHandler(output)
+    const output = new CaptureOutput()
 
     const expectedExitCode = isWindows ? 4294967291 : 2 // Process should return -3 which maps to 4294967291 on windows or 2 on linux
-    await expect(() => createRelease(realInputs, output, w, octoExecutable)).rejects.toThrow(
+    await expect(() => createRelease(realInputs, output, octoExecutable)).rejects.toThrow(
       `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
     )
 
-    expect(warnings).toEqual([])
-    expectMatchAll(infos, [
+    expect(output.warns).toEqual([])
+    expectMatchAll(output.infos, [
       /Octopus CLI, version .*/,
       /Detected automation environment/,
       /The API key you provided was not valid. Please double-check your API key and try again. For instructions on finding your API key, please visit:/, // partial match because the URL might be oc.to or g.octopushq.com depending on how old the CLI is
