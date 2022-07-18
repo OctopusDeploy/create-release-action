@@ -10,6 +10,7 @@ import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/run
 import { setOutput } from '@actions/core'
 import { platform } from 'os'
 import { CaptureOutput } from '../test-helpers'
+import exp from 'constants'
 
 // NOTE: These tests assume Octopus is running and connectable.
 // In the build pipeline they are run as part of a build.yml file which populates
@@ -171,9 +172,14 @@ describe('integration tests', () => {
 
   test('fails with error if CLI executable not found', async () => {
     const output = new CaptureOutput()
-    await expect(() => createRelease(standardCliInputs, output, 'not-octo')).rejects.toThrow(
-      'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
-    )
+    try {
+      await createRelease(standardCliInputs, output, 'not-octo')
+      throw new Error('should not get here: expecting createRelease to throw an exception')
+    } catch (err: any) {
+      expect(err.message).toEqual(
+        'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
+      )
+    }
 
     expect(output.getAllMessages()).toEqual([])
   })
@@ -186,9 +192,14 @@ describe('integration tests', () => {
       : `${__dirname}/erroring_executable.sh`
 
     const expectedExitCode = 37
-    await expect(() => createRelease(standardCliInputs, output, failingExecutable)).rejects.toThrow(
-      `The process '${failingExecutable}' failed with exit code ${expectedExitCode}`
-    )
+    try {
+      await createRelease(standardCliInputs, output, failingExecutable)
+      throw new Error('should not get here: expecting createRelease to throw an exception')
+    } catch (err: any) {
+      expect(err.message).toMatch(
+        new RegExp(`The process .*erroring_executable.* failed with exit code ${expectedExitCode}`)
+      )
+    }
 
     expect(output.infos).toEqual(['An informational Message'])
     expect(output.warns).toEqual(['An error message ']) // trailing space is deliberate because of windows bat file
@@ -206,9 +217,16 @@ describe('integration tests', () => {
       }),
       env: {}
     }
-    await expect(() => createRelease(cliInputs, output, octoExecutable)).rejects.toThrow(
-      `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
-    )
+
+    try {
+      await createRelease(cliInputs, output, octoExecutable)
+      throw new Error('should not get here: expecting createRelease to throw an exception')
+    } catch (err: any) {
+      expect(err.message).toMatch(
+        // regex because when run locally the output logs 'octo' but in GHA it logs '/opt/hostedtoolcache/octo/9.1.3/x64/octo'
+        new RegExp(`The process .*octo.* failed with exit code ${expectedExitCode}`)
+      )
+    }
 
     expect(output.warns).toEqual([])
     expectMatchAll(output.infos, [
@@ -237,9 +255,15 @@ describe('integration tests', () => {
       env: {}
     }
 
-    await expect(() => createRelease(cliInputs, output, octoExecutable)).rejects.toThrow(
-      `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
-    )
+    try {
+      await createRelease(cliInputs, output, octoExecutable)
+      throw new Error('should not get here: expecting createRelease to throw an exception')
+    } catch (err: any) {
+      expect(err.message).toMatch(
+        // regex because when run locally the output logs 'octo' but in GHA it logs '/opt/hostedtoolcache/octo/9.1.3/x64/octo'
+        new RegExp(`The process .*octo.* failed with exit code ${expectedExitCode}`)
+      )
+    }
 
     expect(output.warns).toEqual([])
     expectMatchAll(output.infos, [
