@@ -176,8 +176,12 @@ describe('integration tests', () => {
       await createRelease(standardCliInputs, output, 'not-octo')
       throw new Error('should not get here: expecting createRelease to throw an exception')
     } catch (err: any) {
-      expect(err.message).toEqual(
-        'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
+      expect(err.message).toMatch(
+        // regex because the error prints the underlying nodejs error which has different text on different platforms, and we're not worried about
+        // asserting on that
+        new RegExp(
+          "Octopus CLI executable missing. Ensure you have added the 'OctopusDeploy/install-octopus-cli-action@v1' step to your GitHub actions workflow"
+        )
       )
     }
 
