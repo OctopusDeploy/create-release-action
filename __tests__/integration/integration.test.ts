@@ -1,5 +1,5 @@
 import { makeInputParameters } from '../../src/input-parameters'
-import { OctopusCliWrapper } from '../../src/octopus-cli-wrapper'
+import { CliInputs, createRelease } from '../../src/octopus-cli-wrapper'
 // we use the Octopus API client to setup and teardown integration test data, it doesn't form part of create-release-action at this point
 import { PackageRequirement, RunCondition, StartTrigger } from '@octopusdeploy/message-contracts'
 import { Client, ClientConfiguration, Repository } from '@octopusdeploy/api-client'
@@ -7,6 +7,10 @@ import { randomBytes } from 'crypto'
 import { CleanupHelper } from './cleanup-helper'
 import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/runConditionForAction'
 import { setOutput } from '@actions/core'
+import { platform, tmpdir } from 'os'
+import { CaptureOutput } from '../test-helpers'
+import { chmodSync, mkdirSync, rmSync, writeFileSync } from 'fs'
+import { join as pathJoin } from 'path'
 
 // NOTE: These tests assume Octopus is running and connectable.
 // In the build pipeline they are run as part of a build.yml file which populates
@@ -20,6 +24,8 @@ import { setOutput } from '@actions/core'
 // their name so we they don't clash with prior test runs
 
 const octoExecutable = process.env.OCTOPUS_TEST_CLI_PATH || 'octo' // if 'octo' isn't in your system path, you can override it for tests here
+
+const isWindows = platform().includes('win')
 
 const apiClientConfig: ClientConfiguration = {
   apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
@@ -42,6 +48,7 @@ function expectMatchAll(actual: string[], expected: (string | RegExp)[]) {
 
 describe('integration tests', () => {
   const runId = randomBytes(16).toString('hex')
+
   const globalCleanup = new CleanupHelper()
 
   const localProjectName = `project${runId}`
@@ -50,6 +57,11 @@ describe('integration tests', () => {
     apiKey: apiClientConfig.apiKey,
     server: apiClientConfig.apiUri
   })
+
+  const standardCliInputs: CliInputs = {
+    env: process.env,
+    parameters: standardInputParameters
+  }
 
   let apiClient: Client
   beforeAll(async () => {
@@ -129,22 +141,15 @@ describe('integration tests', () => {
   })
 
   test('can create a release', async () => {
-    const messages: string[] = []
-
-    const w = new OctopusCliWrapper(
-      standardInputParameters,
-      {},
-      m => messages.push(m),
-      m => messages.push(m)
-    )
-    const result = await w.createRelease(octoExecutable)
+    const output = new CaptureOutput()
+    const result = await createRelease(standardCliInputs, output, octoExecutable)
 
     // The first release in the project, so it should always have 0.0.1
     expect(result).toEqual('0.0.1')
 
-    expectMatchAll(messages, [
+    expectMatchAll(output.getAllMessages(), [
       /Octopus CLI, version .*/,
-      'Detected automation environment: "NoneOrUnknown"',
+      /Detected automation environment/, // Locally this detects "NoneOrUnknown", in GHA it detects "GitHubActions"
       'Space name unspecified, process will run in the default space context',
       '🤝 Handshaking with Octopus Deploy',
       /Handshake successful. Octopus version: .*/,
@@ -166,45 +171,85 @@ describe('integration tests', () => {
   })
 
   test('fails with error if CLI executable not found', async () => {
-    const messages: string[] = []
+    const output = new CaptureOutput()
+    try {
+      await createRelease(standardCliInputs, output, 'not-octo')
+      throw new Error('should not get here: expecting createRelease to throw an exception')
+    } catch (err: any) {
+      expect(err.message).toMatch(
+        // regex because the error prints the underlying nodejs error which has different text on different platforms, and we're not worried about
+        // asserting on that
+        new RegExp(
+          "Octopus CLI executable missing. Ensure you have added the 'OctopusDeploy/install-octopus-cli-action@v1' step to your GitHub actions workflow"
+        )
+      )
+    }
 
-    const w = new OctopusCliWrapper(
-      standardInputParameters,
-      {},
-      m => messages.push(m),
-      m => messages.push(m)
-    )
+    expect(output.getAllMessages()).toEqual([])
+  })
 
-    await expect(() => w.createRelease('not-octo')).rejects.toThrow(
-      'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
-    )
+  test('fails picks up stderr from executable as well as return codes', async () => {
+    const output = new CaptureOutput()
 
-    expect(messages).toEqual([])
+    let tmpDirPath = pathJoin(tmpdir(), runId)
+    mkdirSync(tmpDirPath)
+
+    let exePath: string
+    if (isWindows) {
+      const fileContents =
+        '@echo off\n' + 'echo An informational Message\n' + 'echo An error message 1>&2\n' + 'exit /b 37'
+      exePath = pathJoin(tmpDirPath, 'erroring_executable.cmd')
+      writeFileSync(exePath, fileContents)
+    } else {
+      const fileContents = 'echo An informational Message\n' + '>&2 echo "An error message "\n' + '(exit 37)'
+      exePath = pathJoin(tmpDirPath, 'erroring_executable.sh')
+      writeFileSync(exePath, fileContents)
+      chmodSync(exePath, '755')
+    }
+
+    const expectedExitCode = 37
+    try {
+      await createRelease(standardCliInputs, output, exePath)
+      throw new Error('should not get here: expecting createRelease to throw an exception')
+    } catch (err: any) {
+      expect(err.message).toMatch(
+        new RegExp(`The process .*erroring_executable.* failed with exit code ${expectedExitCode}`)
+      )
+    } finally {
+      rmSync(tmpDirPath, { recursive: true })
+    }
+
+    expect(output.infos).toEqual(['An informational Message'])
+    expect(output.warns).toEqual(['An error message ']) // trailing space is deliberate because of windows bat file
   })
 
   test('fails with error if CLI returns an error code', async () => {
-    const infos: string[] = []
-    const warnings: string[] = []
+    const output = new CaptureOutput()
 
-    const w = new OctopusCliWrapper(
-      makeInputParameters({
-        // missing required 'project'
+    const expectedExitCode = isWindows ? 4294967295 : 255 // Process should return -1 which maps to 4294967295 on windows or 255 on linux
+    const cliInputs = {
+      parameters: makeInputParameters({
+        // no project
         apiKey: apiClientConfig.apiKey,
         server: apiClientConfig.apiUri
       }),
-      {},
-      m => infos.push(m),
-      m => warnings.push(m)
-    )
+      env: {}
+    }
 
-    await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
-      'Octopus CLI returned an error code. Please check your GitHub actions log for more detail'
-    )
+    try {
+      await createRelease(cliInputs, output, octoExecutable)
+      throw new Error('should not get here: expecting createRelease to throw an exception')
+    } catch (err: any) {
+      expect(err.message).toMatch(
+        // regex because when run locally the output logs 'octo' but in GHA it logs '/opt/hostedtoolcache/octo/9.1.3/x64/octo'
+        new RegExp(`The process .*octo.* failed with exit code ${expectedExitCode}`)
+      )
+    }
 
-    expect(warnings).toEqual([])
-    expectMatchAll(infos, [
+    expect(output.warns).toEqual([])
+    expectMatchAll(output.infos, [
       /Octopus CLI, version .*/,
-      'Detected automation environment: "NoneOrUnknown"',
+      /Detected automation environment/,
       'Space name unspecified, process will run in the default space context',
       '🤝 Handshaking with Octopus Deploy',
       /Handshake successful. Octopus version: .*/,
@@ -215,28 +260,33 @@ describe('integration tests', () => {
   })
 
   test('fails with error if CLI returns an error code (bad auth)', async () => {
-    const infos: string[] = []
-    const warnings: string[] = []
+    const output = new CaptureOutput()
 
-    const w = new OctopusCliWrapper(
-      makeInputParameters({
+    const expectedExitCode = isWindows ? 4294967291 : 2 // Process should return -3 which maps to 4294967291 on windows or 2 on linux
+
+    const cliInputs = {
+      parameters: makeInputParameters({
         project: localProjectName,
         apiKey: apiClientConfig.apiKey + 'ZZZ',
         server: apiClientConfig.apiUri
       }),
-      {},
-      m => infos.push(m),
-      m => warnings.push(m)
-    )
+      env: {}
+    }
 
-    await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
-      'Octopus CLI returned an error code. Please check your GitHub actions log for more detail'
-    )
+    try {
+      await createRelease(cliInputs, output, octoExecutable)
+      throw new Error('should not get here: expecting createRelease to throw an exception')
+    } catch (err: any) {
+      expect(err.message).toMatch(
+        // regex because when run locally the output logs 'octo' but in GHA it logs '/opt/hostedtoolcache/octo/9.1.3/x64/octo'
+        new RegExp(`The process .*octo.* failed with exit code ${expectedExitCode}`)
+      )
+    }
 
-    expect(warnings).toEqual([])
-    expectMatchAll(infos, [
+    expect(output.warns).toEqual([])
+    expectMatchAll(output.infos, [
       /Octopus CLI, version .*/,
-      'Detected automation environment: "NoneOrUnknown"',
+      /Detected automation environment/,
       /The API key you provided was not valid. Please double-check your API key and try again. For instructions on finding your API key, please visit:/, // partial match because the URL might be oc.to or g.octopushq.com depending on how old the CLI is
       'Exit code: -5'
     ])

@@ -1,17 +1,16 @@
 import { getInputParameters } from './input-parameters'
 import { info, warning, setFailed, setOutput } from '@actions/core'
-import { OctopusCliWrapper } from './octopus-cli-wrapper'
+import { CliInputs, createRelease } from './octopus-cli-wrapper'
 import { writeFileSync } from 'fs'
+import { CliOutput } from './cli-util'
 
+// GitHub actions entrypoint
 async function run(): Promise<void> {
   try {
-    const wrapper = new OctopusCliWrapper(
-      getInputParameters(),
-      process.env,
-      msg => info(msg),
-      msg => warning(msg)
-    )
-    const allocatedReleaseNumber = await wrapper.createRelease()
+    const inputs: CliInputs = { parameters: getInputParameters(), env: process.env }
+    const outputs: CliOutput = { info: s => info(s), warn: s => warning(s) }
+
+    const allocatedReleaseNumber = await createRelease(inputs, outputs, 'octo')
 
     if (allocatedReleaseNumber) {
       setOutput('release_number', allocatedReleaseNumber)
@@ -21,7 +20,7 @@ async function run(): Promise<void> {
     if (stepSummaryFile && allocatedReleaseNumber) {
       writeFileSync(
         stepSummaryFile,
-        `🐙 Octopus Deploy Created Release **${allocatedReleaseNumber}** in Project **${wrapper.inputParameters.project}**.`
+        `🐙 Octopus Deploy Created Release **${allocatedReleaseNumber}** in Project **${inputs.parameters.project}**.`
       )
     }
   } catch (e: unknown) {
