@@ -1,5 +1,6 @@
-import { makeInputParameters } from '../../src/input-parameters'
-import { OctopusCliWrapper } from '../../src/octopus-cli-wrapper'
+import { getInputParameters, makeInputParameters } from '../../src/input-parameters'
+import { createRelease } from '../../src/index'
+import { CliInputs, OctopusCliOutputHandler } from '../../src/octopus-cli-wrapper'
 // we use the Octopus API client to setup and teardown integration test data, it doesn't form part of create-release-action at this point
 import { PackageRequirement, RunCondition, StartTrigger } from '@octopusdeploy/message-contracts'
 import { Client, ClientConfiguration, Repository } from '@octopusdeploy/api-client'
@@ -8,6 +9,7 @@ import { CleanupHelper } from './cleanup-helper'
 import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/runConditionForAction'
 import { setOutput } from '@actions/core'
 import { platform } from 'os'
+import { CliOutput } from '../../src/cli-util'
 
 // NOTE: These tests assume Octopus is running and connectable.
 // In the build pipeline they are run as part of a build.yml file which populates
@@ -45,6 +47,12 @@ function expectMatchAll(actual: string[], expected: (string | RegExp)[]) {
 
 describe('integration tests', () => {
   const runId = randomBytes(16).toString('hex')
+  // we are an integration test running real nodejs here
+  const realInputs: CliInputs = {
+    env: process.env,
+    parameters: getInputParameters()
+  }
+
   const globalCleanup = new CleanupHelper()
 
   const localProjectName = `project${runId}`
@@ -133,14 +141,10 @@ describe('integration tests', () => {
 
   test('can create a release', async () => {
     const messages: string[] = []
+    const output: CliOutput = { info: m => messages.push(m), warn: m => messages.push(m) }
 
-    const w = new OctopusCliWrapper(
-      standardInputParameters,
-      {},
-      m => messages.push(m),
-      m => messages.push(m)
-    )
-    const result = await w.createRelease(octoExecutable)
+    const w = new OctopusCliOutputHandler(output)
+    const result = await createRelease(realInputs, output, w, octoExecutable)
 
     // The first release in the project, so it should always have 0.0.1
     expect(result).toEqual('0.0.1')
@@ -170,15 +174,11 @@ describe('integration tests', () => {
 
   test('fails with error if CLI executable not found', async () => {
     const messages: string[] = []
+    const output: CliOutput = { info: m => messages.push(m), warn: m => messages.push(m) }
 
-    const w = new OctopusCliWrapper(
-      standardInputParameters,
-      {},
-      m => messages.push(m),
-      m => messages.push(m)
-    )
+    const w = new OctopusCliOutputHandler(output)
 
-    await expect(() => w.createRelease('not-octo')).rejects.toThrow(
+    await expect(() => createRelease(realInputs, output, w, 'not-octo')).rejects.toThrow(
       'Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.'
     )
 
@@ -189,19 +189,15 @@ describe('integration tests', () => {
     const infoMessages: string[] = []
     const warnMessages: string[] = []
 
-    const w = new OctopusCliWrapper(
-      standardInputParameters,
-      {},
-      m => infoMessages.push(m),
-      m => warnMessages.push(m)
-    )
+    const output: CliOutput = { info: m => infoMessages.push(m), warn: m => warnMessages.push(m) }
+    const w = new OctopusCliOutputHandler(output)
 
     const failingExecutable = isWindows
       ? `${__dirname}\\erroring_executable.cmd`
       : `${__dirname}/erroring_executable.sh`
 
     const expectedExitCode = 37
-    await expect(() => w.createRelease(failingExecutable)).rejects.toThrow(
+    await expect(() => createRelease(realInputs, output, w, failingExecutable)).rejects.toThrow(
       `The process '${failingExecutable}' failed with exit code ${expectedExitCode}`
     )
 
@@ -212,20 +208,12 @@ describe('integration tests', () => {
   test('fails with error if CLI returns an error code', async () => {
     const infos: string[] = []
     const warnings: string[] = []
+    const output: CliOutput = { info: m => infos.push(m), warn: m => warnings.push(m) }
 
-    const w = new OctopusCliWrapper(
-      makeInputParameters({
-        // missing required 'project'
-        apiKey: apiClientConfig.apiKey,
-        server: apiClientConfig.apiUri
-      }),
-      {},
-      m => infos.push(m),
-      m => warnings.push(m)
-    )
+    const w = new OctopusCliOutputHandler(output)
 
     const expectedExitCode = isWindows ? 4294967295 : 255 // Process should return -1 which maps to 4294967295 on windows or 255 on linux
-    await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
+    await expect(() => createRelease(realInputs, output, w, octoExecutable)).rejects.toThrow(
       `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
     )
 
@@ -245,20 +233,12 @@ describe('integration tests', () => {
   test('fails with error if CLI returns an error code (bad auth)', async () => {
     const infos: string[] = []
     const warnings: string[] = []
+    const output: CliOutput = { info: m => infos.push(m), warn: m => warnings.push(m) }
 
-    const w = new OctopusCliWrapper(
-      makeInputParameters({
-        project: localProjectName,
-        apiKey: apiClientConfig.apiKey + 'ZZZ',
-        server: apiClientConfig.apiUri
-      }),
-      {},
-      m => infos.push(m),
-      m => warnings.push(m)
-    )
+    const w = new OctopusCliOutputHandler(output)
 
     const expectedExitCode = isWindows ? 4294967291 : 2 // Process should return -3 which maps to 4294967291 on windows or 2 on linux
-    await expect(() => w.createRelease(octoExecutable)).rejects.toThrow(
+    await expect(() => createRelease(realInputs, output, w, octoExecutable)).rejects.toThrow(
       `The process '${octoExecutable}' failed with exit code ${expectedExitCode}`
     )
 
