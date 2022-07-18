@@ -3373,7 +3373,6 @@ function createRelease(inputs, output, octoExecutable) {
             silent: true
         };
         try {
-            console.info(`octo excutable is [${octoExecutable}]`);
             yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
             return outputHandler.outputReleaseNumber;
         }
@@ -3381,7 +3380,7 @@ function createRelease(inputs, output, octoExecutable) {
             if (e instanceof Error) {
                 // catch some particular messages and rethrow more convenient ones
                 if (e.message.includes('Unable to locate executable file')) {
-                    throw new Error('Octopus CLI executable missing. Please ensure you have added the `OctopusDeploy/install-octopus-cli-action@v1` step to your GitHub actions script before this.');
+                    throw new Error(`Octopus CLI executable missing. Ensure you have added the 'OctopusDeploy/install-octopus-cli-action@v1' step to your GitHub actions workflow.\nError: ${e.message}`);
                 }
             }
             // rethrow, so our Promise is rejected. The GHA shim in index.ts will catch this and call setFailed
