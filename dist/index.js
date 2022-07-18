@@ -3373,6 +3373,7 @@ function createRelease(inputs, output, octoExecutable) {
             silent: true
         };
         try {
+            console.info(`octo excutable is [${octoExecutable}]`);
             yield (0, exec_1.exec)(octoExecutable, cliLaunchConfiguration.args, options);
             return outputHandler.outputReleaseNumber;
         }

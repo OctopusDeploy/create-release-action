@@ -77,7 +77,7 @@
     "build": "tsc",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
-    "prebuild": "eslint src/**/*.ts",
+    "prebuild-DISABLED": "eslint src/**/*.ts",
     "postbuild": "ncc build out/index.js -o dist",
     "test": "jest --ci --reporters=default --reporters=jest-junit",
     "test:unit": "jest --ci --reporters=default --reporters=jest-junit --testPathPattern=__tests__/unit",

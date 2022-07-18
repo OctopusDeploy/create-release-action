@@ -33,6 +33,8 @@ export async function createRelease(
   }
 
   try {
+    console.info(`octo excutable is [${octoExecutable}]`)
+
     await exec(octoExecutable, cliLaunchConfiguration.args, options)
     return outputHandler.outputReleaseNumber
   } catch (e: unknown) {
