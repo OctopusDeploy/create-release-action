@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.0](https://github.com/OctopusDeploy/create-release-action/compare/v2.0.1...v2.1.0) (2022-11-03)
+
+
+### Features
+
+* bump dependencies ([6cdf8b5](https://github.com/OctopusDeploy/create-release-action/commit/6cdf8b5ae9cfe48342d45fbedfd55bf891d07b37))
+* Update runner dependencies to Node 16 ([0ab7db0](https://github.com/OctopusDeploy/create-release-action/commit/0ab7db0303530a67fef95f709fbbbe50d182426d))
+
 ## [2.0.1](https://github.com/OctopusDeploy/create-release-action/compare/v2.0.0...v2.0.1) (2022-07-18)
 
 
