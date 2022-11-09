@@ -1,7 +1,9 @@
 export class CaptureOutput {
   msgs: string[]
 
-  constructor() {}
+  constructor() {
+    this.msgs = []
+  }
 
   debug(message: string) {
     this.msgs.push('[DEBUG] ', message)
