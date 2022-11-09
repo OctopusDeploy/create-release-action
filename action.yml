@@ -9,7 +9,7 @@ inputs:
   api_key:
     description: 'The API key used to access Octopus Deploy. An API key is required, but you may also use the OCTOPUS_API_KEY environment variable. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.'
   server:
-    description: 'The instance URI hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The instance URI is required, but you may also use the OCTOPUS_URI environment variable.'
+    description: 'The instance URI hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The instance URI is required, but you may also use the OCTOPUS_URL environment variable.'
   space:
     description: 'The name of a space within which this command will be executed.'
   project:

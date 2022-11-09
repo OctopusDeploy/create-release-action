@@ -32,7 +32,7 @@ steps:
     uses: OctopusDeploy/create-release-action@v3
     env:
       OCTOPUS_API_KEY: ${{ secrets.API_KEY  }}
-      OCTOPUS_URI: ${{ secrets.SERVER }}
+      OCTOPUS_URL: ${{ secrets.SERVER }}
       OCTOPUS_SPACE: 'Outer Space'
     with:
       project: 'MyProject'
@@ -43,7 +43,7 @@ steps:
 | Name              | Description                                                                                                                                                                    |
 | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `OCTOPUS_API_KEY` | The API key used to access Octopus Deploy. `API-GUEST` may be used if the guest account is enabled. It is strongly recommended that this value retrieved from a GitHub secret. |
-| `OCTOPUS_URI`     | The base URL hosting Octopus Deploy (i.e. `https://octopus.example.com`). It is strongly recommended that this value retrieved from a GitHub secret.                           |
+| `OCTOPUS_URL`     | The base URL hosting Octopus Deploy (i.e. `https://octopus.example.com`). It is strongly recommended that this value retrieved from a GitHub secret.                           |
 | `OCTOPUS_SPACE`   | The Name of a space within which this command will be executed.                                                                                                                |
 
 ## 📥 Inputs
@@ -52,7 +52,7 @@ steps:
 | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `project`         | **Required.** The name or ID of the project associated with this release.                                                                                                                                                                                                                                                       |
 | `api_key`         | The API key used to access Octopus Deploy. An API key is required, but you may also use the `OCTOPUS_API_KEY` environment variable. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.                                                 |
-| `server`          | The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The Server URL is required, but you may also use the `OCTOPUS_URI` environment variable.                                                                                                                                                             |
+| `server`          | The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The Server URL is required, but you may also use the `OCTOPUS_URL` environment variable.                                                                                                                                                             |
 | `space`           | The name or ID of a space within which this command will be executed.                                                                                                                                                                                                                                                           |
 | `release_number`  | The number for the new release. If omitted, Octopus Deploy will generate a release number.                                                                                                                                                                                                                                      |
 | `channel`         | The name or ID of the channel to use for the new release. If omitted, the best channel will be selected.                                                                                                                                                                                                                        |

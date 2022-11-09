@@ -1,7 +1,7 @@
 import { getBooleanInput, getInput, getMultilineInput } from '@actions/core'
 
 export interface InputParameters {
-  // Optional: A server is required, but you should use the OCTOPUS_URI env
+  // Optional: A server is required, but you should use the OCTOPUS_URL env
   server: string
   // Optional: An API key is required, but you should use the OCTOPUS_API_KEY environment variable instead of this.
   apiKey: string

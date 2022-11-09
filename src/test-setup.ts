@@ -12,7 +12,7 @@ process.env = Object.assign(process.env, {
   INPUT_IGNORE_EXISTING: false,
   INPUT_PACKAGES: ' foo:1.2.3-quux \n bar:4.5.6-xyzzy \n ',
   INPUT_PROJECT: 'Projects-7341',
-  INPUT_SERVER: process.env['OCTOPUS_URI'],
+  INPUT_SERVER: process.env['OCTOPUS_URL'],
   RUNNER_TEMP: tmpdir.name,
   RUNNER_TOOL_CACHE: tmpdir.name
 })
