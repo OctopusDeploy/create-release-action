@@ -53,7 +53,7 @@ describe('integration tests', () => {
 
   let apiClient: Client
   beforeAll(async () => {
-    apiClient = await Client.create(apiClientConfig)
+    apiClient = await Client.create({ autoConnect: true, ...apiClientConfig })
 
     const repository = new Repository(apiClient)
 
