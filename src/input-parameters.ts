@@ -1,74 +1,57 @@
 import { getBooleanInput, getInput, getMultilineInput } from '@actions/core'
 
 export interface InputParameters {
-  // Required
-  project: string
+  // Optional: A server is required, but you should use the OCTOPUS_URI env
+  server: string
   // Optional: An API key is required, but you should use the OCTOPUS_API_KEY environment variable instead of this.
   apiKey: string
+  // Optional: You should prefer the OCTOPUS_SPACE environment variable
+  space: string
+  // Required
+  project: string
+  releaseNumber: string
   channel: string
+  packageVersion: string
+  packages: string[]
   gitRef: string
   gitCommit: string
   ignoreExisting: boolean
-  packages: string[]
-  packageVersion: string
-
-  // Optional: Prefer the OCTOPUS_PROXY environment variable
-  proxy: string
-  // Optional: Prefer the OCTOPUS_PROXY_PASSWORD environment variable
-  proxyPassword: string
-  // Optional: Prefer the OCTOPUS_PROXY_USERNAME environment variable
-  proxyUsername: string
 
   // Optional
   releaseNotes: string
-  // Optional: Overrides release_notes
-  releaseNotesFile: string
-  releaseNumber: string
-  // Optional: A server is required, but you should use the OCTOPUS_HOST env
-  server: string
-  // Optional: You should prefer the OCTOPUS_SPACE environment variable
-  space: string
 }
 
 export function getInputParameters(): InputParameters {
   return {
+    space: getInput('space'),
+    server: getInput('server'),
     apiKey: getInput('api_key'),
+    project: getInput('project'),
+    releaseNumber: getInput('release_number'),
     channel: getInput('channel'),
+    packageVersion: getInput('package_version'),
+    packages: getMultilineInput('packages').map(p => p.trim()),
     gitRef: getInput('git_ref'),
     gitCommit: getInput('git_commit'),
     ignoreExisting: getBooleanInput('ignore_existing'),
-    packages: getMultilineInput('packages').map(p => p.trim()),
-    packageVersion: getInput('package_version'),
-    project: getInput('project'),
-    proxy: getInput('proxy'),
-    proxyPassword: getInput('proxy_password'),
-    proxyUsername: getInput('proxy_username'),
-    releaseNotes: getInput('release_notes'),
-    releaseNotesFile: getInput('release_notes_file'),
-    releaseNumber: getInput('release_number'),
-    server: getInput('server'),
-    space: getInput('space')
+    releaseNotes: getInput('release_notes')
   }
 }
 
 export function makeInputParameters(override: Partial<InputParameters> | undefined = undefined): InputParameters {
   const template = {
-    project: '',
+    server: '',
     apiKey: '',
+    space: '',
+    project: '',
+    releaseNumber: '',
     channel: '',
+    packageVersion: '',
+    packages: [],
     gitRef: '',
     gitCommit: '',
     ignoreExisting: false,
-    packages: [],
-    packageVersion: '',
-    proxy: '',
-    proxyPassword: '',
-    proxyUsername: '',
-    releaseNotes: '',
-    releaseNotesFile: '',
-    releaseNumber: '',
-    server: '',
-    space: ''
+    releaseNotes: ''
   }
 
   if (override) {
