@@ -11,18 +11,19 @@ import { CaptureOutput } from '../test-helpers'
 
 // NOTE: These tests assume Octopus is running and connectable.
 // In the build pipeline they are run as part of a build.yml file which populates
-// OCTOPUS_TEST_URL and OCTOPUS_TEST_APIKEY environment variables pointing to docker
+// OCTOPUS_TEST_URL and OCTOPUS_TEST_API_KEY environment variables pointing to docker
 // containers that are also running. AND it assumes that 'octo' is in your PATH
 //
 // If you want to run these locally outside the build pipeline, you need to launch
-// octopus yourself, and set OCTOPUS_TEST_CLI_PATH, OCTOPUS_TEST_URL and OCTOPUS_TEST_APIKEY appropriately,
+// octopus yourself, and set OCTOPUS_TEST_CLI_PATH, OCTOPUS_TEST_URL and OCTOPUS_TEST_API_KEY appropriately,
 // and put octo in your path somewhere.
 // all resources created by this script have a GUID in
 // their name so we they don't clash with prior test runs
 
 const apiClientConfig: ClientConfiguration = {
-  apiKey: process.env.OCTOPUS_TEST_APIKEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-  instanceURL: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050'
+  apiKey: process.env.OCTOPUS_TEST_API_KEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  instanceURL: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050',
+  space: process.env.OCTOPUS_TEST_SPACE || 'Default'
 }
 
 // experimental. Should probably be a custom jest matcher

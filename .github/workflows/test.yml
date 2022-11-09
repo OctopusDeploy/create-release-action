@@ -58,7 +58,7 @@ jobs:
         id: npm_tests
         env:
           OCTOPUS_TEST_URL: ${{ env.SERVER_URL }}
-          OCTOPUS_TEST_APIKEY: ${{ env.ADMIN_API_KEY }}
+          OCTOPUS_TEST_API_KEY: ${{ env.ADMIN_API_KEY }}
         run: npm run all
 
       - name: Test Report
