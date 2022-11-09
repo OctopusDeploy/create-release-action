@@ -1,11 +1,11 @@
 import { getInputParameters } from './input-parameters'
-import { info, warning, setFailed, setOutput } from '@actions/core'
+import { setFailed, setOutput } from '@actions/core'
 import { writeFileSync } from 'fs'
 import { Client, ClientConfiguration, createRelease, CreateReleaseCommandV1 } from '@octopusdeploy/api-client'
 
 const EnvironmentVariables = {
   ApiKey: 'OCTOPUS_API_KEY',
-  URI: 'OCTOPUS_URI',
+  URL: 'OCTOPUS_URL',
   Space: 'OCTOPUS_SPACE'
 } as const
 
@@ -15,12 +15,12 @@ async function run(): Promise<void> {
     const parameters = getInputParameters()
 
     const apiKey = parameters.apiKey || process.env[EnvironmentVariables.ApiKey] || ''
-    const instanceUri = parameters.server || process.env[EnvironmentVariables.URI] || ''
+    const instanceURL = parameters.server || process.env[EnvironmentVariables.URL] || ''
     const space = parameters.space || process.env[EnvironmentVariables.Space] || ''
 
     const config: ClientConfiguration = {
-      instanceUri: instanceUri,
-      apiKey: apiKey
+      instanceURL,
+      apiKey
     }
 
     const command: CreateReleaseCommandV1 = {
