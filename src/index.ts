@@ -1,7 +1,7 @@
 import { getInputParameters } from './input-parameters'
-import { setFailed, setOutput } from '@actions/core'
+import { debug, info, warning, error, setFailed, setOutput } from '@actions/core'
 import { writeFileSync } from 'fs'
-import { Client, ClientConfiguration, createRelease, CreateReleaseCommandV1 } from '@octopusdeploy/api-client'
+import { Client, ClientConfiguration, createRelease, CreateReleaseCommandV1, Logger } from '@octopusdeploy/api-client'
 
 const EnvironmentVariables = {
   ApiKey: 'OCTOPUS_API_KEY',
@@ -12,6 +12,19 @@ const EnvironmentVariables = {
 // GitHub actions entrypoint
 async function run(): Promise<void> {
   try {
+    const logger: Logger = {
+      debug: message => debug(message),
+      info: message => info(message),
+      warn: message => warning(message),
+      error: (message, err) => {
+        if (err !== undefined) {
+          error(err.message)
+        } else {
+          error(message)
+        }
+      }
+    }
+
     const parameters = getInputParameters()
 
     const apiKey = parameters.apiKey || process.env[EnvironmentVariables.ApiKey] || ''
@@ -20,7 +33,8 @@ async function run(): Promise<void> {
 
     const config: ClientConfiguration = {
       instanceURL,
-      apiKey
+      apiKey,
+      logging: logger
     }
 
     const command: CreateReleaseCommandV1 = {
