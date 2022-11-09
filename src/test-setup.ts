@@ -8,7 +8,6 @@ process.env = Object.assign(process.env, {
   INPUT_API_KEY: process.env['OCTOPUS_API_KEY'],
   INPUT_DEBUG: false,
   INPUT_DEFAULT_PACKAGE_VERSION: false,
-  INPUT_IGNORE_CHANNEL_RULES: false,
   INPUT_IGNORE_EXISTING: false,
   INPUT_PACKAGES: ' foo:1.2.3-quux \n bar:4.5.6-xyzzy \n ',
   INPUT_PROJECT: 'Projects-7341',
