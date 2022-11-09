@@ -130,7 +130,7 @@ describe('integration tests', () => {
 
   test('can create a release', async () => {
     const output = new CaptureOutput()
-.
+
     const logger: Logger = {
       debug: message => output.debug(message),
       info: message => output.info(message),
