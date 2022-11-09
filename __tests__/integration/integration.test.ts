@@ -22,8 +22,7 @@ import { CaptureOutput } from '../test-helpers'
 
 const apiClientConfig: ClientConfiguration = {
   apiKey: process.env.OCTOPUS_TEST_API_KEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-  instanceURL: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050',
-  space: process.env.OCTOPUS_TEST_SPACE || 'Default'
+  instanceURL: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050'
 }
 
 // experimental. Should probably be a custom jest matcher
@@ -47,9 +46,10 @@ describe('integration tests', () => {
 
   const localProjectName = `project${runId}`
   const standardInputParameters = makeInputParameters({
-    project: localProjectName,
+    server: apiClientConfig.instanceURL,
     apiKey: apiClientConfig.apiKey,
-    server: apiClientConfig.instanceURL
+    space: 'Default',
+    project: localProjectName
   })
 
   let apiClient: Client
