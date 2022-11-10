@@ -18,6 +18,8 @@ export async function createReleaseFromInputs(client: Client, parameters: InputP
     ignoreChannelRules: false
   }
 
+  client.debug(`CMD: ${command}`)
+
   const allocatedReleaseNumber = await createRelease(client, command)
 
   client.info(`🎉 Release ${allocatedReleaseNumber.releaseVersion} created successfully!`)
