@@ -73,8 +73,9 @@ jobs:
         id: self_test
         uses: ./
         env:
-          OCTOPUS_HOST: ${{ env.SERVER_URL }}
+          OCTOPUS_URL: ${{ env.SERVER_URL }}
           OCTOPUS_API_KEY: ${{ env.ADMIN_API_KEY }}
+          OCTOPUS_SPACE: 'Default'
         with:
           project: ${{ steps.npm_tests.outputs.gha_selftest_project_name }} # see integration.test.ts
 
