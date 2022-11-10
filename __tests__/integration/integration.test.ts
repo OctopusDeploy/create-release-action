@@ -1,5 +1,4 @@
-import { makeInputParameters } from '../../src/input-parameters'
-import { createReleaseFromInputs } from '../../src/index'
+import { createReleaseFromInputs } from '../../src/api-wrapper'
 // we use the Octopus API client to setup and teardown integration test data, it doesn't form part of create-release-action at this point
 import { PackageRequirement, RunCondition, StartTrigger } from '@octopusdeploy/message-contracts'
 import { Client, ClientConfiguration, Logger, Repository } from '@octopusdeploy/api-client'
@@ -8,6 +7,7 @@ import { CleanupHelper } from './cleanup-helper'
 import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/runConditionForAction'
 import { setOutput } from '@actions/core'
 import { CaptureOutput } from '../test-helpers'
+import { InputParameters } from '../../src/input-parameters'
 
 // NOTE: These tests assume Octopus is running and connectable.
 // In the build pipeline they are run as part of a build.yml file which populates
@@ -45,16 +45,17 @@ describe('integration tests', () => {
   const globalCleanup = new CleanupHelper()
 
   const localProjectName = `project${runId}`
-  const standardInputParameters = makeInputParameters({
+  const standardInputParameters: InputParameters = {
     server: apiClientConfig.instanceURL,
     apiKey: apiClientConfig.apiKey,
-    space: 'Default',
-    project: localProjectName
-  })
+    space: 'blah',
+    project: localProjectName,
+    ignoreExisting: false
+  }
 
   let apiClient: Client
   beforeAll(async () => {
-    apiClient = await Client.create({ autoConnect: true, ...apiClientConfig })
+    apiClient = await Client.create({ autoConnect: true, space: 'Spaces-81', ...apiClientConfig })
 
     const repository = new Repository(apiClient)
 
@@ -71,7 +72,7 @@ describe('integration tests', () => {
       LifecycleId: lifeCycle.Id,
       ProjectGroupId: projectGroup.Id
     })
-    globalCleanup.add(() => repository.projects.del(project))
+    //globalCleanup.add(() => repository.projects.del(project))
 
     const deploymentProcess = await repository.deploymentProcesses.get(project.DeploymentProcessId, undefined)
     deploymentProcess.Steps = [
@@ -145,14 +146,20 @@ describe('integration tests', () => {
       }
     }
 
-    const result = await createReleaseFromInputs(logger, standardInputParameters)
+    const config: ClientConfiguration = {
+      instanceURL: apiClientConfig.instanceURL,
+      apiKey: apiClientConfig.apiKey,
+      logging: logger
+    }
+
+    const client = await Client.create(config)
+
+    const result = await createReleaseFromInputs(client, standardInputParameters)
 
     // The first release in the project, so it should always have 0.0.1
     expect(result).toEqual('0.0.1')
 
-    expectMatchAll(output.getAllMessages(), [
-      '[INFO] 🐙 Creating a release in Octopus Deploy...',
-      '[INFO] 🎉 Release 0.0.1 created successfully!'
-    ])
+    expect(output.getAllMessages()).toContain('[INFO] 🐙 Creating a release in Octopus Deploy...')
+    expect(output.getAllMessages()).toContain('[INFO] 🎉 Release 0.0.1 created successfully!')
   })
 })

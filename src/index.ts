@@ -1,13 +1,8 @@
 import { getInputParameters, InputParameters } from './input-parameters'
 import { debug, info, warning, error, setFailed, setOutput } from '@actions/core'
 import { writeFileSync } from 'fs'
-import { Client, ClientConfiguration, createRelease, CreateReleaseCommandV1, Logger } from '@octopusdeploy/api-client'
-
-const EnvironmentVariables = {
-  ApiKey: 'OCTOPUS_API_KEY',
-  URL: 'OCTOPUS_URL',
-  Space: 'OCTOPUS_SPACE'
-} as const
+import { Client, ClientConfiguration, Logger } from '@octopusdeploy/api-client'
+import { createReleaseFromInputs } from './api-wrapper'
 
 // GitHub actions entrypoint
 async function run(): Promise<void> {
@@ -27,7 +22,15 @@ async function run(): Promise<void> {
 
     const parameters = getInputParameters()
 
-    const allocatedReleaseNumber = await createReleaseFromInputs(logger, parameters)
+    const config: ClientConfiguration = {
+      instanceURL: parameters.server,
+      apiKey: parameters.apiKey,
+      logging: logger
+    }
+
+    const client = await Client.create(config)
+
+    const allocatedReleaseNumber = await createReleaseFromInputs(client, parameters)
 
     if (allocatedReleaseNumber) {
       setOutput('release_number', allocatedReleaseNumber)
@@ -45,38 +48,6 @@ async function run(): Promise<void> {
       setFailed(e)
     }
   }
-}
-
-export async function createReleaseFromInputs(logger: Logger, parameters: InputParameters): Promise<string> {
-  const apiKey = parameters.apiKey || process.env[EnvironmentVariables.ApiKey] || ''
-  const instanceURL = parameters.server || process.env[EnvironmentVariables.URL] || ''
-  const space = parameters.space || process.env[EnvironmentVariables.Space] || ''
-
-  const config: ClientConfiguration = {
-    instanceURL,
-    apiKey,
-    logging: logger
-  }
-
-  const command: CreateReleaseCommandV1 = {
-    spaceName: space,
-    projectName: parameters.project,
-    channelName: parameters.channel,
-    releaseVersion: parameters.releaseNumber,
-    packageVersion: parameters.packageVersion,
-    packages: parameters.packages,
-    gitRef: parameters.gitRef,
-    gitCommit: parameters.gitCommit,
-    releaseNotes: parameters.releaseNotes,
-    ignoreIfAlreadyExists: parameters.ignoreExisting,
-    ignoreChannelRules: false
-  }
-
-  const client = await Client.create(config)
-
-  const allocatedReleaseNumber = await createRelease(client, command)
-
-  return allocatedReleaseNumber.releaseVersion
 }
 
 run()

@@ -6,16 +6,16 @@ export class CaptureOutput {
   }
 
   debug(message: string) {
-    this.msgs.push('[DEBUG] ', message)
+    this.msgs.push('[DEBUG] ' + message)
   }
   info(message: string) {
-    this.msgs.push('[INFO] ', message)
+    this.msgs.push('[INFO] ' + message)
   }
   warn(message: string) {
-    this.msgs.push('[WARN] ', message)
+    this.msgs.push('[WARN] ' + message)
   }
   error(message: string) {
-    this.msgs.push('[ERROR] ', message)
+    this.msgs.push('[ERROR] ' + message)
   }
 
   getAllMessages(): string[] {
