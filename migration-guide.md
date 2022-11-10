@@ -10,7 +10,9 @@ If you are using the recommended approach of environment variables for things li
 `OCTOPUS_CLI_SERVER` => `OCTOPUS_URL`
 `OCTOPUS_CLI_API_KEY` => `OCTOPUS_API_KEY`
 
-`OCTOPUS_SPACE` is also supported for setting the name of the Space
+`OCTOPUS_HOST` has been dropped, in favour of `OCTOPUS_URL`.
+
+`OCTOPUS_SPACE` is now supported for setting the name of the Space
 
 ## v1 to v2
 
