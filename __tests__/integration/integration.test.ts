@@ -48,14 +48,14 @@ describe('integration tests', () => {
   const standardInputParameters: InputParameters = {
     server: apiClientConfig.instanceURL,
     apiKey: apiClientConfig.apiKey,
-    space: 'blah',
+    space: 'Default',
     project: localProjectName,
     ignoreExisting: false
   }
 
   let apiClient: Client
   beforeAll(async () => {
-    apiClient = await Client.create({ autoConnect: true, space: 'Spaces-81', ...apiClientConfig })
+    apiClient = await Client.create({ autoConnect: true, ...apiClientConfig })
 
     const repository = new Repository(apiClient)
 
@@ -72,7 +72,7 @@ describe('integration tests', () => {
       LifecycleId: lifeCycle.Id,
       ProjectGroupId: projectGroup.Id
     })
-    //globalCleanup.add(() => repository.projects.del(project))
+    globalCleanup.add(() => repository.projects.del(project))
 
     const deploymentProcess = await repository.deploymentProcesses.get(project.DeploymentProcessId, undefined)
     deploymentProcess.Steps = [
