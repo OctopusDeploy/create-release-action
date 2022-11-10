@@ -1,4 +1,4 @@
-import { getInputParameters, InputParameters } from './input-parameters'
+import { getInputParameters } from './input-parameters'
 import { debug, info, warning, error, setFailed, setOutput } from '@actions/core'
 import { writeFileSync } from 'fs'
 import { Client, ClientConfiguration, Logger } from '@octopusdeploy/api-client'
