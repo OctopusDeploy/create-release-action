@@ -1,18 +1,18 @@
 name: 'build-test'
 on:
-  pull_request:
-    paths-ignore:
-      - '**.md'
   push:
     paths-ignore:
       - '**.md'
   schedule:
     # Daily 5am australian/brisbane time (7pm UTC)
     - cron: '0 19 * * *'
+  workflow_dispatch:
+
 env:
   SA_PASSWORD: ${{ secrets.DB_IMAGE_SA_PASSWORD }}
   ADMIN_API_KEY: ${{ secrets.OD_IMAGE_ADMIN_API_KEY }}
   SERVER_URL: 'http://localhost:8080'
+
 jobs:
   test:
     runs-on: ubuntu-latest
