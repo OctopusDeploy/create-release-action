@@ -1,14 +1,18 @@
 import { getInputParameters } from './input-parameters'
-import { debug, info, warning, error, setFailed, setOutput } from '@actions/core'
+import { debug, info, warning, error, setFailed, setOutput, isDebug } from '@actions/core'
 import { writeFileSync } from 'fs'
 import { Client, ClientConfiguration, Logger } from '@octopusdeploy/api-client'
 import { createReleaseFromInputs } from './api-wrapper'
 
 // GitHub actions entrypoint
-async function run(): Promise<void> {
+;(async (): Promise<void> => {
   try {
     const logger: Logger = {
-      debug: message => debug(message),
+      debug: message => {
+        if (isDebug()) {
+          debug(message)
+        }
+      },
       info: message => info(message),
       warn: message => warning(message),
       error: (message, err) => {
@@ -48,6 +52,4 @@ async function run(): Promise<void> {
       setFailed(e)
     }
   }
-}
-
-run()
+})()
