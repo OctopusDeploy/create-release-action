@@ -134,6 +134,7 @@ describe('integration tests', () => {
     }
 
     const config: ClientConfiguration = {
+      userAgentApp: 'test',
       instanceURL: apiClientConfig.instanceURL,
       apiKey: apiClientConfig.apiKey,
       logging: logger
