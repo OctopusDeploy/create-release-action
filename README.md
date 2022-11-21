@@ -2,7 +2,9 @@
 
 <img alt= "" src="https://github.com/OctopusDeploy/create-release-action/raw/main/assets/github-actions-octopus.png" />
 
-This is a GitHub Action to create a release in [Octopus Deploy](https://octopus.com/). It requires the [Octopus CLI](https://octopus.com/docs/octopus-rest-api/octopus-cli); please ensure to include [install-octopus-cli-action](https://github.com/OctopusDeploy/install-octopus-cli-action) in your workflow (example below) before using this GitHub Action.
+This is a GitHub Action to create a release in [Octopus Deploy](https://octopus.com/).
+
+**\*NOTE:** if you have used earlier versions of this action, as of v3 of this action there is no longer a dependency to the Octopus CLI, so the installer action is no longer required in order to use this step.\*
 
 ## Releases in Octopus Deploy
 
@@ -13,7 +15,6 @@ When you deploy the release, you are executing the deployment process with all t
 More information about releases in Octopus Deploy:
 
 - [Releases](https://octopus.com/docs/releases)
-- [Create release](https://octopus.com/docs/octopus-rest-api/octopus-cli/create-release)
 
 ## Migration Guide(s)
 
@@ -25,35 +26,30 @@ Incorporate the following actions in your workflow to create a release in Octopu
 
 ```yml
 env:
-
+  OCTOPUS_API_KEY: ${{ secrets.API_KEY  }}
+  OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
+  OCTOPUS_SPACE: 'Outer Space'
 steps:
   # ...
   - name: Create a release in Octopus Deploy 🐙
     uses: OctopusDeploy/create-release-action@v3
-    env:
-      OCTOPUS_API_KEY: ${{ secrets.API_KEY  }}
-      OCTOPUS_URL: ${{ secrets.SERVER }}
-      OCTOPUS_SPACE: 'Outer Space'
     with:
       project: 'MyProject'
 ```
 
 ## ✍️ Environment Variables
 
-| Name              | Description                                                                                                                                                                    |
-| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `OCTOPUS_API_KEY` | The API key used to access Octopus Deploy. `API-GUEST` may be used if the guest account is enabled. It is strongly recommended that this value retrieved from a GitHub secret. |
-| `OCTOPUS_URL`     | The base URL hosting Octopus Deploy (i.e. `https://octopus.example.com`). It is strongly recommended that this value retrieved from a GitHub secret.                           |
-| `OCTOPUS_SPACE`   | The Name of a space within which this command will be executed.                                                                                                                |
+| Name              | Description                                                                                                                                          |
+| :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `OCTOPUS_URL`     | The base URL hosting Octopus Deploy (i.e. `https://octopus.example.com`). It is strongly recommended that this value retrieved from a GitHub secret. |
+| `OCTOPUS_API_KEY` | The API key used to access Octopus Deploy. It is strongly recommended that this value retrieved from a GitHub secret.                                |
+| `OCTOPUS_SPACE`   | The Name of a space within which this command will be executed.                                                                                      |
 
 ## 📥 Inputs
 
 | Name              | Description                                                                                                                                                                                                                                                                                                                     |
 | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `project`         | **Required.** The name or ID of the project associated with this release.                                                                                                                                                                                                                                                       |
-| `api_key`         | The API key used to access Octopus Deploy. An API key is required, but you may also use the `OCTOPUS_API_KEY` environment variable. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.                                                 |
-| `server`          | The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The Server URL is required, but you may also use the `OCTOPUS_URL` environment variable.                                                                                                                                                             |
-| `space`           | The name or ID of a space within which this command will be executed.                                                                                                                                                                                                                                                           |
 | `release_number`  | The number for the new release. If omitted, Octopus Deploy will generate a release number.                                                                                                                                                                                                                                      |
 | `channel`         | The name or ID of the channel to use for the new release. If omitted, the best channel will be selected.                                                                                                                                                                                                                        |
 | `package_version` | The version number of all packages to use for this release.                                                                                                                                                                                                                                                                     |
@@ -62,12 +58,15 @@ steps:
 | `git_commit`      | Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter.                                                                                                                                                                  |
 | `ignore_existing` | Ignore existing releases if present in Octopus Deploy with the matching version number. Defaults to **false**                                                                                                                                                                                                                   |
 | `release_notes`   | The release notes associated with the new release (Markdown is supported).                                                                                                                                                                                                                                                      |
+| `server`          | The instance URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The instance URL is required, but you may also use the OCTOPUS_URL environment variable.                                                                                                                                                         |
+| `api_key`         | The API key used to access Octopus Deploy. An API key is required, but you may also use the OCTOPUS_API_KEY environment variable. It is strongly recommended that this value retrieved from a GitHub secret.                                                                                                                    |
+| `space`           | The name of a space within which this command will be executed. The space name is required, but you may also use the OCTOPUS_SPACE environment variable.                                                                                                                                                                        |
 
 ## 📤 Outputs
 
-| Name             | Description                                                                                                                   |
-| :--------------- | :---------------------------------------------------------------------------------------------------------------------------- |
-| `release_number` | The Octopus Deploy release number assigned to the Release. Use this if you wish to refer to the release later in your script. |
+| Name             | Description                                                                                                                     |
+| :--------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| `release_number` | The Octopus Deploy release number assigned to the Release. Use this if you wish to refer to the release later in your workflow. |
 
 ## 🤝 Contributions
 

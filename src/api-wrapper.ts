@@ -6,23 +6,21 @@ export async function createReleaseFromInputs(client: Client, parameters: InputP
 
   const command: CreateReleaseCommandV1 = {
     spaceName: parameters.space,
-    projectName: parameters.project,
-    channelName: parameters.channel,
-    releaseVersion: parameters.releaseNumber,
-    packageVersion: parameters.packageVersion,
-    packages: parameters.packages,
-    gitRef: parameters.gitRef,
-    gitCommit: parameters.gitCommit,
-    releaseNotes: parameters.releaseNotes,
-    ignoreIfAlreadyExists: parameters.ignoreExisting,
-    ignoreChannelRules: false
+    ProjectName: parameters.project,
+    ChannelName: parameters.channel,
+    ReleaseVersion: parameters.releaseNumber,
+    PackageVersion: parameters.packageVersion,
+    Packages: parameters.packages,
+    GitRef: parameters.gitRef,
+    GitCommit: parameters.gitCommit,
+    ReleaseNotes: parameters.releaseNotes,
+    IgnoreIfAlreadyExists: parameters.ignoreExisting,
+    IgnoreChannelRules: false
   }
-
-  client.debug(`CMD: ${command}`)
 
   const allocatedReleaseNumber = await createRelease(client, command)
 
-  client.info(`🎉 Release ${allocatedReleaseNumber.releaseVersion} created successfully!`)
+  client.info(`🎉 Release ${allocatedReleaseNumber.ReleaseVersion} created successfully!`)
 
-  return allocatedReleaseNumber.releaseVersion
+  return allocatedReleaseNumber.ReleaseVersion
 }

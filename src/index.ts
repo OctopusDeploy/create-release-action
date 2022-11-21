@@ -27,6 +27,7 @@ import { createReleaseFromInputs } from './api-wrapper'
     const parameters = getInputParameters()
 
     const config: ClientConfiguration = {
+      userAgentApp: 'GitHubActions create-release-action',
       instanceURL: parameters.server,
       apiKey: parameters.apiKey,
       logging: logger

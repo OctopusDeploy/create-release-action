@@ -46,11 +46,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Octopus CLI 🐙
-        uses: OctopusDeploy/install-octopus-cli-action@v1
-        with:
-          version: '*'
-
       - name: Install package dependencies
         run: npm install
 

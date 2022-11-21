@@ -21,22 +21,9 @@ import { InputParameters } from '../../src/input-parameters'
 // their name so we they don't clash with prior test runs
 
 const apiClientConfig: ClientConfiguration = {
+  userAgentApp: 'test',
   apiKey: process.env.OCTOPUS_TEST_API_KEY || 'API-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
   instanceURL: process.env.OCTOPUS_TEST_URL || 'http://localhost:8050'
-}
-
-// experimental. Should probably be a custom jest matcher
-function expectMatchAll(actual: string[], expected: (string | RegExp)[]) {
-  expect(actual.length).toEqual(expected.length)
-  for (let i = 0; i < actual.length; i++) {
-    const a = actual[i]
-    const e = expected[i]
-    if (e instanceof RegExp) {
-      expect(a).toMatch(e)
-    } else {
-      expect(a).toEqual(e)
-    }
-  }
 }
 
 describe('integration tests', () => {
