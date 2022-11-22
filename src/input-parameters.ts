@@ -32,7 +32,7 @@ export function getInputParameters(): InputParameters {
     server: getInput('server') || process.env[EnvironmentVariables.URL] || '',
     apiKey: getInput('api_key') || process.env[EnvironmentVariables.ApiKey] || '',
     space: getInput('space') || process.env[EnvironmentVariables.Space] || '',
-    project: getInput('project'),
+    project: getInput('project', { required: true }),
     releaseNumber: getInput('release_number') || undefined,
     channel: getInput('channel') || undefined,
     packageVersion: getInput('package_version') || undefined,
