@@ -1,5 +1,5 @@
 import { InputParameters } from './input-parameters'
-import { Client, createRelease, CreateReleaseCommandV1 } from '@octopusdeploy/api-client'
+import { Client, CreateReleaseCommandV1, releaseCreate } from '@octopusdeploy/api-client'
 
 export async function createReleaseFromInputs(client: Client, parameters: InputParameters): Promise<string> {
   client.info('🐙 Creating a release in Octopus Deploy...')
@@ -18,7 +18,7 @@ export async function createReleaseFromInputs(client: Client, parameters: InputP
     IgnoreChannelRules: false
   }
 
-  const allocatedReleaseNumber = await createRelease(client, command)
+  const allocatedReleaseNumber = await releaseCreate(client, command)
 
   client.info(`🎉 Release ${allocatedReleaseNumber.ReleaseVersion} created successfully!`)
 
