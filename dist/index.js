@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 87351:
+/***/ 7351:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -27,7 +27,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.issue = exports.issueCommand = void 0;
-const os = __importStar(__nccwpck_require__(22037));
+const os = __importStar(__nccwpck_require__(2037));
 const utils_1 = __nccwpck_require__(5278);
 /**
  * Commands
@@ -100,7 +100,7 @@ function escapeProperty(s) {
 
 /***/ }),
 
-/***/ 42186:
+/***/ 2186:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -135,12 +135,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __nccwpck_require__(87351);
+const command_1 = __nccwpck_require__(7351);
 const file_command_1 = __nccwpck_require__(717);
 const utils_1 = __nccwpck_require__(5278);
-const os = __importStar(__nccwpck_require__(22037));
-const path = __importStar(__nccwpck_require__(71017));
-const oidc_utils_1 = __nccwpck_require__(98041);
+const os = __importStar(__nccwpck_require__(2037));
+const path = __importStar(__nccwpck_require__(1017));
+const oidc_utils_1 = __nccwpck_require__(8041);
 /**
  * The code to exit an action
  */
@@ -425,12 +425,12 @@ exports.getIDToken = getIDToken;
 /**
  * Summary exports
  */
-var summary_1 = __nccwpck_require__(81327);
+var summary_1 = __nccwpck_require__(1327);
 Object.defineProperty(exports, "summary", ({ enumerable: true, get: function () { return summary_1.summary; } }));
 /**
  * @deprecated use core.summary
  */
-var summary_2 = __nccwpck_require__(81327);
+var summary_2 = __nccwpck_require__(1327);
 Object.defineProperty(exports, "markdownSummary", ({ enumerable: true, get: function () { return summary_2.markdownSummary; } }));
 /**
  * Path exports
@@ -472,9 +472,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.prepareKeyValueMessage = exports.issueFileCommand = void 0;
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fs = __importStar(__nccwpck_require__(57147));
-const os = __importStar(__nccwpck_require__(22037));
-const uuid_1 = __nccwpck_require__(75840);
+const fs = __importStar(__nccwpck_require__(7147));
+const os = __importStar(__nccwpck_require__(2037));
+const uuid_1 = __nccwpck_require__(5840);
 const utils_1 = __nccwpck_require__(5278);
 function issueFileCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
@@ -508,7 +508,7 @@ exports.prepareKeyValueMessage = prepareKeyValueMessage;
 
 /***/ }),
 
-/***/ 98041:
+/***/ 8041:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -524,9 +524,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OidcClient = void 0;
-const http_client_1 = __nccwpck_require__(96255);
-const auth_1 = __nccwpck_require__(35526);
-const core_1 = __nccwpck_require__(42186);
+const http_client_1 = __nccwpck_require__(6255);
+const auth_1 = __nccwpck_require__(5526);
+const core_1 = __nccwpck_require__(2186);
 class OidcClient {
     static createHttpClient(allowRetry = true, maxRetry = 10) {
         const requestOptions = {
@@ -618,7 +618,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = void 0;
-const path = __importStar(__nccwpck_require__(71017));
+const path = __importStar(__nccwpck_require__(1017));
 /**
  * toPosixPath converts the given path to the posix form. On Windows, \\ will be
  * replaced with /.
@@ -657,7 +657,7 @@ exports.toPlatformPath = toPlatformPath;
 
 /***/ }),
 
-/***/ 81327:
+/***/ 1327:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -673,8 +673,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
-const os_1 = __nccwpck_require__(22037);
-const fs_1 = __nccwpck_require__(57147);
+const os_1 = __nccwpck_require__(2037);
+const fs_1 = __nccwpck_require__(7147);
 const { access, appendFile, writeFile } = fs_1.promises;
 exports.SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
 exports.SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
@@ -994,7 +994,7 @@ exports.toCommandProperties = toCommandProperties;
 
 /***/ }),
 
-/***/ 35526:
+/***/ 5526:
 /***/ (function(__unused_webpack_module, exports) {
 
 "use strict";
@@ -1082,7 +1082,7 @@ exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHand
 
 /***/ }),
 
-/***/ 96255:
+/***/ 6255:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1118,10 +1118,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HttpClient = exports.isHttps = exports.HttpClientResponse = exports.HttpClientError = exports.getProxyUrl = exports.MediaTypes = exports.Headers = exports.HttpCodes = void 0;
-const http = __importStar(__nccwpck_require__(13685));
-const https = __importStar(__nccwpck_require__(95687));
-const pm = __importStar(__nccwpck_require__(19835));
-const tunnel = __importStar(__nccwpck_require__(74294));
+const http = __importStar(__nccwpck_require__(3685));
+const https = __importStar(__nccwpck_require__(5687));
+const pm = __importStar(__nccwpck_require__(9835));
+const tunnel = __importStar(__nccwpck_require__(4294));
 var HttpCodes;
 (function (HttpCodes) {
     HttpCodes[HttpCodes["OK"] = 200] = "OK";
@@ -1694,7 +1694,7 @@ const lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCa
 
 /***/ }),
 
-/***/ 19835:
+/***/ 9835:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -1762,7 +1762,7 @@ exports.checkBypass = checkBypass;
 
 /***/ }),
 
-/***/ 40937:
+/***/ 937:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -1781,7 +1781,7 @@ exports.AdapterError = AdapterError;
 
 /***/ }),
 
-/***/ 49018:
+/***/ 9018:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1827,8 +1827,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AxiosAdapter = void 0;
-var axios_1 = __importDefault(__nccwpck_require__(96545));
-var adapter_1 = __nccwpck_require__(40937);
+var axios_1 = __importDefault(__nccwpck_require__(6545));
+var adapter_1 = __nccwpck_require__(937);
 var AxiosAdapter = /** @class */ (function () {
     function AxiosAdapter() {
     }
@@ -1900,7 +1900,7 @@ exports.AxiosAdapter = AxiosAdapter;
 
 /***/ }),
 
-/***/ 51542:
+/***/ 1542:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1942,15 +1942,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var message_contracts_1 = __nccwpck_require__(74561);
-var adapter_1 = __nccwpck_require__(40937);
-var axiosAdapter_1 = __nccwpck_require__(49018);
+var octopusError_1 = __nccwpck_require__(408);
+var adapter_1 = __nccwpck_require__(937);
+var axiosAdapter_1 = __nccwpck_require__(9018);
 var ApiClient = /** @class */ (function () {
     function ApiClient(options) {
         var _this = this;
         this.handleSuccess = function (response) {
             if (_this.options.onResponseCallback) {
                 var details = {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/consistent-type-assertions
                     method: _this.options.method,
                     url: _this.options.url,
                     statusCode: response.statusCode,
@@ -1959,6 +1960,7 @@ var ApiClient = /** @class */ (function () {
             }
             var responseText = "";
             if (_this.options.raw) {
+                // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                 responseText = response.data;
             }
             else {
@@ -1973,6 +1975,7 @@ var ApiClient = /** @class */ (function () {
             var err = generateOctopusError(requestError);
             if (_this.options.onErrorResponseCallback) {
                 var details = {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/consistent-type-assertions
                     method: _this.options.method,
                     url: _this.options.url,
                     statusCode: err.StatusCode,
@@ -2021,15 +2024,27 @@ exports["default"] = ApiClient;
 var generateOctopusError = function (requestError) {
     if (requestError.code) {
         var code = requestError.code;
-        return new message_contracts_1.OctopusError(code, requestError.message);
+        return new octopusError_1.OctopusError(code, requestError.message);
     }
-    return new message_contracts_1.OctopusError(0, requestError.message);
+    return new octopusError_1.OctopusError(0, requestError.message);
 };
 
 
 /***/ }),
 
-/***/ 63024:
+/***/ 7083:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.apiLocation = void 0;
+exports.apiLocation = "~/api";
+
+
+/***/ }),
+
+/***/ 3024:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2131,7 +2146,7 @@ exports["default"] = Caching;
 
 /***/ }),
 
-/***/ 42399:
+/***/ 2399:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2188,22 +2203,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Client = void 0;
-var apiClient_1 = __importDefault(__nccwpck_require__(51542));
-var environment_1 = __importDefault(__nccwpck_require__(96050));
-var spaceScopedArgs_1 = __nccwpck_require__(37722);
-var features_1 = __nccwpck_require__(25024);
-var resolver_1 = __nccwpck_require__(28043);
-var subscriptionRecord_1 = __nccwpck_require__(31547);
-var apiLocation = "~/api";
+var apiClient_1 = __importDefault(__nccwpck_require__(1542));
+var resolver_1 = __nccwpck_require__(8043);
+var subscriptionRecord_1 = __nccwpck_require__(1547);
+var spaceScopedOperation_1 = __nccwpck_require__(3667);
+var spaceResolver_1 = __nccwpck_require__(2054);
+var spaceScopedArgs_1 = __nccwpck_require__(5626);
+var spaceScopedRequest_1 = __nccwpck_require__(3295);
+var apiLocation_1 = __nccwpck_require__(7083);
 // The Octopus Client implements the low-level semantics of the Octopus Deploy REST API
 var Client = /** @class */ (function () {
-    function Client(session, resolver, rootDocument, spaceId, spaceRootDocument, configuration) {
+    function Client(resolver, configuration) {
         var _this = this;
-        this.session = session;
         this.resolver = resolver;
-        this.rootDocument = rootDocument;
-        this.spaceId = spaceId;
-        this.spaceRootDocument = spaceRootDocument;
         this.configuration = configuration;
         this.requestSubscriptions = new subscriptionRecord_1.SubscriptionRecord();
         this.responseSubscriptions = new subscriptionRecord_1.SubscriptionRecord();
@@ -2251,12 +2263,10 @@ var Client = /** @class */ (function () {
             error: function (message, err) { return null; },
         };
         this.resolver = resolver;
-        this.rootDocument = rootDocument;
-        this.spaceRootDocument = spaceRootDocument;
     }
     Client.create = function (configuration) {
         return __awaiter(this, void 0, void 0, function () {
-            var resolver, client, error_1, error_2;
+            var resolver, client;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -2264,121 +2274,20 @@ var Client = /** @class */ (function () {
                             throw new Error("The host is not specified");
                         }
                         resolver = new resolver_1.Resolver(configuration.instanceURL);
-                        client = new Client(null, resolver, null, null, null, configuration);
-                        if (!configuration.autoConnect) return [3 /*break*/, 8];
-                        _a.label = 1;
+                        client = new Client(resolver, configuration);
+                        return [4 /*yield*/, client.getServerInformation()];
                     case 1:
-                        _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, client.connect(function (message, error) {
-                                client.debug("Attempting to connect to API endpoint...");
-                            })];
-                    case 2:
                         _a.sent();
-                        return [3 /*break*/, 4];
-                    case 3:
-                        error_1 = _a.sent();
-                        if (error_1 instanceof Error)
-                            client.error("Could not connect", error_1);
-                        throw error_1;
-                    case 4:
-                        if (!(configuration.space !== undefined && configuration.space !== "")) return [3 /*break*/, 8];
-                        _a.label = 5;
-                    case 5:
-                        _a.trys.push([5, 7, , 8]);
-                        return [4 /*yield*/, client.switchToSpace(configuration.space)];
-                    case 6:
-                        _a.sent();
-                        return [3 /*break*/, 8];
-                    case 7:
-                        error_2 = _a.sent();
-                        if (error_2 instanceof Error)
-                            client.error("Could not switch to space", error_2);
-                        throw error_2;
-                    case 8: return [2 /*return*/, client];
+                        return [2 /*return*/, client];
                 }
             });
         });
-    };
-    Client.prototype.connect = function (progressCallback) {
-        var _this = this;
-        progressCallback("Checking credentials...");
-        return new Promise(function (resolve, reject) {
-            if (_this.rootDocument) {
-                resolve();
-                return;
-            }
-            var attempt = function (success, fail) {
-                _this.get(apiLocation).then(function (root) {
-                    success(root);
-                }, fail);
-            };
-            var onSuccess = function (root) {
-                _this.rootDocument = root;
-                resolve();
-            };
-            var onFail = function (err) {
-                progressCallback("Unable to connect.", err);
-                reject(err);
-            };
-            attempt(onSuccess, onFail);
-        });
-    };
-    Client.prototype.disconnect = function () {
-        this.rootDocument = null;
-        this.spaceId = null;
-        this.spaceRootDocument = null;
-    };
-    Client.prototype.forSpace = function (spaceId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var spaceRootResource;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.get(this.rootDocument.Links["SpaceHome"], { spaceId: spaceId })];
-                    case 1:
-                        spaceRootResource = _a.sent();
-                        return [2 /*return*/, new Client(this.session, this.resolver, this.rootDocument, spaceId, spaceRootResource, this.configuration)];
-                }
-            });
-        });
-    };
-    Client.prototype.forSystem = function () {
-        return new Client(this.session, this.resolver, this.rootDocument, null, null, this.configuration);
-    };
-    Client.prototype.switchToSpace = function (spaceIdOrName) {
-        return __awaiter(this, void 0, void 0, function () {
-            var spaceList, uppercaseSpaceIdOrName, spaceResources, spaceResource, _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (this.rootDocument === null) {
-                            throw new Error("Root document is null; this document is required for the API client. Please ensure that the API endpoint is accessible along with its root document.");
-                        }
-                        return [4 /*yield*/, this.get(this.rootDocument.Links["Spaces"])];
-                    case 1:
-                        spaceList = _b.sent();
-                        uppercaseSpaceIdOrName = spaceIdOrName.toUpperCase();
-                        spaceResources = spaceList.Items.filter(function (s) { return s.Name.toUpperCase() === uppercaseSpaceIdOrName || s.Id.toUpperCase() === uppercaseSpaceIdOrName; });
-                        if (!(spaceResources.length == 1)) return [3 /*break*/, 3];
-                        spaceResource = spaceResources[0];
-                        this.spaceId = spaceResource.Id;
-                        _a = this;
-                        return [4 /*yield*/, this.get(spaceResource.Links["SpaceHome"])];
-                    case 2:
-                        _a.spaceRootDocument = _b.sent();
-                        return [2 /*return*/];
-                    case 3: throw new Error("Unable to uniquely identify a space using '".concat(spaceIdOrName, "'."));
-                }
-            });
-        });
-    };
-    Client.prototype.switchToSystem = function () {
-        this.spaceId = null;
-        this.spaceRootDocument = null;
     };
     Client.prototype.get = function (path, args) {
         if (path === undefined)
             throw new Error("path parameter was not");
-        var url = this.resolveUrlWithSpaceId(path, args);
+        var url = this.resolveUrl(path, args);
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         return this.dispatchRequest("GET", url);
     };
     Client.prototype.getRaw = function (path, args) {
@@ -2387,14 +2296,11 @@ var Client = /** @class */ (function () {
         return new Promise(function (resolve, reject) {
             new apiClient_1.default({
                 configuration: _this.configuration,
-                session: _this.session,
                 url: url,
                 method: "GET",
                 error: function (e) { return reject(e); },
                 raw: true,
                 success: function (data) { return resolve(data); },
-                tryGetServerInformation: function () { return _this.tryGetServerInformation(); },
-                getAntiForgeryTokenCallback: function () { return _this.getAntiforgeryToken(); },
                 onRequestCallback: function (r) { return _this.onRequest(r); },
                 onResponseCallback: function (r) { return _this.onResponse(r); },
                 onErrorResponseCallback: function (r) { return _this.onErrorResponse(r); },
@@ -2441,8 +2347,8 @@ var Client = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!(0, features_1.isSpaceScopedOperation)(command)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, (0, features_1.resolveSpaceId)(this, command.spaceName)];
+                        if (!(0, spaceScopedOperation_1.isSpaceScopedOperation)(command)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, (0, spaceResolver_1.resolveSpaceId)(this, command.spaceName)];
                     case 1:
                         spaceId = _a.sent();
                         args = __assign({ spaceId: spaceId }, args);
@@ -2450,13 +2356,14 @@ var Client = /** @class */ (function () {
                         _a.label = 2;
                     case 2:
                         if (!(args && (0, spaceScopedArgs_1.isSpaceScopedArgs)(args))) return [3 /*break*/, 4];
-                        return [4 /*yield*/, (0, features_1.resolveSpaceId)(this, args.spaceName)];
+                        return [4 /*yield*/, (0, spaceResolver_1.resolveSpaceId)(this, args.spaceName)];
                     case 3:
                         spaceId = _a.sent();
                         args = __assign({ spaceId: spaceId }, args);
                         _a.label = 4;
                     case 4:
-                        url = this.resolveUrlWithSpaceId(path, args);
+                        url = this.resolveUrl(path, args);
+                        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                         return [2 /*return*/, this.dispatchRequest("POST", url, command)];
                 }
             });
@@ -2468,15 +2375,16 @@ var Client = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!(0, features_1.isSpaceScopedOperation)(command)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, (0, features_1.resolveSpaceId)(this, command.spaceName)];
+                        if (!(0, spaceScopedOperation_1.isSpaceScopedOperation)(command)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, (0, spaceResolver_1.resolveSpaceId)(this, command.spaceName)];
                     case 1:
                         spaceId = _a.sent();
                         args = __assign({ spaceId: spaceId }, args);
                         command = __assign({ spaceId: spaceId }, command);
                         _a.label = 2;
                     case 2:
-                        url = this.resolveUrlWithSpaceId(path, args);
+                        url = this.resolveUrl(path, args);
+                        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                         return [2 /*return*/, this.dispatchRequest("PUT", url, command)];
                 }
             });
@@ -2488,21 +2396,23 @@ var Client = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!(0, features_1.isSpaceScopedRequest)(request)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, (0, features_1.resolveSpaceId)(this, request.spaceName)];
+                        if (!(0, spaceScopedRequest_1.isSpaceScopedRequest)(request)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, (0, spaceResolver_1.resolveSpaceId)(this, request.spaceName)];
                     case 1:
                         spaceId = _a.sent();
                         request = __assign({ spaceId: spaceId }, request);
                         _a.label = 2;
                     case 2:
-                        url = this.resolveUrlWithSpaceId(path, request);
+                        url = this.resolveUrl(path, request);
+                        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                         return [2 /*return*/, this.dispatchRequest("GET", url, null)];
                 }
             });
         });
     };
     Client.prototype.post = function (path, resource, args) {
-        var url = this.resolveUrlWithSpaceId(path, args);
+        var url = this.resolveUrl(path, args);
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         return this.dispatchRequest("POST", url, resource);
     };
     Client.prototype.create = function (path, resource, args) {
@@ -2542,115 +2452,66 @@ var Client = /** @class */ (function () {
         return this.dispatchRequest("DELETE", url, resource);
     };
     Client.prototype.put = function (path, resource, args) {
-        var url = this.resolveUrlWithSpaceId(path, args);
+        var url = this.resolveUrl(path, args);
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         return this.dispatchRequest("PUT", url, resource);
     };
-    Client.prototype.getAntiforgeryToken = function () {
-        if (!this.isConnected()) {
-            return null;
-        }
-        var installationId = this.getGlobalRootDocument().InstallationId;
-        if (!installationId) {
-            return null;
-        }
-        // If we have come this far we know we are on a version of Octopus Server which supports anti-forgery tokens
-        var antiforgeryCookieName = "Octopus-Csrf-Token_" + installationId;
-        var antiforgeryCookies = document.cookie
-            .split(";")
-            .filter(function (c) {
-            return c.trim().indexOf(antiforgeryCookieName) === 0;
-        })
-            .map(function (c) {
-            return c.trim();
-        });
-        if (antiforgeryCookies && antiforgeryCookies.length === 1) {
-            var antiforgeryToken = antiforgeryCookies[0].split("=")[1];
-            return antiforgeryToken;
-        }
-        else {
-            if (environment_1.default.isInDevelopmentMode()) {
-                return "FAKE TOKEN USED FOR DEVELOPMENT";
-            }
-            return null;
-        }
-    };
-    Client.prototype.resolveLinkTemplate = function (link, args) {
-        return this.resolve(this.getLink(link), args);
-    };
     Client.prototype.getServerInformation = function () {
-        if (!this.isConnected()) {
-            throw new Error("The Octopus Client has not connected. THIS SHOULD NOT HAPPEN! Please notify support.");
-        }
-        return {
-            version: this.rootDocument.Version,
-        };
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        if (!!this.serverInformation) return [3 /*break*/, 2];
+                        _a = this;
+                        return [4 /*yield*/, this.tryGetServerInformation()];
+                    case 1:
+                        _a.serverInformation = _b.sent();
+                        if (!this.serverInformation) {
+                            throw new Error("The Octopus server information could not be retrieved. Please check the configured URL.");
+                        }
+                        _b.label = 2;
+                    case 2: return [2 /*return*/, this.serverInformation];
+                }
+            });
+        });
     };
     Client.prototype.tryGetServerInformation = function () {
-        return this.rootDocument
-            ? {
-                version: this.rootDocument.Version,
-                installationId: this.rootDocument.InstallationId,
-            }
-            : null;
-    };
-    Client.prototype.throwIfClientNotConnected = function () {
-        if (!this.isConnected()) {
-            var errorMessage = "Can't get the link from the client, because the client has not yet been connected.";
-            throw new Error(errorMessage);
-        }
-    };
-    Client.prototype.getSystemLink = function (linkGetter) {
-        this.throwIfClientNotConnected();
-        var link = linkGetter(this.rootDocument.Links);
-        if (link === null) {
-            var errorMessage = "Can't get the link for ".concat(name, " from the client, because it could not be found in the root document.");
-            throw new Error(errorMessage);
-        }
-        return link;
-    };
-    Client.prototype.getLink = function (name) {
-        this.throwIfClientNotConnected();
-        var spaceLinkExists = this.spaceRootDocument && this.spaceRootDocument.Links !== undefined && this.spaceRootDocument.Links[name];
-        var link = spaceLinkExists ? this.spaceRootDocument.Links[name] : this.rootDocument.Links[name];
-        if (!link) {
-            var errorMessage = "Can't get the link for ".concat(name, " from the client, because it could not be found in the root document or the space root document.");
-            throw new Error(errorMessage);
-        }
-        return link;
+        return __awaiter(this, void 0, void 0, function () {
+            var rootDocument;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.get(apiLocation_1.apiLocation)];
+                    case 1:
+                        rootDocument = _a.sent();
+                        return [2 /*return*/, rootDocument
+                                ? {
+                                    version: rootDocument.Version,
+                                    installationId: rootDocument.InstallationId,
+                                }
+                                : null];
+                }
+            });
+        });
     };
     Client.prototype.dispatchRequest = function (method, url, requestBody) {
         var _this = this;
         return new Promise(function (resolve, reject) {
             new apiClient_1.default({
                 configuration: _this.configuration,
-                session: _this.session,
                 error: function (e) { return reject(e); },
                 method: method,
                 url: url,
                 requestBody: requestBody,
                 success: function (data) { return resolve(data); },
-                tryGetServerInformation: function () { return _this.tryGetServerInformation(); },
-                getAntiForgeryTokenCallback: function () { return _this.getAntiforgeryToken(); },
                 onRequestCallback: function (r) { return _this.onRequest(r); },
                 onResponseCallback: function (r) { return _this.onResponse(r); },
                 onErrorResponseCallback: function (r) { return _this.onErrorResponse(r); },
             }).execute();
         });
     };
-    Client.prototype.isConnected = function () {
-        return this.rootDocument !== null;
-    };
-    Client.prototype.getArgsWithSpaceId = function (args) {
-        return this.spaceId ? __assign({ spaceId: this.spaceId }, args) : args;
-    };
-    Client.prototype.getGlobalRootDocument = function () {
-        if (!this.isConnected()) {
-            throw new Error("The Octopus Client has not connected.");
-        }
-        return this.rootDocument;
-    };
-    Client.prototype.resolveUrlWithSpaceId = function (path, args) {
-        return this.resolve(path, this.getArgsWithSpaceId(args));
+    Client.prototype.resolveUrl = function (path, args) {
+        return this.resolve(path, args);
     };
     return Client;
 }());
@@ -2669,7 +2530,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 92101:
+/***/ 2101:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2679,7 +2540,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 57948:
+/***/ 7948:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2689,7 +2550,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 16397:
+/***/ 6397:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2699,7 +2560,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 35758:
+/***/ 5758:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2709,32 +2570,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 45953:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ClientSession = void 0;
-var ClientSession = /** @class */ (function () {
-    function ClientSession(cache, isAuthenticated, endSession) {
-        var _this = this;
-        this.cache = cache;
-        this.isAuthenticated = isAuthenticated;
-        this.endSession = endSession;
-        this.end = function () {
-            _this.endSession();
-            _this.cache.clearAll();
-        };
-    }
-    return ClientSession;
-}());
-exports.ClientSession = ClientSession;
-
-
-/***/ }),
-
-/***/ 96050:
+/***/ 6050:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2753,7 +2589,7 @@ exports["default"] = Environment;
 
 /***/ }),
 
-/***/ 30661:
+/***/ 661:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2763,7 +2599,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 1570:
+/***/ 2966:
 /***/ (function(__unused_webpack_module, exports) {
 
 "use strict";
@@ -2816,10 +2652,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.BasicRepositoryV2 = void 0;
+exports.BasicRepository = void 0;
 // Repositories provide a helpful abstraction around the Octopus Deploy API
-var BasicRepositoryV2 = /** @class */ (function () {
-    function BasicRepositoryV2(client, baseApiTemplate) {
+var BasicRepository = /** @class */ (function () {
+    function BasicRepository(client, baseApiTemplate) {
         var _this = this;
         this.takeAll = 2147483647;
         this.takeDefaultPageSize = 30;
@@ -2831,11 +2667,11 @@ var BasicRepositoryV2 = /** @class */ (function () {
         this.baseApiTemplate = baseApiTemplate;
         this.subscribersToDataModifications = {};
     }
-    BasicRepositoryV2.prototype.del = function (resource) {
+    BasicRepository.prototype.del = function (resource) {
         var _this = this;
         return this.client.del("".concat(this.baseApiTemplate, "/").concat(resource.Id)).then(function (d) { return _this.notifySubscribersToDataModifications(resource); });
     };
-    BasicRepositoryV2.prototype.create = function (resource, args) {
+    BasicRepository.prototype.create = function (resource, args) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
@@ -2843,17 +2679,19 @@ var BasicRepositoryV2 = /** @class */ (function () {
             });
         });
     };
-    BasicRepositoryV2.prototype.get = function (id) {
+    BasicRepository.prototype.get = function (id) {
         return this.client.get(this.baseApiTemplate, { id: id });
     };
-    BasicRepositoryV2.prototype.list = function (args) {
+    BasicRepository.prototype.list = function (args) {
         return this.client.get(this.baseApiTemplate, args);
     };
-    BasicRepositoryV2.prototype.modify = function (resource, args) {
+    BasicRepository.prototype.modify = function (resource, args) {
         var _this = this;
-        return this.client.doUpdate(this.baseApiTemplate, resource, args).then(function (r) { return _this.notifySubscribersToDataModifications(r); });
+        return this.client
+            .doUpdate(this.baseApiTemplate, resource, __assign({ id: resource.Id }, args))
+            .then(function (r) { return _this.notifySubscribersToDataModifications(r); });
     };
-    BasicRepositoryV2.prototype.save = function (resource) {
+    BasicRepository.prototype.save = function (resource) {
         if (isNewResource(resource)) {
             return this.create(resource);
         }
@@ -2867,68 +2705,23 @@ var BasicRepositoryV2 = /** @class */ (function () {
             return !("Id" in resource && isTruthy(resource.Id));
         }
     };
-    BasicRepositoryV2.prototype.subscribeToDataModifications = function (key, callback) {
+    BasicRepository.prototype.subscribeToDataModifications = function (key, callback) {
         this.subscribersToDataModifications[key] = callback;
     };
-    BasicRepositoryV2.prototype.unsubscribeFromDataModifications = function (key) {
+    BasicRepository.prototype.unsubscribeFromDataModifications = function (key) {
         delete this.subscribersToDataModifications[key];
     };
-    BasicRepositoryV2.prototype.extend = function (arg1, arg2) {
+    BasicRepository.prototype.extend = function (arg1, arg2) {
         return __assign(__assign({}, arg1), arg2);
     };
-    return BasicRepositoryV2;
+    return BasicRepository;
 }());
-exports.BasicRepositoryV2 = BasicRepositoryV2;
+exports.BasicRepository = BasicRepository;
 
 
 /***/ }),
 
-/***/ 48304:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(62697), exports);
-__exportStar(__nccwpck_require__(85211), exports);
-
-
-/***/ }),
-
-/***/ 62697:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PackageIdentity = void 0;
-var PackageIdentity = /** @class */ (function () {
-    function PackageIdentity(Id, Version) {
-        this.Id = Id;
-        this.Version = Version;
-    }
-    return PackageIdentity;
-}());
-exports.PackageIdentity = PackageIdentity;
-
-
-/***/ }),
-
-/***/ 85211:
+/***/ 460:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2970,48 +2763,83 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.buildInformationPush = void 0;
-var packageRepository_1 = __nccwpck_require__(53378);
-function buildInformationPush(client, buildInformation, overwriteMode) {
-    if (overwriteMode === void 0) { overwriteMode = packageRepository_1.OverwriteMode.FailIfExists; }
-    return __awaiter(this, void 0, void 0, function () {
-        var tasks, _i, _a, pkg;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    tasks = [];
-                    for (_i = 0, _a = buildInformation.Packages; _i < _a.length; _i++) {
-                        pkg = _a[_i];
-                        tasks.push(client.doCreate("~/api/{spaceId}/build-information{?overwriteMode}", {
-                            spaceName: buildInformation.spaceName,
-                            PackageId: pkg.Id,
-                            Version: pkg.Version,
-                            OctopusBuildInformation: {
-                                Branch: buildInformation.Branch,
-                                BuildEnvironment: buildInformation.BuildEnvironment,
-                                BuildNumber: buildInformation.BuildNumber,
-                                BuildUrl: buildInformation.BuildUrl,
-                                Commits: buildInformation.Commits.map(function (c) { return ({ Id: c.Id, Comment: c.Comment }); }),
-                                VcsCommitNumber: buildInformation.VcsCommitNumber,
-                                VcsRoot: buildInformation.VcsRoot,
-                                VcsType: buildInformation.VcsType,
-                            },
-                        }, { overwriteMode: overwriteMode }));
-                    }
-                    return [4 /*yield*/, Promise.all(tasks)];
-                case 1:
-                    _b.sent();
-                    return [2 /*return*/];
-            }
+exports.BuildInformationRepository = void 0;
+var overwriteMode_1 = __nccwpck_require__(7758);
+var __1 = __nccwpck_require__(586);
+var BuildInformationRepository = /** @class */ (function () {
+    function BuildInformationRepository(client, spaceName) {
+        this.client = client;
+        this.spaceName = spaceName;
+    }
+    BuildInformationRepository.prototype.push = function (buildInformation, overwriteMode) {
+        if (overwriteMode === void 0) { overwriteMode = overwriteMode_1.OverwriteMode.FailIfExists; }
+        return __awaiter(this, void 0, void 0, function () {
+            var tasks, _i, _a, pkg;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        tasks = [];
+                        for (_i = 0, _a = buildInformation.Packages; _i < _a.length; _i++) {
+                            pkg = _a[_i];
+                            tasks.push(this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/build-information{?overwriteMode}"), {
+                                spaceName: buildInformation.spaceName,
+                                PackageId: pkg.Id,
+                                Version: pkg.Version,
+                                OctopusBuildInformation: {
+                                    Branch: buildInformation.Branch,
+                                    BuildEnvironment: buildInformation.BuildEnvironment,
+                                    BuildNumber: buildInformation.BuildNumber,
+                                    BuildUrl: buildInformation.BuildUrl,
+                                    Commits: buildInformation.Commits.map(function (c) { return ({ Id: c.Id, Comment: c.Comment }); }),
+                                    VcsCommitNumber: buildInformation.VcsCommitNumber,
+                                    VcsRoot: buildInformation.VcsRoot,
+                                    VcsType: buildInformation.VcsType,
+                                },
+                            }, { overwriteMode: overwriteMode }));
+                        }
+                        return [4 /*yield*/, Promise.all(tasks)];
+                    case 1:
+                        _b.sent();
+                        return [2 /*return*/];
+                }
+            });
         });
-    });
-}
-exports.buildInformationPush = buildInformationPush;
+    };
+    return BuildInformationRepository;
+}());
+exports.BuildInformationRepository = BuildInformationRepository;
 
 
 /***/ }),
 
-/***/ 32171:
+/***/ 8304:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(460), exports);
+__exportStar(__nccwpck_require__(8146), exports);
+__exportStar(__nccwpck_require__(2697), exports);
+
+
+/***/ }),
+
+/***/ 8146:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -3021,7 +2849,56 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 64520:
+/***/ 2697:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PackageIdentity = void 0;
+var PackageIdentity = /** @class */ (function () {
+    function PackageIdentity(Id, Version) {
+        this.Id = Id;
+        this.Version = Version;
+    }
+    return PackageIdentity;
+}());
+exports.PackageIdentity = PackageIdentity;
+
+
+/***/ }),
+
+/***/ 9296:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 8318:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 2171:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 4520:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3054,38 +2931,39 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EnvironmentRepository = void 0;
-var spaceScopedBasicRepositoryV2_1 = __nccwpck_require__(74564);
+var __1 = __nccwpck_require__(586);
+var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
 var EnvironmentRepository = /** @class */ (function (_super) {
     __extends(EnvironmentRepository, _super);
     function EnvironmentRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "~/api/{spaceId}/environments{/id}{?skip,take,ids,partialName}") || this;
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/environments{/id}{?skip,take,ids,partialName}")) || this;
     }
     // getMetadata(environment: DeploymentEnvironment): Promise<EnvironmentSettingsMetadata[]> {
-    //     return this.client.get('~/api/{spaceId}/environments/{id}/metadata', { spaceId: environment.SpaceId, id: environment.Id });
+    //     return this.client.get('${spaceScopedRoutePrefix}/environments/{id}/metadata', { spaceId: environment.SpaceId, id: environment.Id });
     // }
     EnvironmentRepository.prototype.sort = function (order) {
-        return this.client.doUpdate("~/api/{spaceId}/environments/sortorder", order, { spaceName: this.spaceName });
+        return this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/environments/sortorder"), order, { spaceName: this.spaceName });
     };
     EnvironmentRepository.prototype.summary = function (args) {
-        return this.client.request("~/api/{spaceId}/environments/summary{?ids,partialName,machinePartialName,roles,isDisabled,healthStatuses,commStyles,tenantIds,tenantTags,hideEmptyEnvironments,shellNames,deploymentTargetTypes}", __assign({ spaceName: this.spaceName }, args));
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/summary{?ids,partialName,machinePartialName,roles,isDisabled,healthStatuses,commStyles,tenantIds,tenantTags,hideEmptyEnvironments,shellNames,deploymentTargetTypes}"), __assign({ spaceName: this.spaceName }, args));
     };
     EnvironmentRepository.prototype.machines = function (environment, args) {
-        return this.client.request("~/api/{spaceId}/environments/{id}/machines{?skip,take,partialName,roles,isDisabled,healthStatuses,commStyles,tenantIds,tenantTags,shellNames,deploymentTargetTypes}", __assign({ spaceName: this.spaceName, id: environment.Id }, args));
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/{id}/machines{?skip,take,partialName,roles,isDisabled,healthStatuses,commStyles,tenantIds,tenantTags,shellNames,deploymentTargetTypes}"), __assign({ spaceName: this.spaceName, id: environment.Id }, args));
     };
     EnvironmentRepository.prototype.variablesScopedOnlyToThisEnvironment = function (environment) {
-        return this.client.request("~/api/{spaceId}/environments/{id}/singlyScopedVariableDetails", {
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/{id}/singlyScopedVariableDetails"), {
             spaceName: this.spaceName,
             id: environment.Id,
         });
     };
     return EnvironmentRepository;
-}(spaceScopedBasicRepositoryV2_1.SpaceScopedBasicRepositoryV2));
+}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
 exports.EnvironmentRepository = EnvironmentRepository;
 
 
 /***/ }),
 
-/***/ 37206:
+/***/ 7206:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3105,13 +2983,13 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(32171), exports);
-__exportStar(__nccwpck_require__(64520), exports);
+__exportStar(__nccwpck_require__(2171), exports);
+__exportStar(__nccwpck_require__(4520), exports);
 
 
 /***/ }),
 
-/***/ 36459:
+/***/ 6459:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -3121,7 +2999,238 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 61145:
+/***/ 7587:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 283:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 996:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 6121:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getFeedTypeLabel = exports.isContainerImageRegistry = exports.containerRegistryFeedTypes = exports.isOctopusProjectFeed = exports.feedTypeSupportsExtraction = exports.feedTypeCanSearchEmpty = void 0;
+var feedType_1 = __nccwpck_require__(2957);
+var lodash_1 = __nccwpck_require__(250);
+function feedTypeCanSearchEmpty(feed) {
+    return ![feedType_1.FeedType.Docker, feedType_1.FeedType.AwsElasticContainerRegistry, feedType_1.FeedType.Maven, feedType_1.FeedType.GitHub].includes(feed);
+}
+exports.feedTypeCanSearchEmpty = feedTypeCanSearchEmpty;
+function feedTypeSupportsExtraction(feed) {
+    // Container images can not be extracted
+    return ![feedType_1.FeedType.Docker, feedType_1.FeedType.AwsElasticContainerRegistry].includes(feed);
+}
+exports.feedTypeSupportsExtraction = feedTypeSupportsExtraction;
+function isOctopusProjectFeed(feed) {
+    return feed === "OctopusProject";
+}
+exports.isOctopusProjectFeed = isOctopusProjectFeed;
+function containerRegistryFeedTypes() {
+    return [feedType_1.FeedType.Docker, feedType_1.FeedType.AwsElasticContainerRegistry];
+}
+exports.containerRegistryFeedTypes = containerRegistryFeedTypes;
+function isContainerImageRegistry(feed) {
+    return containerRegistryFeedTypes().includes(feed);
+}
+exports.isContainerImageRegistry = isContainerImageRegistry;
+var getFeedTypeLabel = function (feedType) {
+    var requiresContainerImageRegistryFeed = feedType && feedType.length >= 1 && (0, lodash_1.every)(feedType, function (f) { return isContainerImageRegistry(f); });
+    var requiresHelmChartFeed = feedType && feedType.length === 1 && feedType[0] === feedType_1.FeedType.Helm;
+    if (requiresContainerImageRegistryFeed) {
+        return "Container Image Registry";
+    }
+    if (requiresHelmChartFeed) {
+        return "Helm Chart Repository";
+    }
+    return "Package";
+};
+exports.getFeedTypeLabel = getFeedTypeLabel;
+
+
+/***/ }),
+
+/***/ 7423:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.FeedRepository = void 0;
+var __1 = __nccwpck_require__(586);
+var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
+var FeedRepository = /** @class */ (function (_super) {
+    __extends(FeedRepository, _super);
+    function FeedRepository(client, spaceName) {
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/feeds{/id}{?skip,take,ids,partialName,feedType}")) || this;
+    }
+    return FeedRepository;
+}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
+exports.FeedRepository = FeedRepository;
+
+
+/***/ }),
+
+/***/ 2957:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.FeedType = void 0;
+var FeedType;
+(function (FeedType) {
+    FeedType["AwsElasticContainerRegistry"] = "AwsElasticContainerRegistry";
+    FeedType["BuiltIn"] = "BuiltIn";
+    FeedType["Docker"] = "Docker";
+    FeedType["GitHub"] = "GitHub";
+    FeedType["Helm"] = "Helm";
+    FeedType["Maven"] = "Maven";
+    FeedType["Nuget"] = "NuGet";
+    FeedType["OctopusProject"] = "OctopusProject";
+})(FeedType = exports.FeedType || (exports.FeedType = {}));
+
+
+/***/ }),
+
+/***/ 4023:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 6080:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 4962:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(7587), exports);
+__exportStar(__nccwpck_require__(283), exports);
+__exportStar(__nccwpck_require__(996), exports);
+__exportStar(__nccwpck_require__(6121), exports);
+__exportStar(__nccwpck_require__(7423), exports);
+__exportStar(__nccwpck_require__(2957), exports);
+__exportStar(__nccwpck_require__(4023), exports);
+__exportStar(__nccwpck_require__(6080), exports);
+__exportStar(__nccwpck_require__(8150), exports);
+__exportStar(__nccwpck_require__(5306), exports);
+__exportStar(__nccwpck_require__(9759), exports);
+__exportStar(__nccwpck_require__(6916), exports);
+
+
+/***/ }),
+
+/***/ 8150:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 5306:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 9759:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 6916:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 1145:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -3148,32 +3257,31 @@ var ControlType;
 
 /***/ }),
 
-/***/ 20599:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 669:
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(61145), exports);
+exports.ConnectivityCheckResponseMessageCategory = exports.PropertyApplicabilityMode = void 0;
+var PropertyApplicabilityMode;
+(function (PropertyApplicabilityMode) {
+    PropertyApplicabilityMode["ApplicableIfHasAnyValue"] = "ApplicableIfHasAnyValue";
+    PropertyApplicabilityMode["ApplicableIfHasNoValue"] = "ApplicableIfHasNoValue";
+    PropertyApplicabilityMode["ApplicableIfSpecificValue"] = "ApplicableIfSpecificValue";
+    PropertyApplicabilityMode["ApplicableIfNotSpecificValue"] = "ApplicableIfNotSpecificValue";
+})(PropertyApplicabilityMode = exports.PropertyApplicabilityMode || (exports.PropertyApplicabilityMode = {}));
+var ConnectivityCheckResponseMessageCategory;
+(function (ConnectivityCheckResponseMessageCategory) {
+    ConnectivityCheckResponseMessageCategory["Info"] = "Info";
+    ConnectivityCheckResponseMessageCategory["Warning"] = "Warning";
+    ConnectivityCheckResponseMessageCategory["Error"] = "Error";
+})(ConnectivityCheckResponseMessageCategory = exports.ConnectivityCheckResponseMessageCategory || (exports.ConnectivityCheckResponseMessageCategory = {}));
 
 
 /***/ }),
 
-/***/ 25024:
+/***/ 599:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3193,40 +3301,57 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(1570), exports);
-__exportStar(__nccwpck_require__(36459), exports);
-__exportStar(__nccwpck_require__(79421), exports);
-__exportStar(__nccwpck_require__(15685), exports);
-__exportStar(__nccwpck_require__(38781), exports);
-__exportStar(__nccwpck_require__(29191), exports);
-__exportStar(__nccwpck_require__(37722), exports);
-__exportStar(__nccwpck_require__(74564), exports);
-__exportStar(__nccwpck_require__(99659), exports);
-__exportStar(__nccwpck_require__(92431), exports);
-__exportStar(__nccwpck_require__(95564), exports);
-__exportStar(__nccwpck_require__(48304), exports);
-__exportStar(__nccwpck_require__(37206), exports);
-__exportStar(__nccwpck_require__(20599), exports);
-__exportStar(__nccwpck_require__(65207), exports);
+__exportStar(__nccwpck_require__(1145), exports);
+__exportStar(__nccwpck_require__(669), exports);
+
+
+/***/ }),
+
+/***/ 5024:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(8304), exports);
+__exportStar(__nccwpck_require__(7206), exports);
+__exportStar(__nccwpck_require__(599), exports);
+__exportStar(__nccwpck_require__(4979), exports);
+__exportStar(__nccwpck_require__(5207), exports);
+__exportStar(__nccwpck_require__(1682), exports);
 __exportStar(__nccwpck_require__(9659), exports);
-__exportStar(__nccwpck_require__(76568), exports);
-__exportStar(__nccwpck_require__(30341), exports);
-__exportStar(__nccwpck_require__(40621), exports);
+__exportStar(__nccwpck_require__(6568), exports);
+__exportStar(__nccwpck_require__(1163), exports);
+__exportStar(__nccwpck_require__(9925), exports);
+__exportStar(__nccwpck_require__(341), exports);
+__exportStar(__nccwpck_require__(3217), exports);
+__exportStar(__nccwpck_require__(621), exports);
+__exportStar(__nccwpck_require__(2966), exports);
+__exportStar(__nccwpck_require__(9296), exports);
+__exportStar(__nccwpck_require__(8318), exports);
+__exportStar(__nccwpck_require__(6459), exports);
+__exportStar(__nccwpck_require__(7758), exports);
+__exportStar(__nccwpck_require__(800), exports);
+__exportStar(__nccwpck_require__(3496), exports);
 
 
 /***/ }),
 
-/***/ 79421:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 65207:
+/***/ 4979:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3246,123 +3371,15 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(77219), exports);
+__exportStar(__nccwpck_require__(1703), exports);
+__exportStar(__nccwpck_require__(6141), exports);
+__exportStar(__nccwpck_require__(5101), exports);
+__exportStar(__nccwpck_require__(9310), exports);
 
 
 /***/ }),
 
-/***/ 77219:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.packagePush = void 0;
-var fs_1 = __nccwpck_require__(57147);
-var path_1 = __importDefault(__nccwpck_require__(71017));
-var form_data_1 = __importDefault(__nccwpck_require__(64334));
-var __1 = __nccwpck_require__(80586);
-var packageRepository_1 = __nccwpck_require__(53378);
-function packagePush(client, spaceName, packages, overwriteMode) {
-    if (overwriteMode === void 0) { overwriteMode = packageRepository_1.OverwriteMode.FailIfExists; }
-    return __awaiter(this, void 0, void 0, function () {
-        function packageUpload(filePath) {
-            return __awaiter(this, void 0, void 0, function () {
-                var fileName;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            fileName = path_1.default.basename(filePath);
-                            client.info("Uploading package, ".concat(fileName, "..."));
-                            return [4 /*yield*/, upload(filePath, fileName, overwriteMode)];
-                        case 1:
-                            _a.sent();
-                            return [2 /*return*/];
-                    }
-                });
-            });
-        }
-        function upload(filePath, fileName, overwriteMode) {
-            return __awaiter(this, void 0, void 0, function () {
-                var fd, data;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            fd = new form_data_1.default();
-                            return [4 /*yield*/, fs_1.promises.readFile(filePath)];
-                        case 1:
-                            data = _a.sent();
-                            fd.append("fileToUpload", data, fileName);
-                            return [2 /*return*/, client.post("~/api/{spaceId}/packages/raw{?overwriteMode}", fd, { overwriteMode: overwriteMode, spaceId: spaceId })];
-                    }
-                });
-            });
-        }
-        var spaceId, tasks, _i, packages_1, packagePath;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, (0, __1.resolveSpaceId)(client, spaceName)];
-                case 1:
-                    spaceId = _a.sent();
-                    tasks = [];
-                    for (_i = 0, packages_1 = packages; _i < packages_1.length; _i++) {
-                        packagePath = packages_1[_i];
-                        tasks.push(packageUpload(packagePath));
-                    }
-                    return [4 /*yield*/, Promise.all(tasks)];
-                case 2:
-                    _a.sent();
-                    client.info("Packages uploaded");
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-exports.packagePush = packagePush;
-
-
-/***/ }),
-
-/***/ 97397:
+/***/ 1703:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -3372,2900 +3389,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 31334:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ExecutionWaiter = void 0;
-var serverTasks_1 = __nccwpck_require__(76568);
-var ExecutionWaiter = /** @class */ (function () {
-    function ExecutionWaiter(client, spaceName) {
-        this.client = client;
-        this.spaceName = spaceName;
-    }
-    ExecutionWaiter.prototype.waitForExecutionsToComplete = function (serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback) {
-        return __awaiter(this, void 0, void 0, function () {
-            var taskPromises, _i, serverTaskIds_1, taskId;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        taskPromises = [];
-                        for (_i = 0, serverTaskIds_1 = serverTaskIds; _i < serverTaskIds_1.length; _i++) {
-                            taskId = serverTaskIds_1[_i];
-                            taskPromises.push(this.waitForExecutionToComplete(taskId, statusCheckSleepCycle, timeout, pollingCallback));
-                        }
-                        return [4 /*yield*/, Promise.allSettled(taskPromises)];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    ExecutionWaiter.prototype.waitForExecutionToComplete = function (serverTaskId, statusCheckSleepCycle, timeout, pollingCallback) {
-        return __awaiter(this, void 0, void 0, function () {
-            var sleep, stop, t, taskDetails, task;
-            var _this = this;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        sleep = function (ms) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
-                            return [2 /*return*/, new Promise(function (r) { return setTimeout(r, ms); })];
-                        }); }); };
-                        stop = false;
-                        t = setTimeout(function () {
-                            stop = true;
-                        }, timeout);
-                        _a.label = 1;
-                    case 1:
-                        if (!!stop) return [3 /*break*/, 7];
-                        if (!pollingCallback) return [3 /*break*/, 3];
-                        return [4 /*yield*/, (0, serverTasks_1.serverTaskDetailsGet)(this.client, this.spaceName, serverTaskId)];
-                    case 2:
-                        taskDetails = _a.sent();
-                        pollingCallback(taskDetails);
-                        if (taskDetails.Task.IsCompleted) {
-                            clearTimeout(t);
-                            return [2 /*return*/, taskDetails.Task];
-                        }
-                        return [3 /*break*/, 5];
-                    case 3: return [4 /*yield*/, (0, serverTasks_1.serverTaskGet)(this.client, this.spaceName, serverTaskId)];
-                    case 4:
-                        task = _a.sent();
-                        if (task.IsCompleted) {
-                            clearTimeout(t);
-                            return [2 /*return*/, task];
-                        }
-                        _a.label = 5;
-                    case 5: return [4 /*yield*/, sleep(statusCheckSleepCycle)];
-                    case 6:
-                        _a.sent();
-                        return [3 /*break*/, 1];
-                    case 7: return [2 /*return*/, null];
-                }
-            });
-        });
-    };
-    return ExecutionWaiter;
-}());
-exports.ExecutionWaiter = ExecutionWaiter;
-
-
-/***/ }),
-
-/***/ 29259:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 9659:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(29259), exports);
-__exportStar(__nccwpck_require__(97397), exports);
-__exportStar(__nccwpck_require__(31334), exports);
-__exportStar(__nccwpck_require__(13820), exports);
-__exportStar(__nccwpck_require__(55068), exports);
-
-
-/***/ }),
-
-/***/ 70169:
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.releaseCreate = void 0;
-function releaseCreate(client, command) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    client.debug("Creating a release...");
-                    return [4 /*yield*/, client.doCreate("~/api/{spaceId}/releases/create/v1", __assign({ spaceIdOrName: command.spaceName }, command))];
-                case 1:
-                    response = _a.sent();
-                    client.debug("Release created successfully.");
-                    return [2 /*return*/, response];
-            }
-        });
-    });
-}
-exports.releaseCreate = releaseCreate;
-
-
-/***/ }),
-
-/***/ 40007:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 83565:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 67749:
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.deployReleaseTenanted = exports.deployReleaseUntenanted = void 0;
-function deployReleaseUntenanted(client, command) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, mappedTasks;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    client.debug("Deploying a release...");
-                    return [4 /*yield*/, client.doCreate("~/api/{spaceId}/deployments/create/untenanted/v1", __assign({ spaceIdOrName: command.spaceName }, command))];
-                case 1:
-                    response = _a.sent();
-                    if (response.DeploymentServerTasks.length == 0) {
-                        throw new Error("No server task details returned");
-                    }
-                    mappedTasks = response.DeploymentServerTasks.map(function (x) {
-                        return {
-                            DeploymentId: x.DeploymentId || x.deploymentId,
-                            ServerTaskId: x.ServerTaskId || x.serverTaskId,
-                        };
-                    });
-                    client.debug("Deployment(s) created successfully. [".concat(mappedTasks.map(function (t) { return t.ServerTaskId; }).join(", "), "]"));
-                    return [2 /*return*/, {
-                            DeploymentServerTasks: mappedTasks,
-                        }];
-            }
-        });
-    });
-}
-exports.deployReleaseUntenanted = deployReleaseUntenanted;
-function deployReleaseTenanted(client, command) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, mappedTasks;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    client.debug("Deploying a tenanted release...");
-                    return [4 /*yield*/, client.doCreate("~/api/{spaceId}/deployments/create/tenanted/v1", __assign({ spaceIdOrName: command.spaceName }, command))];
-                case 1:
-                    response = _a.sent();
-                    if (response.DeploymentServerTasks.length == 0) {
-                        throw new Error("No server task details returned");
-                    }
-                    mappedTasks = response.DeploymentServerTasks.map(function (x) {
-                        return {
-                            DeploymentId: x.DeploymentId || x.deploymentId,
-                            ServerTaskId: x.ServerTaskId || x.serverTaskId,
-                        };
-                    });
-                    client.debug("Tenanted Deployment(s) created successfully. [".concat(mappedTasks.map(function (t) { return t.ServerTaskId; }).join(", "), "]"));
-                    return [2 /*return*/, {
-                            DeploymentServerTasks: mappedTasks,
-                        }];
-            }
-        });
-    });
-}
-exports.deployReleaseTenanted = deployReleaseTenanted;
-
-
-/***/ }),
-
-/***/ 49198:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 83227:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DeploymentRepository = void 0;
-var __1 = __nccwpck_require__(25024);
-var DeploymentRepository = /** @class */ (function (_super) {
-    __extends(DeploymentRepository, _super);
-    function DeploymentRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "~/api/{spaceId}/deployments{/id}{?skip,take,ids,projects,environments,tenants,channels,taskState}") || this;
-    }
-    return DeploymentRepository;
-}(__1.SpaceScopedBasicRepositoryV2));
-exports.DeploymentRepository = DeploymentRepository;
-
-
-/***/ }),
-
-/***/ 65443:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 43921:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(49198), exports);
-__exportStar(__nccwpck_require__(83227), exports);
-__exportStar(__nccwpck_require__(40007), exports);
-__exportStar(__nccwpck_require__(83565), exports);
-__exportStar(__nccwpck_require__(67749), exports);
-__exportStar(__nccwpck_require__(65443), exports);
-
-
-/***/ }),
-
-/***/ 13820:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(70169), exports);
-__exportStar(__nccwpck_require__(27448), exports);
-__exportStar(__nccwpck_require__(43921), exports);
-
-
-/***/ }),
-
-/***/ 27448:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 55068:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(77890), exports);
-
-
-/***/ }),
-
-/***/ 44010:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 77890:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(44010), exports);
-__exportStar(__nccwpck_require__(76145), exports);
-__exportStar(__nccwpck_require__(72493), exports);
-
-
-/***/ }),
-
-/***/ 76145:
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.runRunbook = void 0;
-function runRunbook(client, command) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, mappedTasks;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    client.debug("Running a runbook...");
-                    return [4 /*yield*/, client.doCreate("~/api/{spaceId}/runbook-runs/create/v1", __assign({ spaceIdOrName: command.spaceName }, command))];
-                case 1:
-                    response = _a.sent();
-                    if (response.RunbookRunServerTasks.length == 0) {
-                        throw new Error("No server task details returned");
-                    }
-                    mappedTasks = response.RunbookRunServerTasks.map(function (x) {
-                        return {
-                            RunbookRunId: x.RunbookRunId || x.runbookRunId,
-                            ServerTaskId: x.ServerTaskId || x.serverTaskId,
-                        };
-                    });
-                    client.debug("Runbook executed successfully. [".concat(mappedTasks.map(function (t) { return t.ServerTaskId; }).join(", "), "]"));
-                    return [2 /*return*/, {
-                            RunbookRunServerTasks: mappedTasks,
-                        }];
-            }
-        });
-    });
-}
-exports.runRunbook = runRunbook;
-
-
-/***/ }),
-
-/***/ 72493:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 15685:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 38781:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 61616:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.serverTaskRawGet = exports.serverTaskDetailsGet = exports.serverTasksGet = exports.serverTaskGet = void 0;
-var lodash_1 = __nccwpck_require__(90250);
-function serverTaskGet(client, spaceName, serverTaskId) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!serverTaskId) {
-                        throw new Error("Server Task Id was not provided");
-                    }
-                    return [4 /*yield*/, client.request("~/api/{spaceId}/tasks/{serverTaskId}", { spaceName: spaceName, serverTaskId: serverTaskId })];
-                case 1:
-                    response = _a.sent();
-                    return [2 /*return*/, response];
-            }
-        });
-    });
-}
-exports.serverTaskGet = serverTaskGet;
-function serverTasksGet(client, spaceName, serverTaskIds) {
-    return __awaiter(this, void 0, void 0, function () {
-        var batchSize, idArrays, promises;
-        return __generator(this, function (_a) {
-            batchSize = 300;
-            idArrays = (0, lodash_1.chunk)(serverTaskIds, batchSize);
-            promises = idArrays.map(function (i, index) {
-                return client.request("~/api/{spaceId}/tasks{?skip,take,ids,partialName}", {
-                    spaceName: spaceName,
-                    ids: i,
-                    skip: index * batchSize,
-                    take: batchSize,
-                });
-            });
-            return [2 /*return*/, Promise.all(promises).then(function (result) { return (0, lodash_1.flatMap)(result, function (c) { return c.Items; }); })];
-        });
-    });
-}
-exports.serverTasksGet = serverTasksGet;
-function serverTaskDetailsGet(client, spaceName, serverTaskId) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!serverTaskId) {
-                        throw new Error("Server Task Id was not provided");
-                    }
-                    return [4 /*yield*/, client.request("~/api/{spaceId}/tasks/{serverTaskId}/details", { spaceName: spaceName, serverTaskId: serverTaskId })];
-                case 1:
-                    response = _a.sent();
-                    return [2 /*return*/, response];
-            }
-        });
-    });
-}
-exports.serverTaskDetailsGet = serverTaskDetailsGet;
-function serverTaskRawGet(client, spaceName, serverTaskId) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!serverTaskId) {
-                        throw new Error("Server Task Id was not provided");
-                    }
-                    return [4 /*yield*/, client.request("~/api/{spaceId}/tasks/{serverTaskId}/raw", { spaceName: spaceName, serverTaskId: serverTaskId })];
-                case 1:
-                    response = _a.sent();
-                    return [2 /*return*/, response];
-            }
-        });
-    });
-}
-exports.serverTaskRawGet = serverTaskRawGet;
-
-
-/***/ }),
-
-/***/ 76568:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(61616), exports);
-__exportStar(__nccwpck_require__(29144), exports);
-__exportStar(__nccwpck_require__(74013), exports);
-__exportStar(__nccwpck_require__(91038), exports);
-
-
-/***/ }),
-
-/***/ 74013:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 91038:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ActivityLogEntryCategory = exports.ActivityStatus = void 0;
-var ActivityStatus;
-(function (ActivityStatus) {
-    ActivityStatus["Pending"] = "Pending";
-    ActivityStatus["Running"] = "Running";
-    ActivityStatus["Success"] = "Success";
-    ActivityStatus["Failed"] = "Failed";
-    ActivityStatus["Skipped"] = "Skipped";
-    ActivityStatus["SuccessWithWarning"] = "SuccessWithWarning";
-    ActivityStatus["Canceled"] = "Canceled";
-})(ActivityStatus = exports.ActivityStatus || (exports.ActivityStatus = {}));
-var ActivityLogEntryCategory;
-(function (ActivityLogEntryCategory) {
-    ActivityLogEntryCategory["Trace"] = "Trace";
-    ActivityLogEntryCategory["Verbose"] = "Verbose";
-    ActivityLogEntryCategory["Info"] = "Info";
-    ActivityLogEntryCategory["Highlight"] = "Highlight";
-    ActivityLogEntryCategory["Wait"] = "Wait";
-    ActivityLogEntryCategory["Gap"] = "Gap";
-    ActivityLogEntryCategory["Alert"] = "Alert";
-    ActivityLogEntryCategory["Warning"] = "Warning";
-    ActivityLogEntryCategory["Error"] = "Error";
-    ActivityLogEntryCategory["Fatal"] = "Fatal";
-    ActivityLogEntryCategory["Planned"] = "Planned";
-    ActivityLogEntryCategory["Updated"] = "Updated";
-    ActivityLogEntryCategory["Finished"] = "Finished";
-    ActivityLogEntryCategory["Abandoned"] = "Abandoned";
-})(ActivityLogEntryCategory = exports.ActivityLogEntryCategory || (exports.ActivityLogEntryCategory = {}));
-
-
-/***/ }),
-
-/***/ 29144:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TaskState = void 0;
-var TaskState;
-(function (TaskState) {
-    TaskState["Canceled"] = "Canceled";
-    TaskState["Cancelling"] = "Cancelling";
-    TaskState["Executing"] = "Executing";
-    TaskState["Failed"] = "Failed";
-    TaskState["Queued"] = "Queued";
-    TaskState["Success"] = "Success";
-    TaskState["TimedOut"] = "TimedOut";
-})(TaskState = exports.TaskState || (exports.TaskState = {}));
-
-
-/***/ }),
-
-/***/ 29191:
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.resolveSpaceId = void 0;
-var knownSpaces = {};
-function resolveSpaceId(client, spaceName) {
-    return __awaiter(this, void 0, void 0, function () {
-        var spaces, spaceId;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (knownSpaces[spaceName]) {
-                        return [2 /*return*/, knownSpaces[spaceName]];
-                    }
-                    client.debug("Resolving space from name '".concat(spaceName, "'"));
-                    return [4 /*yield*/, client.get("~/api/spaces", { partialName: spaceName })];
-                case 1:
-                    spaces = _a.sent();
-                    spaceId = "";
-                    if (spaces.TotalResults === 0) {
-                        client.error("No spaces exist with name '".concat(spaceName, "'"));
-                        throw new Error("No spaces exist with name '".concat(spaceName, "'"));
-                    }
-                    spaces.Items.forEach(function (space) {
-                        if (space.Name == spaceName) {
-                            spaceId = space.Id;
-                            knownSpaces[spaceName] = spaceId;
-                            client.debug("Resolved space name '".concat(spaceName, "' to Id ").concat(spaceId));
-                        }
-                    });
-                    if (spaceId === "") {
-                        client.error("Unable to resolve space name '".concat(spaceName, "'"));
-                        throw new Error("Unable to resolve space name '".concat(spaceName, "'"));
-                    }
-                    return [2 /*return*/, spaceId];
-            }
-        });
-    });
-}
-exports.resolveSpaceId = resolveSpaceId;
-
-
-/***/ }),
-
-/***/ 37722:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isSpaceScopedArgs = void 0;
-function isSpaceScopedArgs(args) {
-    return "spaceName" in args;
-}
-exports.isSpaceScopedArgs = isSpaceScopedArgs;
-
-
-/***/ }),
-
-/***/ 74564:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SpaceScopedBasicRepositoryV2 = void 0;
-var basicRepositoryV2_1 = __nccwpck_require__(1570);
-var SpaceScopedBasicRepositoryV2 = /** @class */ (function (_super) {
-    __extends(SpaceScopedBasicRepositoryV2, _super);
-    function SpaceScopedBasicRepositoryV2(client, spaceName, baseApiTemplate) {
-        var _this = _super.call(this, client, baseApiTemplate) || this;
-        _this.spaceName = spaceName;
-        return _this;
-    }
-    SpaceScopedBasicRepositoryV2.prototype.create = function (resource, args) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        return _super.prototype.create.call(this, resource, __assign({ spaceName: this.spaceName }, args));
-    };
-    SpaceScopedBasicRepositoryV2.prototype.get = function (id) {
-        return this.client.request(this.baseApiTemplate, { id: id, spaceName: this.spaceName });
-    };
-    SpaceScopedBasicRepositoryV2.prototype.list = function (args) {
-        return this.client.request(this.baseApiTemplate, __assign({ spaceName: this.spaceName }, args));
-    };
-    SpaceScopedBasicRepositoryV2.prototype.modify = function (resource, args) {
-        return _super.prototype.modify.call(this, resource, args);
-    };
-    return SpaceScopedBasicRepositoryV2;
-}(basicRepositoryV2_1.BasicRepositoryV2));
-exports.SpaceScopedBasicRepositoryV2 = SpaceScopedBasicRepositoryV2;
-
-
-/***/ }),
-
-/***/ 99659:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isSpaceScopedOperation = void 0;
-function isSpaceScopedOperation(command) {
-    return "spaceName" in command;
-}
-exports.isSpaceScopedOperation = isSpaceScopedOperation;
-
-
-/***/ }),
-
-/***/ 92431:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isSpaceScopedRequest = void 0;
-function isSpaceScopedRequest(command) {
-    return "spaceName" in command;
-}
-exports.isSpaceScopedRequest = isSpaceScopedRequest;
-
-
-/***/ }),
-
-/***/ 95564:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 30341:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(25305), exports);
-__exportStar(__nccwpck_require__(37026), exports);
-__exportStar(__nccwpck_require__(82830), exports);
-__exportStar(__nccwpck_require__(37444), exports);
-
-
-/***/ }),
-
-/***/ 25305:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 37026:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 37444:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var spaceScopedBasicRepositoryV2_1 = __nccwpck_require__(74564);
-var TenantRepository = /** @class */ (function (_super) {
-    __extends(TenantRepository, _super);
-    function TenantRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "~/api/{spaceId}/tenants{/id}{?skip,projectId,tags,take,ids,clone,partialName,clonedFromTenantId}") || this;
-    }
-    TenantRepository.prototype.tagTest = function (tenantIds, tags) {
-        return this.client.request("~/api/{spaceId}/tenants/tag-test{?tenantIds,tags}", { tenantIds: tenantIds, tags: tags });
-    };
-    TenantRepository.prototype.getVariables = function (tenant) {
-        return this.client.request("~/api/{spaceId}/tenants/{id}/variables");
-    };
-    TenantRepository.prototype.setVariables = function (tenant, variables) {
-        return this.client.doUpdate("~/api/{spaceId}/tenants/{id}/variables", variables);
-    };
-    TenantRepository.prototype.missingVariables = function (filterOptions, includeDetails) {
-        if (filterOptions === void 0) { filterOptions = {}; }
-        if (includeDetails === void 0) { includeDetails = false; }
-        var payload = {
-            environmentId: filterOptions.environmentId,
-            includeDetails: !!includeDetails,
-            projectId: filterOptions.projectId,
-            tenantId: filterOptions.tenantId,
-        };
-        return this.client.request("~/api/{spaceId}/tenants/variables-missing{?tenantId,projectId,environmentId,includeDetails}", payload);
-    };
-    return TenantRepository;
-}(spaceScopedBasicRepositoryV2_1.SpaceScopedBasicRepositoryV2));
-exports["default"] = TenantRepository;
-
-
-/***/ }),
-
-/***/ 82830:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 40621:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(19790), exports);
-
-
-/***/ }),
-
-/***/ 19790:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isSensitiveValue = exports.NewSensitiveValue = void 0;
-function NewSensitiveValue(value, hint) {
-    return {
-        HasValue: true,
-        Hint: hint,
-        NewValue: value,
-    };
-}
-exports.NewSensitiveValue = NewSensitiveValue;
-function isSensitiveValue(value) {
-    if (typeof value === "string" || value === null) {
-        return false;
-    }
-    return Object.prototype.hasOwnProperty.call(value, "HasValue");
-}
-exports.isSensitiveValue = isSensitiveValue;
-
-
-/***/ }),
-
-/***/ 80586:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(51542), exports);
-__exportStar(__nccwpck_require__(63024), exports);
-__exportStar(__nccwpck_require__(42399), exports);
-__exportStar(__nccwpck_require__(5966), exports);
-__exportStar(__nccwpck_require__(92101), exports);
-__exportStar(__nccwpck_require__(57948), exports);
-__exportStar(__nccwpck_require__(16397), exports);
-__exportStar(__nccwpck_require__(35758), exports);
-__exportStar(__nccwpck_require__(45953), exports);
-__exportStar(__nccwpck_require__(96050), exports);
-__exportStar(__nccwpck_require__(30661), exports);
-__exportStar(__nccwpck_require__(5924), exports);
-__exportStar(__nccwpck_require__(25024), exports);
-__exportStar(__nccwpck_require__(9507), exports);
-__exportStar(__nccwpck_require__(67895), exports);
-__exportStar(__nccwpck_require__(89463), exports);
-__exportStar(__nccwpck_require__(42583), exports);
-__exportStar(__nccwpck_require__(15835), exports);
-__exportStar(__nccwpck_require__(7946), exports);
-__exportStar(__nccwpck_require__(4776), exports);
-__exportStar(__nccwpck_require__(41266), exports);
-__exportStar(__nccwpck_require__(94659), exports);
-__exportStar(__nccwpck_require__(94203), exports);
-__exportStar(__nccwpck_require__(69039), exports);
-__exportStar(__nccwpck_require__(13497), exports);
-__exportStar(__nccwpck_require__(66446), exports);
-__exportStar(__nccwpck_require__(20009), exports);
-__exportStar(__nccwpck_require__(81630), exports);
-__exportStar(__nccwpck_require__(82773), exports);
-__exportStar(__nccwpck_require__(98936), exports);
-__exportStar(__nccwpck_require__(27848), exports);
-__exportStar(__nccwpck_require__(65269), exports);
-__exportStar(__nccwpck_require__(22999), exports);
-__exportStar(__nccwpck_require__(4387), exports);
-__exportStar(__nccwpck_require__(55459), exports);
-__exportStar(__nccwpck_require__(56116), exports);
-__exportStar(__nccwpck_require__(20037), exports);
-__exportStar(__nccwpck_require__(18029), exports);
-__exportStar(__nccwpck_require__(90977), exports);
-__exportStar(__nccwpck_require__(15228), exports);
-__exportStar(__nccwpck_require__(78681), exports);
-__exportStar(__nccwpck_require__(64693), exports);
-__exportStar(__nccwpck_require__(51916), exports);
-__exportStar(__nccwpck_require__(56946), exports);
-__exportStar(__nccwpck_require__(3522), exports);
-__exportStar(__nccwpck_require__(154), exports);
-__exportStar(__nccwpck_require__(53015), exports);
-__exportStar(__nccwpck_require__(50197), exports);
-__exportStar(__nccwpck_require__(1939), exports);
-__exportStar(__nccwpck_require__(94772), exports);
-__exportStar(__nccwpck_require__(80891), exports);
-__exportStar(__nccwpck_require__(34819), exports);
-__exportStar(__nccwpck_require__(53378), exports);
-__exportStar(__nccwpck_require__(21797), exports);
-__exportStar(__nccwpck_require__(97886), exports);
-__exportStar(__nccwpck_require__(53127), exports);
-// export * from "./repositories/projectContextRepository";
-__exportStar(__nccwpck_require__(38331), exports);
-__exportStar(__nccwpck_require__(52058), exports);
-__exportStar(__nccwpck_require__(91795), exports);
-__exportStar(__nccwpck_require__(57502), exports);
-__exportStar(__nccwpck_require__(7358), exports);
-__exportStar(__nccwpck_require__(87252), exports);
-__exportStar(__nccwpck_require__(11050), exports);
-__exportStar(__nccwpck_require__(82404), exports);
-__exportStar(__nccwpck_require__(18312), exports);
-__exportStar(__nccwpck_require__(30242), exports);
-__exportStar(__nccwpck_require__(73544), exports);
-__exportStar(__nccwpck_require__(63767), exports);
-__exportStar(__nccwpck_require__(18774), exports);
-__exportStar(__nccwpck_require__(96489), exports);
-__exportStar(__nccwpck_require__(84463), exports);
-__exportStar(__nccwpck_require__(50924), exports);
-__exportStar(__nccwpck_require__(7025), exports);
-__exportStar(__nccwpck_require__(56836), exports);
-__exportStar(__nccwpck_require__(94178), exports);
-__exportStar(__nccwpck_require__(50450), exports);
-__exportStar(__nccwpck_require__(53573), exports);
-__exportStar(__nccwpck_require__(30986), exports);
-__exportStar(__nccwpck_require__(66168), exports);
-__exportStar(__nccwpck_require__(19652), exports);
-__exportStar(__nccwpck_require__(99284), exports);
-__exportStar(__nccwpck_require__(67597), exports);
-__exportStar(__nccwpck_require__(41025), exports);
-__exportStar(__nccwpck_require__(27747), exports);
-__exportStar(__nccwpck_require__(10895), exports);
-__exportStar(__nccwpck_require__(74126), exports);
-__exportStar(__nccwpck_require__(72887), exports);
-__exportStar(__nccwpck_require__(50210), exports);
-__exportStar(__nccwpck_require__(65737), exports);
-__exportStar(__nccwpck_require__(91616), exports);
-__exportStar(__nccwpck_require__(43399), exports);
-__exportStar(__nccwpck_require__(871), exports);
-__exportStar(__nccwpck_require__(15435), exports);
-__exportStar(__nccwpck_require__(28043), exports);
-__exportStar(__nccwpck_require__(82138), exports);
-__exportStar(__nccwpck_require__(60232), exports);
-__exportStar(__nccwpck_require__(31547), exports);
-__exportStar(__nccwpck_require__(54663), exports);
-__exportStar(__nccwpck_require__(47132), exports);
-
-
-/***/ }),
-
-/***/ 5924:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 9507:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AccountRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var AccountRepository = /** @class */ (function (_super) {
-    __extends(AccountRepository, _super);
-    function AccountRepository(client) {
-        return _super.call(this, "Accounts", client) || this;
-    }
-    AccountRepository.prototype.getAccountUsages = function (account) {
-        return this.client.get(account.Links["Usages"]);
-    };
-    AccountRepository.prototype.getFabricApplications = function (account) {
-        return this.client.get(account.Links["FabricApplications"]);
-    };
-    AccountRepository.prototype.getIsolatedAzureEnvironments = function () {
-        return this.client.get(this.client.getLink("AzureEnvironments"));
-    };
-    AccountRepository.prototype.getResourceGroups = function (account) {
-        return this.client.get(account.Links["ResourceGroups"]);
-    };
-    AccountRepository.prototype.getStorageAccounts = function (account) {
-        return this.client.get(account.Links["StorageAccounts"]);
-    };
-    AccountRepository.prototype.getWebSites = function (account) {
-        return this.client.get(account.Links["WebSites"]);
-    };
-    AccountRepository.prototype.getWebSiteSlots = function (account, resourceGroupName, webSiteName) {
-        var args = { resourceGroupName: resourceGroupName, webSiteName: webSiteName };
-        return this.client.get(account.Links["WebSiteSlots"], args);
-    };
-    return AccountRepository;
-}(basicRepository_1.BasicRepository));
-exports.AccountRepository = AccountRepository;
-
-
-/***/ }),
-
-/***/ 67895:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ActionTemplateRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var ActionTemplateRepository = /** @class */ (function (_super) {
-    __extends(ActionTemplateRepository, _super);
-    function ActionTemplateRepository(client) {
-        return _super.call(this, "ActionTemplates", client) || this;
-    }
-    ActionTemplateRepository.prototype.categories = function () {
-        return this.client.get(this.client.getLink("ActionTemplatesCategories"));
-    };
-    ActionTemplateRepository.prototype.getByCommunityTemplate = function (communityTemplate) {
-        var allArgs = __assign({}, { id: communityTemplate.Id });
-        return this.client.get(communityTemplate.Links["InstalledTemplate"], allArgs);
-    };
-    ActionTemplateRepository.prototype.getUsage = function (template) {
-        return this.client.get(template.Links["Usage"]);
-    };
-    ActionTemplateRepository.prototype.getVersion = function (actionTemplate, version) {
-        return this.client.get(actionTemplate.Links["Versions"], { version: version });
-    };
-    ActionTemplateRepository.prototype.search = function (args) {
-        return this.client.get(this.client.getLink("ActionTemplatesSearch"), args);
-    };
-    ActionTemplateRepository.prototype.updateActions = function (actionTemplate, actionsToUpdate, defaults, overrides) {
-        if (defaults === void 0) { defaults = {}; }
-        if (overrides === void 0) { overrides = {}; }
-        var resource = {
-            ActionsToUpdate: actionsToUpdate,
-            Overrides: overrides || {},
-            DefaultPropertyValues: defaults || {},
-            Version: actionTemplate.Version,
-        };
-        return this.client.post(actionTemplate.Links["ActionsUpdate"], resource);
-    };
-    return ActionTemplateRepository;
-}(basicRepository_1.BasicRepository));
-exports.ActionTemplateRepository = ActionTemplateRepository;
-
-
-/***/ }),
-
-/***/ 89463:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ArtifactRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var ArtifactRepository = /** @class */ (function (_super) {
-    __extends(ArtifactRepository, _super);
-    function ArtifactRepository(client) {
-        return _super.call(this, "Artifacts", client) || this;
-    }
-    return ArtifactRepository;
-}(basicRepository_1.BasicRepository));
-exports.ArtifactRepository = ArtifactRepository;
-
-
-/***/ }),
-
-/***/ 42583:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthenticationRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var AuthenticationRepository = /** @class */ (function (_super) {
-    __extends(AuthenticationRepository, _super);
-    function AuthenticationRepository(client) {
-        return _super.call(this, "Authentication", client) || this;
-    }
-    AuthenticationRepository.prototype.get = function () {
-        return this.client.get(this.client.getLink("Authentication"));
-    };
-    AuthenticationRepository.prototype.wasLoginInitiated = function (encodedQueryString) {
-        return this.client.post(this.client.getLink("LoginInitiated"), { EncodedQueryString: encodedQueryString });
-    };
-    return AuthenticationRepository;
-}(basicRepository_1.BasicRepository));
-exports.AuthenticationRepository = AuthenticationRepository;
-
-
-/***/ }),
-
-/***/ 30970:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.BasicRepository = void 0;
-var lodash_1 = __nccwpck_require__(90250);
-// Repositories provide a helpful abstraction around the Octopus Deploy API
-var BasicRepository = /** @class */ (function () {
-    function BasicRepository(collectionLinkName, client) {
-        var _this = this;
-        this.takeAll = 2147483647;
-        this.takeDefaultPageSize = 30;
-        this.notifySubscribersToDataModifications = function (resource) {
-            Object.keys(_this.subscribersToDataModifications).forEach(function (key) { return _this.subscribersToDataModifications[key](resource); });
-            return resource;
-        };
-        this.collectionLinkName = collectionLinkName;
-        this.client = client;
-        this.subscribersToDataModifications = {};
-    }
-    BasicRepository.prototype.all = function (args) {
-        if (args !== undefined && args.ids instanceof Array && args.ids.length === 0) {
-            return new Promise(function (res) {
-                res([]);
-            });
-        }
-        // http.sys has a max query string of about 16k chars. Our typical max id length is 50 chars
-        // so if we are doing requests by id and have more than 300, split into multiple requests
-        var maxIds = 300;
-        if (args !== undefined && args.ids instanceof Array && args.ids.length > maxIds) {
-            return this.batchRequestsById(args, maxIds);
-        }
-        var allArgs = this.extend(args || {}, { id: "all" });
-        return this.client.get(this.client.getLink(this.collectionLinkName), allArgs);
-    };
-    BasicRepository.prototype.allById = function (args) {
-        return this.all(args).then(function (result) {
-            return result.reduce(function (acc, resource) {
-                acc[resource.Id] = resource;
-                return acc;
-            }, {});
-        });
-    };
-    BasicRepository.prototype.del = function (resource) {
-        var _this = this;
-        return this.client.del(resource.Links.Self).then(function (d) { return _this.notifySubscribersToDataModifications(resource); });
-    };
-    BasicRepository.prototype.create = function (resource, args) {
-        var _this = this;
-        return this.client
-            .create(this.client.getLink(this.collectionLinkName), resource, args)
-            .then(function (r) { return _this.notifySubscribersToDataModifications(r); });
-    };
-    BasicRepository.prototype.get = function (id, args) {
-        var allArgs = this.extend(args || {}, { id: id });
-        return this.client.get(this.client.getLink(this.collectionLinkName), allArgs);
-    };
-    BasicRepository.prototype.list = function (args) {
-        return this.client.get(this.client.getLink(this.collectionLinkName), args);
-    };
-    BasicRepository.prototype.modify = function (resource, args) {
-        var _this = this;
-        return this.client.update(resource.Links.Self, resource, args).then(function (r) { return _this.notifySubscribersToDataModifications(r); });
-    };
-    BasicRepository.prototype.save = function (resource) {
-        if (isNewResource(resource)) {
-            return this.create(resource);
-        }
-        else {
-            return this.modify(resource);
-        }
-        function isTruthy(value) {
-            return !!value;
-        }
-        function isNewResource(resource) {
-            return !("Id" in resource && isTruthy(resource.Id) && isTruthy(resource.Links));
-        }
-    };
-    BasicRepository.prototype.subscribeToDataModifications = function (key, callback) {
-        this.subscribersToDataModifications[key] = callback;
-    };
-    BasicRepository.prototype.unsubscribeFromDataModifications = function (key) {
-        delete this.subscribersToDataModifications[key];
-    };
-    BasicRepository.prototype.extend = function (arg1, arg2) {
-        return __assign(__assign({}, arg1), arg2);
-    };
-    BasicRepository.prototype.batchRequestsById = function (args, batchSize) {
-        var _this = this;
-        var idArrays = (0, lodash_1.chunk)(args.ids, batchSize);
-        var promises = idArrays.map(function (ids) {
-            var newArgs = __assign(__assign({}, args), { ids: ids, id: "all" });
-            return _this.client.get(_this.client.getLink(_this.collectionLinkName), newArgs);
-        });
-        return Promise.all(promises).then(function (result) { return (0, lodash_1.flatten)(result); });
-    };
-    return BasicRepository;
-}());
-exports.BasicRepository = BasicRepository;
-
-
-/***/ }),
-
-/***/ 15835:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.BranchesRepository = void 0;
-var BranchesRepository = /** @class */ (function () {
-    function BranchesRepository(client) {
-        this.client = client;
-        this.client = client;
-    }
-    BranchesRepository.prototype.getTemplate = function (branch, channelId) {
-        return this.client.get(branch.Links["ReleaseTemplate"], { channel: channelId });
-    };
-    return BranchesRepository;
-}());
-exports.BranchesRepository = BranchesRepository;
-
-
-/***/ }),
-
-/***/ 7946:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.BuildInformationRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var BuildInformationRepository = /** @class */ (function (_super) {
-    __extends(BuildInformationRepository, _super);
-    function BuildInformationRepository(client) {
-        return _super.call(this, "BuildInformation", client) || this;
-    }
-    BuildInformationRepository.prototype.deleteMany = function (ids) {
-        return this.client.del(this.client.getLink("BuildInformationBulk"), null, { ids: ids });
-    };
-    return BuildInformationRepository;
-}(basicRepository_1.BasicRepository));
-exports.BuildInformationRepository = BuildInformationRepository;
-
-
-/***/ }),
-
-/***/ 4776:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CertificateConfigurationRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var CertificateConfigurationRepository = /** @class */ (function (_super) {
-    __extends(CertificateConfigurationRepository, _super);
-    function CertificateConfigurationRepository(client) {
-        return _super.call(this, "CertificateConfiguration", client) || this;
-    }
-    CertificateConfigurationRepository.prototype.archive = function (certificate) {
-        return this.client.post(certificate.Links["Archive"]);
-    };
-    CertificateConfigurationRepository.prototype.export = function (certificate, exportOptions) {
-        return this.client.get(certificate.Links["Export"], exportOptions);
-    };
-    CertificateConfigurationRepository.prototype.global = function () {
-        return this.get("certificate-global");
-    };
-    CertificateConfigurationRepository.prototype.replace = function (certificate, newCertificateData, newPassword) {
-        return this.client.post(certificate.Links["Replace"], {
-            certificateData: newCertificateData,
-            password: newPassword,
-        });
-    };
-    CertificateConfigurationRepository.prototype.usage = function (certificate) {
-        return this.client.get(certificate.Links["Usages"]);
-    };
-    CertificateConfigurationRepository.prototype.unarchive = function (certificate) {
-        return this.client.post(certificate.Links["Unarchive"]);
-    };
-    return CertificateConfigurationRepository;
-}(basicRepository_1.BasicRepository));
-exports.CertificateConfigurationRepository = CertificateConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 41266:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CertificateRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var SelfSignedEndpoint = "/generate";
-var CertificateRepository = /** @class */ (function (_super) {
-    __extends(CertificateRepository, _super);
-    function CertificateRepository(client) {
-        return _super.call(this, "Certificates", client) || this;
-    }
-    CertificateRepository.prototype.createSelfSigned = function (resource, args) {
-        var _this = this;
-        return this.client.create(this.client.getLink("Certificates") + SelfSignedEndpoint, resource, args).then(function (r) { return _this.notifySubscribersToDataModifications(r); });
-    };
-    CertificateRepository.prototype.listForTenant = function (tenantId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var certificates;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.list({ tenant: tenantId, take: this.takeAll })];
-                    case 1:
-                        certificates = (_a.sent()).Items;
-                        return [2 /*return*/, certificates];
-                }
-            });
-        });
-    };
-    CertificateRepository.prototype.names = function (projectId, projectEnvironmentsFilter) {
-        return this.client.get(this.client.getLink("VariableNames"), {
-            project: projectId,
-            projectEnvironmentsFilter: projectEnvironmentsFilter ? projectEnvironmentsFilter.join(",") : projectEnvironmentsFilter,
-        });
-    };
-    CertificateRepository.prototype.saveSelfSigned = function (resource) {
-        if (isExistingResource(resource)) {
-            return this.modify(resource);
-        }
-        else {
-            return this.createSelfSigned(resource);
-        }
-        function isExistingResource(r) {
-            return !!r.Links && !!r.Id;
-        }
-    };
-    return CertificateRepository;
-}(basicRepository_1.BasicRepository));
-exports.CertificateRepository = CertificateRepository;
-
-
-/***/ }),
-
-/***/ 94659:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ChannelRepository = void 0;
-var projectScopedRepository_1 = __nccwpck_require__(91795);
-var ChannelRepository = /** @class */ (function (_super) {
-    __extends(ChannelRepository, _super);
-    function ChannelRepository(projectRepository, client) {
-        return _super.call(this, projectRepository, "Channels", client) || this;
-    }
-    ChannelRepository.prototype.find = function (nameOrId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a, channels;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (nameOrId.length === 0)
-                            return [2 /*return*/];
-                        _b.label = 1;
-                    case 1:
-                        _b.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.get(nameOrId)];
-                    case 2: return [2 /*return*/, _b.sent()];
-                    case 3:
-                        _a = _b.sent();
-                        return [3 /*break*/, 4];
-                    case 4: return [4 /*yield*/, this.list({
-                            partialName: nameOrId,
-                        })];
-                    case 5:
-                        channels = _b.sent();
-                        return [2 /*return*/, channels.Items.find(function (e) { return e.Name.localeCompare(nameOrId, undefined, { sensitivity: "base" }) === 0; })];
-                }
-            });
-        });
-    };
-    ChannelRepository.prototype.ruleTest = function (searchOptions) {
-        return this.client.post(this.client.getLink("VersionRuleTest"), searchOptions);
-    };
-    ChannelRepository.prototype.getReleases = function (channel, options) {
-        return this.client.get(channel.Links["Releases"], options);
-    };
-    ChannelRepository.prototype.getOcl = function (channel) {
-        return this.client.get(channel.Links["RawOcl"]);
-    };
-    ChannelRepository.prototype.modifyOcl = function (channel, command) {
-        return this.client.update(channel.Links["RawOcl"], command);
-    };
-    ChannelRepository.prototype.modify = function (channel, args) {
-        var payload = channel;
-        this.addCommitMessage(payload, args);
-        if (payload !== undefined) {
-            return this.client.update(channel.Links.Self, payload);
-        }
-        else {
-            return _super.prototype.modify.call(this, channel, args);
-        }
-    };
-    ChannelRepository.prototype.createForProject = function (projectResource, channel, args) {
-        var _this = this;
-        var payload = channel;
-        this.addCommitMessage(payload, args);
-        if (payload !== undefined) {
-            var link = projectResource.Links[this.collectionLinkName];
-            return this.client.create(link, payload, args).then(function (r) { return _this.notifySubscribersToDataModifications(r); });
-        }
-        else {
-            return _super.prototype.createForProject.call(this, projectResource, channel, args);
-        }
-    };
-    ChannelRepository.prototype.addCommitMessage = function (command, args) {
-        if (args !== undefined && "gitRef" in args && "commitMessage" in args) {
-            command.ChangeDescription = args["commitMessage"];
-        }
-    };
-    return ChannelRepository;
-}(projectScopedRepository_1.ProjectScopedRepository));
-exports.ChannelRepository = ChannelRepository;
-
-
-/***/ }),
-
-/***/ 94203:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CloudTemplateRepository = void 0;
-var CloudTemplateRepository = /** @class */ (function () {
-    function CloudTemplateRepository(client) {
-        this.client = client;
-    }
-    CloudTemplateRepository.prototype.getMetadata = function (templateBody, id) {
-        var templateResource = { template: encodeURI(templateBody) };
-        return this.client.post(this.client.getLink("CloudTemplate"), templateResource, { id: id.toString() });
-    };
-    return CloudTemplateRepository;
-}());
-exports.CloudTemplateRepository = CloudTemplateRepository;
-
-
-/***/ }),
-
-/***/ 69039:
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CommunityActionTemplateRepository = void 0;
-var CommunityActionTemplateRepository = /** @class */ (function () {
-    function CommunityActionTemplateRepository(client) {
-        this.client = client;
-    }
-    CommunityActionTemplateRepository.prototype.get = function (id) {
-        var allArgs = __assign({}, { id: id });
-        return this.client.get(this.client.getLink("CommunityActionTemplates"), allArgs);
-    };
-    CommunityActionTemplateRepository.prototype.install = function (communityActionTemplate) {
-        return this.client.post(communityActionTemplate.Links["Installation"]);
-    };
-    CommunityActionTemplateRepository.prototype.updateInstallation = function (communityActionTemplate) {
-        return this.client.put(communityActionTemplate.Links["Installation"]);
-    };
-    return CommunityActionTemplateRepository;
-}());
-exports.CommunityActionTemplateRepository = CommunityActionTemplateRepository;
-
-
-/***/ }),
-
-/***/ 13497:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ConfigurationRepository = void 0;
-var ConfigurationRepository = /** @class */ (function () {
-    function ConfigurationRepository(configurationLinkName, client) {
-        this.configurationLinkName = configurationLinkName;
-        this.client = client;
-    }
-    ConfigurationRepository.prototype.get = function () {
-        return this.client.get(this.client.getLink(this.configurationLinkName));
-    };
-    ConfigurationRepository.prototype.modify = function (resource) {
-        return this.client.update(resource.Links["Self"], resource);
-    };
-    return ConfigurationRepository;
-}());
-exports.ConfigurationRepository = ConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 66446:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DashboardConfigurationRepository = void 0;
-var configurationRepository_1 = __nccwpck_require__(13497);
-var DashboardConfigurationRepository = /** @class */ (function (_super) {
-    __extends(DashboardConfigurationRepository, _super);
-    function DashboardConfigurationRepository(client) {
-        return _super.call(this, "DashboardConfiguration", client) || this;
-    }
-    return DashboardConfigurationRepository;
-}(configurationRepository_1.ConfigurationRepository));
-exports.DashboardConfigurationRepository = DashboardConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 20009:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DashboardItemsOptions = exports.DashboardRepository = void 0;
-var DashboardRepository = /** @class */ (function () {
-    function DashboardRepository(client) {
-        this.client = client;
-    }
-    DashboardRepository.prototype.getDeploymentsCountedByWeek = function (projectIds) {
-        return this.client.get(this.client.getLink("Reporting/DeploymentsCountedByWeek"), { projectIds: projectIds.join(",") });
-    };
-    DashboardRepository.prototype.getDashboard = function (dashboardFilter) {
-        return this.client.get(this.client.getLink("Dashboard"), dashboardFilter);
-    };
-    DashboardRepository.prototype.getDynamicDashboard = function (projects, environments, dashboardItemsOptions) {
-        if (dashboardItemsOptions === void 0) { dashboardItemsOptions = DashboardItemsOptions.IncludeCurrentDeploymentOnly; }
-        return this.client.get(this.client.getLink("DashboardDynamic"), {
-            projects: projects,
-            environments: environments,
-            includePrevious: dashboardItemsOptions === DashboardItemsOptions.IncludeCurrentAndPreviousSuccessfulDeployment,
-        });
-    };
-    return DashboardRepository;
-}());
-exports.DashboardRepository = DashboardRepository;
-var DashboardItemsOptions;
-(function (DashboardItemsOptions) {
-    DashboardItemsOptions[DashboardItemsOptions["IncludeCurrentDeploymentOnly"] = 0] = "IncludeCurrentDeploymentOnly";
-    DashboardItemsOptions[DashboardItemsOptions["IncludeCurrentAndPreviousSuccessfulDeployment"] = 1] = "IncludeCurrentAndPreviousSuccessfulDeployment";
-})(DashboardItemsOptions = exports.DashboardItemsOptions || (exports.DashboardItemsOptions = {}));
-
-
-/***/ }),
-
-/***/ 81630:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DefectRepository = void 0;
-var DefectRepository = /** @class */ (function () {
-    function DefectRepository(client) {
-        this.client = client;
-    }
-    DefectRepository.prototype.all = function (release) {
-        return this.client.get(release.Links["Defects"]);
-    };
-    DefectRepository.prototype.report = function (release, description) {
-        return this.client.post(release.Links["ReportDefect"], { Description: description });
-    };
-    DefectRepository.prototype.resolve = function (release) {
-        return this.client.post(release.Links["ResolveDefect"]);
-    };
-    return DefectRepository;
-}());
-exports.DefectRepository = DefectRepository;
-
-
-/***/ }),
-
-/***/ 82773:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DeploymentProcessRepository = void 0;
-var projectScopedRepository_1 = __nccwpck_require__(91795);
-var DeploymentProcessRepository = /** @class */ (function (_super) {
-    __extends(DeploymentProcessRepository, _super);
-    function DeploymentProcessRepository(projectRepository, client) {
-        var _this = _super.call(this, projectRepository, "DeploymentProcesses", client) || this;
-        _this.resourceLink = "DeploymentProcess";
-        _this.collectionLink = "DeploymentProcesses";
-        return _this;
-    }
-    DeploymentProcessRepository.prototype.get = function (id, gitRef) {
-        return _super.prototype.get.call(this, id, { gitRef: gitRef });
-    };
-    DeploymentProcessRepository.prototype.getForRelease = function (release) {
-        return this.client.get(this.client.getLink(this.collectionLink), { id: release.ProjectDeploymentProcessSnapshotId });
-    };
-    DeploymentProcessRepository.prototype.getTemplate = function (deploymentProcess, channel, releaseId) {
-        return this.client.get(deploymentProcess.Links["Template"], { channel: channel === null || channel === void 0 ? void 0 : channel.Id, releaseId: releaseId });
-    };
-    DeploymentProcessRepository.prototype.modify = function (deploymentProcess) {
-        return this.client.update(deploymentProcess.Links.Self, deploymentProcess);
-    };
-    DeploymentProcessRepository.prototype.validate = function (deploymentProcess) {
-        return this.client.post(deploymentProcess.Links["Validation"], __assign({}, deploymentProcess));
-    };
-    DeploymentProcessRepository.prototype.getOcl = function (deploymentProcess) {
-        return this.client.get(deploymentProcess.Links["RawOcl"]);
-    };
-    DeploymentProcessRepository.prototype.modifyOcl = function (deploymentProcess, command) {
-        return this.client.update(deploymentProcess.Links["RawOcl"], command);
-    };
-    return DeploymentProcessRepository;
-}(projectScopedRepository_1.ProjectScopedRepository));
-exports.DeploymentProcessRepository = DeploymentProcessRepository;
-
-
-/***/ }),
-
-/***/ 98936:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DeploymentSettingsRepository = void 0;
-var DeploymentSettingsRepository = /** @class */ (function () {
-    function DeploymentSettingsRepository(client, project, branch) {
-        this.client = client;
-        this.project = project;
-        this.branch = branch;
-        this.resourceLink = "DeploymentSettings";
-        this.client = client;
-    }
-    DeploymentSettingsRepository.prototype.get = function () {
-        if (this.project.IsVersionControlled && this.branch !== undefined) {
-            return this.client.get(this.branch.Links[this.resourceLink]);
-        }
-        return this.client.get(this.project.Links[this.resourceLink]);
-    };
-    DeploymentSettingsRepository.prototype.getOcl = function (deploymentSettings) {
-        return this.client.get(deploymentSettings.Links["RawOcl"]);
-    };
-    DeploymentSettingsRepository.prototype.modify = function (deploymentSettings) {
-        return this.client.update(deploymentSettings.Links.Self, deploymentSettings);
-    };
-    DeploymentSettingsRepository.prototype.modifyOcl = function (deploymentSettings, command) {
-        return this.client.update(deploymentSettings.Links["RawOcl"], command);
-    };
-    return DeploymentSettingsRepository;
-}());
-exports.DeploymentSettingsRepository = DeploymentSettingsRepository;
-
-
-/***/ }),
-
-/***/ 27848:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DynamicExtensionRepository = void 0;
-var DynamicExtensionRepository = /** @class */ (function () {
-    function DynamicExtensionRepository(client) {
-        this.client = client;
-    }
-    DynamicExtensionRepository.prototype.getFeaturesMetadata = function () {
-        return this.client.get(this.client.getLink("DynamicExtensionsFeaturesMetadata"));
-    };
-    DynamicExtensionRepository.prototype.getFeaturesValues = function () {
-        return this.client.get(this.client.getLink("DynamicExtensionsFeaturesValues"));
-    };
-    DynamicExtensionRepository.prototype.getScripts = function () {
-        return this.client.get(this.client.getLink("DynamicExtensionsScripts"));
-    };
-    DynamicExtensionRepository.prototype.putFeaturesValues = function (values) {
-        return this.client.put(this.client.getLink("DynamicExtensionsFeaturesValues"), values);
-    };
-    return DynamicExtensionRepository;
-}());
-exports.DynamicExtensionRepository = DynamicExtensionRepository;
-
-
-/***/ }),
-
-/***/ 65269:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.EventRepository = void 0;
-var mixedScopeBaseRepository_1 = __nccwpck_require__(80891);
-var EventRepository = /** @class */ (function (_super) {
-    __extends(EventRepository, _super);
-    function EventRepository(client) {
-        return _super.call(this, "Events", client) || this;
-    }
-    EventRepository.prototype.categories = function (options) {
-        return this.client.get(this.client.getLink("EventCategories"), options);
-    };
-    EventRepository.prototype.groups = function (options) {
-        return this.client.get(this.client.getLink("EventGroups"), options);
-    };
-    EventRepository.prototype.documentTypes = function (options) {
-        return this.client.get(this.client.getLink("EventDocumentTypes"), options);
-    };
-    EventRepository.prototype.eventAgents = function () {
-        return this.client.get(this.client.getLink("EventAgents"));
-    };
-    return EventRepository;
-}(mixedScopeBaseRepository_1.MixedScopeBaseRepository));
-exports.EventRepository = EventRepository;
-
-
-/***/ }),
-
-/***/ 22999:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ExternalSecurityGroupProviderRepository = void 0;
-var ExternalSecurityGroupProviderRepository = /** @class */ (function () {
-    function ExternalSecurityGroupProviderRepository(client) {
-        this.client = client;
-    }
-    ExternalSecurityGroupProviderRepository.prototype.all = function () {
-        return this.client.get(this.client.getLink("ExternalSecurityGroupProviders"));
-    };
-    return ExternalSecurityGroupProviderRepository;
-}());
-exports.ExternalSecurityGroupProviderRepository = ExternalSecurityGroupProviderRepository;
-
-
-/***/ }),
-
-/***/ 4387:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ExternalSecurityGroupRepository = void 0;
-var ExternalSecurityGroupRepository = /** @class */ (function () {
-    function ExternalSecurityGroupRepository(client) {
-        this.client = client;
-    }
-    ExternalSecurityGroupRepository.prototype.search = function (url, partialName) {
-        return this.client.get(url, { partialName: partialName });
-    };
-    return ExternalSecurityGroupRepository;
-}());
-exports.ExternalSecurityGroupRepository = ExternalSecurityGroupRepository;
-
-
-/***/ }),
-
-/***/ 55459:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ExternalUsersRepository = void 0;
-var ExternalUsersRepository = /** @class */ (function () {
-    function ExternalUsersRepository(client) {
-        this.client = client;
-    }
-    ExternalUsersRepository.prototype.search = function (partialName) {
-        return this.client.get(this.client.getLink("ExternalUserSearch"), { partialName: partialName });
-    };
-    ExternalUsersRepository.prototype.searchProvider = function (providerUrl, partialName) {
-        return this.client.get(providerUrl, { partialName: partialName });
-    };
-    return ExternalUsersRepository;
-}());
-exports.ExternalUsersRepository = ExternalUsersRepository;
-
-
-/***/ }),
-
-/***/ 56116:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.FeaturesConfigurationRepository = void 0;
-var configurationRepository_1 = __nccwpck_require__(13497);
-var FeaturesConfigurationRepository = /** @class */ (function (_super) {
-    __extends(FeaturesConfigurationRepository, _super);
-    function FeaturesConfigurationRepository(client) {
-        return _super.call(this, "FeaturesConfiguration", client) || this;
-    }
-    return FeaturesConfigurationRepository;
-}(configurationRepository_1.ConfigurationRepository));
-exports.FeaturesConfigurationRepository = FeaturesConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 20037:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.FeedRepository = exports.ExternalFeedsFilterTypes = void 0;
-var message_contracts_1 = __nccwpck_require__(74561);
-var basicRepository_1 = __nccwpck_require__(30970);
-var ExternalFeedsFilterTypes = /** @class */ (function () {
-    function ExternalFeedsFilterTypes() {
-    }
-    Object.defineProperty(ExternalFeedsFilterTypes, "defaultFilterTypes", {
-        get: function () {
-            return this._defaultFilterTypes;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    ExternalFeedsFilterTypes._defaultFilterTypes = Object.keys(message_contracts_1.FeedType)
-        .filter(function (f) { return f !== message_contracts_1.FeedType.BuiltIn && f !== message_contracts_1.FeedType.OctopusProject; })
-        .map(function (f) { return f; });
-    return ExternalFeedsFilterTypes;
-}());
-exports.ExternalFeedsFilterTypes = ExternalFeedsFilterTypes;
-var FeedRepository = /** @class */ (function (_super) {
-    __extends(FeedRepository, _super);
-    function FeedRepository(client) {
-        return _super.call(this, "Feeds", client) || this;
-    }
-    FeedRepository.prototype.getBuiltIn = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.client.get(this.client.getLink("Feeds"), { feedType: message_contracts_1.FeedType.BuiltIn })];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result.Items[0]];
-                }
-            });
-        });
-    };
-    FeedRepository.prototype.getOctopusProject = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.client.get(this.client.getLink("Feeds"), { feedType: message_contracts_1.FeedType.OctopusProject })];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result.Items[0]];
-                }
-            });
-        });
-    };
-    FeedRepository.prototype.getBuiltInStatus = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.get(this.client.getLink("BuiltInFeedStats"))];
-            });
-        });
-    };
-    FeedRepository.prototype.listExternal = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.get(this.client.getLink("Feeds"), { feedType: ExternalFeedsFilterTypes.defaultFilterTypes })];
-            });
-        });
-    };
-    FeedRepository.prototype.searchPackages = function (feed, searchOptions) {
-        return this.client.get(feed.Links.SearchPackagesTemplate, searchOptions);
-    };
-    FeedRepository.prototype.searchPackageVersions = function (feed, packageId, searchOptions) {
-        return this.client.get(feed.Links["SearchPackageVersionsTemplate"], __assign({ packageId: packageId }, searchOptions));
-    };
-    FeedRepository.prototype.getNotes = function (feed, packageId, version) {
-        return this.client.getRaw(feed.Links["NotesTemplate"], { packageId: packageId, version: version });
-    };
-    return FeedRepository;
-}(basicRepository_1.BasicRepository));
-exports.FeedRepository = FeedRepository;
-
-
-/***/ }),
-
-/***/ 18029:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ImportExportActions = void 0;
-var ImportExportActions = /** @class */ (function () {
-    function ImportExportActions(client) {
-        this.client = client;
-    }
-    ImportExportActions.prototype.export = function (exportRequest) {
-        return this.client.post(this.client.getLink("ExportProjects"), exportRequest);
-    };
-    ImportExportActions.prototype.files = function () {
-        return this.client.get(this.client.getLink("ProjectImportFiles"));
-    };
-    ImportExportActions.prototype.import = function (importRequest) {
-        return this.client.post(this.client.getLink("ImportProjects"), importRequest);
-    };
-    ImportExportActions.prototype.preview = function (importRequest) {
-        return this.client.post(this.client.getLink("ProjectImportPreview"), importRequest);
-    };
-    ImportExportActions.prototype.upload = function (pkg) {
-        var fd = new FormData();
-        fd.append("fileToUpload", pkg);
-        return this.client.post(this.client.getLink("ProjectImportFiles"), fd);
-    };
-    return ImportExportActions;
-}());
-exports.ImportExportActions = ImportExportActions;
-
-
-/***/ }),
-
-/***/ 90977:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.InterruptionRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var InterruptionRepository = /** @class */ (function (_super) {
-    __extends(InterruptionRepository, _super);
-    function InterruptionRepository(client) {
-        return _super.call(this, "Interruptions", client) || this;
-    }
-    InterruptionRepository.prototype.submit = function (interruption, result) {
-        return this.client.post(interruption.Links["Submit"], result);
-    };
-    InterruptionRepository.prototype.takeResponsibility = function (interruption) {
-        return this.client.put(interruption.Links["Responsible"]);
-    };
-    return InterruptionRepository;
-}(basicRepository_1.BasicRepository));
-exports.InterruptionRepository = InterruptionRepository;
-
-
-/***/ }),
-
-/***/ 15228:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.InvitationRepository = void 0;
-var mixedScopeBaseRepository_1 = __nccwpck_require__(80891);
-var InvitationRepository = /** @class */ (function (_super) {
-    __extends(InvitationRepository, _super);
-    function InvitationRepository(client) {
-        return _super.call(this, "Invitations", client) || this;
-    }
-    InvitationRepository.prototype.invite = function (teamIds, spaceId) {
-        return this.client.post(this.client.getLink("Invitations"), { AddToTeamIds: teamIds, SpaceId: spaceId });
-    };
-    return InvitationRepository;
-}(mixedScopeBaseRepository_1.MixedScopeBaseRepository));
-exports.InvitationRepository = InvitationRepository;
-
-
-/***/ }),
-
-/***/ 78681:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LetsEncryptConfigurationRepository = void 0;
-var configurationRepository_1 = __nccwpck_require__(13497);
-var LetsEncryptConfigurationRepository = /** @class */ (function (_super) {
-    __extends(LetsEncryptConfigurationRepository, _super);
-    function LetsEncryptConfigurationRepository(client) {
-        return _super.call(this, "LetsEncryptConfiguration", client) || this;
-    }
-    return LetsEncryptConfigurationRepository;
-}(configurationRepository_1.ConfigurationRepository));
-exports.LetsEncryptConfigurationRepository = LetsEncryptConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 64693:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LibraryVariableRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var LibraryVariableRepository = /** @class */ (function (_super) {
-    __extends(LibraryVariableRepository, _super);
-    function LibraryVariableRepository(client) {
-        return _super.call(this, "LibraryVariables", client) || this;
-    }
-    LibraryVariableRepository.prototype.getUsages = function (libraryVariableSet) {
-        return this.client.get(libraryVariableSet.Links["Usages"]);
-    };
-    return LibraryVariableRepository;
-}(basicRepository_1.BasicRepository));
-exports.LibraryVariableRepository = LibraryVariableRepository;
-
-
-/***/ }),
-
-/***/ 51916:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LicenseRepository = void 0;
-var LicenseRepository = /** @class */ (function () {
-    function LicenseRepository(client) {
-        this.client = client;
-    }
-    LicenseRepository.prototype.getCurrent = function () {
-        return this.client.get(this.client.getLink("CurrentLicense"));
-    };
-    LicenseRepository.prototype.getCurrentStatus = function () {
-        return this.client.get(this.client.getLink("CurrentLicenseStatus"));
-    };
-    LicenseRepository.prototype.modifyCurrent = function (resource) {
-        return this.client.update(resource.Links.Self, resource);
-    };
-    return LicenseRepository;
-}());
-exports.LicenseRepository = LicenseRepository;
-
-
-/***/ }),
-
-/***/ 56946:
+/***/ 6141:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -6287,4611 +3411,64 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.LifecycleRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
 var LifecycleRepository = /** @class */ (function (_super) {
     __extends(LifecycleRepository, _super);
-    function LifecycleRepository(client) {
-        return _super.call(this, "Lifecycles", client) || this;
+    function LifecycleRepository(client, spaceName) {
+        return _super.call(this, client, spaceName, "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/lifecycles{/id}{?skip,take,ids,partialName}")) || this;
     }
-    LifecycleRepository.prototype.preview = function (lifecycle) {
-        return this.client.get(lifecycle.Links["Preview"]);
-    };
-    LifecycleRepository.prototype.projects = function (lifecycle) {
-        return this.client.get(lifecycle.Links["Projects"]);
-    };
     return LifecycleRepository;
-}(basicRepository_1.BasicRepository));
+}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
 exports.LifecycleRepository = LifecycleRepository;
 
 
 /***/ }),
 
-/***/ 3522:
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.saveLogo = exports.uploadLogo = void 0;
-function uploadLogo(client, resource, logo) {
-    var fd = new FormData();
-    fd.append("fileToUpload", logo);
-    return client.post(resource.Links["Logo"], fd);
-}
-exports.uploadLogo = uploadLogo;
-function saveLogo(client, resource, file, reset) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            // Important: when using saveLogo
-            // We upload the logo first so that when we do the model save we get back a new url for logo
-            if (file) {
-                return [2 /*return*/, uploadLogo(client, resource, file)];
-            }
-            else if (reset) {
-                return [2 /*return*/, uploadLogo(client, resource, null)];
-            }
-            return [2 /*return*/];
-        });
-    });
-}
-exports.saveLogo = saveLogo;
-
-
-/***/ }),
-
-/***/ 154:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.MachinePolicyRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var MachinePolicyRepository = /** @class */ (function (_super) {
-    __extends(MachinePolicyRepository, _super);
-    function MachinePolicyRepository(client) {
-        return _super.call(this, "MachinePolicies", client) || this;
-    }
-    MachinePolicyRepository.prototype.getTemplate = function () {
-        return this.client.get(this.client.getLink("MachinePolicyTemplate"));
-    };
-    MachinePolicyRepository.prototype.getMachines = function (machinePolicy) {
-        return this.client.get(machinePolicy.Links["Machines"]);
-    };
-    MachinePolicyRepository.prototype.getWorkers = function (machinePolicy) {
-        return this.client.get(machinePolicy.Links["Workers"]);
-    };
-    return MachinePolicyRepository;
-}(basicRepository_1.BasicRepository));
-exports.MachinePolicyRepository = MachinePolicyRepository;
-
-
-/***/ }),
-
-/***/ 53015:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.MachineRepository = void 0;
-var message_contracts_1 = __nccwpck_require__(74561);
-var basicRepository_1 = __nccwpck_require__(30970);
-var MachineRepository = /** @class */ (function (_super) {
-    __extends(MachineRepository, _super);
-    function MachineRepository(client) {
-        return _super.call(this, "Machines", client) || this;
-    }
-    MachineRepository.prototype.discover = function (host, port, type, proxyId) {
-        return proxyId ? this.client.get(this.client.getLink("DiscoverMachine"), { host: host, port: port, type: type, proxyId: proxyId }) : this.client.get(this.client.getLink("DiscoverMachine"), { host: host, port: port, type: type });
-    };
-    MachineRepository.prototype.getConnectionStatus = function (machine) {
-        return this.client.get(machine.Links["Connection"]);
-    };
-    MachineRepository.prototype.getDeployments = function (machine, options) {
-        return this.client.get(machine.Links["TasksTemplate"], __assign(__assign({}, options), { type: message_contracts_1.DeploymentTargetTaskType.Deployment }));
-    };
-    MachineRepository.prototype.getRunbookRuns = function (machine, options) {
-        return this.client.get(machine.Links["TasksTemplate"], __assign(__assign({}, options), { type: message_contracts_1.DeploymentTargetTaskType.RunbookRun }));
-    };
-    MachineRepository.prototype.hosted = function () {
-        var allArgs = { id: "hosted" };
-        return this.client.get(this.client.getLink("Machines"), allArgs);
-    };
-    MachineRepository.prototype.list = function (args) {
-        return this.client.get(this.client.getLink("Machines"), args);
-    };
-    MachineRepository.prototype.listByDeployment = function (deployment) {
-        return this.client.get(this.client.getLink("Machines"), { deploymentId: deployment.Id, id: "all" });
-    };
-    MachineRepository.prototype.listByEnvironment = function (environment) {
-        return this.client.get(environment.Links["Machines"]);
-    };
-    return MachineRepository;
-}(basicRepository_1.BasicRepository));
-exports.MachineRepository = MachineRepository;
-
-
-/***/ }),
-
-/***/ 50197:
+/***/ 5101:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.MachineRoleRepository = void 0;
-var MachineRoleRepository = /** @class */ (function () {
-    function MachineRoleRepository(client) {
-        this.client = client;
-    }
-    MachineRoleRepository.prototype.all = function () {
-        return this.client.get(this.client.getLink("MachineRoles"));
-    };
-    return MachineRoleRepository;
-}());
-exports.MachineRoleRepository = MachineRoleRepository;
 
 
 /***/ }),
 
-/***/ 1939:
+/***/ 9310:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.MachineShellsRepository = void 0;
-var MachineShellsRepository = /** @class */ (function () {
-    function MachineShellsRepository(client) {
-        this.client = client;
-    }
-    MachineShellsRepository.prototype.all = function () {
-        return this.client.get(this.client.getLink("MachineShells"));
-    };
-    return MachineShellsRepository;
-}());
-exports.MachineShellsRepository = MachineShellsRepository;
+exports.RetentionUnit = void 0;
+var RetentionUnit;
+(function (RetentionUnit) {
+    RetentionUnit["Days"] = "Days";
+    RetentionUnit["Items"] = "Items";
+})(RetentionUnit = exports.RetentionUnit || (exports.RetentionUnit = {}));
 
 
 /***/ }),
 
-/***/ 94772:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 7758:
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.MaintenanceConfigurationRepository = void 0;
-var configurationRepository_1 = __nccwpck_require__(13497);
-var MaintenanceConfigurationRepository = /** @class */ (function (_super) {
-    __extends(MaintenanceConfigurationRepository, _super);
-    function MaintenanceConfigurationRepository(client) {
-        return _super.call(this, "MaintenanceConfiguration", client) || this;
-    }
-    return MaintenanceConfigurationRepository;
-}(configurationRepository_1.ConfigurationRepository));
-exports.MaintenanceConfigurationRepository = MaintenanceConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 80891:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.convertToSpacePartitionParameters = exports.MixedScopeBaseRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-// includeSystem is set to true by default, can be overridden by args
-var MixedScopeBaseRepository = /** @class */ (function (_super) {
-    __extends(MixedScopeBaseRepository, _super);
-    function MixedScopeBaseRepository() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    MixedScopeBaseRepository.prototype.all = function (args) {
-        var combinedArgs = _super.prototype.extend.call(this, this.spacePartitionParameters(), args);
-        return _super.prototype.all.call(this, combinedArgs);
-    };
-    MixedScopeBaseRepository.prototype.allById = function (args) {
-        var combinedArgs = _super.prototype.extend.call(this, this.spacePartitionParameters(), args);
-        return _super.prototype.allById.call(this, combinedArgs);
-    };
-    MixedScopeBaseRepository.prototype.get = function (id, args) {
-        var allArgs = this.extend(args || {}, { id: id });
-        var argsWithSpace = this.extend(allArgs, this.spacePartitionParameters());
-        return _super.prototype.get.call(this, id, argsWithSpace);
-    };
-    MixedScopeBaseRepository.prototype.list = function (args) {
-        var combinedArgs = _super.prototype.extend.call(this, this.spacePartitionParameters(), args);
-        return _super.prototype.list.call(this, combinedArgs);
-    };
-    MixedScopeBaseRepository.prototype.spacePartitionParameters = function () {
-        return convertToSpacePartitionParameters(this.client.spaceId, true);
-    };
-    return MixedScopeBaseRepository;
-}(basicRepository_1.BasicRepository));
-exports.MixedScopeBaseRepository = MixedScopeBaseRepository;
-function convertToSpacePartitionParameters(spaceId, includeSystem) {
-    var spaces = spaceId ? [spaceId] : [];
-    return { includeSystem: includeSystem, spaces: spaces };
-}
-exports.convertToSpacePartitionParameters = convertToSpacePartitionParameters;
-
-
-/***/ }),
-
-/***/ 34819:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.OctopusServerNodeRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var OctopusServerNodeRepository = /** @class */ (function (_super) {
-    __extends(OctopusServerNodeRepository, _super);
-    function OctopusServerNodeRepository(client) {
-        return _super.call(this, "OctopusServerNodes", client) || this;
-    }
-    OctopusServerNodeRepository.prototype.del = function (resource) {
-        var _this = this;
-        return this.client.del(resource.Links.Node).then(function (d) { return _this.notifySubscribersToDataModifications(resource); });
-    };
-    //technically deprecated, as its not called from the UI.
-    //introduced in 2019.1.0, the code that called it got changed soon after
-    OctopusServerNodeRepository.prototype.details = function (node) {
-        return this.client.get(node.Links["Details"]);
-    };
-    OctopusServerNodeRepository.prototype.summary = function () {
-        return this.client.get(this.client.getLink("OctopusServerClusterSummary"));
-    };
-    return OctopusServerNodeRepository;
-}(basicRepository_1.BasicRepository));
-exports.OctopusServerNodeRepository = OctopusServerNodeRepository;
-
-
-/***/ }),
-
-/***/ 53378:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PackageRepository = exports.OverwriteMode = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
+exports.OverwriteMode = void 0;
 var OverwriteMode;
 (function (OverwriteMode) {
-    OverwriteMode[OverwriteMode["FailIfExists"] = 0] = "FailIfExists";
-    OverwriteMode[OverwriteMode["OverwriteExisting"] = 1] = "OverwriteExisting";
-    OverwriteMode[OverwriteMode["IgnoreIfExists"] = 2] = "IgnoreIfExists";
+    OverwriteMode["FailIfExists"] = "FailIfExists";
+    OverwriteMode["OverwriteExisting"] = "OverwriteExisting";
+    OverwriteMode["IgnoreIfExists"] = "IgnoreIfExists";
 })(OverwriteMode = exports.OverwriteMode || (exports.OverwriteMode = {}));
-var PackageRepository = /** @class */ (function (_super) {
-    __extends(PackageRepository, _super);
-    function PackageRepository(client) {
-        return _super.call(this, "Packages", client) || this;
-    }
-    PackageRepository.prototype.deleteMany = function (packageIds) {
-        return this.client.del(this.client.getLink("PackagesBulk"), null, { ids: packageIds });
-    };
-    PackageRepository.prototype.upload = function (pkg, overwriteMode) {
-        if (overwriteMode === void 0) { overwriteMode = OverwriteMode.FailIfExists; }
-        var fd = new FormData();
-        fd.append("fileToUpload", pkg);
-        return this.client.post(this.client.getLink("PackageUpload"), fd, { overwriteMode: overwriteMode });
-    };
-    PackageRepository.prototype.getNotes = function (packages) {
-        var packageIds = packages.reduce(function (result, item) {
-            return result +
-                (result.length === 0 ? "" : ",") +
-                encodeURIComponent(item.FeedId) +
-                ":" +
-                encodeURIComponent(item.PackageId) +
-                ":" +
-                encodeURIComponent(item.Version);
-        }, "");
-        return this.client.get(this.client.getLink("PackageNotesList"), { packageIds: packageIds });
-    };
-    return PackageRepository;
-}(basicRepository_1.BasicRepository));
-exports.PackageRepository = PackageRepository;
 
 
 /***/ }),
 
-/***/ 21797:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PerformanceConfigurationRepository = void 0;
-var configurationRepository_1 = __nccwpck_require__(13497);
-var PerformanceConfigurationRepository = /** @class */ (function (_super) {
-    __extends(PerformanceConfigurationRepository, _super);
-    function PerformanceConfigurationRepository(client) {
-        return _super.call(this, "PerformanceConfiguration", client) || this;
-    }
-    return PerformanceConfigurationRepository;
-}(configurationRepository_1.ConfigurationRepository));
-exports.PerformanceConfigurationRepository = PerformanceConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 97886:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PermissionDescriptionRepository = void 0;
-var PermissionDescriptionRepository = /** @class */ (function () {
-    function PermissionDescriptionRepository(client) {
-        this.client = client;
-    }
-    PermissionDescriptionRepository.prototype.all = function () {
-        return this.client.get(this.client.getLink("PermissionDescriptions"), null);
-    };
-    return PermissionDescriptionRepository;
-}());
-exports.PermissionDescriptionRepository = PermissionDescriptionRepository;
-
-
-/***/ }),
-
-/***/ 53127:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProgressionRepository = void 0;
-var ProgressionRepository = /** @class */ (function () {
-    function ProgressionRepository(client) {
-        this.client = client;
-    }
-    ProgressionRepository.prototype.getProgression = function (project, options) {
-        return this.client.get(project.Links["Progression"], options);
-    };
-    ProgressionRepository.prototype.getRunbookProgression = function (runbook, options) {
-        return this.client.get(runbook.Links["Progression"], options);
-    };
-    ProgressionRepository.prototype.getTaskRunDashboardItemsForProject = function (project, options) {
-        return this.client.get(project.Links["RunbookTaskRunDashboardItemsTemplate"], options);
-    };
-    ProgressionRepository.prototype.getTaskRunDashboardItemsForRunbook = function (runbook, options) {
-        return this.client.get(runbook.Links["TaskRunDashboardItemsTemplate"], options);
-    };
-    return ProgressionRepository;
-}());
-exports.ProgressionRepository = ProgressionRepository;
-
-
-/***/ }),
-
-/***/ 38331:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProjectGroupRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var ProjectGroupRepository = /** @class */ (function (_super) {
-    __extends(ProjectGroupRepository, _super);
-    function ProjectGroupRepository(client) {
-        return _super.call(this, "ProjectGroups", client) || this;
-    }
-    return ProjectGroupRepository;
-}(basicRepository_1.BasicRepository));
-exports.ProjectGroupRepository = ProjectGroupRepository;
-
-
-/***/ }),
-
-/***/ 52058:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-/* eslint-disable @typescript-eslint/no-non-null-assertion,@typescript-eslint/consistent-type-assertions */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UseDefaultBranch = void 0;
-var message_contracts_1 = __nccwpck_require__(74561);
-var basicRepository_1 = __nccwpck_require__(30970);
-exports.UseDefaultBranch = { UseDefaultBranch: true };
-var ProjectRepository = /** @class */ (function (_super) {
-    __extends(ProjectRepository, _super);
-    function ProjectRepository(client) {
-        return _super.call(this, "Projects", client) || this;
-    }
-    ProjectRepository.prototype.find = function (nameOrId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a, projects;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (nameOrId.length === 0)
-                            return [2 /*return*/];
-                        _b.label = 1;
-                    case 1:
-                        _b.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.get(nameOrId)];
-                    case 2: return [2 /*return*/, _b.sent()];
-                    case 3:
-                        _a = _b.sent();
-                        return [3 /*break*/, 4];
-                    case 4: return [4 /*yield*/, this.list({
-                            partialName: nameOrId,
-                        })];
-                    case 5:
-                        projects = _b.sent();
-                        return [2 /*return*/, projects.Items.find(function (p) { return p.Name === nameOrId; })];
-                }
-            });
-        });
-    };
-    ProjectRepository.prototype.getChannels = function (project, gitRef, skip, take) {
-        if (skip === void 0) { skip = 0; }
-        if (take === void 0) { take = this.takeAll; }
-        if (gitRef && (0, message_contracts_1.HasVersionControlledPersistenceSettings)(project.PersistenceSettings)) {
-            return this.client.get(project.Links["Channels"], { skip: skip, take: take, gitRef: gitRef });
-        }
-        return this.client.get(project.Links["Channels"], { skip: skip, take: take });
-    };
-    ProjectRepository.prototype.getDeployments = function (project) {
-        return this.client.get(this.client.getLink("Deployments"), { projects: project.Id });
-    };
-    ProjectRepository.prototype.getDeploymentSettings = function (project, gitRef) {
-        if (gitRef && (0, message_contracts_1.HasVersionControlledPersistenceSettings)(project.PersistenceSettings)) {
-            return this.client.get(project.Links["DeploymentSettings"], { gitRef: gitRef });
-        }
-        return this.client.get(project.Links["DeploymentSettings"]);
-    };
-    ProjectRepository.prototype.getReleases = function (project, args) {
-        return this.client.get(project.Links["Releases"], args);
-    };
-    ProjectRepository.prototype.getReleaseByVersion = function (project, version) {
-        return this.client.get(project.Links["Releases"], { version: version });
-    };
-    ProjectRepository.prototype.list = function (args) {
-        return this.client.get(this.client.getLink("Projects"), __assign({}, args));
-    };
-    ProjectRepository.prototype.listByGroup = function (projectGroup) {
-        return this.client.get(projectGroup.Links["Projects"]);
-    };
-    ProjectRepository.prototype.getTriggers = function (project, gitRef, skip, take, triggerActionType, triggerActionCategory, runbooks, partialName) {
-        return this.client.get(project.Links["Triggers"], {
-            skip: skip,
-            take: take,
-            gitRef: gitRef,
-            triggerActionType: triggerActionType,
-            triggerActionCategory: triggerActionCategory,
-            runbooks: runbooks,
-            partialName: partialName,
-        });
-    };
-    ProjectRepository.prototype.orderChannels = function (project) {
-        return this.client.post(project.Links["OrderChannels"]);
-    };
-    ProjectRepository.prototype.getPulse = function (projects) {
-        var projectIds = projects
-            .map(function (p) {
-            return p.Id;
-        })
-            .join(",");
-        return this.client.get(this.client.getLink("ProjectPulse"), { projectIds: projectIds });
-    };
-    ProjectRepository.prototype.getMetadata = function (project) {
-        return this.client.get(project.Links["Metadata"], {});
-    };
-    ProjectRepository.prototype.getRunbooks = function (project, args) {
-        return this.client.get(project.Links["Runbooks"], args);
-    };
-    ProjectRepository.prototype.summaries = function () {
-        return this.client.get(this.client.getLink("ProjectsExperimentalSummaries"));
-    };
-    ProjectRepository.prototype.getSummary = function (project, branch) {
-        return this.client.get(project.Links["Summary"], { gitRef: GetBranchDetails(branch) });
-    };
-    ProjectRepository.prototype.getBranch = function (project, branch) {
-        if ((0, message_contracts_1.HasVcsProjectResourceLinks)(project.Links) && (0, message_contracts_1.HasVersionControlledPersistenceSettings)(project.PersistenceSettings)) {
-            var branchName = ShouldUseDefaultBranch(branch) ? project.PersistenceSettings.DefaultBranch : branch;
-            return this.client.get(project.Links.Branches, { name: branchName });
-        }
-        throw new Error("Cannot retrieve branches from non-VCS projects");
-    };
-    ProjectRepository.prototype.getBranches = function (project) {
-        if ((0, message_contracts_1.HasVcsProjectResourceLinks)(project.Links)) {
-            return this.client.get(project.Links.Branches);
-        }
-        throw new Error("Cannot retrieve branches from non-VCS projects");
-    };
-    ProjectRepository.prototype.searchBranches = function (project, partialBranchName) {
-        if ((0, message_contracts_1.HasVcsProjectResourceLinks)(project.Links)) {
-            return this.client.get(project.Links.Branches, { searchByName: partialBranchName });
-        }
-        throw new Error("Cannot retrieve branches from non-VCS projects");
-    };
-    ProjectRepository.prototype.convertToVcs = function (project, payload) {
-        return this.client.post(project.Links.ConvertToVcs, payload);
-    };
-    ProjectRepository.prototype.vcsCompatibilityReport = function (project) {
-        return this.client.get(project.Links["VersionControlCompatibilityReport"]);
-    };
-    // TODO: @team-config-as-code - Our project needs a custom "Delete" link that does _not_ include the GitRef in order for us to
-    // successfully hit the /projects/{id} DEL endpoint. For EAP, we're out of time and just hacking it into the frontend client.
-    ProjectRepository.prototype.del = function (project) {
-        var _this = this;
-        if (project.IsVersionControlled) {
-            // Our "Self" link should currently include the GitRef. If so, and our last path does not look like our projectId, strip it.
-            var selfLinkParts = project.Links.Self.split("/");
-            if (selfLinkParts[selfLinkParts.length - 1] !== project.Id) {
-                selfLinkParts.pop();
-            }
-            var selfLink = selfLinkParts.join("/");
-            return this.client.del(selfLink).then(function (d) { return _this.notifySubscribersToDataModifications(project); });
-        }
-        else {
-            return this.client.del(project.Links.Self).then(function (d) { return _this.notifySubscribersToDataModifications(project); });
-        }
-    };
-    ProjectRepository.prototype.markAsStale = function (project) {
-        return this.client.post(project.Links["RepositoryModified"]);
-    };
-    return ProjectRepository;
-}(basicRepository_1.BasicRepository));
-function ShouldUseDefaultBranch(branch) {
-    return typeof branch === "object";
-}
-function GetBranchDetails(branch) {
-    if (typeof branch === "string" || branch instanceof String) {
-        return branch;
-    }
-    else {
-        return branch === null || branch === void 0 ? void 0 : branch.Name;
-    }
-}
-exports["default"] = ProjectRepository;
-
-
-/***/ }),
-
-/***/ 91795:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-/* eslint-disable @typescript-eslint/no-non-null-assertion,jsdoc/require-param */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProjectScopedRepository = void 0;
-var message_contracts_1 = __nccwpck_require__(74561);
-var basicRepository_1 = __nccwpck_require__(30970);
-var lodash_1 = __nccwpck_require__(90250);
-var ProjectScopedRepository = /** @class */ (function (_super) {
-    __extends(ProjectScopedRepository, _super);
-    function ProjectScopedRepository(projectRepository, collectionLinkName, client) {
-        var _this = _super.call(this, collectionLinkName, client) || this;
-        _this.takeAll = 2147483647;
-        _this.projectRepository = projectRepository;
-        return _this;
-    }
-    ProjectScopedRepository.prototype.create = function (resource, args) {
-        var _this = this;
-        // Need to separate this out because it's either called immediately, or
-        var createInternal = function (projectResource, resource, args) {
-            // For now, we only want to use the project scoped endpoint for version controlled projects
-            // Database projects should remain as they were
-            if (projectResource.PersistenceSettings.Type == message_contracts_1.PersistenceSettingsType.VersionControlled) {
-                return _this.createForProject(projectResource, resource, args);
-            }
-            return _super.prototype.create.call(_this, resource, args);
-        };
-        return this.projectRepository.get(resource.ProjectId).then(function (proj) { return createInternal(proj, resource, args); });
-    };
-    ProjectScopedRepository.prototype.createForProject = function (projectResource, resource, args) {
-        var _this = this;
-        var link = projectResource.Links[this.collectionLinkName];
-        return this.client.create(link, resource, args).then(function (r) { return _this.notifySubscribersToDataModifications(r); });
-    };
-    ProjectScopedRepository.prototype.listFromProject = function (projectResource, args) {
-        var link = projectResource.Links[this.collectionLinkName];
-        return this.client.get(link, args);
-    };
-    ProjectScopedRepository.prototype.getFromProject = function (projectResource, id, args) {
-        if (projectResource.PersistenceSettings.Type == message_contracts_1.PersistenceSettingsType.VersionControlled) {
-            var allArgs = this.extend(args || {}, { id: id });
-            var link = projectResource.Links[this.collectionLinkName];
-            return this.client.get(link, allArgs);
-        }
-        return _super.prototype.get.call(this, id, args);
-    };
-    ProjectScopedRepository.prototype.allFromProject = function (projectResource, args) {
-        if (args !== undefined && args.ids instanceof Array && args.ids.length === 0) {
-            return new Promise(function (res) {
-                res([]);
-            });
-        }
-        // http.sys has a max query string of about 16k chars. Our typical max id length is 50 chars
-        // so if we are doing requests by id and have more than 300, split into multiple requests
-        var maxIds = 300;
-        if (args !== undefined && args.ids instanceof Array && args.ids.length > maxIds) {
-            return this.batchRequestsByIdForProject(projectResource, args, maxIds);
-        }
-        var allArgs = this.extend(args || {}, { take: this.takeAll });
-        var link = projectResource.Links[this.collectionLinkName];
-        return this.client.get(link, allArgs).then(function (res) { return res.Items; });
-    };
-    ProjectScopedRepository.prototype.saveToProject = function (projectResource, resource, args) {
-        if (isNewResource(resource)) {
-            return this.createForProject(projectResource, resource, args);
-        }
-        else {
-            //We need the cast here, since there is a bug in typescript where things don't narrow appropriately for generics https://github.com/microsoft/TypeScript/issues/44404
-            //The usual workaround of inverting the checks doesn't seem to work here unfortunately so there is no way to avoid the cast until the bug is fixed.
-            return this.modify(resource, args);
-        }
-        function isTruthy(value) {
-            return !!value;
-        }
-        function isNewResource(resource) {
-            return !("Id" in resource && isTruthy(resource.Id) && isTruthy(resource.Links));
-        }
-    };
-    ProjectScopedRepository.prototype.batchRequestsByIdForProject = function (projectResource, args, batchSize) {
-        var _this = this;
-        var idArrays = (0, lodash_1.chunk)(args.ids, batchSize);
-        var promises = idArrays.map(function (ids) {
-            var newArgs = __assign(__assign({}, args), { ids: ids });
-            var link = projectResource.Links[_this.collectionLinkName];
-            return _this.client.get(link, newArgs);
-        });
-        return Promise.all(promises).then(function (result) { return (0, lodash_1.flatten)(result); });
-    };
-    return ProjectScopedRepository;
-}(basicRepository_1.BasicRepository));
-exports.ProjectScopedRepository = ProjectScopedRepository;
-
-
-/***/ }),
-
-/***/ 57502:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProjectTriggerRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var ProjectTriggerRepository = /** @class */ (function (_super) {
-    __extends(ProjectTriggerRepository, _super);
-    function ProjectTriggerRepository(client) {
-        return _super.call(this, "ProjectTriggers", client) || this;
-    }
-    return ProjectTriggerRepository;
-}(basicRepository_1.BasicRepository));
-exports.ProjectTriggerRepository = ProjectTriggerRepository;
-
-
-/***/ }),
-
-/***/ 7358:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProxyRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var ProxyRepository = /** @class */ (function (_super) {
-    __extends(ProxyRepository, _super);
-    function ProxyRepository(client) {
-        return _super.call(this, "Proxies", client) || this;
-    }
-    return ProxyRepository;
-}(basicRepository_1.BasicRepository));
-exports.ProxyRepository = ProxyRepository;
-
-
-/***/ }),
-
-/***/ 87252:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ReleasesRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var ReleasesRepository = /** @class */ (function (_super) {
-    __extends(ReleasesRepository, _super);
-    function ReleasesRepository(client) {
-        return _super.call(this, "Releases", client) || this;
-    }
-    ReleasesRepository.prototype.getDeployments = function (release, options) {
-        return this.client.get(release.Links["Deployments"], options);
-    };
-    ReleasesRepository.prototype.getDeploymentTemplate = function (release) {
-        return this.client.get(release.Links["DeploymentTemplate"]);
-    };
-    ReleasesRepository.prototype.getDeploymentPreview = function (promotionTarget) {
-        return this.client.get(promotionTarget.Links["Preview"], { includeDisabledSteps: true });
-    };
-    ReleasesRepository.prototype.progression = function (release) {
-        return this.client.get(release.Links["Progression"]);
-    };
-    ReleasesRepository.prototype.snapshotVariables = function (release) {
-        return this.client.post(release.Links["SnapshotVariables"]);
-    };
-    ReleasesRepository.prototype.deploymentPreviews = function (release, deploymentTemplates) {
-        return this.client.post(release.Links["DeploymentPreviews"], deploymentTemplates);
-    };
-    ReleasesRepository.prototype.getChannel = function (release) {
-        return this.client.get(release.Links["Channel"]);
-    };
-    ReleasesRepository.prototype.getLifecycle = function (release) {
-        return this.client.get(release.Links["Lifecycle"]);
-    };
-    return ReleasesRepository;
-}(basicRepository_1.BasicRepository));
-exports.ReleasesRepository = ReleasesRepository;
-
-
-/***/ }),
-
-/***/ 11050:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RetentionDefaultConfigurationRepository = void 0;
-var configurationRepository_1 = __nccwpck_require__(13497);
-var RetentionDefaultConfigurationRepository = /** @class */ (function (_super) {
-    __extends(RetentionDefaultConfigurationRepository, _super);
-    function RetentionDefaultConfigurationRepository(client) {
-        return _super.call(this, "RetentionDefaultConfiguration", client) || this;
-    }
-    return RetentionDefaultConfigurationRepository;
-}(configurationRepository_1.ConfigurationRepository));
-exports.RetentionDefaultConfigurationRepository = RetentionDefaultConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 82404:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RunbookProcessRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var RunbookProcessRepository = /** @class */ (function (_super) {
-    __extends(RunbookProcessRepository, _super);
-    function RunbookProcessRepository(client) {
-        return _super.call(this, "RunbookProcesses", client) || this;
-    }
-    RunbookProcessRepository.prototype.getRunbookSnapshotTemplate = function (runbookProcess, runbookSnapshotId) {
-        return this.client.get(runbookProcess.Links["RunbookSnapshotTemplate"], { runbookSnapshotId: runbookSnapshotId });
-    };
-    return RunbookProcessRepository;
-}(basicRepository_1.BasicRepository));
-exports.RunbookProcessRepository = RunbookProcessRepository;
-
-
-/***/ }),
-
-/***/ 18312:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RunbookRepository = void 0;
-var message_contracts_1 = __nccwpck_require__(74561);
-var semver_1 = __nccwpck_require__(11383);
-var basicRepository_1 = __nccwpck_require__(30970);
-var RunbookRepository = /** @class */ (function (_super) {
-    __extends(RunbookRepository, _super);
-    function RunbookRepository(client) {
-        var _this = _super.call(this, "Runbooks", client) || this;
-        _this.integrationTestVersion = new semver_1.SemVer("0.0.0-local");
-        _this.versionAfterWhichRunbookRunParametersAreAvailable = new semver_1.SemVer("2020.3.1");
-        return _this;
-    }
-    RunbookRepository.prototype.find = function (nameOrId, project) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a, runbooks;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (nameOrId.length === 0)
-                            return [2 /*return*/];
-                        _b.label = 1;
-                    case 1:
-                        _b.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.get(nameOrId)];
-                    case 2: return [2 /*return*/, _b.sent()];
-                    case 3:
-                        _a = _b.sent();
-                        return [3 /*break*/, 4];
-                    case 4: return [4 /*yield*/, this.list({
-                            partialName: nameOrId,
-                            projectIds: [project.Id]
-                        })];
-                    case 5:
-                        runbooks = _b.sent();
-                        return [2 /*return*/, runbooks.Items.find(function (r) { return r.Name === nameOrId; })];
-                }
-            });
-        });
-    };
-    RunbookRepository.prototype.getRunbookEnvironments = function (runbook) {
-        return this.client.get(runbook.Links["RunbookEnvironments"]);
-    };
-    RunbookRepository.prototype.getRunbookRunPreview = function (promotionTarget) {
-        return this.client.get(promotionTarget.Links["RunbookRunPreview"], { includeDisabledSteps: true });
-    };
-    RunbookRepository.prototype.getRunbookRunTemplate = function (runbook) {
-        return this.client.get(runbook.Links["RunbookRunTemplate"]);
-    };
-    RunbookRepository.prototype.getRunbookSnapshots = function (runbook, args) {
-        return this.client.get(runbook.Links["RunbookSnapshots"], args);
-    };
-    RunbookRepository.prototype.getRunbookSnapshotTemplate = function (runbook) {
-        return this.client.get(runbook.Links["RunbookSnapshotTemplate"]);
-    };
-    RunbookRepository.prototype.run = function (runbook, runbookRun) {
-        return __awaiter(this, void 0, void 0, function () {
-            var supportsRunbookRunParameters, _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        supportsRunbookRunParameters = this.serverSupportsRunbookRunParameters(this.client.getServerInformation().version);
-                        if (!supportsRunbookRunParameters) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.runWithParameters(runbook, message_contracts_1.RunbookRunParameters.MapFrom(runbookRun))];
-                    case 1:
-                        _a = (_b.sent())[0];
-                        return [3 /*break*/, 4];
-                    case 2: return [4 /*yield*/, this.client.post(runbook.Links["CreateRunbookRun"], runbookRun)];
-                    case 3:
-                        _a = _b.sent();
-                        _b.label = 4;
-                    case 4: return [2 /*return*/, _a];
-                }
-            });
-        });
-    };
-    RunbookRepository.prototype.runWithParameters = function (runbook, runbookRunParameters) {
-        return __awaiter(this, void 0, void 0, function () {
-            var serverVersion, serverSupportsRunbookRunParameters;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        serverVersion = this.client.getServerInformation().version;
-                        serverSupportsRunbookRunParameters = this.serverSupportsRunbookRunParameters(serverVersion);
-                        if (!serverSupportsRunbookRunParameters)
-                            throw new Error("This Octopus Deploy server is an older version ".concat(serverVersion, " that does not yet support RunbookRunParameters. Please update your Octopus Deploy server to 2020.3.* or newer to access this feature."));
-                        return [4 /*yield*/, this.client.post(runbook.Links["CreateRunbookRun"], runbookRunParameters)];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    RunbookRepository.prototype.serverSupportsRunbookRunParameters = function (version) {
-        var serverVersion = new semver_1.SemVer(version);
-        // note: ensure the server version is >= *any* 2020.3.1
-        return serverVersion >= this.versionAfterWhichRunbookRunParametersAreAvailable || serverVersion == this.integrationTestVersion;
-    };
-    return RunbookRepository;
-}(basicRepository_1.BasicRepository));
-exports.RunbookRepository = RunbookRepository;
-
-
-/***/ }),
-
-/***/ 30242:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RunbookRunRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var RunbookRunRepository = /** @class */ (function (_super) {
-    __extends(RunbookRunRepository, _super);
-    function RunbookRunRepository(client) {
-        return _super.call(this, "RunbookRuns", client) || this;
-    }
-    return RunbookRunRepository;
-}(basicRepository_1.BasicRepository));
-exports.RunbookRunRepository = RunbookRunRepository;
-
-
-/***/ }),
-
-/***/ 73544:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RunbookSnapshotRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var RunbookSnapshotRepository = /** @class */ (function (_super) {
-    __extends(RunbookSnapshotRepository, _super);
-    function RunbookSnapshotRepository(client) {
-        return _super.call(this, "RunbookSnapshots", client) || this;
-    }
-    RunbookSnapshotRepository.prototype.getRunbookRunPreviewForPromotionTarget = function (promotionTarget) {
-        return this.client.get(promotionTarget.Links["RunbookRunPreview"], { includeDisabledSteps: true });
-    };
-    RunbookSnapshotRepository.prototype.getRunbookRuns = function (runbookSnapshot, options) {
-        return this.client.get(runbookSnapshot.Links["RunbookRuns"], options);
-    };
-    RunbookSnapshotRepository.prototype.getRunbookRunTemplate = function (runbookSnapshot) {
-        return this.client.get(runbookSnapshot.Links["RunbookRunTemplate"]);
-    };
-    RunbookSnapshotRepository.prototype.snapshotVariables = function (runbookSnapshot) {
-        return this.client.post(runbookSnapshot.Links["SnapshotVariables"]);
-    };
-    return RunbookSnapshotRepository;
-}(basicRepository_1.BasicRepository));
-exports.RunbookSnapshotRepository = RunbookSnapshotRepository;
-
-
-/***/ }),
-
-/***/ 63767:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SchedulerRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var SchedulerRepository = /** @class */ (function (_super) {
-    __extends(SchedulerRepository, _super);
-    function SchedulerRepository(client) {
-        return _super.call(this, "Scheduler", client) || this;
-    }
-    SchedulerRepository.prototype.getDetails = function (name, options) {
-        var args = __assign(__assign({}, options), { name: name });
-        return this.client.get(this.client.getLink("Scheduler"), args);
-    };
-    return SchedulerRepository;
-}(basicRepository_1.BasicRepository));
-exports.SchedulerRepository = SchedulerRepository;
-
-
-/***/ }),
-
-/***/ 18774:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScopedUserRoleRepository = void 0;
-var mixedScopeBaseRepository_1 = __nccwpck_require__(80891);
-var ScopedUserRoleRepository = /** @class */ (function (_super) {
-    __extends(ScopedUserRoleRepository, _super);
-    function ScopedUserRoleRepository(client) {
-        return _super.call(this, "ScopedUserRoles", client) || this;
-    }
-    return ScopedUserRoleRepository;
-}(mixedScopeBaseRepository_1.MixedScopeBaseRepository));
-exports.ScopedUserRoleRepository = ScopedUserRoleRepository;
-
-
-/***/ }),
-
-/***/ 96489:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ServerConfigurationRepository = void 0;
-var configurationRepository_1 = __nccwpck_require__(13497);
-var ServerConfigurationRepository = /** @class */ (function (_super) {
-    __extends(ServerConfigurationRepository, _super);
-    function ServerConfigurationRepository(client) {
-        return _super.call(this, "ServerConfiguration", client) || this;
-    }
-    ServerConfigurationRepository.prototype.settings = function () {
-        return this.client.get(this.client.getLink("ServerConfigurationSettings"));
-    };
-    return ServerConfigurationRepository;
-}(configurationRepository_1.ConfigurationRepository));
-exports.ServerConfigurationRepository = ServerConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 84463:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ServerStatusRepository = void 0;
-var ServerStatusRepository = /** @class */ (function () {
-    function ServerStatusRepository(client) {
-        this.client = client;
-    }
-    ServerStatusRepository.prototype.getServerStatus = function () {
-        return this.client.get(this.client.getLink("ServerStatus"));
-    };
-    ServerStatusRepository.prototype.getLogs = function (status, args) {
-        return this.client.get(status.Links["RecentLogs"], args);
-    };
-    ServerStatusRepository.prototype.getHealth = function (status) {
-        return this.client.get(status.Links["Health"]);
-    };
-    ServerStatusRepository.prototype.getSystemInfo = function (status) {
-        return this.client.get(status.Links["SystemInfo"]);
-    };
-    ServerStatusRepository.prototype.gcCollect = function (status) {
-        return this.client.post(status.Links["GCCollect"], status);
-    };
-    ServerStatusRepository.prototype.getDocumentCounts = function (status) {
-        return this.client.get(status.Links["DocumentCounts"]);
-    };
-    ServerStatusRepository.prototype.getExtensionStats = function () {
-        return this.client.get(this.client.getLink("ExtensionStats"));
-    };
-    ServerStatusRepository.prototype.getTimezones = function () {
-        return this.client.get(this.client.getLink("Timezones"));
-    };
-    return ServerStatusRepository;
-}());
-exports.ServerStatusRepository = ServerStatusRepository;
-
-
-/***/ }),
-
-/***/ 50924:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var basicRepository_1 = __nccwpck_require__(30970);
-var SettingsRepository = /** @class */ (function (_super) {
-    __extends(SettingsRepository, _super);
-    function SettingsRepository(client) {
-        return _super.call(this, "Configuration", client) || this;
-    }
-    SettingsRepository.prototype.getById = function (id) {
-        return this.client.get(this.client.getLink("Configuration"), { id: id });
-    };
-    SettingsRepository.prototype.getValues = function (resource) {
-        return this.client.get(resource.Links["Values"]);
-    };
-    SettingsRepository.prototype.getMetadata = function (resource) {
-        return this.client.get(resource.Links["Metadata"]);
-    };
-    SettingsRepository.prototype.saveValues = function (metadataResource, resource) {
-        return this.client.put(metadataResource.Links["Values"], resource);
-    };
-    return SettingsRepository;
-}(basicRepository_1.BasicRepository));
-exports["default"] = SettingsRepository;
-
-
-/***/ }),
-
-/***/ 7025:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SmtpConfigurationRepository = void 0;
-var configurationRepository_1 = __nccwpck_require__(13497);
-var SmtpConfigurationRepository = /** @class */ (function (_super) {
-    __extends(SmtpConfigurationRepository, _super);
-    function SmtpConfigurationRepository(client) {
-        return _super.call(this, "SmtpConfiguration", client) || this;
-    }
-    SmtpConfigurationRepository.prototype.IsConfigured = function () {
-        return this.client.get(this.client.getLink("SmtpIsConfigured"));
-    };
-    return SmtpConfigurationRepository;
-}(configurationRepository_1.ConfigurationRepository));
-exports.SmtpConfigurationRepository = SmtpConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 56836:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SpaceRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var SpaceRepository = /** @class */ (function (_super) {
-    __extends(SpaceRepository, _super);
-    function SpaceRepository(client) {
-        return _super.call(this, "Spaces", client) || this;
-    }
-    SpaceRepository.prototype.search = function (keyword) {
-        return this.client.get(this.client.getLink("SpaceSearch"), { id: this.client.spaceId, keyword: keyword });
-    };
-    return SpaceRepository;
-}(basicRepository_1.BasicRepository));
-exports.SpaceRepository = SpaceRepository;
-
-
-/***/ }),
-
-/***/ 94178:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var basicRepository_1 = __nccwpck_require__(30970);
-var SubscriptionRepository = /** @class */ (function (_super) {
-    __extends(SubscriptionRepository, _super);
-    function SubscriptionRepository(client) {
-        return _super.call(this, "Subscriptions", client) || this;
-    }
-    return SubscriptionRepository;
-}(basicRepository_1.BasicRepository));
-exports["default"] = SubscriptionRepository;
-
-
-/***/ }),
-
-/***/ 50450:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var basicRepository_1 = __nccwpck_require__(30970);
-var TagSetRepository = /** @class */ (function (_super) {
-    __extends(TagSetRepository, _super);
-    function TagSetRepository(client) {
-        return _super.call(this, "TagSets", client) || this;
-    }
-    TagSetRepository.prototype.sort = function (ids) {
-        return this.client.put(this.client.getLink("TagSetSortOrder"), ids);
-    };
-    return TagSetRepository;
-}(basicRepository_1.BasicRepository));
-exports["default"] = TagSetRepository;
-
-
-/***/ }),
-
-/***/ 53573:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TaskRepository = void 0;
-var message_contracts_1 = __nccwpck_require__(74561);
-var lodash_1 = __nccwpck_require__(90250);
-var mixedScopeBaseRepository_1 = __nccwpck_require__(80891);
-var TaskRepository = /** @class */ (function (_super) {
-    __extends(TaskRepository, _super);
-    function TaskRepository(client) {
-        return _super.call(this, "Tasks", client) || this;
-    }
-    TaskRepository.prototype.createPerformIntegrityCheckTask = function () {
-        return this.createSystemTask(message_contracts_1.TaskName.SystemIntegrityCheck, "Check System Integrity", {});
-    };
-    TaskRepository.prototype.createSynchronizeCommunityStepTemplatesTask = function () {
-        return this.createSystemTask(message_contracts_1.TaskName.SyncCommunityActionTemplates, "Synchronize Community Step Templates", {});
-    };
-    TaskRepository.prototype.createConfigureLetsEncryptTask = function (letsEncryptArguments) {
-        return this.createSystemTask(message_contracts_1.TaskName.ConfigureLetsEncrypt, "Configure Let's Encrypt SSL Certificate", letsEncryptArguments);
-    };
-    TaskRepository.prototype.createRenewLetsEncryptTask = function (letsEncryptArguments) {
-        return this.createSystemTask(message_contracts_1.TaskName.ConfigureLetsEncrypt, "Renew Let's Encrypt SSL Certificate", letsEncryptArguments);
-    };
-    TaskRepository.prototype.createSendTestEmailTask = function (emailAddress) {
-        return this.createSystemTask(message_contracts_1.TaskName.TestEmail, "Send test email", { EmailAddress: emailAddress });
-    };
-    TaskRepository.prototype.createUpgradeTentaclesTask = function () {
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.Upgrade, "Upgrade Tentacles", {});
-    };
-    TaskRepository.prototype.createUpgradeTentaclesTaskForEnvironment = function (environment, machineIds) {
-        var description = environment ? "Upgrade Tentacles in ".concat(environment.Name) : "Upgrade Tentacles";
-        var upgradeTaskArguments = __assign({ RestrictedTo: message_contracts_1.TaskRestrictedTo.DeploymentTargets, MachineIds: machineIds }, (environment ? { EnvironmentId: environment.Id } : {}));
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.Upgrade, description, upgradeTaskArguments);
-    };
-    TaskRepository.prototype.createUpgradeTentacleOnMachineTask = function (machine) {
-        if (machine.Id !== null && machine.Id !== undefined) {
-            return this.createSpaceScopedTask(message_contracts_1.TaskName.Upgrade, "Upgrade Tentacle on ".concat(machine.Name), { MachineIds: [machine.Id] });
-        }
-    };
-    TaskRepository.prototype.createUpgradeTentacleOnWorkerPoolTask = function (workerPool, machineIds) {
-        var description = workerPool ? "Upgrade Tentacles in ".concat(workerPool.Name) : "Upgrade Tentacles";
-        var upgradeTaskArguments = __assign({ RestrictedTo: message_contracts_1.TaskRestrictedTo.Workers, MachineIds: machineIds }, (workerPool ? { WorkerPoolId: workerPool.Id } : {}));
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.Upgrade, description, upgradeTaskArguments);
-    };
-    TaskRepository.prototype.createUpgradeTentaclesTaskRestrictedTo = function (restrictedTo, MachineIds) {
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.Upgrade, "Upgrade Tentacles", { RestrictedTo: restrictedTo, MachineIds: MachineIds });
-    };
-    TaskRepository.prototype.createPerformHealthCheckTaskForEnvironment = function (environment, machineIds) {
-        var description = environment ? "Check deployment target health in ".concat(environment.Name) : "Check deployment target health";
-        var healthCheckArguments = __assign({ Timeout: "00:05:00", OnlyTestConnection: false, RestrictedTo: message_contracts_1.TaskRestrictedTo.DeploymentTargets, MachineIds: machineIds }, (environment ? { EnvironmentId: environment.Id } : {}));
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.Health, description, healthCheckArguments);
-    };
-    TaskRepository.prototype.createPerformHealthCheckTaskForWorkerPool = function (workerPool, machineIds) {
-        var description = workerPool ? "Check worker health in ".concat(workerPool.Name) : "Check worker health";
-        var healthCheckArguments = __assign({ Timeout: "00:05:00", OnlyTestConnection: false, RestrictedTo: message_contracts_1.TaskRestrictedTo.Workers, MachineIds: machineIds }, (workerPool ? { WorkerPoolId: workerPool.Id } : {}));
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.Health, description, healthCheckArguments);
-    };
-    TaskRepository.prototype.createHealthCheckTaskForMachine = function (machine) {
-        if (machine.Id !== null && machine.Id !== undefined) {
-            return this.createSpaceScopedTask(message_contracts_1.TaskName.Health, "Check ".concat(machine.Name, " health"), {
-                Timeout: "00:05:00",
-                MachineIds: [machine.Id],
-                OnlyTestConnection: false,
-            });
-        }
-    };
-    TaskRepository.prototype.createHealthCheckTaskRestrictedTo = function (restrictedTo, machineIds) {
-        var description = restrictedTo === message_contracts_1.TaskRestrictedTo.Workers ? "Check worker health" : "Check deployment target health";
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.Health, description, {
-            Timeout: "00:05:00",
-            OnlyTestConnection: false,
-            RestrictedTo: restrictedTo,
-            MachineIds: machineIds,
-        });
-    };
-    TaskRepository.prototype.createUpdateCalamariOnTargetsTask = function (deploymentTargetIds) {
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.UpdateCalamari, "Update Calamari on Deployment Targets", { MachineIds: deploymentTargetIds });
-    };
-    TaskRepository.prototype.createUpdateCalamariOnWorkersTask = function (workerIds) {
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.UpdateCalamari, "Upgrade Calamari on Workers", { MachineIds: workerIds });
-    };
-    TaskRepository.prototype.createUpdateCalamariOnTargetTask = function (machine) {
-        if (machine.Id !== null && machine.Id !== undefined) {
-            return this.createSpaceScopedTask(message_contracts_1.TaskName.UpdateCalamari, "Update Calamari on ".concat(machine.Name), { MachineIds: [machine.Id] });
-        }
-    };
-    TaskRepository.prototype.createSynchronizeBuiltInPackageRepositoryTask = function () {
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.SynchronizeBuiltInPackageRepositoryIndex, "Re-index built-in package repository", {});
-    };
-    TaskRepository.prototype.createTestAzureAccountTask = function (azureAccountId) {
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.TestAccount, "Test Azure account", { AccountId: azureAccountId });
-    };
-    TaskRepository.prototype.createTestAwsAccountTask = function (awsAccountId) {
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.TestAccount, "Test Amazon Web Services account", { AccountId: awsAccountId });
-    };
-    TaskRepository.prototype.createTestGoogleCloudAccountTask = function (googleCloudAccountId) {
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.TestAccount, "Test Google Cloud account", { AccountId: googleCloudAccountId });
-    };
-    TaskRepository.prototype.createRunActionTemplateTask = function (targets, properties, template) {
-        var runActionTemplateArguments = __assign(__assign({}, targets), { Properties: properties, ActionTemplateId: template.Id });
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.AdHocScript, "Run step template: " + template.Name, runActionTemplateArguments);
-    };
-    TaskRepository.prototype.createScriptConsoleTask = function (targets, syntax, scriptBody) {
-        var scriptConsoleArguments = __assign(__assign({}, targets), { Syntax: syntax, ScriptBody: scriptBody });
-        return this.createSpaceScopedTask(message_contracts_1.TaskName.AdHocScript, "Script run from management console", scriptConsoleArguments);
-    };
-    TaskRepository.prototype.create = function (resource, args) {
-        throw new Error("Can't create generic tasks. Instead, concrete task factory methods on the TaskRepository should be used to create tasks");
-    };
-    TaskRepository.prototype.details = function (task, args) {
-        return this.client.get(task.Links["Details"], args);
-    };
-    TaskRepository.prototype.getQueuedBehind = function (task, args) {
-        var combinedParameters = this.extend(this.spacePartitionParameters(), args);
-        return this.client.get(task.Links["QueuedBehind"], combinedParameters);
-    };
-    TaskRepository.prototype.getRaw = function (task) {
-        return this.client.getRaw(task.Links["Raw"]);
-    };
-    TaskRepository.prototype.taskTypes = function () {
-        return this.client.get(this.client.getLink("TaskTypes"), {});
-    };
-    TaskRepository.prototype.filter = function (args) {
-        var combinedParameters = this.extend(this.spacePartitionParameters(), args);
-        return this.client.get(this.client.getLink("Tasks"), combinedParameters);
-    };
-    TaskRepository.prototype.rerun = function (task) {
-        return this.client.post(task.Links["Rerun"]);
-    };
-    TaskRepository.prototype.cancel = function (task) {
-        return this.client.post(task.Links["Cancel"]);
-    };
-    TaskRepository.prototype.changeState = function (task, state, reason) {
-        return this.client.post(task.Links["State"], { state: state, reason: reason });
-    };
-    TaskRepository.prototype.list = function (args) {
-        return _super.prototype.list.call(this, args);
-    };
-    TaskRepository.prototype.byIds = function (ids) {
-        var _this = this;
-        var batchSize = 300;
-        var idArrays = (0, lodash_1.chunk)(ids, batchSize);
-        var promises = idArrays.map(function (i) {
-            return _this.list({ ids: i, take: batchSize });
-        });
-        return Promise.all(promises).then(function (result) { return (0, lodash_1.flatMap)(result, function (c) { return c.Items; }); });
-    };
-    TaskRepository.prototype.createSystemTask = function (name, description, taskArguments) {
-        return _super.prototype.create.call(this, {
-            Name: name,
-            Description: description,
-            Arguments: taskArguments,
-            SpaceId: null,
-        });
-    };
-    TaskRepository.prototype.createSpaceScopedTask = function (name, description, taskArguments) {
-        if (!this.client.spaceId) {
-            throw new Error("Tried to create a space scoped task without being in the context of a space");
-        }
-        return _super.prototype.create.call(this, {
-            Name: name,
-            Description: description,
-            Arguments: taskArguments,
-            SpaceId: this.client.spaceId,
-        });
-    };
-    return TaskRepository;
-}(mixedScopeBaseRepository_1.MixedScopeBaseRepository));
-exports.TaskRepository = TaskRepository;
-
-
-/***/ }),
-
-/***/ 30986:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var mixedScopeBaseRepository_1 = __nccwpck_require__(80891);
-var TeamMembershipRepository = /** @class */ (function () {
-    function TeamMembershipRepository(client) {
-        this.client = client;
-    }
-    TeamMembershipRepository.prototype.getForUser = function (user, includeSystem) {
-        return this.client.get(this.client.getLink("TeamMembership"), __assign({ userId: user.Id }, (0, mixedScopeBaseRepository_1.convertToSpacePartitionParameters)(this.client.spaceId, includeSystem)));
-    };
-    TeamMembershipRepository.prototype.previewTeam = function (team) {
-        return this.client.post(this.client.getLink("TeamMembershipPreviewTeam"), team);
-    };
-    return TeamMembershipRepository;
-}());
-exports["default"] = TeamMembershipRepository;
-
-
-/***/ }),
-
-/***/ 66168:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TeamRepository = void 0;
-var mixedScopeBaseRepository_1 = __nccwpck_require__(80891);
-var TeamRepository = /** @class */ (function (_super) {
-    __extends(TeamRepository, _super);
-    function TeamRepository(client) {
-        return _super.call(this, "Teams", client) || this;
-    }
-    TeamRepository.prototype.listScopedUserRoles = function (team) {
-        return this.client.get(team.Links["ScopedUserRoles"], this.spacePartitionParameters());
-    };
-    TeamRepository.prototype.list = function (args) {
-        return _super.prototype.list.call(this, args);
-    };
-    return TeamRepository;
-}(mixedScopeBaseRepository_1.MixedScopeBaseRepository));
-exports.TeamRepository = TeamRepository;
-
-
-/***/ }),
-
-/***/ 19652:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var basicRepository_1 = __nccwpck_require__(30970);
-var TenantVariableRepository = /** @class */ (function (_super) {
-    __extends(TenantVariableRepository, _super);
-    function TenantVariableRepository(client) {
-        return _super.call(this, "TenantVariables", client) || this;
-    }
-    return TenantVariableRepository;
-}(basicRepository_1.BasicRepository));
-exports["default"] = TenantVariableRepository;
-
-
-/***/ }),
-
-/***/ 99284:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpgradeConfigurationRepository = void 0;
-var configurationRepository_1 = __nccwpck_require__(13497);
-var UpgradeConfigurationRepository = /** @class */ (function (_super) {
-    __extends(UpgradeConfigurationRepository, _super);
-    function UpgradeConfigurationRepository(client) {
-        return _super.call(this, "UpgradeConfiguration", client) || this;
-    }
-    return UpgradeConfigurationRepository;
-}(configurationRepository_1.ConfigurationRepository));
-exports.UpgradeConfigurationRepository = UpgradeConfigurationRepository;
-
-
-/***/ }),
-
-/***/ 67597:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UserIdentityMetadataRepository = void 0;
-var UserIdentityMetadataRepository = /** @class */ (function () {
-    function UserIdentityMetadataRepository(client) {
-        this.client = client;
-    }
-    UserIdentityMetadataRepository.prototype.all = function () {
-        return this.client.get(this.client.getLink("UserIdentityMetadata"));
-    };
-    UserIdentityMetadataRepository.prototype.authenticationConfiguration = function (userId) {
-        return this.client.get(this.client.getLink("UserAuthentication"), { userId: userId });
-    };
-    return UserIdentityMetadataRepository;
-}());
-exports.UserIdentityMetadataRepository = UserIdentityMetadataRepository;
-
-
-/***/ }),
-
-/***/ 41025:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UserOnBoardingRepository = void 0;
-var UserOnBoardingRepository = /** @class */ (function () {
-    function UserOnBoardingRepository(client) {
-        this.client = client;
-    }
-    UserOnBoardingRepository.prototype.get = function () {
-        return this.client.get(this.client.getLink("UserOnboarding"));
-    };
-    return UserOnBoardingRepository;
-}());
-exports.UserOnBoardingRepository = UserOnBoardingRepository;
-
-
-/***/ }),
-
-/***/ 27747:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UserPermissionRepository = void 0;
-var mixedScopeBaseRepository_1 = __nccwpck_require__(80891);
-var UserPermissionRepository = /** @class */ (function () {
-    function UserPermissionRepository(client) {
-        this.client = client;
-    }
-    UserPermissionRepository.prototype.getAllPermissions = function (user, includeSystem) {
-        return this.client.get(user.Links["Permissions"], (0, mixedScopeBaseRepository_1.convertToSpacePartitionParameters)("all", includeSystem));
-    };
-    UserPermissionRepository.prototype.getPermissionsForCurrentSpaceContext = function (user, includeSystem) {
-        return this.client.get(user.Links["Permissions"], (0, mixedScopeBaseRepository_1.convertToSpacePartitionParameters)(this.client.spaceId, includeSystem));
-    };
-    UserPermissionRepository.prototype.getPermissionsConfigurationForAllParitions = function (user, includeSystem) {
-        return this.client.get(user.Links["PermissionsConfiguration"], (0, mixedScopeBaseRepository_1.convertToSpacePartitionParameters)("all", includeSystem));
-    };
-    UserPermissionRepository.prototype.getPermissionsConfigurationForCurrentSpaceContext = function (user, includeSystem) {
-        return this.client.get(user.Links["PermissionsConfiguration"], (0, mixedScopeBaseRepository_1.convertToSpacePartitionParameters)(this.client.spaceId, includeSystem));
-    };
-    return UserPermissionRepository;
-}());
-exports.UserPermissionRepository = UserPermissionRepository;
-
-
-/***/ }),
-
-/***/ 10895:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var basicRepository_1 = __nccwpck_require__(30970);
-var UserRepository = /** @class */ (function (_super) {
-    __extends(UserRepository, _super);
-    function UserRepository(client) {
-        return _super.call(this, "Users", client) || this;
-    }
-    UserRepository.prototype.createApiKey = function (user, purpose, expires) {
-        return this.client.post(user.Links["ApiKeys"], { Purpose: purpose, Expires: expires });
-    };
-    UserRepository.prototype.getCurrent = function () {
-        return this.client.get(this.client.getLink("CurrentUser"));
-    };
-    UserRepository.prototype.getSpaces = function (user) {
-        return this.client.get(user.Links["Spaces"]);
-    };
-    UserRepository.prototype.getTriggers = function (user) {
-        return this.client.get(user.Links["Triggers"]);
-    };
-    UserRepository.prototype.listApiKeys = function (user) {
-        return this.client.get(user.Links["ApiKeys"], { take: this.takeAll });
-    };
-    UserRepository.prototype.register = function (registerCommand) {
-        return this.client.post(this.client.getLink("Register"), registerCommand);
-    };
-    UserRepository.prototype.revokeApiKey = function (apiKey) {
-        return this.client.del(apiKey.Links["Self"]);
-    };
-    UserRepository.prototype.signIn = function (loginCommand) {
-        var _this = this;
-        return this.client.post(this.client.getLink("SignIn"), loginCommand).then(function (authenticatedUser) {
-            var antiforgeryToken = _this.client.getAntiforgeryToken();
-            if (!antiforgeryToken) {
-                throw new Error("The required anti-forgery cookie is missing. Perhaps your browser " + "or another network device is blocking cookies? " + "See http://g.octopushq.com/CSRF for more details and troubleshooting.");
-            }
-            return authenticatedUser;
-        });
-    };
-    UserRepository.prototype.signOut = function () {
-        return this.client.post(this.client.getLink("SignOut"), {});
-    };
-    return UserRepository;
-}(basicRepository_1.BasicRepository));
-exports["default"] = UserRepository;
-
-
-/***/ }),
-
-/***/ 74126:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var basicRepository_1 = __nccwpck_require__(30970);
-var UserRoleRepository = /** @class */ (function (_super) {
-    __extends(UserRoleRepository, _super);
-    function UserRoleRepository(client) {
-        return _super.call(this, "UserRoles", client) || this;
-    }
-    return UserRoleRepository;
-}(basicRepository_1.BasicRepository));
-exports["default"] = UserRoleRepository;
-
-
-/***/ }),
-
-/***/ 72887:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var basicRepository_1 = __nccwpck_require__(30970);
-var VariableRepository = /** @class */ (function (_super) {
-    __extends(VariableRepository, _super);
-    function VariableRepository(client) {
-        return _super.call(this, "Variables", client) || this;
-    }
-    // FIXME: cac-runbooks, need to be able to load variables for VCS runbooks too
-    VariableRepository.prototype.getNamesForDeploymentProcess = function (projectId, projectEnvironmentsFilter) {
-        return this.client.get(this.client.getLink("VariableNames"), {
-            project: projectId,
-            projectEnvironmentsFilter: projectEnvironmentsFilter ? projectEnvironmentsFilter.join(",") : projectEnvironmentsFilter,
-        });
-    };
-    VariableRepository.prototype.getNamesForRunbookProcess = function (projectId, runbookId, projectEnvironmentsFilter) {
-        return this.client.get(this.client.getLink("VariableNames"), {
-            project: projectId,
-            runbook: runbookId,
-            projectEnvironmentsFilter: projectEnvironmentsFilter ? projectEnvironmentsFilter.join(",") : projectEnvironmentsFilter,
-        });
-    };
-    VariableRepository.prototype.getSpecialVariableNames = function () {
-        return this.client.get(this.client.getLink("VariableNames"), {});
-    };
-    // FIXME: cac-runbooks, need to be able to load variables for VCS runbooks too
-    VariableRepository.prototype.preview = function (projectId, runbookId, actionId, environmentId, machineId, channelId, tenantId) {
-        return this.client.get(this.client.getLink("VariablePreview"), {
-            project: projectId,
-            runbook: runbookId,
-            environment: environmentId,
-            channel: channelId,
-            tenant: tenantId,
-            action: actionId,
-            machine: machineId,
-        });
-    };
-    return VariableRepository;
-}(basicRepository_1.BasicRepository));
-exports["default"] = VariableRepository;
-
-
-/***/ }),
-
-/***/ 50210:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.VcsRunbookRepository = void 0;
-var VcsRunbookRepository = /** @class */ (function () {
-    function VcsRunbookRepository(client, project, branch) {
-        this.client = client;
-        this.project = project;
-        this.branch = branch;
-        this.client = client;
-    }
-    VcsRunbookRepository.prototype.getBranch = function () {
-        if (!this.branch)
-            throw new Error("Can't use VCS Runbook Repository unless there is a branch available in the VCS Project");
-        return this.branch;
-    };
-    // TODO: @team-config-as-code create and pass in a command instead of the reasource
-    VcsRunbookRepository.prototype.create = function (newVcsRunbook) {
-        return this.client.create(this.getBranch().Links.Runbook, newVcsRunbook, {});
-    };
-    VcsRunbookRepository.prototype.del = function (vcsRunbook) {
-        return this.client.del(vcsRunbook.Links.Self, vcsRunbook);
-    };
-    VcsRunbookRepository.prototype.get = function (id) {
-        return this.client.get(this.getBranch().Links.Runbook, { id: id });
-    };
-    VcsRunbookRepository.prototype.list = function (args) {
-        return this.client.get(this.getBranch().Links.Runbook, args);
-    };
-    VcsRunbookRepository.prototype.modify = function (vcsRunbook) {
-        return this.client.update(vcsRunbook.Links.Self, vcsRunbook);
-    };
-    return VcsRunbookRepository;
-}());
-exports.VcsRunbookRepository = VcsRunbookRepository;
-
-
-/***/ }),
-
-/***/ 65737:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.WorkerPoolsRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var WorkerPoolsRepository = /** @class */ (function (_super) {
-    __extends(WorkerPoolsRepository, _super);
-    function WorkerPoolsRepository(client) {
-        return _super.call(this, "WorkerPools", client) || this;
-    }
-    WorkerPoolsRepository.prototype.machines = function (workerPool, args) {
-        return this.client.get(workerPool.Links["Workers"], args);
-    };
-    WorkerPoolsRepository.prototype.summary = function (args) {
-        return this.client.get(this.client.getLink("WorkerPoolsSummary"), args);
-    };
-    WorkerPoolsRepository.prototype.sort = function (order) {
-        return this.client.put(this.client.getLink("WorkerPoolsSortOrder"), order);
-    };
-    WorkerPoolsRepository.prototype.getSupportedPoolTypes = function () {
-        return this.client.get(this.client.getLink("WorkerPoolsSupportedTypes"));
-    };
-    WorkerPoolsRepository.prototype.getDynamicWorkerTypes = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.client.get(this.client.getLink("WorkerPoolsDynamicWorkerTypes"))];
-                    case 1:
-                        result = _a.sent();
-                        return [2 /*return*/, result.WorkerTypes];
-                }
-            });
-        });
-    };
-    return WorkerPoolsRepository;
-}(basicRepository_1.BasicRepository));
-exports.WorkerPoolsRepository = WorkerPoolsRepository;
-
-
-/***/ }),
-
-/***/ 91616:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.WorkerRepository = void 0;
-var basicRepository_1 = __nccwpck_require__(30970);
-var WorkerRepository = /** @class */ (function (_super) {
-    __extends(WorkerRepository, _super);
-    function WorkerRepository(client) {
-        return _super.call(this, "Workers", client) || this;
-    }
-    WorkerRepository.prototype.discover = function (host, port, type, proxyId) {
-        return proxyId ? this.client.get(this.client.getLink("DiscoverWorker"), { host: host, port: port, type: type, proxyId: proxyId }) : this.client.get(this.client.getLink("DiscoverWorker"), { host: host, port: port, type: type });
-    };
-    WorkerRepository.prototype.getConnectionStatus = function (machine) {
-        return this.client.get(machine.Links["Connection"]);
-    };
-    WorkerRepository.prototype.list = function (args) {
-        return this.client.get(this.client.getLink("Workers"), args);
-    };
-    return WorkerRepository;
-}(basicRepository_1.BasicRepository));
-exports.WorkerRepository = WorkerRepository;
-
-
-/***/ }),
-
-/***/ 43399:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.WorkerShellsRepository = void 0;
-var WorkerShellsRepository = /** @class */ (function () {
-    function WorkerShellsRepository(client) {
-        this.client = client;
-    }
-    WorkerShellsRepository.prototype.all = function () {
-        return this.client.get(this.client.getLink("WorkerShells"));
-    };
-    return WorkerShellsRepository;
-}());
-exports.WorkerShellsRepository = WorkerShellsRepository;
-
-
-/***/ }),
-
-/***/ 871:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Repository = void 0;
-var _1 = __nccwpck_require__(80586);
-var accountRepository_1 = __nccwpck_require__(9507);
-var actionTemplateRepository_1 = __nccwpck_require__(67895);
-var artifactRepository_1 = __nccwpck_require__(89463);
-var authenticationRepository_1 = __nccwpck_require__(42583);
-var buildInformationRepository_1 = __nccwpck_require__(7946);
-var certificateConfigurationRepository_1 = __nccwpck_require__(4776);
-var certificateRepository_1 = __nccwpck_require__(41266);
-var channelRepository_1 = __nccwpck_require__(94659);
-var cloudTemplateRepository_1 = __nccwpck_require__(94203);
-var communityActionTemplateRepository_1 = __nccwpck_require__(69039);
-var dashboardConfigurationRepository_1 = __nccwpck_require__(66446);
-var dashboardRepository_1 = __nccwpck_require__(20009);
-var defectRepository_1 = __nccwpck_require__(81630);
-var dynamicExtensionRepository_1 = __nccwpck_require__(27848);
-var eventRepository_1 = __nccwpck_require__(65269);
-var externalSecurityGroupProviderRepository_1 = __nccwpck_require__(22999);
-var externalSecurityGroupRepository_1 = __nccwpck_require__(4387);
-var externalUsersRepository_1 = __nccwpck_require__(55459);
-var featuresConfigurationRepository_1 = __nccwpck_require__(56116);
-var feedRepository_1 = __nccwpck_require__(20037);
-var importExportActions_1 = __nccwpck_require__(18029);
-var interruptionRepository_1 = __nccwpck_require__(90977);
-var inviteRepository_1 = __nccwpck_require__(15228);
-var letsEncryptConfigurationRepository_1 = __nccwpck_require__(78681);
-var libraryVariableRepository_1 = __nccwpck_require__(64693);
-var licenseRepository_1 = __nccwpck_require__(51916);
-var lifecycleRepository_1 = __nccwpck_require__(56946);
-var machinePolicyRepository_1 = __nccwpck_require__(154);
-var machineRepository_1 = __nccwpck_require__(53015);
-var machineRoleRepository_1 = __nccwpck_require__(50197);
-var machineShellsRepository_1 = __nccwpck_require__(1939);
-var maintenanceConfigurationRepository_1 = __nccwpck_require__(94772);
-var octopusServerNodeRepository_1 = __nccwpck_require__(34819);
-var packageRepository_1 = __nccwpck_require__(53378);
-var performanceConfigurationRepository_1 = __nccwpck_require__(21797);
-var permissionDescriptionRepository_1 = __nccwpck_require__(97886);
-var progressionRepository_1 = __nccwpck_require__(53127);
-var projectGroupRepository_1 = __nccwpck_require__(38331);
-var projectRepository_1 = __importDefault(__nccwpck_require__(52058));
-var projectTriggerRepository_1 = __nccwpck_require__(57502);
-var proxyRepository_1 = __nccwpck_require__(7358);
-var releasesRepository_1 = __nccwpck_require__(87252);
-var retentionDefaultConfigurationRepository_1 = __nccwpck_require__(11050);
-var runbookProcessRepository_1 = __nccwpck_require__(82404);
-var runbookRepository_1 = __nccwpck_require__(18312);
-var runbookRunRepository_1 = __nccwpck_require__(30242);
-var runbookSnapshotRepository_1 = __nccwpck_require__(73544);
-var schedulerRepository_1 = __nccwpck_require__(63767);
-var scopedUserRoleRepository_1 = __nccwpck_require__(18774);
-var serverConfigurationRepository_1 = __nccwpck_require__(96489);
-var serverStatusRepository_1 = __nccwpck_require__(84463);
-var settingsRepository_1 = __importDefault(__nccwpck_require__(50924));
-var smtpConfigurationRepository_1 = __nccwpck_require__(7025);
-var spaceRepository_1 = __nccwpck_require__(56836);
-var subscriptionRepository_1 = __importDefault(__nccwpck_require__(94178));
-var tagSetRepository_1 = __importDefault(__nccwpck_require__(50450));
-var taskRepository_1 = __nccwpck_require__(53573);
-var teamMembershipRepository_1 = __importDefault(__nccwpck_require__(30986));
-var teamRepository_1 = __nccwpck_require__(66168);
-var tenantVariableRepository_1 = __importDefault(__nccwpck_require__(19652));
-var upgradeConfigurationRepository_1 = __nccwpck_require__(99284);
-var userIdentityMetadataRepository_1 = __nccwpck_require__(67597);
-var userOnBoardingRepository_1 = __nccwpck_require__(41025);
-var userPermissionRepository_1 = __nccwpck_require__(27747);
-var userRepository_1 = __importDefault(__nccwpck_require__(10895));
-var userRoleRepository_1 = __importDefault(__nccwpck_require__(74126));
-var variableRepository_1 = __importDefault(__nccwpck_require__(72887));
-var workerPoolsRepository_1 = __nccwpck_require__(65737);
-var workerRepository_1 = __nccwpck_require__(91616);
-var workerShellsRepository_1 = __nccwpck_require__(43399);
-// Repositories provide a helpful abstraction around the Octopus Deploy API
-var Repository = /** @class */ (function () {
-    function Repository(client) {
-        var _this = this;
-        this.client = client;
-        this.takeAll = 2147483647;
-        this.takeDefaultPageSize = 30; // Only used when we don't rely on the default that's applied server-side.
-        this.resolve = function (path, uriTemplateParameters) { return _this.client.resolve(path, uriTemplateParameters); };
-        this.accounts = new accountRepository_1.AccountRepository(client);
-        this.actionTemplates = new actionTemplateRepository_1.ActionTemplateRepository(client);
-        this.artifacts = new artifactRepository_1.ArtifactRepository(client);
-        this.authentication = new authenticationRepository_1.AuthenticationRepository(client);
-        this.buildInformation = new buildInformationRepository_1.BuildInformationRepository(client);
-        this.certificateConfiguration = new certificateConfigurationRepository_1.CertificateConfigurationRepository(client);
-        this.certificates = new certificateRepository_1.CertificateRepository(client);
-        this.cloudTemplates = new cloudTemplateRepository_1.CloudTemplateRepository(client);
-        this.communityActionTemplates = new communityActionTemplateRepository_1.CommunityActionTemplateRepository(client);
-        this.dashboardConfiguration = new dashboardConfigurationRepository_1.DashboardConfigurationRepository(client);
-        this.dashboards = new dashboardRepository_1.DashboardRepository(client);
-        this.defects = new defectRepository_1.DefectRepository(client);
-        this.dynamicExtensions = new dynamicExtensionRepository_1.DynamicExtensionRepository(client);
-        this.events = new eventRepository_1.EventRepository(client);
-        this.externalSecurityGroupProviders = new externalSecurityGroupProviderRepository_1.ExternalSecurityGroupProviderRepository(client);
-        this.externalSecurityGroups = new externalSecurityGroupRepository_1.ExternalSecurityGroupRepository(client);
-        this.externalUsers = new externalUsersRepository_1.ExternalUsersRepository(client);
-        this.featuresConfiguration = new featuresConfigurationRepository_1.FeaturesConfigurationRepository(client);
-        this.feeds = new feedRepository_1.FeedRepository(client);
-        this.importExport = new importExportActions_1.ImportExportActions(client);
-        this.interruptions = new interruptionRepository_1.InterruptionRepository(client);
-        this.invitations = new inviteRepository_1.InvitationRepository(client);
-        this.letsEncryptConfiguration = new letsEncryptConfigurationRepository_1.LetsEncryptConfigurationRepository(client);
-        this.libraryVariableSets = new libraryVariableRepository_1.LibraryVariableRepository(client);
-        this.licenses = new licenseRepository_1.LicenseRepository(client);
-        this.lifecycles = new lifecycleRepository_1.LifecycleRepository(client);
-        this.machinePolicies = new machinePolicyRepository_1.MachinePolicyRepository(client);
-        this.machineRoles = new machineRoleRepository_1.MachineRoleRepository(client);
-        this.machineShells = new machineShellsRepository_1.MachineShellsRepository(client);
-        this.machines = new machineRepository_1.MachineRepository(client);
-        this.maintenanceConfiguration = new maintenanceConfigurationRepository_1.MaintenanceConfigurationRepository(client);
-        this.octopusServerNodes = new octopusServerNodeRepository_1.OctopusServerNodeRepository(client);
-        this.retentionDefaultConfiguration = new retentionDefaultConfigurationRepository_1.RetentionDefaultConfigurationRepository(client);
-        this.runbooks = new runbookRepository_1.RunbookRepository(client);
-        this.runbookProcess = new runbookProcessRepository_1.RunbookProcessRepository(client);
-        this.runbookSnapshots = new runbookSnapshotRepository_1.RunbookSnapshotRepository(client);
-        this.runbookRuns = new runbookRunRepository_1.RunbookRunRepository(client);
-        this.packages = new packageRepository_1.PackageRepository(client);
-        this.performanceConfiguration = new performanceConfigurationRepository_1.PerformanceConfigurationRepository(client);
-        this.permissionDescriptions = new permissionDescriptionRepository_1.PermissionDescriptionRepository(client);
-        this.progression = new progressionRepository_1.ProgressionRepository(client);
-        this.projectGroups = new projectGroupRepository_1.ProjectGroupRepository(client);
-        this.projects = new projectRepository_1.default(client);
-        this.channels = new channelRepository_1.ChannelRepository(this.projects, client);
-        this.deploymentProcesses = new _1.DeploymentProcessRepository(this.projects, client);
-        this.projectTriggers = new projectTriggerRepository_1.ProjectTriggerRepository(client);
-        this.proxies = new proxyRepository_1.ProxyRepository(client);
-        this.releases = new releasesRepository_1.ReleasesRepository(client);
-        this.scheduler = new schedulerRepository_1.SchedulerRepository(client);
-        this.scopedUserRoles = new scopedUserRoleRepository_1.ScopedUserRoleRepository(client);
-        this.serverStatus = new serverStatusRepository_1.ServerStatusRepository(client);
-        this.serverConfiguration = new serverConfigurationRepository_1.ServerConfigurationRepository(client);
-        this.settings = new settingsRepository_1.default(client);
-        this.smtpConfiguration = new smtpConfigurationRepository_1.SmtpConfigurationRepository(client);
-        this.spaces = new spaceRepository_1.SpaceRepository(client);
-        this.subscriptions = new subscriptionRepository_1.default(client);
-        this.tagSets = new tagSetRepository_1.default(client);
-        this.tasks = new taskRepository_1.TaskRepository(client);
-        this.teams = new teamRepository_1.TeamRepository(client);
-        this.tenantVariables = new tenantVariableRepository_1.default(client);
-        this.upgradeConfiguration = new upgradeConfigurationRepository_1.UpgradeConfigurationRepository(client);
-        this.userIdentityMetadata = new userIdentityMetadataRepository_1.UserIdentityMetadataRepository(client);
-        this.userOnboarding = new userOnBoardingRepository_1.UserOnBoardingRepository(client);
-        this.userPermissions = new userPermissionRepository_1.UserPermissionRepository(client);
-        this.teamMembership = new teamMembershipRepository_1.default(client);
-        this.userRoles = new userRoleRepository_1.default(client);
-        this.users = new userRepository_1.default(client);
-        this.variables = new variableRepository_1.default(client);
-        this.getServerInformation = client.getServerInformation.bind(client);
-        this.workerPools = new workerPoolsRepository_1.WorkerPoolsRepository(client);
-        this.workerShells = new workerShellsRepository_1.WorkerShellsRepository(client);
-        this.workers = new workerRepository_1.WorkerRepository(client);
-    }
-    Object.defineProperty(Repository.prototype, "spaceId", {
-        get: function () {
-            return this.client.spaceId;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Repository.prototype.forSpace = function (space) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (!(this.spaceId !== space.Id)) return [3 /*break*/, 2];
-                        _a = Repository.bind;
-                        return [4 /*yield*/, this.client.forSpace(space.Id)];
-                    case 1: return [2 /*return*/, new (_a.apply(Repository, [void 0, _b.sent()]))()];
-                    case 2: return [2 /*return*/, this];
-                }
-            });
-        });
-    };
-    Repository.prototype.forSystem = function () {
-        return new Repository(this.client.forSystem());
-    };
-    Repository.prototype.switchToSpace = function (spaceIdOrName) {
-        return this.client.switchToSpace(spaceIdOrName);
-    };
-    Repository.prototype.switchToSystem = function () {
-        this.client.switchToSystem();
-    };
-    return Repository;
-}());
-exports.Repository = Repository;
-
-
-/***/ }),
-
-/***/ 15435:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 28043:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Resolver = void 0;
-var URI = __nccwpck_require__(34190);
-var URITemplate = __nccwpck_require__(23423);
-var Resolver = /** @class */ (function () {
-    function Resolver(baseUri) {
-        this.baseUri = baseUri;
-        this.baseUri = this.baseUri.endsWith("/") ? this.baseUri : this.baseUri + "/";
-        var lastIndexOfMandatorySegment = this.baseUri.lastIndexOf("/api/");
-        if (lastIndexOfMandatorySegment >= 1) {
-            this.baseUri = this.baseUri.substring(0, lastIndexOfMandatorySegment);
-        }
-        else {
-            if (this.baseUri.endsWith("/api")) {
-                this.baseUri = this.baseUri.substring(0, -4);
-            }
-        }
-        this.baseUri = this.baseUri.endsWith("/") ? this.baseUri.substring(0, this.baseUri.length - 1) : this.baseUri;
-        var parsed = URI(this.baseUri);
-        this.rootUri = parsed.scheme() + "://" + parsed.authority();
-        this.rootUri = this.rootUri.endsWith("/") ? this.rootUri.substring(0, this.rootUri.length - 1) : this.rootUri;
-    }
-    Resolver.prototype.resolve = function (path, uriTemplateParameters) {
-        if (!path) {
-            throw new Error("The link is not set to a value");
-        }
-        if (path.startsWith("~/")) {
-            path = path.substring(1, path.length);
-            path = this.baseUri + path;
-        }
-        else {
-            path = this.rootUri + path;
-        }
-        var template = new URITemplate(path);
-        var result = template.expand(uriTemplateParameters || {});
-        return result;
-    };
-    return Resolver;
-}());
-exports.Resolver = Resolver;
-
-
-/***/ }),
-
-/***/ 82138:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 60232:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 31547:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SubscriptionRecord = void 0;
-var SubscriptionRecord = /** @class */ (function () {
-    function SubscriptionRecord() {
-        this.subscriptions = {};
-    }
-    SubscriptionRecord.prototype.subscribe = function (registrationName, callback) {
-        var _this = this;
-        this.subscriptions[registrationName] = callback;
-        return function () { return _this.unsubscribe(registrationName); };
-    };
-    SubscriptionRecord.prototype.unsubscribe = function (registrationName) {
-        delete this.subscriptions[registrationName];
-    };
-    SubscriptionRecord.prototype.notify = function (predicate, data) {
-        var _this = this;
-        Object.keys(this.subscriptions)
-            .filter(predicate)
-            .forEach(function (key) { return _this.subscriptions[key](data); });
-    };
-    SubscriptionRecord.prototype.notifyAll = function (data) {
-        this.notify(function () { return true; }, data);
-    };
-    SubscriptionRecord.prototype.notifySingle = function (registrationName, data) {
-        if (registrationName in this.subscriptions) {
-            this.subscriptions[registrationName](data);
-        }
-    };
-    return SubscriptionRecord;
-}());
-exports.SubscriptionRecord = SubscriptionRecord;
-
-
-/***/ }),
-
-/***/ 54663:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-/* eslint-disable no-eq-null */
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isAccessToAllProjectGroups = exports.isAccessToAllTenants = exports.isAccessToAllEnvironments = exports.isAccessToAllProjects = exports.UserPermissions = void 0;
-var message_contracts_1 = __nccwpck_require__(74561);
-var UserPermissions = /** @class */ (function () {
-    function UserPermissions(spacePermissions, systemPermissions, teams) {
-        this.spacePermissions = spacePermissions;
-        this.systemPermissions = systemPermissions;
-        this.teams = teams;
-    }
-    UserPermissions.Create = function (spacePermissions, systemPermissions, teams) {
-        var ps = {};
-        Object.keys(spacePermissions).forEach(function (permission) {
-            var permissionRestrictionInAllSpaces = spacePermissions[permission];
-            permissionRestrictionInAllSpaces.forEach(function (permissionRestriction) {
-                var permissionsForSpace = ps[permissionRestriction.SpaceId];
-                if (!permissionsForSpace) {
-                    ps[permissionRestriction.SpaceId] = {};
-                }
-                var internalPermission = convertUserPermissionRestrictionToInternalPermissions(permissionRestriction);
-                var restrictionsWithinSpace = ps[permissionRestriction.SpaceId][permission.toLowerCase()];
-                if (!restrictionsWithinSpace) {
-                    ps[permissionRestriction.SpaceId][permission.toLowerCase()] = [];
-                }
-                ps[permissionRestriction.SpaceId][permission.toLowerCase()].push(internalPermission);
-            });
-        });
-        return new UserPermissions(ps, systemPermissions.map(function (p) { return p.toLowerCase(); }), teams);
-    };
-    UserPermissions.prototype.scopeToSystem = function () {
-        return new UserPermissions({}, this.systemPermissions, this.teams);
-    };
-    UserPermissions.prototype.scopeToSpace = function (spaceId) {
-        var _a;
-        if (!spaceId) {
-            return new UserPermissions({}, [], this.teams);
-        }
-        var permissionsForSpace = this.spacePermissions[spaceId] || {};
-        return new UserPermissions((_a = {}, _a[spaceId] = permissionsForSpace, _a), [], this.teams);
-    };
-    UserPermissions.prototype.scopeToSpaceAndSystem = function (spaceId) {
-        var _a;
-        if (!spaceId) {
-            return new UserPermissions({}, this.systemPermissions, this.teams);
-        }
-        var permissionsForSpace = this.spacePermissions[spaceId] || {};
-        return new UserPermissions((_a = {}, _a[spaceId] = permissionsForSpace, _a), this.systemPermissions, this.teams);
-    };
-    UserPermissions.prototype.hasAnyPermissions = function () {
-        var _this = this;
-        var hasAnySpacePermissions = Object.keys(this.spacePermissions).some(function (spaceId) {
-            return Object.keys(_this.spacePermissions[spaceId]).length > 0;
-        });
-        var hasAnySystemPermissions = this.systemPermissions.length > 0;
-        return hasAnySpacePermissions || hasAnySystemPermissions;
-    };
-    UserPermissions.prototype.firstAuthorized = function (permissions) {
-        var _this = this;
-        return permissions.find(function (p) {
-            return _this.hasSpacePermission(p) || _this.hasSystemPermission(p);
-        });
-    };
-    UserPermissions.prototype.hasPermissionInAnyScope = function (permission) {
-        return this.hasSpacePermission(permission) || this.hasSystemPermission(permission);
-    };
-    UserPermissions.prototype.isAuthorized = function (authorization) {
-        var isInSystemPermissions = this.systemPermissions.includes(authorization.permission.toLowerCase());
-        if (isInSystemPermissions) {
-            // these are not scoped, so if the permission is here, we're done they are Authorized
-            return true;
-        }
-        return this.isAuthorizedInAnySpace(authorization);
-    };
-    UserPermissions.prototype.isAuthorizedInAnySpace = function (authorization) {
-        var _this = this;
-        return Object.keys(this.spacePermissions).some(function (spaceId) {
-            return isAuthorizedInSpecificSpace(_this.spacePermissions[spaceId]);
-        });
-        function isAuthorizedInSpecificSpace(specificSpacePermissions) {
-            var restrictions = specificSpacePermissions[authorization.permission.toLowerCase()];
-            if (!restrictions) {
-                // User doesn't have the permission in any scope
-                return false;
-            }
-            if (restrictions.length === 0) {
-                // No restrictions
-                return true;
-            }
-            for (var _i = 0, restrictions_1 = restrictions; _i < restrictions_1.length; _i++) {
-                var restriction = restrictions_1[_i];
-                var allowed = true;
-                if (!isAccessToAllProjects(restriction.projectIds)) {
-                    if (authorization.projectId == null || (!isWildcard(authorization.projectId) && !restriction.projectIds.includes(authorization.projectId.toLowerCase()))) {
-                        allowed = false;
-                    }
-                }
-                if (!isAccessToAllEnvironments(restriction.environmentIds)) {
-                    if (authorization.environmentId == null || (!isWildcard(authorization.environmentId) && !restriction.environmentIds.includes(authorization.environmentId.toLowerCase()))) {
-                        allowed = false;
-                    }
-                }
-                if (!isAccessToAllProjectGroups(restriction.projectGroupIds)) {
-                    if (authorization.projectGroupId == null || (!isWildcard(authorization.projectGroupId) && !restriction.projectGroupIds.includes(authorization.projectGroupId.toLowerCase()))) {
-                        allowed = false;
-                    }
-                }
-                if (!isAccessToAllTenants(restriction.tenantIds)) {
-                    if (authorization.tenantId == null || (!isWildcard(authorization.tenantId) && !restriction.tenantIds.includes(authorization.tenantId.toLowerCase()))) {
-                        allowed = false;
-                    }
-                }
-                if (allowed) {
-                    return true;
-                }
-            }
-            return false;
-            function isWildcard(s) {
-                return s === "*";
-            }
-        }
-    };
-    UserPermissions.prototype.isSpaceManager = function (space) {
-        var _this = this;
-        return space && space.SpaceManagersTeams.some(function (t) { return _this.teams.some(function (cpt) { return cpt.Id === t; }); });
-    };
-    UserPermissions.prototype.hasSpacePermission = function (permission) {
-        var _this = this;
-        var lowerCasePermission = permission.toLowerCase();
-        return Object.keys(this.spacePermissions).some(function (spaceId) {
-            return !!_this.spacePermissions[spaceId][lowerCasePermission];
-        });
-    };
-    UserPermissions.prototype.hasSystemPermission = function (permission) {
-        return this.systemPermissions.includes(permission.toLowerCase());
-    };
-    return UserPermissions;
-}());
-exports.UserPermissions = UserPermissions;
-// This type is distinct from `UserPermissionRestriction` because it is safer to have the "all" case represented by a non-array
-// It is harder to make type mistakes this way, since you should be unable to assign the "all" string value to the array representing a subset of values
-function convertUserPermissionRestrictionToInternalPermissions(permissionRestriction) {
-    var normalizedProjectRestrictions = (0, message_contracts_1.isAllProjects)(permissionRestriction.RestrictedToProjectIds) ? "Access to all projects" : permissionRestriction.RestrictedToProjectIds.map(function (id) { return id.toLowerCase(); });
-    var normalizedEnvironmentRestrictions = (0, message_contracts_1.isAllEnvironments)(permissionRestriction.RestrictedToEnvironmentIds)
-        ? "Access to all environments"
-        : permissionRestriction.RestrictedToEnvironmentIds.map(function (id) { return id.toLowerCase(); });
-    var normalizedProjectGroupIds = (0, message_contracts_1.isAllProjectGroups)(permissionRestriction.RestrictedToProjectGroupIds)
-        ? "Access to all project groups"
-        : permissionRestriction.RestrictedToProjectGroupIds.map(function (id) { return id.toLowerCase(); });
-    var normalizedTenantIds = (0, message_contracts_1.isAllTenants)(permissionRestriction.RestrictedToTenantIds) ? "Access to all tenants" : permissionRestriction.RestrictedToTenantIds.map(function (id) { return id.toLowerCase(); });
-    return {
-        projectIds: normalizedProjectRestrictions,
-        environmentIds: normalizedEnvironmentRestrictions,
-        projectGroupIds: normalizedProjectGroupIds,
-        tenantIds: normalizedTenantIds,
-    };
-}
-function isAccessToAllProjects(restrictions) {
-    var accessToAllProjects = restrictions;
-    return typeof accessToAllProjects === "string" && accessToAllProjects === "Access to all projects";
-}
-exports.isAccessToAllProjects = isAccessToAllProjects;
-function isAccessToAllEnvironments(restrictions) {
-    var accessToAllEnvironments = restrictions;
-    return typeof accessToAllEnvironments === "string" && accessToAllEnvironments === "Access to all environments";
-}
-exports.isAccessToAllEnvironments = isAccessToAllEnvironments;
-function isAccessToAllTenants(restrictions) {
-    var accessToAllTenants = restrictions;
-    return typeof accessToAllTenants === "string" && accessToAllTenants === "Access to all tenants";
-}
-exports.isAccessToAllTenants = isAccessToAllTenants;
-function isAccessToAllProjectGroups(restrictions) {
-    var accessToAllProjectGroups = restrictions;
-    return typeof accessToAllProjectGroups === "string" && accessToAllProjectGroups === "Access to all project groups";
-}
-exports.isAccessToAllProjectGroups = isAccessToAllProjectGroups;
-
-
-/***/ }),
-
-/***/ 47132:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isPropertyDefinedAndNotNull = exports.typeSafeHasOwnProperty = exports.ensureSuffix = exports.ensurePrefix = exports.determineServerEndpoint = exports.getResolver = exports.getServerEndpoint = exports.getQueryValue = void 0;
-var lodash_1 = __nccwpck_require__(90250);
-var urijs_1 = __importDefault(__nccwpck_require__(34190));
-var resolver_1 = __nccwpck_require__(28043);
-var getQueryValue = function (key, location) {
-    var result;
-    (0, urijs_1.default)(location).hasQuery(key, function (value) {
-        result = value;
-    });
-    return result;
-};
-exports.getQueryValue = getQueryValue;
-var getServerEndpoint = function (location) {
-    if (location === void 0) { location = window.location; }
-    return (0, exports.getQueryValue)("octopus.server", location.href) || (0, exports.determineServerEndpoint)(location);
-};
-exports.getServerEndpoint = getServerEndpoint;
-var getResolver = function (base) {
-    var resolver = new resolver_1.Resolver(base);
-    return resolver.resolve.bind(resolver);
-};
-exports.getResolver = getResolver;
-var determineServerEndpoint = function (location) {
-    var endpoint = (0, exports.ensureSuffix)("//", "" + location.protocol) + location.host;
-    var path = (0, exports.ensurePrefix)("/", location.pathname);
-    if (path.length >= 1) {
-        var lastSegmentIndex = path.lastIndexOf("/");
-        if (lastSegmentIndex >= 0) {
-            path = path.substring(0, lastSegmentIndex + 1);
-        }
-    }
-    endpoint = endpoint + path;
-    return endpoint;
-};
-exports.determineServerEndpoint = determineServerEndpoint;
-exports.ensurePrefix = (0, lodash_1.curry)(function (prefix, value) { return (!value.startsWith(prefix) ? "".concat(prefix).concat(value) : value); });
-exports.ensureSuffix = (0, lodash_1.curry)(function (suffix, value) { return (!value.endsWith(suffix) ? "".concat(value).concat(suffix) : value); });
-var typeSafeHasOwnProperty = function (target, key) {
-    return target.hasOwnProperty(key);
-};
-exports.typeSafeHasOwnProperty = typeSafeHasOwnProperty;
-var isPropertyDefinedAndNotNull = function (target, key) {
-    return (0, exports.typeSafeHasOwnProperty)(target, key) && target[key] !== null && target[key] !== undefined;
-};
-exports.isPropertyDefinedAndNotNull = isPropertyDefinedAndNotNull;
-
-
-/***/ }),
-
-/***/ 21843:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AADCredentialType = void 0;
-var AADCredentialType;
-(function (AADCredentialType) {
-    AADCredentialType["ClientCredential"] = "ClientCredential";
-    AADCredentialType["UserCredential"] = "UserCredential";
-})(AADCredentialType = exports.AADCredentialType || (exports.AADCredentialType = {}));
-//# sourceMappingURL=aadCredentialType.js.map
-
-/***/ }),
-
-/***/ 88253:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=accountResource.js.map
-
-/***/ }),
-
-/***/ 35608:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=accountResourceLinks.js.map
-
-/***/ }),
-
-/***/ 34914:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AccountType = void 0;
-var AccountType;
-(function (AccountType) {
-    AccountType["AmazonWebServicesAccount"] = "AmazonWebServicesAccount";
-    AccountType["AzureServicePrincipal"] = "AzureServicePrincipal";
-    AccountType["AzureSubscription"] = "AzureSubscription";
-    AccountType["GoogleCloudAccount"] = "GoogleCloudAccount";
-    AccountType["None"] = "None";
-    AccountType["SshKeyPair"] = "SshKeyPair";
-    AccountType["Token"] = "Token";
-    AccountType["UsernamePassword"] = "UsernamePassword";
-})(AccountType = exports.AccountType || (exports.AccountType = {}));
-//# sourceMappingURL=accountType.js.map
-
-/***/ }),
-
-/***/ 6687:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=accountUsageResource.js.map
-
-/***/ }),
-
-/***/ 7689:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ActionExecutionLocation = void 0;
-var ActionExecutionLocation;
-(function (ActionExecutionLocation) {
-    ActionExecutionLocation["AlwaysOnTarget"] = "AlwaysOnTarget";
-    ActionExecutionLocation["AlwaysOnServer"] = "AlwaysOnServer";
-    ActionExecutionLocation["TargetOrServer"] = "TargetOrServer";
-})(ActionExecutionLocation = exports.ActionExecutionLocation || (exports.ActionExecutionLocation = {}));
-//# sourceMappingURL=actionExecutionLocation.js.map
-
-/***/ }),
-
-/***/ 9801:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ActionHandlerCategory = void 0;
-var ActionHandlerCategory;
-(function (ActionHandlerCategory) {
-    ActionHandlerCategory["Atlassian"] = "Atlassian";
-    ActionHandlerCategory["Aws"] = "Aws";
-    ActionHandlerCategory["Azure"] = "Azure";
-    ActionHandlerCategory["BuiltInStep"] = "BuiltInStep";
-    ActionHandlerCategory["Certificate"] = "Certificate";
-    ActionHandlerCategory["Community"] = "Community";
-    ActionHandlerCategory["CommunitySubCategory"] = "CommunitySubCategory";
-    ActionHandlerCategory["Docker"] = "Docker";
-    ActionHandlerCategory["GoogleCloud"] = "Google";
-    ActionHandlerCategory["JavaAppServer"] = "JavaAppServer";
-    ActionHandlerCategory["Kubernetes"] = "Kubernetes";
-    ActionHandlerCategory["Other"] = "Other";
-    ActionHandlerCategory["Package"] = "Package";
-    ActionHandlerCategory["Script"] = "Script";
-    ActionHandlerCategory["StepTemplate"] = "StepTemplate";
-    ActionHandlerCategory["Terraform"] = "Terraform";
-    ActionHandlerCategory["WindowsServer"] = "WindowsServer";
-})(ActionHandlerCategory = exports.ActionHandlerCategory || (exports.ActionHandlerCategory = {}));
-//# sourceMappingURL=actionHandlerCategory.js.map
-
-/***/ }),
-
-/***/ 71517:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionInputs.js.map
-
-/***/ }),
-
-/***/ 6531:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionProperties.js.map
-
-/***/ }),
-
-/***/ 10136:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionTemplateCategoryResource.js.map
-
-/***/ }),
-
-/***/ 9947:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionTemplateParameterDisplaySettings.js.map
-
-/***/ }),
-
-/***/ 48998:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionTemplateParameterResource.js.map
-
-/***/ }),
-
-/***/ 47799:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getFeedTypesForActionType = void 0;
-var feedType_1 = __nccwpck_require__(30090);
-function getFeedTypesForActionType(actionType) {
-    switch (actionType) {
-        case "Octopus.DockerRun":
-            return [feedType_1.FeedType.Docker, feedType_1.FeedType.AwsElasticContainerRegistry];
-        case "Octopus.HelmChartUpgrade":
-            return [feedType_1.FeedType.Helm];
-        case "Octopus.JavaArchive":
-        case "Octopus.TomcatDeploy":
-        case "Octopus.WildFlyDeploy":
-            return [feedType_1.FeedType.Nuget, feedType_1.FeedType.BuiltIn, feedType_1.FeedType.Maven];
-        case "Octopus.TentaclePackage":
-        case "Octopus.TransferPackage":
-            return [
-                feedType_1.FeedType.Nuget,
-                feedType_1.FeedType.BuiltIn,
-                feedType_1.FeedType.Maven,
-                feedType_1.FeedType.GitHub,
-            ];
-    }
-    return [];
-}
-exports.getFeedTypesForActionType = getFeedTypesForActionType;
-//# sourceMappingURL=actionTemplateResource.js.map
-
-/***/ }),
-
-/***/ 34440:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionTemplateSearchResource.js.map
-
-/***/ }),
-
-/***/ 49241:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionTemplateUsageResource.js.map
-
-/***/ }),
-
-/***/ 53132:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ActionUpdateOutcome = void 0;
-var ActionUpdateOutcome;
-(function (ActionUpdateOutcome) {
-    ActionUpdateOutcome["DefaultParamterValueMissing"] = "DefaultParamterValueMissing";
-    ActionUpdateOutcome["ManualMergeRequired"] = "ManualMergeRequired";
-    ActionUpdateOutcome["RemovedPackageInUse"] = "RemovedPackageInUse";
-    ActionUpdateOutcome["Success"] = "Success";
-})(ActionUpdateOutcome = exports.ActionUpdateOutcome || (exports.ActionUpdateOutcome = {}));
-//# sourceMappingURL=actionUpdateOutcome.js.map
-
-/***/ }),
-
-/***/ 56543:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ActionUpdatePackageUsedBy = void 0;
-var ActionUpdatePackageUsedBy;
-(function (ActionUpdatePackageUsedBy) {
-    ActionUpdatePackageUsedBy["ChannelRule"] = "ChannelRule";
-    ActionUpdatePackageUsedBy["ProjectReleaseCreationStrategy"] = "ProjectReleaseCreationStrategy";
-    ActionUpdatePackageUsedBy["ProjectVersionStrategy"] = "ProjectVersionStrategy";
-})(ActionUpdatePackageUsedBy = exports.ActionUpdatePackageUsedBy || (exports.ActionUpdatePackageUsedBy = {}));
-//# sourceMappingURL=actionUpdatePackageUsedBy.js.map
-
-/***/ }),
-
-/***/ 40407:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionUpdateRemovedPackageUsage.js.map
-
-/***/ }),
-
-/***/ 99710:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionUpdateResource.js.map
-
-/***/ }),
-
-/***/ 34926:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionUpdateResultResource.js.map
-
-/***/ }),
-
-/***/ 30597:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=actionsUpdateProcessResource.js.map
-
-/***/ }),
-
-/***/ 80778:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=agentlessEndpointResource.js.map
-
-/***/ }),
-
-/***/ 94582:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.NewAmazonWebServicesAccount = void 0;
-var accountType_1 = __nccwpck_require__(34914);
-function NewAmazonWebServicesAccount(name, accessKey, secretKey) {
-    return {
-        AccessKey: accessKey,
-        AccountType: accountType_1.AccountType.AmazonWebServicesAccount,
-        Name: name,
-        SecretKey: secretKey,
-    };
-}
-exports.NewAmazonWebServicesAccount = NewAmazonWebServicesAccount;
-//# sourceMappingURL=amazonWebServicesAccountResource.js.map
-
-/***/ }),
-
-/***/ 30939:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=apiKeyCreatedResource.js.map
-
-/***/ }),
-
-/***/ 18304:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=apiKeyResource.js.map
-
-/***/ }),
-
-/***/ 58502:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=artifactResource.js.map
-
-/***/ }),
-
-/***/ 16089:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=authenticationError.js.map
-
-/***/ }),
-
-/***/ 38639:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthenticationProviderElement = void 0;
-var AuthenticationProviderElement = (function () {
-    function AuthenticationProviderElement() {
-        this.CSSLinks = undefined;
-        this.FormsLoginEnabled = undefined;
-        this.IdentityType = undefined;
-        this.JavascriptLinks = undefined;
-        this.Links = undefined;
-        this.Name = undefined;
-    }
-    return AuthenticationProviderElement;
-}());
-exports.AuthenticationProviderElement = AuthenticationProviderElement;
-//# sourceMappingURL=authenticationProviderElement.js.map
-
-/***/ }),
-
-/***/ 72866:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=authenticationResource.js.map
-
-/***/ }),
-
-/***/ 64699:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AutoDeployActionResource = void 0;
-var triggerActionResource_1 = __nccwpck_require__(59636);
-var triggerActionType_1 = __nccwpck_require__(58574);
-var AutoDeployActionResource = (function (_super) {
-    __extends(AutoDeployActionResource, _super);
-    function AutoDeployActionResource() {
-        var _this = _super.call(this) || this;
-        _this.ShouldRedeployWhenMachineHasBeenDeployedTo = undefined;
-        _this.ActionType = triggerActionType_1.TriggerActionType.AutoDeploy;
-        return _this;
-    }
-    return AutoDeployActionResource;
-}(triggerActionResource_1.TriggerActionResource));
-exports.AutoDeployActionResource = AutoDeployActionResource;
-//# sourceMappingURL=autoDeployActionResource.js.map
-
-/***/ }),
-
-/***/ 39349:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=awsElasticContainerRegistryFeedResource.js.map
-
-/***/ }),
-
-/***/ 92669:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=azureEnvironment.js.map
-
-/***/ }),
-
-/***/ 27134:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.NewAzureServicePrincipalAccount = void 0;
-var accountType_1 = __nccwpck_require__(34914);
-function NewAzureServicePrincipalAccount(name, subscriptionId, tenantId, applicationId, applicationPassword) {
-    return {
-        AccountType: accountType_1.AccountType.AzureServicePrincipal,
-        ClientId: applicationId,
-        Name: name,
-        Password: applicationPassword,
-        SubscriptionNumber: subscriptionId,
-        TenantId: tenantId,
-    };
-}
-exports.NewAzureServicePrincipalAccount = NewAzureServicePrincipalAccount;
-//# sourceMappingURL=azureServicePrincipalAccountResource.js.map
-
-/***/ }),
-
-/***/ 66707:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=azureWebSite.js.map
-
-/***/ }),
-
-/***/ 27673:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=azureWebSiteSlot.js.map
-
-/***/ }),
-
-/***/ 60035:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=buildInformationResource.js.map
-
-/***/ }),
-
-/***/ 91173:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=builtInFeedLinks.js.map
-
-/***/ }),
-
-/***/ 42969:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=builtInFeedResource.js.map
-
-/***/ }),
-
-/***/ 33477:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=builtInFeedStatsResource.js.map
-
-/***/ }),
-
-/***/ 39021:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=certificateConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 50699:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=certificateResource.js.map
-
-/***/ }),
-
-/***/ 94840:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=certificateUsageResource.js.map
-
-/***/ }),
-
-/***/ 18754:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=channelOclResource.js.map
-
-/***/ }),
-
-/***/ 90097:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=channelProgressionResource.js.map
-
-/***/ }),
-
-/***/ 52739:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.NewChannel = void 0;
-function NewChannel(name, projectId) {
-    return {
-        Name: name,
-        ProjectId: projectId,
-    };
-}
-exports.NewChannel = NewChannel;
-//# sourceMappingURL=channelResource.js.map
-
-/***/ }),
-
-/***/ 78766:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=channelVersionRuleResource.js.map
-
-/***/ }),
-
-/***/ 21303:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=commitCommand.js.map
-
-/***/ }),
-
-/***/ 3712:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=commitDetail.js.map
-
-/***/ }),
-
-/***/ 27734:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=commonTriggerResource.js.map
-
-/***/ }),
-
-/***/ 19170:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CommunicationStyle = void 0;
-var CommunicationStyle;
-(function (CommunicationStyle) {
-    CommunicationStyle["AzureCloudService"] = "AzureCloudService";
-    CommunicationStyle["AzureServiceFabricCluster"] = "AzureServiceFabricCluster";
-    CommunicationStyle["AzureWebApp"] = "AzureWebApp";
-    CommunicationStyle["Kubernetes"] = "Kubernetes";
-    CommunicationStyle["None"] = "None";
-    CommunicationStyle["OfflineDrop"] = "OfflineDrop";
-    CommunicationStyle["Ssh"] = "Ssh";
-    CommunicationStyle["StepPackage"] = "StepPackage";
-    CommunicationStyle["TentacleActive"] = "TentacleActive";
-    CommunicationStyle["TentaclePassive"] = "TentaclePassive";
-})(CommunicationStyle = exports.CommunicationStyle || (exports.CommunicationStyle = {}));
-//# sourceMappingURL=communicationStyle.js.map
-
-/***/ }),
-
-/***/ 99930:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=communityActionTemplateResource.js.map
-
-/***/ }),
-
-/***/ 42546:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ControlType = void 0;
-var ControlType;
-(function (ControlType) {
-    ControlType["AmazonWebServicesAccount"] = "AmazonWebServicesAccount";
-    ControlType["AzureAccount"] = "AzureAccount";
-    ControlType["Certificate"] = "Certificate";
-    ControlType["Checkbox"] = "Checkbox";
-    ControlType["Custom"] = "Custom";
-    ControlType["GoogleCloudAccount"] = "GoogleCloudAccount";
-    ControlType["MultiLineText"] = "MultiLineText";
-    ControlType["Package"] = "Package";
-    ControlType["Select"] = "Select";
-    ControlType["Sensitive"] = "Sensitive";
-    ControlType["SingleLineText"] = "SingleLineText";
-    ControlType["StepName"] = "StepName";
-    ControlType["WorkerPool"] = "WorkerPool";
-})(ControlType = exports.ControlType || (exports.ControlType = {}));
-//# sourceMappingURL=controlType.js.map
-
-/***/ }),
-
-/***/ 83382:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=convertProjectToVersionControlledCommand.js.map
-
-/***/ }),
-
-/***/ 20006:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dashboardConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 26289:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dashboardEnvironmentResource.js.map
-
-/***/ }),
-
-/***/ 64543:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dashboardItemResource.js.map
-
-/***/ }),
-
-/***/ 88640:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dashboardProjectGroupResource.js.map
-
-/***/ }),
-
-/***/ 21706:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dashboardProjectResource.js.map
-
-/***/ }),
-
-/***/ 65120:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dashboardResource.js.map
-
-/***/ }),
-
-/***/ 60599:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dashboardTenantResource.js.map
-
-/***/ }),
-
-/***/ 61676:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=defectResource.js.map
-
-/***/ }),
-
-/***/ 71615:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DefectStatus = void 0;
-var DefectStatus;
-(function (DefectStatus) {
-    DefectStatus["Resolved"] = "Resolved";
-    DefectStatus["Unresolved"] = "Unresolved";
-})(DefectStatus = exports.DefectStatus || (exports.DefectStatus = {}));
-//# sourceMappingURL=defectStatus.js.map
-
-/***/ }),
-
-/***/ 26994:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.InitialisePrimaryPackageReference = exports.SetPrimaryPackageReference = exports.SetNamedPackageReference = exports.GetNamedPackageReferences = exports.IsNamedPackageReference = exports.GetPrimaryPackageReference = exports.HasManualInterventionResponsibleTeams = exports.PackageReferenceNamesMatch = exports.RemovePrimaryPackageReference = exports.IsPrimaryPackageReference = exports.IsDeployReleaseAction = void 0;
-var _ = __importStar(__nccwpck_require__(90250));
-var feedType_1 = __nccwpck_require__(30090);
-var packageAcquisitionLocation_1 = __nccwpck_require__(37648);
-var packageReference_1 = __nccwpck_require__(66933);
-function parseCSV(val) {
-    if (!val || val === "") {
-        return [];
-    }
-    return val.split(",");
-}
-function IsDeployReleaseAction(action) {
-    return !!action.Properties["Octopus.Action.DeployRelease.ProjectId"];
-}
-exports.IsDeployReleaseAction = IsDeployReleaseAction;
-function IsPrimaryPackageReference(pkg) {
-    return !pkg.Name;
-}
-exports.IsPrimaryPackageReference = IsPrimaryPackageReference;
-function RemovePrimaryPackageReference(packages) {
-    return _.filter(packages, function (pkg) { return !IsPrimaryPackageReference(pkg); });
-}
-exports.RemovePrimaryPackageReference = RemovePrimaryPackageReference;
-function PackageReferenceNamesMatch(nameA, nameB) {
-    if (!nameA) {
-        return !nameB;
-    }
-    return nameA === nameB;
-}
-exports.PackageReferenceNamesMatch = PackageReferenceNamesMatch;
-function HasManualInterventionResponsibleTeams(action) {
-    return _.some(parseCSV(action.Properties["Octopus.Action.Manual.ResponsibleTeamIds"]));
-}
-exports.HasManualInterventionResponsibleTeams = HasManualInterventionResponsibleTeams;
-function GetPrimaryPackageReference(packages) {
-    return packages === null || packages === void 0 ? void 0 : packages.find(function (pkg) { return IsPrimaryPackageReference(pkg); });
-}
-exports.GetPrimaryPackageReference = GetPrimaryPackageReference;
-function IsNamedPackageReference(pkg) {
-    return !!pkg.Name;
-}
-exports.IsNamedPackageReference = IsNamedPackageReference;
-function GetNamedPackageReferences(packages) {
-    return RemovePrimaryPackageReference(packages);
-}
-exports.GetNamedPackageReferences = GetNamedPackageReferences;
-function SetNamedPackageReference(name, updated, packages) {
-    return _.map(packages, function (pkg) {
-        if (!PackageReferenceNamesMatch(name, pkg.Name)) {
-            return pkg;
-        }
-        return __assign(__assign({}, pkg), updated);
-    });
-}
-exports.SetNamedPackageReference = SetNamedPackageReference;
-function SetPrimaryPackageReference(updated, packages) {
-    return _.map(packages, function (pkg) {
-        if (!IsPrimaryPackageReference(pkg)) {
-            return pkg;
-        }
-        return __assign(__assign({}, pkg), updated);
-    });
-}
-exports.SetPrimaryPackageReference = SetPrimaryPackageReference;
-function InitialisePrimaryPackageReference(packages, feeds, itemsKeyedBy) {
-    var primaryPackage = GetPrimaryPackageReference(packages);
-    if (primaryPackage) {
-        if (!primaryPackage.Properties.SelectionMode) {
-            primaryPackage.Properties.SelectionMode = packageReference_1.PackageSelectionMode.Immediate;
-        }
-        return __spreadArray([], packages, true);
-    }
-    var packagesWithoutDefault = RemovePrimaryPackageReference(packages);
-    var builtInFeed = feeds.find(function (f) { return f.FeedType === feedType_1.FeedType.BuiltIn; });
-    var builtInFeedIdOrName = builtInFeed && builtInFeed[itemsKeyedBy];
-    return __spreadArray([
-        {
-            Id: null,
-            PackageId: null,
-            FeedId: builtInFeedIdOrName,
-            AcquisitionLocation: packageAcquisitionLocation_1.PackageAcquisitionLocation.Server,
-            Properties: {
-                SelectionMode: packageReference_1.PackageSelectionMode.Immediate,
-            },
-        }
-    ], packagesWithoutDefault, true);
-}
-exports.InitialisePrimaryPackageReference = InitialisePrimaryPackageReference;
-//# sourceMappingURL=deploymentActionResource.js.map
-
-/***/ }),
-
-/***/ 40633:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isDeploymentPreviewResource = void 0;
-var utils_1 = __nccwpck_require__(12765);
-function isDeploymentPreviewResource(resource) {
-    var converted = resource;
-    return (converted.Changes !== undefined &&
-        (0, utils_1.typeSafeHasOwnProperty)(converted, "Changes"));
-}
-exports.isDeploymentPreviewResource = isDeploymentPreviewResource;
-//# sourceMappingURL=deploymentPreviewResource.js.map
-
-/***/ }),
-
-/***/ 157:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.processResourcePermission = exports.isRunbookProcessResource = exports.isDeploymentProcessResource = void 0;
-var permission_1 = __nccwpck_require__(49346);
-var utils_1 = __nccwpck_require__(12765);
-function isDeploymentProcessResource(resource) {
-    if (resource === null || resource === undefined) {
-        return false;
-    }
-    var converted = resource;
-    return (!isRunbookProcessResource(resource) &&
-        converted.Version !== undefined &&
-        (0, utils_1.typeSafeHasOwnProperty)(converted, "Version"));
-}
-exports.isDeploymentProcessResource = isDeploymentProcessResource;
-function isRunbookProcessResource(resource) {
-    if (resource === null || resource === undefined) {
-        return false;
-    }
-    var converted = resource;
-    return (converted.RunbookId !== undefined &&
-        (0, utils_1.typeSafeHasOwnProperty)(converted, "RunbookId"));
-}
-exports.isRunbookProcessResource = isRunbookProcessResource;
-function processResourcePermission(resource) {
-    var isRunbook = isRunbookProcessResource(resource);
-    return isRunbook ? permission_1.Permission.RunbookEdit : permission_1.Permission.ProcessEdit;
-}
-exports.processResourcePermission = processResourcePermission;
-//# sourceMappingURL=deploymentProcessResource.js.map
-
-/***/ }),
-
-/***/ 71976:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=deploymentResource.js.map
-
-/***/ }),
-
-/***/ 81741:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GuidedFailureMode = void 0;
-var GuidedFailureMode;
-(function (GuidedFailureMode) {
-    GuidedFailureMode["EnvironmentDefault"] = "EnvironmentDefault";
-    GuidedFailureMode["Off"] = "Off";
-    GuidedFailureMode["On"] = "On";
-})(GuidedFailureMode = exports.GuidedFailureMode || (exports.GuidedFailureMode = {}));
-//# sourceMappingURL=deploymentSettingsResource.js.map
-
-/***/ }),
-
-/***/ 10322:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PackageRequirement = exports.RunCondition = exports.StartTrigger = void 0;
-var StartTrigger;
-(function (StartTrigger) {
-    StartTrigger["StartWithPrevious"] = "StartWithPrevious";
-    StartTrigger["StartAfterPrevious"] = "StartAfterPrevious";
-})(StartTrigger = exports.StartTrigger || (exports.StartTrigger = {}));
-var RunCondition;
-(function (RunCondition) {
-    RunCondition["Success"] = "Success";
-    RunCondition["Failure"] = "Failure";
-    RunCondition["Always"] = "Always";
-    RunCondition["Variable"] = "Variable";
-})(RunCondition = exports.RunCondition || (exports.RunCondition = {}));
-var PackageRequirement;
-(function (PackageRequirement) {
-    PackageRequirement["LetOctopusDecide"] = "LetOctopusDecide";
-    PackageRequirement["BeforePackageAcquisition"] = "BeforePackageAcquisition";
-    PackageRequirement["AfterPackageAcquisition"] = "AfterPackageAcquisition";
-})(PackageRequirement = exports.PackageRequirement || (exports.PackageRequirement = {}));
-//# sourceMappingURL=deploymentStepResource.js.map
-
-/***/ }),
-
-/***/ 9042:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isDeploymentTarget = exports.NewDeploymentTarget = void 0;
-var machineResource_1 = __nccwpck_require__(82705);
-function NewDeploymentTarget(name, endpoint, environments, roles, tenantedDeploymentParticipation) {
-    return {
-        IsDisabled: false,
-        IsInProcess: false,
-        Endpoint: endpoint,
-        EnvironmentIds: environments.map(function (e) { return e.Id; }),
-        HasLatestCalamari: false,
-        HealthStatus: machineResource_1.MachineModelHealthStatus.Unknown,
-        Name: name,
-        MachinePolicyId: "",
-        Roles: roles,
-        TenantedDeploymentParticipation: tenantedDeploymentParticipation,
-        TenantIds: [],
-        TenantTags: [],
-    };
-}
-exports.NewDeploymentTarget = NewDeploymentTarget;
-function isDeploymentTarget(machine) {
-    return machine.EnvironmentIds !== undefined;
-}
-exports.isDeploymentTarget = isDeploymentTarget;
-//# sourceMappingURL=deploymentTargetResource.js.map
-
-/***/ }),
-
-/***/ 95369:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DeploymentTargetTaskType = void 0;
-var DeploymentTargetTaskType;
-(function (DeploymentTargetTaskType) {
-    DeploymentTargetTaskType["Deployment"] = "Deployment";
-    DeploymentTargetTaskType["RunbookRun"] = "RunbookRun";
-})(DeploymentTargetTaskType = exports.DeploymentTargetTaskType || (exports.DeploymentTargetTaskType = {}));
-//# sourceMappingURL=deploymentTargetTaskType.js.map
-
-/***/ }),
-
-/***/ 48798:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=deploymentTemplateResource.js.map
-
-/***/ }),
-
-/***/ 67788:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=deploymentTemplateStep.js.map
-
-/***/ }),
-
-/***/ 69297:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=documentSummary.js.map
-
-/***/ }),
-
-/***/ 33162:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dynamicExtensionsFeaturesMetadataResource.js.map
-
-/***/ }),
-
-/***/ 91606:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dynamicExtensionsFeaturesValuesResource.js.map
-
-/***/ }),
-
-/***/ 85284:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=dynamicExtensionsScriptsResource.js.map
-
-/***/ }),
-
-/***/ 36747:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ConnectivityCheckResponseMessageCategory = exports.PropertyApplicabilityMode = void 0;
-var PropertyApplicabilityMode;
-(function (PropertyApplicabilityMode) {
-    PropertyApplicabilityMode["ApplicableIfHasAnyValue"] = "ApplicableIfHasAnyValue";
-    PropertyApplicabilityMode["ApplicableIfHasNoValue"] = "ApplicableIfHasNoValue";
-    PropertyApplicabilityMode["ApplicableIfSpecificValue"] = "ApplicableIfSpecificValue";
-    PropertyApplicabilityMode["ApplicableIfNotSpecificValue"] = "ApplicableIfNotSpecificValue";
-})(PropertyApplicabilityMode = exports.PropertyApplicabilityMode || (exports.PropertyApplicabilityMode = {}));
-var ConnectivityCheckResponseMessageCategory;
-(function (ConnectivityCheckResponseMessageCategory) {
-    ConnectivityCheckResponseMessageCategory["Info"] = "Info";
-    ConnectivityCheckResponseMessageCategory["Warning"] = "Warning";
-    ConnectivityCheckResponseMessageCategory["Error"] = "Error";
-})(ConnectivityCheckResponseMessageCategory = exports.ConnectivityCheckResponseMessageCategory || (exports.ConnectivityCheckResponseMessageCategory = {}));
-//# sourceMappingURL=dynamicFormResources.js.map
-
-/***/ }),
-
-/***/ 34830:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.EmailPriority = void 0;
-var EmailPriority;
-(function (EmailPriority) {
-    EmailPriority["Low"] = "Low";
-    EmailPriority["Normal"] = "Normal";
-    EmailPriority["High"] = "High";
-})(EmailPriority = exports.EmailPriority || (exports.EmailPriority = {}));
-//# sourceMappingURL=emailPriority.js.map
-
-/***/ }),
-
-/***/ 93373:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.NewEndpoint = void 0;
-function NewEndpoint(name, communicationStyle) {
-    return {
-        CommunicationStyle: communicationStyle,
-        Name: name,
-    };
-}
-exports.NewEndpoint = NewEndpoint;
-//# sourceMappingURL=endpointResource.js.map
-
-/***/ }),
-
-/***/ 34042:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=environmentResource.js.map
-
-/***/ }),
-
-/***/ 31719:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=environmentResourceLinks.js.map
-
-/***/ }),
-
-/***/ 78157:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=environmentSummaryResource.js.map
-
-/***/ }),
-
-/***/ 47479:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=environmentsSummaryResource.js.map
-
-/***/ }),
-
-/***/ 16470:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=eventNotificationSubscription.js.map
-
-/***/ }),
-
-/***/ 50710:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=eventNotificationSubscriptionFilter.js.map
-
-/***/ }),
-
-/***/ 27811:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=eventResource.js.map
-
-/***/ }),
-
-/***/ 82718:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=extensionSettingsValues.js.map
-
-/***/ }),
-
-/***/ 62851:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=extensionsInfoResource.js.map
-
-/***/ }),
-
-/***/ 28075:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=externalSecurityGroupProviderResource.js.map
-
-/***/ }),
-
-/***/ 42769:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=featuresConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 37877:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getFeedTypeLabel = exports.isContainerImageRegistry = exports.containerRegistryFeedTypes = exports.isOctopusProjectFeed = exports.feedTypeSupportsExtraction = exports.feedTypeCanSearchEmpty = void 0;
-var feedType_1 = __nccwpck_require__(30090);
-var lodash_1 = __nccwpck_require__(90250);
-function feedTypeCanSearchEmpty(feed) {
-    return ![
-        feedType_1.FeedType.Docker,
-        feedType_1.FeedType.AwsElasticContainerRegistry,
-        feedType_1.FeedType.Maven,
-        feedType_1.FeedType.GitHub,
-    ].includes(feed);
-}
-exports.feedTypeCanSearchEmpty = feedTypeCanSearchEmpty;
-function feedTypeSupportsExtraction(feed) {
-    return ![feedType_1.FeedType.Docker, feedType_1.FeedType.AwsElasticContainerRegistry].includes(feed);
-}
-exports.feedTypeSupportsExtraction = feedTypeSupportsExtraction;
-function isOctopusProjectFeed(feed) {
-    return feed === "OctopusProject";
-}
-exports.isOctopusProjectFeed = isOctopusProjectFeed;
-function containerRegistryFeedTypes() {
-    return [feedType_1.FeedType.Docker, feedType_1.FeedType.AwsElasticContainerRegistry];
-}
-exports.containerRegistryFeedTypes = containerRegistryFeedTypes;
-function isContainerImageRegistry(feed) {
-    return containerRegistryFeedTypes().includes(feed);
-}
-exports.isContainerImageRegistry = isContainerImageRegistry;
-var getFeedTypeLabel = function (feedType) {
-    var requiresContainerImageRegistryFeed = feedType &&
-        feedType.length >= 1 &&
-        (0, lodash_1.every)(feedType, function (f) { return isContainerImageRegistry(f); });
-    var requiresHelmChartFeed = feedType && feedType.length === 1 && feedType[0] === feedType_1.FeedType.Helm;
-    if (requiresContainerImageRegistryFeed) {
-        return "Container Image Registry";
-    }
-    if (requiresHelmChartFeed) {
-        return "Helm Chart Repository";
-    }
-    return "Package";
-};
-exports.getFeedTypeLabel = getFeedTypeLabel;
-//# sourceMappingURL=feedResource.js.map
-
-/***/ }),
-
-/***/ 30090:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.FeedType = void 0;
-var FeedType;
-(function (FeedType) {
-    FeedType["AwsElasticContainerRegistry"] = "AwsElasticContainerRegistry";
-    FeedType["BuiltIn"] = "BuiltIn";
-    FeedType["Docker"] = "Docker";
-    FeedType["GitHub"] = "GitHub";
-    FeedType["Helm"] = "Helm";
-    FeedType["Maven"] = "Maven";
-    FeedType["Nuget"] = "NuGet";
-    FeedType["OctopusProject"] = "OctopusProject";
-})(FeedType = exports.FeedType || (exports.FeedType = {}));
-//# sourceMappingURL=feedType.js.map
-
-/***/ }),
-
-/***/ 24542:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.NewGoogleCloudAccount = void 0;
-var accountType_1 = __nccwpck_require__(34914);
-function NewGoogleCloudAccount(name, jsonKey) {
-    return {
-        AccountType: accountType_1.AccountType.GoogleCloudAccount,
-        JsonKey: jsonKey,
-        Name: name,
-    };
-}
-exports.NewGoogleCloudAccount = NewGoogleCloudAccount;
-//# sourceMappingURL=googleCloudAccountResource.js.map
-
-/***/ }),
-
-/***/ 32471:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=identityMetadataResource.js.map
-
-/***/ }),
-
-/***/ 20366:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=identityResource.js.map
-
-/***/ }),
-
-/***/ 60157:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.IdentityType = void 0;
-var IdentityType;
-(function (IdentityType) {
-    IdentityType[IdentityType["Guest"] = 0] = "Guest";
-    IdentityType[IdentityType["UsernamePassword"] = 1] = "UsernamePassword";
-    IdentityType[IdentityType["ActiveDirectory"] = 2] = "ActiveDirectory";
-    IdentityType[IdentityType["OAuth"] = 3] = "OAuth";
-})(IdentityType = exports.IdentityType || (exports.IdentityType = {}));
-//# sourceMappingURL=identityType.js.map
-
-/***/ }),
-
-/***/ 74561:
+/***/ 5207:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -10911,698 +3488,27 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(21843), exports);
-__exportStar(__nccwpck_require__(88253), exports);
-__exportStar(__nccwpck_require__(35608), exports);
-__exportStar(__nccwpck_require__(34914), exports);
-__exportStar(__nccwpck_require__(6687), exports);
-__exportStar(__nccwpck_require__(7689), exports);
-__exportStar(__nccwpck_require__(9801), exports);
-__exportStar(__nccwpck_require__(71517), exports);
-__exportStar(__nccwpck_require__(6531), exports);
-__exportStar(__nccwpck_require__(30597), exports);
-__exportStar(__nccwpck_require__(10136), exports);
-__exportStar(__nccwpck_require__(9947), exports);
-__exportStar(__nccwpck_require__(48998), exports);
-__exportStar(__nccwpck_require__(47799), exports);
-__exportStar(__nccwpck_require__(34440), exports);
-__exportStar(__nccwpck_require__(49241), exports);
-__exportStar(__nccwpck_require__(53132), exports);
-__exportStar(__nccwpck_require__(56543), exports);
-__exportStar(__nccwpck_require__(40407), exports);
-__exportStar(__nccwpck_require__(99710), exports);
-__exportStar(__nccwpck_require__(34926), exports);
-__exportStar(__nccwpck_require__(80778), exports);
-__exportStar(__nccwpck_require__(94582), exports);
-__exportStar(__nccwpck_require__(30939), exports);
-__exportStar(__nccwpck_require__(18304), exports);
-__exportStar(__nccwpck_require__(58502), exports);
-__exportStar(__nccwpck_require__(16089), exports);
-__exportStar(__nccwpck_require__(38639), exports);
-__exportStar(__nccwpck_require__(72866), exports);
-__exportStar(__nccwpck_require__(64699), exports);
-__exportStar(__nccwpck_require__(39349), exports);
-__exportStar(__nccwpck_require__(92669), exports);
-__exportStar(__nccwpck_require__(27134), exports);
-__exportStar(__nccwpck_require__(66707), exports);
-__exportStar(__nccwpck_require__(27673), exports);
-__exportStar(__nccwpck_require__(60035), exports);
-__exportStar(__nccwpck_require__(91173), exports);
-__exportStar(__nccwpck_require__(42969), exports);
-__exportStar(__nccwpck_require__(33477), exports);
-__exportStar(__nccwpck_require__(39021), exports);
-__exportStar(__nccwpck_require__(50699), exports);
-__exportStar(__nccwpck_require__(94840), exports);
-__exportStar(__nccwpck_require__(18754), exports);
-__exportStar(__nccwpck_require__(90097), exports);
-__exportStar(__nccwpck_require__(52739), exports);
-__exportStar(__nccwpck_require__(78766), exports);
-__exportStar(__nccwpck_require__(21303), exports);
-__exportStar(__nccwpck_require__(3712), exports);
-__exportStar(__nccwpck_require__(27734), exports);
-__exportStar(__nccwpck_require__(19170), exports);
-__exportStar(__nccwpck_require__(99930), exports);
-__exportStar(__nccwpck_require__(42546), exports);
-__exportStar(__nccwpck_require__(83382), exports);
-__exportStar(__nccwpck_require__(20006), exports);
-__exportStar(__nccwpck_require__(26289), exports);
-__exportStar(__nccwpck_require__(64543), exports);
-__exportStar(__nccwpck_require__(88640), exports);
-__exportStar(__nccwpck_require__(21706), exports);
-__exportStar(__nccwpck_require__(65120), exports);
-__exportStar(__nccwpck_require__(60599), exports);
-__exportStar(__nccwpck_require__(61676), exports);
-__exportStar(__nccwpck_require__(71615), exports);
-__exportStar(__nccwpck_require__(26994), exports);
-__exportStar(__nccwpck_require__(40633), exports);
-__exportStar(__nccwpck_require__(157), exports);
-__exportStar(__nccwpck_require__(71976), exports);
-__exportStar(__nccwpck_require__(81741), exports);
-__exportStar(__nccwpck_require__(10322), exports);
-__exportStar(__nccwpck_require__(9042), exports);
-__exportStar(__nccwpck_require__(95369), exports);
-__exportStar(__nccwpck_require__(48798), exports);
-__exportStar(__nccwpck_require__(67788), exports);
-__exportStar(__nccwpck_require__(69297), exports);
-__exportStar(__nccwpck_require__(33162), exports);
-__exportStar(__nccwpck_require__(91606), exports);
-__exportStar(__nccwpck_require__(85284), exports);
-__exportStar(__nccwpck_require__(36747), exports);
-__exportStar(__nccwpck_require__(34830), exports);
-__exportStar(__nccwpck_require__(93373), exports);
-__exportStar(__nccwpck_require__(34042), exports);
-__exportStar(__nccwpck_require__(31719), exports);
-__exportStar(__nccwpck_require__(47479), exports);
-__exportStar(__nccwpck_require__(78157), exports);
-__exportStar(__nccwpck_require__(16470), exports);
-__exportStar(__nccwpck_require__(50710), exports);
-__exportStar(__nccwpck_require__(27811), exports);
-__exportStar(__nccwpck_require__(82718), exports);
-__exportStar(__nccwpck_require__(62851), exports);
-__exportStar(__nccwpck_require__(28075), exports);
-__exportStar(__nccwpck_require__(42769), exports);
-__exportStar(__nccwpck_require__(37877), exports);
-__exportStar(__nccwpck_require__(30090), exports);
-__exportStar(__nccwpck_require__(24542), exports);
-__exportStar(__nccwpck_require__(32471), exports);
-__exportStar(__nccwpck_require__(20366), exports);
-__exportStar(__nccwpck_require__(60157), exports);
-__exportStar(__nccwpck_require__(5639), exports);
-__exportStar(__nccwpck_require__(90938), exports);
-__exportStar(__nccwpck_require__(56196), exports);
-__exportStar(__nccwpck_require__(17700), exports);
-__exportStar(__nccwpck_require__(3753), exports);
-__exportStar(__nccwpck_require__(44688), exports);
-__exportStar(__nccwpck_require__(32925), exports);
-__exportStar(__nccwpck_require__(27467), exports);
-__exportStar(__nccwpck_require__(82025), exports);
-__exportStar(__nccwpck_require__(80464), exports);
-__exportStar(__nccwpck_require__(92262), exports);
-__exportStar(__nccwpck_require__(55847), exports);
-__exportStar(__nccwpck_require__(92803), exports);
-__exportStar(__nccwpck_require__(97218), exports);
-__exportStar(__nccwpck_require__(54085), exports);
-__exportStar(__nccwpck_require__(64605), exports);
-__exportStar(__nccwpck_require__(95545), exports);
-__exportStar(__nccwpck_require__(73927), exports);
-__exportStar(__nccwpck_require__(57636), exports);
-__exportStar(__nccwpck_require__(93176), exports);
-__exportStar(__nccwpck_require__(72150), exports);
-__exportStar(__nccwpck_require__(82705), exports);
-__exportStar(__nccwpck_require__(59827), exports);
-__exportStar(__nccwpck_require__(42463), exports);
-__exportStar(__nccwpck_require__(51865), exports);
-__exportStar(__nccwpck_require__(52939), exports);
-__exportStar(__nccwpck_require__(22110), exports);
-__exportStar(__nccwpck_require__(65688), exports);
-__exportStar(__nccwpck_require__(72151), exports);
-__exportStar(__nccwpck_require__(48920), exports);
-__exportStar(__nccwpck_require__(84328), exports);
-__exportStar(__nccwpck_require__(58858), exports);
-__exportStar(__nccwpck_require__(83682), exports);
-__exportStar(__nccwpck_require__(81286), exports);
-__exportStar(__nccwpck_require__(12358), exports);
-__exportStar(__nccwpck_require__(14239), exports);
-__exportStar(__nccwpck_require__(17929), exports);
-__exportStar(__nccwpck_require__(2847), exports);
-__exportStar(__nccwpck_require__(50671), exports);
-__exportStar(__nccwpck_require__(37648), exports);
-__exportStar(__nccwpck_require__(35882), exports);
-__exportStar(__nccwpck_require__(89010), exports);
-__exportStar(__nccwpck_require__(66933), exports);
-__exportStar(__nccwpck_require__(20928), exports);
-__exportStar(__nccwpck_require__(79856), exports);
-__exportStar(__nccwpck_require__(15259), exports);
-__exportStar(__nccwpck_require__(60651), exports);
-__exportStar(__nccwpck_require__(49346), exports);
-__exportStar(__nccwpck_require__(54710), exports);
-__exportStar(__nccwpck_require__(81148), exports);
-__exportStar(__nccwpck_require__(32771), exports);
-__exportStar(__nccwpck_require__(29703), exports);
-__exportStar(__nccwpck_require__(70913), exports);
-__exportStar(__nccwpck_require__(47875), exports);
-__exportStar(__nccwpck_require__(62054), exports);
-__exportStar(__nccwpck_require__(29029), exports);
-__exportStar(__nccwpck_require__(95699), exports);
-__exportStar(__nccwpck_require__(55795), exports);
-__exportStar(__nccwpck_require__(24196), exports);
-__exportStar(__nccwpck_require__(86630), exports);
-__exportStar(__nccwpck_require__(70634), exports);
-__exportStar(__nccwpck_require__(89763), exports);
-__exportStar(__nccwpck_require__(97446), exports);
-__exportStar(__nccwpck_require__(91535), exports);
-__exportStar(__nccwpck_require__(40903), exports);
-__exportStar(__nccwpck_require__(28620), exports);
-__exportStar(__nccwpck_require__(13627), exports);
-__exportStar(__nccwpck_require__(35168), exports);
-__exportStar(__nccwpck_require__(43924), exports);
-__exportStar(__nccwpck_require__(65898), exports);
-__exportStar(__nccwpck_require__(91699), exports);
-__exportStar(__nccwpck_require__(33437), exports);
-__exportStar(__nccwpck_require__(97610), exports);
-__exportStar(__nccwpck_require__(80014), exports);
-__exportStar(__nccwpck_require__(25462), exports);
-__exportStar(__nccwpck_require__(93411), exports);
-__exportStar(__nccwpck_require__(22245), exports);
-__exportStar(__nccwpck_require__(40496), exports);
-__exportStar(__nccwpck_require__(42338), exports);
-__exportStar(__nccwpck_require__(95297), exports);
-__exportStar(__nccwpck_require__(96286), exports);
-__exportStar(__nccwpck_require__(63216), exports);
-__exportStar(__nccwpck_require__(62668), exports);
-__exportStar(__nccwpck_require__(98411), exports);
-__exportStar(__nccwpck_require__(36029), exports);
-__exportStar(__nccwpck_require__(5899), exports);
-__exportStar(__nccwpck_require__(11400), exports);
-__exportStar(__nccwpck_require__(26571), exports);
-__exportStar(__nccwpck_require__(19891), exports);
-__exportStar(__nccwpck_require__(82034), exports);
-__exportStar(__nccwpck_require__(77703), exports);
-__exportStar(__nccwpck_require__(47106), exports);
-__exportStar(__nccwpck_require__(34703), exports);
-__exportStar(__nccwpck_require__(41816), exports);
-__exportStar(__nccwpck_require__(24223), exports);
-__exportStar(__nccwpck_require__(71606), exports);
-__exportStar(__nccwpck_require__(63390), exports);
-__exportStar(__nccwpck_require__(19038), exports);
-__exportStar(__nccwpck_require__(39849), exports);
-__exportStar(__nccwpck_require__(24752), exports);
-__exportStar(__nccwpck_require__(54000), exports);
-__exportStar(__nccwpck_require__(93704), exports);
-__exportStar(__nccwpck_require__(49281), exports);
-__exportStar(__nccwpck_require__(20114), exports);
-__exportStar(__nccwpck_require__(93060), exports);
-__exportStar(__nccwpck_require__(32196), exports);
-__exportStar(__nccwpck_require__(82342), exports);
-__exportStar(__nccwpck_require__(66197), exports);
-__exportStar(__nccwpck_require__(95317), exports);
-__exportStar(__nccwpck_require__(64507), exports);
-__exportStar(__nccwpck_require__(26498), exports);
-__exportStar(__nccwpck_require__(10171), exports);
-__exportStar(__nccwpck_require__(37396), exports);
-__exportStar(__nccwpck_require__(22152), exports);
-__exportStar(__nccwpck_require__(33543), exports);
-__exportStar(__nccwpck_require__(94565), exports);
-__exportStar(__nccwpck_require__(32841), exports);
-__exportStar(__nccwpck_require__(57461), exports);
-__exportStar(__nccwpck_require__(24458), exports);
-__exportStar(__nccwpck_require__(75507), exports);
-__exportStar(__nccwpck_require__(42857), exports);
-__exportStar(__nccwpck_require__(19863), exports);
-__exportStar(__nccwpck_require__(50606), exports);
-__exportStar(__nccwpck_require__(65252), exports);
-__exportStar(__nccwpck_require__(51140), exports);
-__exportStar(__nccwpck_require__(38664), exports);
-__exportStar(__nccwpck_require__(44990), exports);
-__exportStar(__nccwpck_require__(30874), exports);
-__exportStar(__nccwpck_require__(87516), exports);
-__exportStar(__nccwpck_require__(84199), exports);
-__exportStar(__nccwpck_require__(84955), exports);
-__exportStar(__nccwpck_require__(36445), exports);
-__exportStar(__nccwpck_require__(20736), exports);
-__exportStar(__nccwpck_require__(54797), exports);
-__exportStar(__nccwpck_require__(68517), exports);
-__exportStar(__nccwpck_require__(31113), exports);
-__exportStar(__nccwpck_require__(67683), exports);
-__exportStar(__nccwpck_require__(77693), exports);
-__exportStar(__nccwpck_require__(70229), exports);
-__exportStar(__nccwpck_require__(34170), exports);
-__exportStar(__nccwpck_require__(58574), exports);
-__exportStar(__nccwpck_require__(1033), exports);
-__exportStar(__nccwpck_require__(30292), exports);
-__exportStar(__nccwpck_require__(78010), exports);
-__exportStar(__nccwpck_require__(54638), exports);
-__exportStar(__nccwpck_require__(41823), exports);
-__exportStar(__nccwpck_require__(69838), exports);
-__exportStar(__nccwpck_require__(54861), exports);
-__exportStar(__nccwpck_require__(45206), exports);
-__exportStar(__nccwpck_require__(36604), exports);
-__exportStar(__nccwpck_require__(50872), exports);
-__exportStar(__nccwpck_require__(24456), exports);
-__exportStar(__nccwpck_require__(7151), exports);
-__exportStar(__nccwpck_require__(90269), exports);
-__exportStar(__nccwpck_require__(32280), exports);
-__exportStar(__nccwpck_require__(36186), exports);
-__exportStar(__nccwpck_require__(71879), exports);
-__exportStar(__nccwpck_require__(71283), exports);
-__exportStar(__nccwpck_require__(63823), exports);
-__exportStar(__nccwpck_require__(94620), exports);
-__exportStar(__nccwpck_require__(82668), exports);
-__exportStar(__nccwpck_require__(24090), exports);
-__exportStar(__nccwpck_require__(3282), exports);
-__exportStar(__nccwpck_require__(99028), exports);
-__exportStar(__nccwpck_require__(44021), exports);
-__exportStar(__nccwpck_require__(31613), exports);
-__exportStar(__nccwpck_require__(48773), exports);
-__exportStar(__nccwpck_require__(51578), exports);
-__exportStar(__nccwpck_require__(30742), exports);
-__exportStar(__nccwpck_require__(17678), exports);
-__exportStar(__nccwpck_require__(51496), exports);
-//# sourceMappingURL=index.js.map
+__exportStar(__nccwpck_require__(714), exports);
+__exportStar(__nccwpck_require__(7857), exports);
+
 
 /***/ }),
 
-/***/ 5639:
+/***/ 714:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=interruptionResource.js.map
+
 
 /***/ }),
 
-/***/ 90938:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=invitationResource.js.map
-
-/***/ }),
-
-/***/ 56196:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.KubernetesAuthenticationType = void 0;
-var KubernetesAuthenticationType;
-(function (KubernetesAuthenticationType) {
-    KubernetesAuthenticationType["KubernetesAws"] = "KubernetesAws";
-    KubernetesAuthenticationType["KubernetesAzure"] = "KubernetesAzure";
-    KubernetesAuthenticationType["KubernetesCertificate"] = "KubernetesCertificate";
-    KubernetesAuthenticationType["KubernetesGoogleCloud"] = "KubernetesGoogleCloud";
-    KubernetesAuthenticationType["KubernetesPodServiceAccount"] = "KubernetesPodService";
-    KubernetesAuthenticationType["KubernetesStandard"] = "KubernetesStandard";
-})(KubernetesAuthenticationType = exports.KubernetesAuthenticationType || (exports.KubernetesAuthenticationType = {}));
-//# sourceMappingURL=kubernetesAuthenticationType.js.map
-
-/***/ }),
-
-/***/ 17700:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=letsEncryptConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 3753:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=libraryVariableSetResource.js.map
-
-/***/ }),
-
-/***/ 44688:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=libraryVariableSetUsageEntry.js.map
-
-/***/ }),
-
-/***/ 32925:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=libraryVariableSetUsageResource.js.map
-
-/***/ }),
-
-/***/ 27467:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=licenseResource.js.map
-
-/***/ }),
-
-/***/ 82025:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LicenseMessageDisposition = exports.PermissionsMode = exports.HostingEnvironment = void 0;
-var HostingEnvironment;
-(function (HostingEnvironment) {
-    HostingEnvironment["SelfHosted"] = "SelfHosted";
-    HostingEnvironment["OctopusCloud"] = "OctopusCloud";
-})(HostingEnvironment = exports.HostingEnvironment || (exports.HostingEnvironment = {}));
-var PermissionsMode;
-(function (PermissionsMode) {
-    PermissionsMode["Unspecified"] = "Unspecified";
-    PermissionsMode["Restricted"] = "Restricted";
-    PermissionsMode["Full"] = "Full";
-})(PermissionsMode = exports.PermissionsMode || (exports.PermissionsMode = {}));
-var LicenseMessageDisposition;
-(function (LicenseMessageDisposition) {
-    LicenseMessageDisposition["Information"] = "Information";
-    LicenseMessageDisposition["Warning"] = "Warning";
-    LicenseMessageDisposition["Error"] = "Error";
-})(LicenseMessageDisposition = exports.LicenseMessageDisposition || (exports.LicenseMessageDisposition = {}));
-//# sourceMappingURL=licenseStatusResource.js.map
-
-/***/ }),
-
-/***/ 80464:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=lifecycleProgressionResource.js.map
-
-/***/ }),
-
-/***/ 92262:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=lifecycleResource.js.map
-
-/***/ }),
-
-/***/ 55847:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=linksCollection.js.map
-
-/***/ }),
-
-/***/ 92803:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=loginCommand.js.map
-
-/***/ }),
-
-/***/ 97218:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=loginInitiatedResource.js.map
-
-/***/ }),
-
-/***/ 54085:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=loginState.js.map
-
-/***/ }),
-
-/***/ 64605:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DeleteMachinesBehavior = void 0;
-var DeleteMachinesBehavior;
-(function (DeleteMachinesBehavior) {
-    DeleteMachinesBehavior["DoNotDelete"] = "DoNotDelete";
-    DeleteMachinesBehavior["DeleteUnavailableMachines"] = "DeleteUnavailableMachines";
-})(DeleteMachinesBehavior = exports.DeleteMachinesBehavior || (exports.DeleteMachinesBehavior = {}));
-//# sourceMappingURL=machineCleanupPolicy.js.map
-
-/***/ }),
-
-/***/ 95545:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=machineConnectionStatus.js.map
-
-/***/ }),
-
-/***/ 73927:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.MachineConnectivityBehavior = void 0;
-var MachineConnectivityBehavior;
-(function (MachineConnectivityBehavior) {
-    MachineConnectivityBehavior["ExpectedToBeOnline"] = "ExpectedToBeOnline";
-    MachineConnectivityBehavior["MayBeOfflineAndCanBeSkipped"] = "MayBeOfflineAndCanBeSkipped";
-})(MachineConnectivityBehavior = exports.MachineConnectivityBehavior || (exports.MachineConnectivityBehavior = {}));
-//# sourceMappingURL=machineConnectivityPolicy.js.map
-
-/***/ }),
-
-/***/ 57636:
+/***/ 7857:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.MachineFilterResource = void 0;
-var triggerFilterResource_1 = __nccwpck_require__(1033);
-var triggerFilterType_1 = __nccwpck_require__(30292);
-var MachineFilterResource = (function (_super) {
-    __extends(MachineFilterResource, _super);
-    function MachineFilterResource() {
-        var _this = _super.call(this) || this;
-        _this.EnvironmentIds = undefined;
-        _this.Roles = undefined;
-        _this.EventGroups = undefined;
-        _this.EventCategories = undefined;
-        _this.FilterType = triggerFilterType_1.TriggerFilterType.MachineFilter;
-        return _this;
-    }
-    return MachineFilterResource;
-}(triggerFilterResource_1.TriggerFilterResource));
-exports.MachineFilterResource = MachineFilterResource;
-//# sourceMappingURL=machineFilterResource.js.map
-
-/***/ }),
-
-/***/ 93176:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.HealthCheckType = void 0;
-var HealthCheckType;
-(function (HealthCheckType) {
-    HealthCheckType["RunScript"] = "RunScript";
-    HealthCheckType["OnlyConnectivity"] = "OnlyConnectivity";
-})(HealthCheckType = exports.HealthCheckType || (exports.HealthCheckType = {}));
-//# sourceMappingURL=machineHealthCheckPolicy.js.map
-
-/***/ }),
-
-/***/ 72150:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=machinePolicyResource.js.map
-
-/***/ }),
-
-/***/ 82705:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.MachineModelHealthStatus = exports.NewMachine = void 0;
-function NewMachine(name, endpoint) {
-    return {
-        IsDisabled: false,
-        IsInProcess: false,
-        Endpoint: endpoint,
-        HealthStatus: MachineModelHealthStatus.Unknown,
-        Name: name,
-        HasLatestCalamari: false,
-        MachinePolicyId: "",
-    };
-}
-exports.NewMachine = NewMachine;
-var MachineModelHealthStatus;
-(function (MachineModelHealthStatus) {
-    MachineModelHealthStatus["Healthy"] = "Healthy";
-    MachineModelHealthStatus["Unavailable"] = "Unavailable";
-    MachineModelHealthStatus["Unknown"] = "Unknown";
-    MachineModelHealthStatus["HasWarnings"] = "HasWarnings";
-    MachineModelHealthStatus["Unhealthy"] = "Unhealthy";
-})(MachineModelHealthStatus = exports.MachineModelHealthStatus || (exports.MachineModelHealthStatus = {}));
-//# sourceMappingURL=machineResource.js.map
-
-/***/ }),
-
-/***/ 59827:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=machineScriptPolicy.js.map
-
-/***/ }),
-
-/***/ 42463:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TentacleUpdateBehavior = exports.CalamariUpdateBehavior = void 0;
-var CalamariUpdateBehavior;
-(function (CalamariUpdateBehavior) {
-    CalamariUpdateBehavior["UpdateOnDeployment"] = "UpdateOnDeployment";
-    CalamariUpdateBehavior["UpdateOnNewMachine"] = "UpdateOnNewMachine";
-    CalamariUpdateBehavior["UpdateAlways"] = "UpdateAlways";
-})(CalamariUpdateBehavior = exports.CalamariUpdateBehavior || (exports.CalamariUpdateBehavior = {}));
-var TentacleUpdateBehavior;
-(function (TentacleUpdateBehavior) {
-    TentacleUpdateBehavior["NeverUpdate"] = "NeverUpdate";
-    TentacleUpdateBehavior["Update"] = "Update";
-})(TentacleUpdateBehavior = exports.TentacleUpdateBehavior || (exports.TentacleUpdateBehavior = {}));
-//# sourceMappingURL=machineUpdatePolicy.js.map
-
-/***/ }),
-
-/***/ 51865:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=maintenanceConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 52939:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=multiTenancyStatusResource.js.map
-
-/***/ }),
-
-/***/ 22110:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=namedReferenceItem.js.map
-
-/***/ }),
-
-/***/ 65688:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=namedResource.js.map
-
-/***/ }),
-
-/***/ 72151:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=nonVcsRunbookResource.js.map
-
-/***/ }),
-
-/***/ 48920:
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -11614,268 +3520,161 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.OctopusError = void 0;
-var OctopusError = (function (_super) {
-    __extends(OctopusError, _super);
-    function OctopusError(StatusCode, message) {
-        var _this = _super.call(this, message) || this;
-        _this.StatusCode = StatusCode;
-        _this.ErrorMessage = message;
-        _this.Errors = [];
-        Object.setPrototypeOf(_this, OctopusError.prototype);
-        return _this;
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
-    OctopusError.create = function (statusCode, response) {
-        var e = new OctopusError(statusCode);
-        var n = __assign(__assign({}, e), response);
-        Object.setPrototypeOf(n, OctopusError.prototype);
-        return n;
-    };
-    return OctopusError;
-}(Error));
-exports.OctopusError = OctopusError;
-//# sourceMappingURL=octopusError.js.map
-
-/***/ }),
-
-/***/ 84328:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=octopusProjectFeedResource.js.map
-
-/***/ }),
-
-/***/ 58858:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=octopusServerClusterSummaryResource.js.map
-
-/***/ }),
-
-/***/ 83682:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=octopusServerNodeDetailsResource.js.map
-
-/***/ }),
-
-/***/ 81286:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=octopusServerNodeResource.js.map
-
-/***/ }),
-
-/***/ 12358:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=octopusServerNodeSummaryResource.js.map
-
-/***/ }),
-
-/***/ 14239:
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.createWarningsFromOctopusWarning = void 0;
-function createWarningsFromOctopusWarning(warning) {
-    return {
-        message: warning.WarningMessage,
-        warnings: warning.Warnings || [],
-        parsedHelpLinks: warning.ParsedHelpLinks,
-        helpLink: warning.HelpLink,
-        helpText: warning.HelpText,
-        fieldWarnings: {},
-        details: flattenWarningDetails(warning.Details),
+exports.PackageRepository = void 0;
+var fs_1 = __nccwpck_require__(7147);
+var path_1 = __importDefault(__nccwpck_require__(1017));
+var form_data_1 = __importDefault(__nccwpck_require__(4334));
+var overwriteMode_1 = __nccwpck_require__(7758);
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+var spaceResolver_1 = __nccwpck_require__(2054);
+var PackageRepository = /** @class */ (function () {
+    function PackageRepository(client, spaceName) {
+        this.client = client;
+        this.spaceName = spaceName;
+    }
+    PackageRepository.prototype.get = function (packageId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!packageId) {
+                            throw new Error("Package Id was not provided");
+                        }
+                        return [4 /*yield*/, this.client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/packages{/packageId}"), {
+                                spaceName: this.spaceName,
+                                packageId: packageId,
+                            })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
     };
-}
-exports.createWarningsFromOctopusWarning = createWarningsFromOctopusWarning;
-function joinWarningEntries(parentKey, entry) {
-    if (entry === void 0) { entry = {}; }
-    return Object.keys(entry).reduce(function (prev, key) {
-        var _a;
-        return (__assign(__assign({}, prev), (_a = {}, _a["".concat(parentKey, ":").concat(key)] = entry[key].join(", "), _a)));
-    }, {});
-}
-function flattenWarningDetails(details) {
-    if (details === void 0) { details = {}; }
-    return Object.keys(details).reduce(function (prev, parentKey) { return (__assign(__assign({}, prev), joinWarningEntries(parentKey, details[parentKey]))); }, {});
-}
-//# sourceMappingURL=octopusValidationResponse.js.map
+    PackageRepository.prototype.list = function (args) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/packages{/id}{?nuGetPackageId,filter,latest,skip,take,includeNotes}"), __assign({ spaceName: this.spaceName }, args))];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    PackageRepository.prototype.push = function (packages, overwriteMode) {
+        if (overwriteMode === void 0) { overwriteMode = overwriteMode_1.OverwriteMode.FailIfExists; }
+        return __awaiter(this, void 0, void 0, function () {
+            var spaceId, tasks, _i, packages_1, packagePath;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, (0, spaceResolver_1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1:
+                        spaceId = _a.sent();
+                        tasks = [];
+                        for (_i = 0, packages_1 = packages; _i < packages_1.length; _i++) {
+                            packagePath = packages_1[_i];
+                            tasks.push(this.packageUpload(spaceId, packagePath, overwriteMode));
+                        }
+                        return [4 /*yield*/, Promise.all(tasks)];
+                    case 2:
+                        _a.sent();
+                        this.client.info("Packages uploaded");
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    PackageRepository.prototype.packageUpload = function (spaceId, filePath, overwriteMode) {
+        return __awaiter(this, void 0, void 0, function () {
+            var fileName;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        fileName = path_1.default.basename(filePath);
+                        this.client.info("Uploading package, ".concat(fileName, "..."));
+                        return [4 /*yield*/, this.upload(spaceId, filePath, fileName, overwriteMode)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    PackageRepository.prototype.upload = function (spaceId, filePath, fileName, overwriteMode) {
+        return __awaiter(this, void 0, void 0, function () {
+            var fd, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        fd = new form_data_1.default();
+                        return [4 /*yield*/, fs_1.promises.readFile(filePath)];
+                    case 1:
+                        data = _a.sent();
+                        fd.append("fileToUpload", data, fileName);
+                        return [2 /*return*/, this.client.post("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/packages/raw{?overwriteMode}"), fd, { overwriteMode: overwriteMode, spaceId: spaceId })];
+                }
+            });
+        });
+    };
+    return PackageRepository;
+}());
+exports.PackageRepository = PackageRepository;
+
 
 /***/ }),
 
-/***/ 17929:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=offlineDropDestinationResource.js.map
-
-/***/ }),
-
-/***/ 2847:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.OfflineDropDestinationType = void 0;
-var OfflineDropDestinationType;
-(function (OfflineDropDestinationType) {
-    OfflineDropDestinationType["Artifact"] = "Artifact";
-    OfflineDropDestinationType["FileSystem"] = "FileSystem";
-})(OfflineDropDestinationType = exports.OfflineDropDestinationType || (exports.OfflineDropDestinationType = {}));
-//# sourceMappingURL=offlineDropDestinationType.js.map
-
-/***/ }),
-
-/***/ 50671:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=onboardingResource.js.map
-
-/***/ }),
-
-/***/ 37648:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PackageAcquisitionLocation = void 0;
-var PackageAcquisitionLocation;
-(function (PackageAcquisitionLocation) {
-    PackageAcquisitionLocation["Server"] = "Server";
-    PackageAcquisitionLocation["ExecutionTarget"] = "ExecutionTarget";
-    PackageAcquisitionLocation["NotAcquired"] = "NotAcquired";
-})(PackageAcquisitionLocation = exports.PackageAcquisitionLocation || (exports.PackageAcquisitionLocation = {}));
-//# sourceMappingURL=packageAcquisitionLocation.js.map
-
-/***/ }),
-
-/***/ 35882:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=packageDescriptionResource.js.map
-
-/***/ }),
-
-/***/ 89010:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=packageFromBuiltInFeedResource.js.map
-
-/***/ }),
-
-/***/ 66933:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PackageSelectionMode = void 0;
-var PackageSelectionMode;
-(function (PackageSelectionMode) {
-    PackageSelectionMode["Immediate"] = "immediate";
-    PackageSelectionMode["Deferred"] = "deferred";
-})(PackageSelectionMode = exports.PackageSelectionMode || (exports.PackageSelectionMode = {}));
-//# sourceMappingURL=packageReference.js.map
-
-/***/ }),
-
-/***/ 20928:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=packageResource.js.map
-
-/***/ }),
-
-/***/ 79856:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=packageVersionResource.js.map
-
-/***/ }),
-
-/***/ 15259:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=pagingCollection.js.map
-
-/***/ }),
-
-/***/ 60651:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.DashboardRenderMode = void 0;
-var DashboardRenderMode;
-(function (DashboardRenderMode) {
-    DashboardRenderMode["VirtualizeColumns"] = "VirtualizeColumns";
-    DashboardRenderMode["VirtualizeRowsAndColumns"] = "VirtualizeRowsAndColumns";
-})(DashboardRenderMode = exports.DashboardRenderMode || (exports.DashboardRenderMode = {}));
-//# sourceMappingURL=performanceConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 49346:
+/***/ 800:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Permission = void 0;
+//Enums can't be keys in a dictionary so we might need to convert this to a list of static strings
 var Permission;
 (function (Permission) {
     Permission["None"] = "None";
@@ -11996,647 +3795,47 @@ var Permission;
     Permission["WorkerEdit"] = "WorkerEdit";
     Permission["WorkerView"] = "WorkerView";
 })(Permission = exports.Permission || (exports.Permission = {}));
-//# sourceMappingURL=permission.js.map
+
 
 /***/ }),
 
-/***/ 54710:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ 1682:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=permissionDescriptions.js.map
-
-/***/ }),
-
-/***/ 81148:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=phaseResource.js.map
-
-/***/ }),
-
-/***/ 32771:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ProcessTypeAliasMap = exports.ProcessType = void 0;
-var ProcessType;
-(function (ProcessType) {
-    ProcessType["Deployment"] = "Deployment";
-    ProcessType["Runbook"] = "Runbook";
-})(ProcessType = exports.ProcessType || (exports.ProcessType = {}));
-exports.ProcessTypeAliasMap = (_a = {},
-    _a[ProcessType.Deployment] = {
-        alias: {
-            noun: "deployment",
-            verb: "deploy",
-            plural: "deployments",
-            pastTense: "deployed",
-            preposition: "to",
-        },
-        manifest: "Release",
-    },
-    _a[ProcessType.Runbook] = {
-        alias: {
-            noun: "runbook",
-            verb: "run",
-            plural: "runs",
-            pastTense: "ran",
-            preposition: "on",
-        },
-        manifest: "Snapshot",
-    },
-    _a);
-//# sourceMappingURL=processType.js.map
-
-/***/ }),
-
-/***/ 29703:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=progressionResource.js.map
-
-/***/ }),
-
-/***/ 47875:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectExportRequest.js.map
-
-/***/ }),
-
-/***/ 62054:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectExportResponse.js.map
-
-/***/ }),
-
-/***/ 29029:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectGroupResource.js.map
-
-/***/ }),
-
-/***/ 95699:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectImportFile.js.map
-
-/***/ }),
-
-/***/ 55795:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectImportFileListResponse.js.map
-
-/***/ }),
-
-/***/ 24196:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectImportPreviewRequest.js.map
-
-/***/ }),
-
-/***/ 86630:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectImportPreviewResponse.js.map
-
-/***/ }),
-
-/***/ 70634:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectImportRequest.js.map
-
-/***/ }),
-
-/***/ 89763:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectImportResponse.js.map
-
-/***/ }),
-
-/***/ 97446:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getBranchNameFromRouteParameter = exports.getURISafeBranchName = exports.isVcsBranchResource = exports.NewProject = exports.HasVersionControlledPersistenceSettings = exports.HasVcsProjectResourceLinks = exports.IsUsingUsernamePasswordAuth = exports.AuthenticationType = exports.PersistenceSettingsType = void 0;
-var PersistenceSettingsType;
-(function (PersistenceSettingsType) {
-    PersistenceSettingsType["VersionControlled"] = "VersionControlled";
-    PersistenceSettingsType["Database"] = "Database";
-})(PersistenceSettingsType = exports.PersistenceSettingsType || (exports.PersistenceSettingsType = {}));
-var AuthenticationType;
-(function (AuthenticationType) {
-    AuthenticationType["Anonymous"] = "Anonymous";
-    AuthenticationType["UsernamePassword"] = "UsernamePassword";
-})(AuthenticationType = exports.AuthenticationType || (exports.AuthenticationType = {}));
-function IsUsingUsernamePasswordAuth(T) {
-    return (T.Type ===
-        AuthenticationType.UsernamePassword);
-}
-exports.IsUsingUsernamePasswordAuth = IsUsingUsernamePasswordAuth;
-function HasVcsProjectResourceLinks(links) {
-    return links.Branches !== undefined;
-}
-exports.HasVcsProjectResourceLinks = HasVcsProjectResourceLinks;
-function HasVersionControlledPersistenceSettings(T) {
-    return T.Type === PersistenceSettingsType.VersionControlled;
-}
-exports.HasVersionControlledPersistenceSettings = HasVersionControlledPersistenceSettings;
-function NewProject(name, projectGroup, lifecycle) {
-    return {
-        LifecycleId: lifecycle.Id,
-        Name: name,
-        ProjectGroupId: projectGroup.Id,
-    };
-}
-exports.NewProject = NewProject;
-function isVcsBranchResource(branch) {
-    return branch.Name !== undefined;
-}
-exports.isVcsBranchResource = isVcsBranchResource;
-function getURISafeBranchName(branch) {
-    return encodeURIComponent(branch.Name);
-}
-exports.getURISafeBranchName = getURISafeBranchName;
-function getBranchNameFromRouteParameter(routeParameter) {
-    if (routeParameter) {
-        return decodeURIComponent(routeParameter);
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
     }
-    return undefined;
-}
-exports.getBranchNameFromRouteParameter = getBranchNameFromRouteParameter;
-//# sourceMappingURL=projectResource.js.map
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(4182), exports);
+__exportStar(__nccwpck_require__(2930), exports);
+
 
 /***/ }),
 
-/***/ 91535:
+/***/ 4182:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectSummary.js.map
+
 
 /***/ }),
 
-/***/ 40903:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectUsage.js.map
-
-/***/ }),
-
-/***/ 70913:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=projectedTeamReferenceDataItem.js.map
-
-/***/ }),
-
-/***/ 28620:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isSensitiveValue = exports.NewSensitiveValue = void 0;
-function NewSensitiveValue(value, hint) {
-    return {
-        HasValue: true,
-        Hint: hint,
-        NewValue: value,
-    };
-}
-exports.NewSensitiveValue = NewSensitiveValue;
-function isSensitiveValue(value) {
-    if (typeof value === "string" || value === null) {
-        return false;
-    }
-    return Object.prototype.hasOwnProperty.call(value, "HasValue");
-}
-exports.isSensitiveValue = isSensitiveValue;
-//# sourceMappingURL=propertyValueResource.js.map
-
-/***/ }),
-
-/***/ 13627:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=proxyResource.js.map
-
-/***/ }),
-
-/***/ 35168:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isProcessReferenceDataItem = void 0;
-var utils_1 = __nccwpck_require__(12765);
-function isProcessReferenceDataItem(item) {
-    if (!item) {
-        return false;
-    }
-    var converted = item;
-    return (0, utils_1.isPropertyDefinedAndNotNull)(converted, "ProcessType");
-}
-exports.isProcessReferenceDataItem = isProcessReferenceDataItem;
-//# sourceMappingURL=referenceDataItem.js.map
-
-/***/ }),
-
-/***/ 43924:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=releaseChanges.js.map
-
-/***/ }),
-
-/***/ 65898:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=releasePackageVersionBuildInformation.js.map
-
-/***/ }),
-
-/***/ 91699:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=releasePackageVersionBuildInformationResource.js.map
-
-/***/ }),
-
-/***/ 33437:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=releaseProgressionResource.js.map
-
-/***/ }),
-
-/***/ 97610:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isRunbookSnapshotResource = exports.isReleaseResource = void 0;
-var utils_1 = __nccwpck_require__(12765);
-function isReleaseResource(resource) {
-    if (resource === undefined || resource === null) {
-        return false;
-    }
-    var converted = resource;
-    return (converted.Version !== undefined &&
-        (0, utils_1.typeSafeHasOwnProperty)(converted, "Version"));
-}
-exports.isReleaseResource = isReleaseResource;
-function isRunbookSnapshotResource(resource) {
-    if (resource === undefined || resource === null) {
-        return false;
-    }
-    var converted = resource;
-    return (converted.Name !== undefined && (0, utils_1.typeSafeHasOwnProperty)(converted, "Name"));
-}
-exports.isRunbookSnapshotResource = isRunbookSnapshotResource;
-//# sourceMappingURL=releaseResource.js.map
-
-/***/ }),
-
-/***/ 80014:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=releaseTemplateResource.js.map
-
-/***/ }),
-
-/***/ 25462:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=releaseUsage.js.map
-
-/***/ }),
-
-/***/ 93411:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=releaseUsageEntry.js.map
-
-/***/ }),
-
-/***/ 22245:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=resource.js.map
-
-/***/ }),
-
-/***/ 40496:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=resourceCollection.js.map
-
-/***/ }),
-
-/***/ 42338:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=resourceCollectionLinks.js.map
-
-/***/ }),
-
-/***/ 95297:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=retentionDefaultConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 96286:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RetentionUnit = void 0;
-var RetentionUnit;
-(function (RetentionUnit) {
-    RetentionUnit["Days"] = "Days";
-    RetentionUnit["Items"] = "Items";
-})(RetentionUnit = exports.RetentionUnit || (exports.RetentionUnit = {}));
-//# sourceMappingURL=retentionPeriod.js.map
-
-/***/ }),
-
-/***/ 63216:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=rootResource.js.map
-
-/***/ }),
-
-/***/ 41816:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RunConditionForAction = void 0;
-var RunConditionForAction;
-(function (RunConditionForAction) {
-    RunConditionForAction["Success"] = "Success";
-    RunConditionForAction["Variable"] = "Variable";
-})(RunConditionForAction = exports.RunConditionForAction || (exports.RunConditionForAction = {}));
-//# sourceMappingURL=runConditionForAction.js.map
-
-/***/ }),
-
-/***/ 62668:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RunbookEnvironmentScope = void 0;
-var RunbookEnvironmentScope;
-(function (RunbookEnvironmentScope) {
-    RunbookEnvironmentScope["All"] = "All";
-    RunbookEnvironmentScope["Specified"] = "Specified";
-    RunbookEnvironmentScope["FromProjectLifecycles"] = "FromProjectLifecycles";
-})(RunbookEnvironmentScope = exports.RunbookEnvironmentScope || (exports.RunbookEnvironmentScope = {}));
-//# sourceMappingURL=runbookEnvironmentScope.js.map
-
-/***/ }),
-
-/***/ 98411:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=runbookProcessResource.js.map
-
-/***/ }),
-
-/***/ 36029:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=runbookProgressionResource.js.map
-
-/***/ }),
-
-/***/ 5899:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.IsNonVcsRunbook = void 0;
-function IsNonVcsRunbook(runbook) {
-    return runbook.ProjectId !== undefined;
-}
-exports.IsNonVcsRunbook = IsNonVcsRunbook;
-//# sourceMappingURL=runbookResource.js.map
-
-/***/ }),
-
-/***/ 11400:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=runbookResourceLinks.js.map
-
-/***/ }),
-
-/***/ 26571:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RunbookRunParameters = void 0;
-var RunbookRunParameters = (function () {
-    function RunbookRunParameters() {
-        this.EnvironmentIds = [];
-        this.ExcludedMachineIds = [];
-        this.ForcePackageDownload = false;
-        this.SkipActions = [];
-        this.SpecificMachineIds = [];
-        this.UseDefaultSnapshot = true;
-    }
-    RunbookRunParameters.MapFrom = function (runbookRun) {
-        var _a, _b, _c;
-        return {
-            EnvironmentId: runbookRun.EnvironmentId,
-            ExcludedMachineIds: runbookRun.ExcludedMachineIds != null ? runbookRun.ExcludedMachineIds : [],
-            ForcePackageDownload: runbookRun.ForcePackageDownload,
-            FormValues: (_a = runbookRun.FormValues) !== null && _a !== void 0 ? _a : {},
-            ProjectId: runbookRun.ProjectId,
-            QueueTime: (_b = runbookRun.QueueTime) === null || _b === void 0 ? void 0 : _b.toString(),
-            QueueTimeExpiry: (_c = runbookRun.QueueTimeExpiry) === null || _c === void 0 ? void 0 : _c.toString(),
-            RunbookId: runbookRun.RunbookId,
-            SkipActions: runbookRun.SkipActions != null ? runbookRun.SkipActions : [],
-            SpecificMachineIds: runbookRun.SpecificMachineIds != null ? runbookRun.SpecificMachineIds : [],
-            TenantId: runbookRun.TenantId,
-            UseDefaultSnapshot: true,
-            UseGuidedFailure: runbookRun.UseGuidedFailure,
-        };
-    };
-    return RunbookRunParameters;
-}());
-exports.RunbookRunParameters = RunbookRunParameters;
-//# sourceMappingURL=runbookRunParameters.js.map
-
-/***/ }),
-
-/***/ 19891:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=runbookRunResource.js.map
-
-/***/ }),
-
-/***/ 82034:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=runbookRunTemplateResource.js.map
-
-/***/ }),
-
-/***/ 47106:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=runbookSnapshotResource.js.map
-
-/***/ }),
-
-/***/ 34703:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=runbookSnapshotTemplateResource.js.map
-
-/***/ }),
-
-/***/ 77703:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=runbooksDashboardItemResource.js.map
-
-/***/ }),
-
-/***/ 24223:
+/***/ 2930:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -12657,496 +3856,1606 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RunRunbookActionResource = exports.ScheduleIntervalResource = exports.DeployNewReleaseActionResource = exports.DeployLatestReleaseActionResource = exports.ScopedDeploymentActionResource = exports.CronTriggerScheduleResource = exports.DaysPerMonthTriggerScheduleResource = exports.ContinuousDailyTriggerScheduleResource = exports.OnceDailyTriggerScheduleResource = exports.TriggerScheduleIntervalResource = exports.TriggerScheduleResource = void 0;
-var triggerActionResource_1 = __nccwpck_require__(59636);
-var triggerActionType_1 = __nccwpck_require__(58574);
-var triggerFilterResource_1 = __nccwpck_require__(1033);
-var triggerFilterType_1 = __nccwpck_require__(30292);
-var triggerScheduleIntervalType_1 = __nccwpck_require__(81599);
-var TriggerScheduleResource = (function (_super) {
-    __extends(TriggerScheduleResource, _super);
-    function TriggerScheduleResource() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.Timezone = undefined;
-        return _this;
+exports.ProjectGroupRepository = void 0;
+var __1 = __nccwpck_require__(586);
+var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
+var ProjectGroupRepository = /** @class */ (function (_super) {
+    __extends(ProjectGroupRepository, _super);
+    function ProjectGroupRepository(client, spaceName) {
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/projectgroups{/id}{?skip,take,ids,partialName}")) || this;
     }
-    return TriggerScheduleResource;
-}(triggerFilterResource_1.TriggerFilterResource));
-exports.TriggerScheduleResource = TriggerScheduleResource;
-var TriggerScheduleIntervalResource = (function () {
-    function TriggerScheduleIntervalResource() {
-        this.Interval = triggerScheduleIntervalType_1.TriggerScheduleIntervalType.OnceDaily;
+    return ProjectGroupRepository;
+}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
+exports.ProjectGroupRepository = ProjectGroupRepository;
+
+
+/***/ }),
+
+/***/ 7397:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 7974:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 1067:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 5187:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 4143:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 9075:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
     }
-    return TriggerScheduleIntervalResource;
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.InitialisePrimaryPackageReference = exports.SetPrimaryPackageReference = exports.SetNamedPackageReference = exports.GetNamedPackageReferences = exports.IsNamedPackageReference = exports.GetPrimaryPackageReference = exports.HasManualInterventionResponsibleTeams = exports.PackageReferenceNamesMatch = exports.RemovePrimaryPackageReference = exports.IsPrimaryPackageReference = exports.IsDeployReleaseAction = void 0;
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+var _ = __importStar(__nccwpck_require__(250));
+var feeds_1 = __nccwpck_require__(4962);
+var packageAcquisitionLocation_1 = __nccwpck_require__(7266);
+var packageReference_1 = __nccwpck_require__(7708);
+function parseCSV(val) {
+    if (!val || val === "") {
+        return [];
+    }
+    return val.split(",");
+}
+function IsDeployReleaseAction(action) {
+    return !!action.Properties["Octopus.Action.DeployRelease.ProjectId"];
+}
+exports.IsDeployReleaseAction = IsDeployReleaseAction;
+function IsPrimaryPackageReference(pkg) {
+    return !pkg.Name;
+}
+exports.IsPrimaryPackageReference = IsPrimaryPackageReference;
+function RemovePrimaryPackageReference(packages) {
+    return _.filter(packages, function (pkg) { return !IsPrimaryPackageReference(pkg); });
+}
+exports.RemovePrimaryPackageReference = RemovePrimaryPackageReference;
+// Returns true if the names match, where null and empty string are equivalent
+function PackageReferenceNamesMatch(nameA, nameB) {
+    if (!nameA) {
+        return !nameB;
+    }
+    return nameA === nameB;
+}
+exports.PackageReferenceNamesMatch = PackageReferenceNamesMatch;
+function HasManualInterventionResponsibleTeams(action) {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    return _.some(parseCSV(action.Properties["Octopus.Action.Manual.ResponsibleTeamIds"]));
+}
+exports.HasManualInterventionResponsibleTeams = HasManualInterventionResponsibleTeams;
+function GetPrimaryPackageReference(packages) {
+    return packages === null || packages === void 0 ? void 0 : packages.find(function (pkg) { return IsPrimaryPackageReference(pkg); });
+}
+exports.GetPrimaryPackageReference = GetPrimaryPackageReference;
+function IsNamedPackageReference(pkg) {
+    return !!pkg.Name;
+}
+exports.IsNamedPackageReference = IsNamedPackageReference;
+function GetNamedPackageReferences(packages) {
+    return RemovePrimaryPackageReference(packages);
+}
+exports.GetNamedPackageReferences = GetNamedPackageReferences;
+function SetNamedPackageReference(name, updated, packages) {
+    return _.map(packages, function (pkg) {
+        if (!PackageReferenceNamesMatch(name, pkg.Name)) {
+            return pkg;
+        }
+        return __assign(__assign({}, pkg), updated);
+    });
+}
+exports.SetNamedPackageReference = SetNamedPackageReference;
+function SetPrimaryPackageReference(updated, packages) {
+    return _.map(packages, function (pkg) {
+        if (!IsPrimaryPackageReference(pkg)) {
+            return pkg;
+        }
+        return __assign(__assign({}, pkg), updated);
+    });
+}
+exports.SetPrimaryPackageReference = SetPrimaryPackageReference;
+function InitialisePrimaryPackageReference(packages, feeds, itemsKeyedBy) {
+    var primaryPackage = GetPrimaryPackageReference(packages);
+    if (primaryPackage) {
+        if (!primaryPackage.Properties.SelectionMode) {
+            primaryPackage.Properties.SelectionMode = packageReference_1.PackageSelectionMode.Immediate;
+        }
+        return __spreadArray([], packages, true);
+    }
+    var packagesWithoutDefault = RemovePrimaryPackageReference(packages);
+    var builtInFeed = feeds.find(function (f) { return f.FeedType === feeds_1.FeedType.BuiltIn; });
+    var builtInFeedIdOrName = builtInFeed && builtInFeed[itemsKeyedBy];
+    return __spreadArray([
+        {
+            Id: null,
+            PackageId: null,
+            FeedId: builtInFeedIdOrName,
+            AcquisitionLocation: packageAcquisitionLocation_1.PackageAcquisitionLocation.Server,
+            Properties: {
+                SelectionMode: packageReference_1.PackageSelectionMode.Immediate,
+            },
+        }
+    ], packagesWithoutDefault, true);
+}
+exports.InitialisePrimaryPackageReference = InitialisePrimaryPackageReference;
+
+
+/***/ }),
+
+/***/ 6989:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 929:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.deploymentActionPackages = exports.displayName = void 0;
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+var _ = __importStar(__nccwpck_require__(250));
+function displayName(pkg) {
+    return !!pkg.PackageReference ? "".concat(pkg.DeploymentAction, "/").concat(pkg.PackageReference) : pkg.DeploymentAction;
+}
+exports.displayName = displayName;
+function deploymentActionPackages(actions) {
+    return _.chain(actions)
+        .flatMap(function (action) {
+        return _.map(action.Packages, function (pkg) { return ({
+            DeploymentAction: action.Name,
+            PackageReference: pkg.Name,
+        }); });
+    })
+        .value();
+}
+exports.deploymentActionPackages = deploymentActionPackages;
+
+
+/***/ }),
+
+/***/ 6259:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isDeploymentProcess = void 0;
+var utils_1 = __nccwpck_require__(7132);
+var runbookProcess_1 = __nccwpck_require__(1379);
+function isDeploymentProcess(resource) {
+    if (resource === null || resource === undefined) {
+        return false;
+    }
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    var converted = resource;
+    return !(0, runbookProcess_1.isRunbookProcess)(resource) && converted.Version !== undefined && (0, utils_1.typeSafeHasOwnProperty)(converted, "Version");
+}
+exports.isDeploymentProcess = isDeploymentProcess;
+
+
+/***/ }),
+
+/***/ 3958:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.DeploymentProcessRepository = void 0;
+var __1 = __nccwpck_require__(586);
+var DeploymentProcessRepository = /** @class */ (function () {
+    function DeploymentProcessRepository(client, spaceName) {
+        this.client = client;
+        this.spaceName = spaceName;
+    }
+    DeploymentProcessRepository.prototype.get = function (project) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.get("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/deploymentprocesses"), {
+                            spaceId: project.SpaceId,
+                            projectId: project.Id,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    DeploymentProcessRepository.prototype.getByGitRef = function (project, gitRef) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.get("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/{gitRef}/deploymentprocesses"), {
+                            spaceId: project.SpaceId,
+                            projectId: project.Id,
+                            gitRef: gitRef,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    DeploymentProcessRepository.prototype.update = function (project, deploymentProcess) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.update("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/deploymentprocesses"), deploymentProcess, {
+                            spaceId: deploymentProcess.SpaceId,
+                            projectId: project.Id,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    DeploymentProcessRepository.prototype.updateByGitRef = function (project, deploymentProcess, gitRef) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.update("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/{gitRef}/deploymentprocesses"), deploymentProcess, {
+                            spaceId: deploymentProcess.SpaceId,
+                            projectId: project.Id,
+                            deploymentProcessId: deploymentProcess.Id,
+                            gitRef: gitRef,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    return DeploymentProcessRepository;
 }());
-exports.TriggerScheduleIntervalResource = TriggerScheduleIntervalResource;
-var OnceDailyTriggerScheduleResource = (function (_super) {
-    __extends(OnceDailyTriggerScheduleResource, _super);
-    function OnceDailyTriggerScheduleResource() {
-        var _this = _super.call(this) || this;
-        _this.StartTime = undefined;
-        _this.DaysOfWeek = undefined;
-        _this.FilterType = triggerFilterType_1.TriggerFilterType.OnceDailySchedule;
-        return _this;
+exports.DeploymentProcessRepository = DeploymentProcessRepository;
+
+
+/***/ }),
+
+/***/ 6676:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GuidedFailureMode = void 0;
+var GuidedFailureMode;
+(function (GuidedFailureMode) {
+    GuidedFailureMode["EnvironmentDefault"] = "EnvironmentDefault";
+    GuidedFailureMode["Off"] = "Off";
+    GuidedFailureMode["On"] = "On";
+})(GuidedFailureMode = exports.GuidedFailureMode || (exports.GuidedFailureMode = {}));
+
+
+/***/ }),
+
+/***/ 5188:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PackageRequirement = exports.RunCondition = exports.StartTrigger = void 0;
+var StartTrigger;
+(function (StartTrigger) {
+    StartTrigger["StartWithPrevious"] = "StartWithPrevious";
+    StartTrigger["StartAfterPrevious"] = "StartAfterPrevious";
+})(StartTrigger = exports.StartTrigger || (exports.StartTrigger = {}));
+var RunCondition;
+(function (RunCondition) {
+    RunCondition["Success"] = "Success";
+    RunCondition["Failure"] = "Failure";
+    RunCondition["Always"] = "Always";
+    RunCondition["Variable"] = "Variable";
+})(RunCondition = exports.RunCondition || (exports.RunCondition = {}));
+var PackageRequirement;
+(function (PackageRequirement) {
+    PackageRequirement["LetOctopusDecide"] = "LetOctopusDecide";
+    PackageRequirement["BeforePackageAcquisition"] = "BeforePackageAcquisition";
+    PackageRequirement["AfterPackageAcquisition"] = "AfterPackageAcquisition";
+})(PackageRequirement = exports.PackageRequirement || (exports.PackageRequirement = {}));
+
+
+/***/ }),
+
+/***/ 7274:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
     }
-    return OnceDailyTriggerScheduleResource;
-}(TriggerScheduleResource));
-exports.OnceDailyTriggerScheduleResource = OnceDailyTriggerScheduleResource;
-var ContinuousDailyTriggerScheduleResource = (function (_super) {
-    __extends(ContinuousDailyTriggerScheduleResource, _super);
-    function ContinuousDailyTriggerScheduleResource() {
-        var _this = _super.call(this) || this;
-        _this.RunAfter = undefined;
-        _this.RunUntil = undefined;
-        _this.Interval = triggerScheduleIntervalType_1.TriggerScheduleIntervalType.OnceHourly;
-        _this.DaysOfWeek = undefined;
-        _this.FilterType = triggerFilterType_1.TriggerFilterType.ContinuousDailySchedule;
-        return _this;
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(7974), exports);
+__exportStar(__nccwpck_require__(1067), exports);
+__exportStar(__nccwpck_require__(4143), exports);
+__exportStar(__nccwpck_require__(5187), exports);
+__exportStar(__nccwpck_require__(9075), exports);
+__exportStar(__nccwpck_require__(6989), exports);
+__exportStar(__nccwpck_require__(929), exports);
+__exportStar(__nccwpck_require__(6259), exports);
+__exportStar(__nccwpck_require__(3958), exports);
+__exportStar(__nccwpck_require__(6676), exports);
+__exportStar(__nccwpck_require__(5188), exports);
+__exportStar(__nccwpck_require__(7266), exports);
+__exportStar(__nccwpck_require__(7708), exports);
+__exportStar(__nccwpck_require__(6057), exports);
+
+
+/***/ }),
+
+/***/ 7266:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PackageAcquisitionLocation = void 0;
+var PackageAcquisitionLocation;
+(function (PackageAcquisitionLocation) {
+    PackageAcquisitionLocation["Server"] = "Server";
+    PackageAcquisitionLocation["ExecutionTarget"] = "ExecutionTarget";
+    PackageAcquisitionLocation["NotAcquired"] = "NotAcquired";
+})(PackageAcquisitionLocation = exports.PackageAcquisitionLocation || (exports.PackageAcquisitionLocation = {}));
+
+
+/***/ }),
+
+/***/ 7708:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PackageSelectionMode = void 0;
+var PackageSelectionMode;
+(function (PackageSelectionMode) {
+    PackageSelectionMode["Immediate"] = "immediate";
+    PackageSelectionMode["Deferred"] = "deferred";
+})(PackageSelectionMode = exports.PackageSelectionMode || (exports.PackageSelectionMode = {}));
+
+
+/***/ }),
+
+/***/ 6057:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.RunConditionForAction = void 0;
+var RunConditionForAction;
+(function (RunConditionForAction) {
+    RunConditionForAction["Success"] = "Success";
+    RunConditionForAction["Variable"] = "Variable";
+})(RunConditionForAction = exports.RunConditionForAction || (exports.RunConditionForAction = {}));
+
+
+/***/ }),
+
+/***/ 1334:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
-    return ContinuousDailyTriggerScheduleResource;
-}(TriggerScheduleResource));
-exports.ContinuousDailyTriggerScheduleResource = ContinuousDailyTriggerScheduleResource;
-var DaysPerMonthTriggerScheduleResource = (function (_super) {
-    __extends(DaysPerMonthTriggerScheduleResource, _super);
-    function DaysPerMonthTriggerScheduleResource() {
-        var _this = _super.call(this) || this;
-        _this.StartTime = undefined;
-        _this.MonthlyScheduleType = undefined;
-        _this.DayOfWeek = undefined;
-        _this.FilterType = triggerFilterType_1.TriggerFilterType.DaysPerMonthSchedule;
-        return _this;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ExecutionWaiter = void 0;
+var serverTasks_1 = __nccwpck_require__(6568);
+var ExecutionWaiter = /** @class */ (function () {
+    function ExecutionWaiter(client, spaceName) {
+        this.client = client;
+        this.spaceName = spaceName;
     }
-    return DaysPerMonthTriggerScheduleResource;
-}(TriggerScheduleResource));
-exports.DaysPerMonthTriggerScheduleResource = DaysPerMonthTriggerScheduleResource;
-var CronTriggerScheduleResource = (function (_super) {
-    __extends(CronTriggerScheduleResource, _super);
-    function CronTriggerScheduleResource() {
-        var _this = _super.call(this) || this;
-        _this.CronExpression = undefined;
-        _this.FilterType = triggerFilterType_1.TriggerFilterType.CronExpressionSchedule;
-        return _this;
-    }
-    return CronTriggerScheduleResource;
-}(TriggerScheduleResource));
-exports.CronTriggerScheduleResource = CronTriggerScheduleResource;
-var ScopedDeploymentActionResource = (function (_super) {
-    __extends(ScopedDeploymentActionResource, _super);
-    function ScopedDeploymentActionResource() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.ChannelId = undefined;
-        _this.TenantIds = [];
-        _this.TenantTags = [];
-        _this.Variables = undefined;
-        return _this;
-    }
-    return ScopedDeploymentActionResource;
-}(triggerActionResource_1.TriggerActionResource));
-exports.ScopedDeploymentActionResource = ScopedDeploymentActionResource;
-var DeployLatestReleaseActionResource = (function (_super) {
-    __extends(DeployLatestReleaseActionResource, _super);
-    function DeployLatestReleaseActionResource() {
-        var _this = _super.call(this) || this;
-        _this.DestinationEnvironmentId = undefined;
-        _this.ActionType = triggerActionType_1.TriggerActionType.DeployLatestRelease;
-        _this.ShouldRedeployWhenReleaseIsCurrent = true;
-        _this.SourceEnvironmentIds = [];
-        return _this;
-    }
-    return DeployLatestReleaseActionResource;
-}(ScopedDeploymentActionResource));
-exports.DeployLatestReleaseActionResource = DeployLatestReleaseActionResource;
-var DeployNewReleaseActionResource = (function (_super) {
-    __extends(DeployNewReleaseActionResource, _super);
-    function DeployNewReleaseActionResource() {
-        var _this = _super.call(this) || this;
-        _this.EnvironmentId = undefined;
-        _this.VersionControlReference = undefined;
-        _this.ActionType = triggerActionType_1.TriggerActionType.DeployNewRelease;
-        return _this;
-    }
-    return DeployNewReleaseActionResource;
-}(ScopedDeploymentActionResource));
-exports.DeployNewReleaseActionResource = DeployNewReleaseActionResource;
-var ScheduleIntervalResource = (function () {
-    function ScheduleIntervalResource() {
-        this.IntervalType = undefined;
-        this.IntervalValue = undefined;
-    }
-    return ScheduleIntervalResource;
+    ExecutionWaiter.prototype.waitForExecutionsToComplete = function (serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback) {
+        return __awaiter(this, void 0, void 0, function () {
+            var taskPromises, _i, serverTaskIds_1, taskId;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        taskPromises = [];
+                        for (_i = 0, serverTaskIds_1 = serverTaskIds; _i < serverTaskIds_1.length; _i++) {
+                            taskId = serverTaskIds_1[_i];
+                            taskPromises.push(this.waitForExecutionToComplete(taskId, statusCheckSleepCycle, timeout, pollingCallback));
+                        }
+                        return [4 /*yield*/, Promise.allSettled(taskPromises)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    ExecutionWaiter.prototype.waitForExecutionToComplete = function (serverTaskId, statusCheckSleepCycle, timeout, pollingCallback) {
+        return __awaiter(this, void 0, void 0, function () {
+            var sleep, stop, t, taskDetails, task;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        sleep = function (ms) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
+                            return [2 /*return*/, new Promise(function (r) { return setTimeout(r, ms); })];
+                        }); }); };
+                        stop = false;
+                        t = setTimeout(function () {
+                            stop = true;
+                        }, timeout);
+                        _a.label = 1;
+                    case 1:
+                        if (!!stop) return [3 /*break*/, 7];
+                        if (!pollingCallback) return [3 /*break*/, 3];
+                        return [4 /*yield*/, (0, serverTasks_1.serverTaskDetailsGet)(this.client, this.spaceName, serverTaskId)];
+                    case 2:
+                        taskDetails = _a.sent();
+                        pollingCallback(taskDetails);
+                        if (taskDetails.Task.IsCompleted) {
+                            clearTimeout(t);
+                            return [2 /*return*/, taskDetails.Task];
+                        }
+                        return [3 /*break*/, 5];
+                    case 3: return [4 /*yield*/, (0, serverTasks_1.serverTaskGet)(this.client, this.spaceName, serverTaskId)];
+                    case 4:
+                        task = _a.sent();
+                        if (task.IsCompleted) {
+                            clearTimeout(t);
+                            return [2 /*return*/, task];
+                        }
+                        _a.label = 5;
+                    case 5: return [4 /*yield*/, sleep(statusCheckSleepCycle)];
+                    case 6:
+                        _a.sent();
+                        return [3 /*break*/, 1];
+                    case 7: return [2 /*return*/, null];
+                }
+            });
+        });
+    };
+    return ExecutionWaiter;
 }());
-exports.ScheduleIntervalResource = ScheduleIntervalResource;
-var RunRunbookActionResource = (function (_super) {
-    __extends(RunRunbookActionResource, _super);
-    function RunRunbookActionResource() {
-        var _this = _super.call(this) || this;
-        _this.EnvironmentIds = undefined;
-        _this.RunbookId = undefined;
-        _this.TenantIds = [];
-        _this.TenantTags = [];
-        _this.ActionType = triggerActionType_1.TriggerActionType.RunRunbook;
-        return _this;
+exports.ExecutionWaiter = ExecutionWaiter;
+
+
+/***/ }),
+
+/***/ 9259:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 9659:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
     }
-    return RunRunbookActionResource;
-}(triggerActionResource_1.TriggerActionResource));
-exports.RunRunbookActionResource = RunRunbookActionResource;
-//# sourceMappingURL=scheduledProjectTriggerResource.js.map
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(7274), exports);
+__exportStar(__nccwpck_require__(3820), exports);
+__exportStar(__nccwpck_require__(5068), exports);
+__exportStar(__nccwpck_require__(7397), exports);
+__exportStar(__nccwpck_require__(1334), exports);
+__exportStar(__nccwpck_require__(9259), exports);
+__exportStar(__nccwpck_require__(7748), exports);
+__exportStar(__nccwpck_require__(3041), exports);
+__exportStar(__nccwpck_require__(5469), exports);
+
 
 /***/ }),
 
-/***/ 71606:
+/***/ 7748:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=scheduledTaskDetailsResource.js.map
-
-/***/ }),
-
-/***/ 19038:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=scopeSpecificationTypes.js.map
-
-/***/ }),
-
-/***/ 39849:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=scopeValues.js.map
-
-/***/ }),
-
-/***/ 63390:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=scopedUserRoleResource.js.map
-
-/***/ }),
-
-/***/ 24752:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScriptingLanguage = void 0;
-var ScriptingLanguage;
-(function (ScriptingLanguage) {
-    ScriptingLanguage["Bash"] = "Bash";
-    ScriptingLanguage["CSharp"] = "CSharp";
-    ScriptingLanguage["FSharp"] = "FSharp";
-    ScriptingLanguage["PowerShell"] = "PowerShell";
-    ScriptingLanguage["Python"] = "Python";
-})(ScriptingLanguage = exports.ScriptingLanguage || (exports.ScriptingLanguage = {}));
-//# sourceMappingURL=scriptingLanguage.js.map
-
-/***/ }),
-
-/***/ 54000:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=serverConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 93704:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=serverConfigurationSettingsSetResource.js.map
-
-/***/ }),
-
-/***/ 49281:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=serverDocumentCount.js.map
-
-/***/ }),
-
-/***/ 20114:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=serverStatusHealthResource.js.map
-
-/***/ }),
-
-/***/ 93060:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=serverStatusResource.js.map
-
-/***/ }),
-
-/***/ 32196:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=serverTimezoneResource.js.map
-
-/***/ }),
-
-/***/ 82342:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=settingsMetadataResource.js.map
-
-/***/ }),
-
-/***/ 66197:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=settingsValuesResource.js.map
-
-/***/ }),
-
-/***/ 95317:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=smtpConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 64507:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=smtpIsConfiguredResource.js.map
-
-/***/ }),
-
-/***/ 26498:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.NewSpace = void 0;
-function NewSpace(name, spaceManagersTeams, spaceManagersTeamMembers) {
+exports.getBranchNameFromRouteParameter = exports.getURISafeBranchName = exports.isVcsBranchResource = exports.NewProject = exports.HasVersionControlledPersistenceSettings = exports.IsUsingUsernamePasswordAuth = exports.AuthenticationType = exports.PersistenceSettingsType = void 0;
+var PersistenceSettingsType;
+(function (PersistenceSettingsType) {
+    PersistenceSettingsType["VersionControlled"] = "VersionControlled";
+    PersistenceSettingsType["Database"] = "Database";
+})(PersistenceSettingsType = exports.PersistenceSettingsType || (exports.PersistenceSettingsType = {}));
+var AuthenticationType;
+(function (AuthenticationType) {
+    AuthenticationType["Anonymous"] = "Anonymous";
+    AuthenticationType["UsernamePassword"] = "UsernamePassword";
+})(AuthenticationType = exports.AuthenticationType || (exports.AuthenticationType = {}));
+function IsUsingUsernamePasswordAuth(T) {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    return T.Type === AuthenticationType.UsernamePassword;
+}
+exports.IsUsingUsernamePasswordAuth = IsUsingUsernamePasswordAuth;
+function HasVersionControlledPersistenceSettings(T) {
+    return T.Type === PersistenceSettingsType.VersionControlled;
+}
+exports.HasVersionControlledPersistenceSettings = HasVersionControlledPersistenceSettings;
+function NewProject(name, projectGroup, lifecycle) {
     return {
+        LifecycleId: lifecycle.Id,
         Name: name,
-        SpaceManagersTeams: spaceManagersTeams === null || spaceManagersTeams === void 0 ? void 0 : spaceManagersTeams.map(function (t) { return t.Id; }),
-        SpaceManagersTeamMembers: spaceManagersTeamMembers === null || spaceManagersTeamMembers === void 0 ? void 0 : spaceManagersTeamMembers.map(function (u) { return u.Id; }),
+        ProjectGroupId: projectGroup.Id,
     };
 }
-exports.NewSpace = NewSpace;
-//# sourceMappingURL=spaceResource.js.map
-
-/***/ }),
-
-/***/ 10171:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=spaceRootResource.js.map
-
-/***/ }),
-
-/***/ 37396:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=spaceScopedResource.js.map
-
-/***/ }),
-
-/***/ 22152:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=spaceSearchResult.js.map
-
-/***/ }),
-
-/***/ 33543:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=sshEndpointResource.js.map
-
-/***/ }),
-
-/***/ 94565:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=sshKeyPairAccountResource.js.map
-
-/***/ }),
-
-/***/ 32841:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=stepPackage.js.map
-
-/***/ }),
-
-/***/ 57461:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=stepPackageDeploymentTargetType.js.map
-
-/***/ }),
-
-/***/ 24458:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isStepPackageEndpointResource = void 0;
-function isStepPackageEndpointResource(resource) {
-    return "StepPackageId" in resource && "DeploymentTargetTypeId" in resource;
+exports.NewProject = NewProject;
+function isVcsBranchResource(branch) {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    return branch.Name !== undefined;
 }
-exports.isStepPackageEndpointResource = isStepPackageEndpointResource;
-//# sourceMappingURL=stepPackageEndpointResource.js.map
-
-/***/ }),
-
-/***/ 75507:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=stepPackageLinks.js.map
-
-/***/ }),
-
-/***/ 42857:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=stepUsage.js.map
-
-/***/ }),
-
-/***/ 19863:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=stepUsageEntry.js.map
-
-/***/ }),
-
-/***/ 50606:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isExistingSubscriptionResource = exports.SubscriptionType = void 0;
-var SubscriptionType;
-(function (SubscriptionType) {
-    SubscriptionType["Event"] = "Event";
-})(SubscriptionType = exports.SubscriptionType || (exports.SubscriptionType = {}));
-function isExistingSubscriptionResource(T) {
-    return T.Links !== undefined;
+exports.isVcsBranchResource = isVcsBranchResource;
+function getURISafeBranchName(branch) {
+    return encodeURIComponent(branch.Name);
 }
-exports.isExistingSubscriptionResource = isExistingSubscriptionResource;
-//# sourceMappingURL=subscriptionResource.js.map
+exports.getURISafeBranchName = getURISafeBranchName;
+function getBranchNameFromRouteParameter(routeParameter) {
+    if (routeParameter) {
+        return decodeURIComponent(routeParameter);
+    }
+    return undefined;
+}
+exports.getBranchNameFromRouteParameter = getBranchNameFromRouteParameter;
+
 
 /***/ }),
 
-/***/ 65252:
+/***/ 3041:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ProjectRepository = void 0;
+var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
+var __1 = __nccwpck_require__(586);
+var ProjectRepository = /** @class */ (function (_super) {
+    __extends(ProjectRepository, _super);
+    function ProjectRepository(client, spaceName) {
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/projects{/id}{?skip,take,ids,partialName,clonedFromProjectId}")) || this;
+    }
+    return ProjectRepository;
+}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
+exports.ProjectRepository = ProjectRepository;
+
+
+/***/ }),
+
+/***/ 7650:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=summaryResource.js.map
+
 
 /***/ }),
 
-/***/ 51140:
+/***/ 4213:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=systemInfoResource.js.map
+
 
 /***/ }),
 
-/***/ 38664:
+/***/ 7:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=tagResource.js.map
+
 
 /***/ }),
 
-/***/ 44990:
+/***/ 3565:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=tagSetResource.js.map
+
 
 /***/ }),
 
-/***/ 30874:
+/***/ 9198:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 3227:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.DeploymentRepository = void 0;
+var __1 = __nccwpck_require__(586);
+var DeploymentRepository = /** @class */ (function () {
+    function DeploymentRepository(client, spaceName) {
+        this.baseApiTemplate = "".concat(__1.spaceScopedRoutePrefix, "/deployments{/id}{?skip,take,ids,projects,environments,tenants,channels,taskState}");
+        this.client = client;
+        this.spaceName = spaceName;
+    }
+    DeploymentRepository.prototype.get = function (id) {
+        return this.client.request(this.baseApiTemplate, { id: id, spaceName: this.spaceName });
+    };
+    DeploymentRepository.prototype.list = function (args) {
+        return this.client.request(this.baseApiTemplate, __assign({ spaceName: this.spaceName }, args));
+    };
+    DeploymentRepository.prototype.create = function (command) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response, mappedTasks;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.client.debug("Deploying a release...");
+                        return [4 /*yield*/, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/deployments/create/untenanted/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
+                    case 1:
+                        response = _a.sent();
+                        if (response.DeploymentServerTasks.length == 0) {
+                            throw new Error("No server task details returned");
+                        }
+                        mappedTasks = response.DeploymentServerTasks.map(function (x) {
+                            return {
+                                DeploymentId: x.DeploymentId || x.deploymentId,
+                                ServerTaskId: x.ServerTaskId || x.serverTaskId,
+                            };
+                        });
+                        this.client.debug("Deployment(s) created successfully. [".concat(mappedTasks.map(function (t) { return t.ServerTaskId; }).join(", "), "]"));
+                        return [2 /*return*/, {
+                                DeploymentServerTasks: mappedTasks,
+                            }];
+                }
+            });
+        });
+    };
+    DeploymentRepository.prototype.createTenanted = function (command) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response, mappedTasks;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.client.debug("Deploying a tenanted release...");
+                        return [4 /*yield*/, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/deployments/create/tenanted/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
+                    case 1:
+                        response = _a.sent();
+                        if (response.DeploymentServerTasks.length == 0) {
+                            throw new Error("No server task details returned");
+                        }
+                        mappedTasks = response.DeploymentServerTasks.map(function (x) {
+                            return {
+                                DeploymentId: x.DeploymentId || x.deploymentId,
+                                ServerTaskId: x.ServerTaskId || x.serverTaskId,
+                            };
+                        });
+                        this.client.debug("Tenanted Deployment(s) created successfully. [".concat(mappedTasks.map(function (t) { return t.ServerTaskId; }).join(", "), "]"));
+                        return [2 /*return*/, {
+                                DeploymentServerTasks: mappedTasks,
+                            }];
+                }
+            });
+        });
+    };
+    return DeploymentRepository;
+}());
+exports.DeploymentRepository = DeploymentRepository;
+
+
+/***/ }),
+
+/***/ 5952:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 3921:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(7), exports);
+__exportStar(__nccwpck_require__(3565), exports);
+__exportStar(__nccwpck_require__(9198), exports);
+__exportStar(__nccwpck_require__(3227), exports);
+__exportStar(__nccwpck_require__(5952), exports);
+
+
+/***/ }),
+
+/***/ 3820:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(3921), exports);
+__exportStar(__nccwpck_require__(7650), exports);
+__exportStar(__nccwpck_require__(4213), exports);
+__exportStar(__nccwpck_require__(7448), exports);
+__exportStar(__nccwpck_require__(8566), exports);
+
+
+/***/ }),
+
+/***/ 7448:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 8566:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ReleaseRepository = void 0;
+var __1 = __nccwpck_require__(586);
+var ReleaseRepository = /** @class */ (function () {
+    function ReleaseRepository(client, spaceName) {
+        this.baseApiTemplate = "".concat(__1.spaceScopedRoutePrefix, "/releases{/id}{?skip,take,ids}");
+        this.client = client;
+        this.spaceName = spaceName;
+    }
+    ReleaseRepository.prototype.create = function (command) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.client.debug("Creating a release...");
+                        return [4 /*yield*/, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/releases/create/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
+                    case 1:
+                        response = _a.sent();
+                        this.client.debug("Release created successfully.");
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    return ReleaseRepository;
+}());
+exports.ReleaseRepository = ReleaseRepository;
+
+
+/***/ }),
+
+/***/ 5068:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(7890), exports);
+__exportStar(__nccwpck_require__(6362), exports);
+__exportStar(__nccwpck_require__(9664), exports);
+__exportStar(__nccwpck_require__(9825), exports);
+__exportStar(__nccwpck_require__(1379), exports);
+
+
+/***/ }),
+
+/***/ 6362:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 9664:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.IsNonVcsRunbook = void 0;
+// We have to use this type assertion instead of "IsVcsRunbook", because a VcsRunbook is structurally a NonVcsRunbookResource
+// I.e. they share all the same properties. This causes typescript to fail to narrow the type.
+// However, if you do it this way, then it works :shrug:
+function IsNonVcsRunbook(runbook) {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    return runbook.ProjectId !== undefined;
+}
+exports.IsNonVcsRunbook = IsNonVcsRunbook;
+
+
+/***/ }),
+
+/***/ 9825:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.RunbookEnvironmentScope = void 0;
+var RunbookEnvironmentScope;
+(function (RunbookEnvironmentScope) {
+    RunbookEnvironmentScope["All"] = "All";
+    RunbookEnvironmentScope["Specified"] = "Specified";
+    RunbookEnvironmentScope["FromProjectLifecycles"] = "FromProjectLifecycles";
+})(RunbookEnvironmentScope = exports.RunbookEnvironmentScope || (exports.RunbookEnvironmentScope = {}));
+
+
+/***/ }),
+
+/***/ 1379:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.processResourcePermission = exports.isRunbookProcess = void 0;
+var utils_1 = __nccwpck_require__(7132);
+var permission_1 = __nccwpck_require__(800);
+function isRunbookProcess(resource) {
+    if (resource === null || resource === undefined) {
+        return false;
+    }
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    var converted = resource;
+    return converted.RunbookId !== undefined && (0, utils_1.typeSafeHasOwnProperty)(converted, "RunbookId");
+}
+exports.isRunbookProcess = isRunbookProcess;
+function processResourcePermission(resource) {
+    var isRunbook = isRunbookProcess(resource);
+    return isRunbook ? permission_1.Permission.RunbookEdit : permission_1.Permission.ProcessEdit;
+}
+exports.processResourcePermission = processResourcePermission;
+
+
+/***/ }),
+
+/***/ 4010:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 7890:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(4010), exports);
+__exportStar(__nccwpck_require__(6145), exports);
+__exportStar(__nccwpck_require__(2562), exports);
+__exportStar(__nccwpck_require__(827), exports);
+__exportStar(__nccwpck_require__(2493), exports);
+
+
+/***/ }),
+
+/***/ 6145:
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.runRunbook = void 0;
+function runRunbook(client, command) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, mappedTasks;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    client.debug("Running a runbook...");
+                    return [4 /*yield*/, client.doCreate("runbook-runs/create/v1", __assign({ spaceIdOrName: command.spaceName }, command))];
+                case 1:
+                    response = _a.sent();
+                    if (response.RunbookRunServerTasks.length == 0) {
+                        throw new Error("No server task details returned");
+                    }
+                    mappedTasks = response.RunbookRunServerTasks.map(function (x) {
+                        return {
+                            RunbookRunId: x.RunbookRunId || x.runbookRunId,
+                            ServerTaskId: x.ServerTaskId || x.serverTaskId,
+                        };
+                    });
+                    client.debug("Runbook executed successfully. [".concat(mappedTasks.map(function (t) { return t.ServerTaskId; }).join(", "), "]"));
+                    return [2 /*return*/, {
+                            RunbookRunServerTasks: mappedTasks,
+                        }];
+            }
+        });
+    });
+}
+exports.runRunbook = runRunbook;
+
+
+/***/ }),
+
+/***/ 2562:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 827:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.RunbookRunRepository = void 0;
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
+var RunbookRunRepository = /** @class */ (function (_super) {
+    __extends(RunbookRunRepository, _super);
+    function RunbookRunRepository(client, spaceName) {
+        return _super.call(this, client, spaceName, "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/runbookRuns{/id}{?skip,take,ids,projects,environments,tenants,runbooks,taskState,partialName}")) || this;
+    }
+    return RunbookRunRepository;
+}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
+exports.RunbookRunRepository = RunbookRunRepository;
+
+
+/***/ }),
+
+/***/ 2493:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 5469:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TenantedDeploymentMode = void 0;
+var TenantedDeploymentMode;
+(function (TenantedDeploymentMode) {
+    TenantedDeploymentMode["Untenanted"] = "Untenanted";
+    TenantedDeploymentMode["TenantedOrUntenanted"] = "TenantedOrUntenanted";
+    TenantedDeploymentMode["Tenanted"] = "Tenanted";
+})(TenantedDeploymentMode = exports.TenantedDeploymentMode || (exports.TenantedDeploymentMode = {}));
+
+
+/***/ }),
+
+/***/ 1616:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.serverTaskRawGet = exports.serverTaskDetailsGet = exports.serverTasksGet = exports.serverTaskGet = void 0;
+var lodash_1 = __nccwpck_require__(250);
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+function serverTaskGet(client, spaceName, serverTaskId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!serverTaskId) {
+                        throw new Error("Server Task Id was not provided");
+                    }
+                    return [4 /*yield*/, client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tasks/{serverTaskId}"), { spaceName: spaceName, serverTaskId: serverTaskId })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, response];
+            }
+        });
+    });
+}
+exports.serverTaskGet = serverTaskGet;
+function serverTasksGet(client, spaceName, serverTaskIds) {
+    return __awaiter(this, void 0, void 0, function () {
+        var batchSize, idArrays, promises;
+        return __generator(this, function (_a) {
+            batchSize = 300;
+            idArrays = (0, lodash_1.chunk)(serverTaskIds, batchSize);
+            promises = idArrays.map(function (i, index) {
+                return client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tasks{?skip,take,ids,partialName}"), {
+                    spaceName: spaceName,
+                    ids: i,
+                    skip: index * batchSize,
+                    take: batchSize,
+                });
+            });
+            return [2 /*return*/, Promise.all(promises).then(function (result) { return (0, lodash_1.flatMap)(result, function (c) { return c.Items; }); })];
+        });
+    });
+}
+exports.serverTasksGet = serverTasksGet;
+function serverTaskDetailsGet(client, spaceName, serverTaskId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!serverTaskId) {
+                        throw new Error("Server Task Id was not provided");
+                    }
+                    return [4 /*yield*/, client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tasks/{serverTaskId}/details"), { spaceName: spaceName, serverTaskId: serverTaskId })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, response];
+            }
+        });
+    });
+}
+exports.serverTaskDetailsGet = serverTaskDetailsGet;
+function serverTaskRawGet(client, spaceName, serverTaskId) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!serverTaskId) {
+                        throw new Error("Server Task Id was not provided");
+                    }
+                    return [4 /*yield*/, client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tasks/{serverTaskId}/raw"), { spaceName: spaceName, serverTaskId: serverTaskId })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, response];
+            }
+        });
+    });
+}
+exports.serverTaskRawGet = serverTaskRawGet;
+
+
+/***/ }),
+
+/***/ 6568:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(1616), exports);
+__exportStar(__nccwpck_require__(9144), exports);
+__exportStar(__nccwpck_require__(4013), exports);
+__exportStar(__nccwpck_require__(1038), exports);
+
+
+/***/ }),
+
+/***/ 4013:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 1038:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13180,63 +5489,11 @@ var ActivityLogEntryCategory;
     ActivityLogEntryCategory["Finished"] = "Finished";
     ActivityLogEntryCategory["Abandoned"] = "Abandoned";
 })(ActivityLogEntryCategory = exports.ActivityLogEntryCategory || (exports.ActivityLogEntryCategory = {}));
-//# sourceMappingURL=taskDetailsResource.js.map
+
 
 /***/ }),
 
-/***/ 87516:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TaskName = void 0;
-var TaskName;
-(function (TaskName) {
-    TaskName["Health"] = "Health";
-    TaskName["AdHocScript"] = "AdHocScript";
-    TaskName["ConfigureLetsEncrypt"] = "ConfigureLetsEncrypt";
-    TaskName["Upgrade"] = "Upgrade";
-    TaskName["TestEmail"] = "TestEmail";
-    TaskName["TestAccount"] = "TestAccount";
-    TaskName["SystemIntegrityCheck"] = "SystemIntegrityCheck";
-    TaskName["SyncCommunityActionTemplates"] = "SyncCommunityActionTemplates";
-    TaskName["SynchronizeBuiltInPackageRepositoryIndex"] = "SynchronizeBuiltInPackageRepositoryIndex";
-    TaskName["UpdateCalamari"] = "UpdateCalamari";
-})(TaskName = exports.TaskName || (exports.TaskName = {}));
-//# sourceMappingURL=taskName.js.map
-
-/***/ }),
-
-/***/ 84199:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=taskResource.js.map
-
-/***/ }),
-
-/***/ 84955:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TaskRestrictedTo = void 0;
-var TaskRestrictedTo;
-(function (TaskRestrictedTo) {
-    TaskRestrictedTo["DeploymentTargets"] = "DeploymentTargets";
-    TaskRestrictedTo["Workers"] = "Workers";
-    TaskRestrictedTo["Policies"] = "Policies";
-    TaskRestrictedTo["Unrestricted"] = "Unrestricted";
-})(TaskRestrictedTo = exports.TaskRestrictedTo || (exports.TaskRestrictedTo = {}));
-//# sourceMappingURL=taskRestrictedTo.js.map
-
-/***/ }),
-
-/***/ 36445:
+/***/ 9144:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13253,79 +5510,114 @@ var TaskState;
     TaskState["Success"] = "Success";
     TaskState["TimedOut"] = "TimedOut";
 })(TaskState = exports.TaskState || (exports.TaskState = {}));
-//# sourceMappingURL=taskState.js.map
+
 
 /***/ }),
 
-/***/ 20736:
+/***/ 3496:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SpaceScopedBasicRepository = void 0;
+var basicRepository_1 = __nccwpck_require__(2966);
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+var SpaceScopedBasicRepository = /** @class */ (function (_super) {
+    __extends(SpaceScopedBasicRepository, _super);
+    function SpaceScopedBasicRepository(client, spaceName, baseApiTemplate) {
+        var _this = _super.call(this, client, baseApiTemplate) || this;
+        if (!baseApiTemplate.startsWith(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix)) {
+            throw new Error("Space scoped repositories must prefix their baseApiTemplate with `spaceScopedRoutePrefix`");
+        }
+        _this.spaceName = spaceName;
+        return _this;
+    }
+    SpaceScopedBasicRepository.prototype.create = function (resource, args) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return _super.prototype.create.call(this, resource, __assign({ spaceName: this.spaceName }, args));
+    };
+    SpaceScopedBasicRepository.prototype.get = function (id) {
+        return this.client.request(this.baseApiTemplate, { id: id, spaceName: this.spaceName });
+    };
+    SpaceScopedBasicRepository.prototype.list = function (args) {
+        return this.client.request(this.baseApiTemplate, __assign({ spaceName: this.spaceName }, args));
+    };
+    SpaceScopedBasicRepository.prototype.modify = function (resource, args) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return _super.prototype.modify.call(this, resource, __assign({ spaceName: this.spaceName }, args));
+    };
+    return SpaceScopedBasicRepository;
+}(basicRepository_1.BasicRepository));
+exports.SpaceScopedBasicRepository = SpaceScopedBasicRepository;
+
+
+/***/ }),
+
+/***/ 1163:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(7970), exports);
+__exportStar(__nccwpck_require__(4778), exports);
+
+
+/***/ }),
+
+/***/ 7970:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=teamMembership.js.map
+
 
 /***/ }),
 
-/***/ 54797:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=teamResource.js.map
-
-/***/ }),
-
-/***/ 31113:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=tenantMissingVariablesResource.js.map
-
-/***/ }),
-
-/***/ 67683:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=tenantResource.js.map
-
-/***/ }),
-
-/***/ 77693:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=tenantVariableResource.js.map
-
-/***/ }),
-
-/***/ 68517:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TenantedDeploymentMode = void 0;
-var TenantedDeploymentMode;
-(function (TenantedDeploymentMode) {
-    TenantedDeploymentMode["Untenanted"] = "Untenanted";
-    TenantedDeploymentMode["TenantedOrUntenanted"] = "TenantedOrUntenanted";
-    TenantedDeploymentMode["Tenanted"] = "Tenanted";
-})(TenantedDeploymentMode = exports.TenantedDeploymentMode || (exports.TenantedDeploymentMode = {}));
-//# sourceMappingURL=tenantedDeploymentMode.js.map
-
-/***/ }),
-
-/***/ 70229:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ 4778:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -13345,525 +5637,899 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TimeSpanString = void 0;
-var TimeSpanString = (function (_super) {
-    __extends(TimeSpanString, _super);
-    function TimeSpanString() {
-        return _super !== null && _super.apply(this, arguments) || this;
+exports.SpaceRepository = void 0;
+var __1 = __nccwpck_require__(586);
+var basicRepository_1 = __nccwpck_require__(2966);
+var SpaceRepository = /** @class */ (function (_super) {
+    __extends(SpaceRepository, _super);
+    function SpaceRepository(client) {
+        return _super.call(this, client, "".concat(__1.apiLocation, "/spaces{/id}{?skip,ids,take,partialName}")) || this;
     }
-    TimeSpanString.Zero = "00:00:00";
-    TimeSpanString.OneHour = "0.01:00:00";
-    TimeSpanString.TenSeconds = "00:00:10";
-    return TimeSpanString;
-}(String));
-exports.TimeSpanString = TimeSpanString;
-//# sourceMappingURL=timeSpan.js.map
+    return SpaceRepository;
+}(basicRepository_1.BasicRepository));
+exports.SpaceRepository = SpaceRepository;
+
 
 /***/ }),
 
-/***/ 34170:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ 9925:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TriggerActionCategory = void 0;
-var TriggerActionCategory;
-(function (TriggerActionCategory) {
-    TriggerActionCategory["Deployment"] = "Deployment";
-    TriggerActionCategory["Runbook"] = "Runbook";
-})(TriggerActionCategory = exports.TriggerActionCategory || (exports.TriggerActionCategory = {}));
-//# sourceMappingURL=triggerActionCategory.js.map
-
-/***/ }),
-
-/***/ 59636:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TriggerActionResource = void 0;
-var TriggerActionResource = (function () {
-    function TriggerActionResource() {
-        this.ActionType = undefined;
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
     }
-    return TriggerActionResource;
-}());
-exports.TriggerActionResource = TriggerActionResource;
-//# sourceMappingURL=triggerActionResource.js.map
-
-/***/ }),
-
-/***/ 58574:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TriggerActionType = void 0;
-var TriggerActionType;
-(function (TriggerActionType) {
-    TriggerActionType["AutoDeploy"] = "AutoDeploy";
-    TriggerActionType["DeployLatestRelease"] = "DeployLatestRelease";
-    TriggerActionType["DeployNewRelease"] = "DeployNewRelease";
-    TriggerActionType["RunRunbook"] = "RunRunbook";
-})(TriggerActionType = exports.TriggerActionType || (exports.TriggerActionType = {}));
-//# sourceMappingURL=triggerActionType.js.map
-
-/***/ }),
-
-/***/ 1033:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TriggerFilterResource = void 0;
-var TriggerFilterResource = (function () {
-    function TriggerFilterResource() {
-        this.FilterType = undefined;
-    }
-    return TriggerFilterResource;
-}());
-exports.TriggerFilterResource = TriggerFilterResource;
-//# sourceMappingURL=triggerFilterResource.js.map
-
-/***/ }),
-
-/***/ 30292:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TriggerFilterType = void 0;
-var TriggerFilterType;
-(function (TriggerFilterType) {
-    TriggerFilterType["CronExpressionSchedule"] = "CronExpressionSchedule";
-    TriggerFilterType["ContinuousDailySchedule"] = "ContinuousDailySchedule";
-    TriggerFilterType["DaysPerMonthSchedule"] = "DaysPerMonthSchedule";
-    TriggerFilterType["MachineFilter"] = "MachineFilter";
-    TriggerFilterType["OnceDailySchedule"] = "OnceDailySchedule";
-})(TriggerFilterType = exports.TriggerFilterType || (exports.TriggerFilterType = {}));
-//# sourceMappingURL=triggerFilterType.js.map
-
-/***/ }),
-
-/***/ 78010:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isExistingTriggerResource = void 0;
-function isExistingTriggerResource(resource) {
-    return resource.Links !== undefined;
-}
-exports.isExistingTriggerResource = isExistingTriggerResource;
-//# sourceMappingURL=triggerResource.js.map
-
-/***/ }),
-
-/***/ 81599:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TriggerScheduleIntervalType = void 0;
-var TriggerScheduleIntervalType;
-(function (TriggerScheduleIntervalType) {
-    TriggerScheduleIntervalType["OnceDaily"] = "OnceDaily";
-    TriggerScheduleIntervalType["OnceHourly"] = "OnceHourly";
-    TriggerScheduleIntervalType["OnceEveryMinute"] = "OnceEveryMinute";
-})(TriggerScheduleIntervalType = exports.TriggerScheduleIntervalType || (exports.TriggerScheduleIntervalType = {}));
-//# sourceMappingURL=triggerScheduleIntervalType.js.map
-
-/***/ }),
-
-/***/ 54638:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpgradeNotificationMode = void 0;
-var UpgradeNotificationMode;
-(function (UpgradeNotificationMode) {
-    UpgradeNotificationMode["AlwaysShow"] = "AlwaysShow";
-    UpgradeNotificationMode["ShowOnlyMajorMinor"] = "ShowOnlyMajorMinor";
-    UpgradeNotificationMode["NeverShow"] = "NeverShow";
-})(UpgradeNotificationMode = exports.UpgradeNotificationMode || (exports.UpgradeNotificationMode = {}));
-//# sourceMappingURL=upgradeConfigurationResource.js.map
-
-/***/ }),
-
-/***/ 41823:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=userAuthenticationResource.js.map
-
-/***/ }),
-
-/***/ 69838:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=userIdentityMetadataResource.js.map
-
-/***/ }),
-
-/***/ 45206:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isAllProjectGroups = exports.isAllTenants = exports.isAllEnvironments = exports.isAllProjects = void 0;
-function isAllProjects(restrictions) {
-    var allProjects = restrictions;
-    return (allProjects.length === 1 &&
-        (allProjects[0] === "projects-all" ||
-            allProjects[0] === "projects-unrelated"));
-}
-exports.isAllProjects = isAllProjects;
-function isAllEnvironments(restrictions) {
-    var allEnvironments = restrictions;
-    return (allEnvironments.length === 1 &&
-        (allEnvironments[0] === "environments-all" ||
-            allEnvironments[0] === "environments-unrelated"));
-}
-exports.isAllEnvironments = isAllEnvironments;
-function isAllTenants(restrictions) {
-    var allTenants = restrictions;
-    return (allTenants.length === 1 &&
-        (allTenants[0] === "tenants-all" || allTenants[0] === "tenants-unrelated"));
-}
-exports.isAllTenants = isAllTenants;
-function isAllProjectGroups(restrictions) {
-    var allProjectGroups = restrictions;
-    return (allProjectGroups.length === 1 &&
-        (allProjectGroups[0] === "projectgroups-all" ||
-            allProjectGroups[0] === "projectgroups-unrelated"));
-}
-exports.isAllProjectGroups = isAllProjectGroups;
-//# sourceMappingURL=userPermissionRestriction.js.map
-
-/***/ }),
-
-/***/ 36604:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=userPermissionSetResource.js.map
-
-/***/ }),
-
-/***/ 50872:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=userResource.js.map
-
-/***/ }),
-
-/***/ 24456:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UserRoleConstants = void 0;
-exports.UserRoleConstants = {
-    SpaceManagerRole: "userroles-spacemanager",
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
-//# sourceMappingURL=userRoleResource.js.map
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(7635), exports);
+__exportStar(__nccwpck_require__(240), exports);
+__exportStar(__nccwpck_require__(1970), exports);
+
 
 /***/ }),
 
-/***/ 54861:
+/***/ 7635:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 240:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 1970:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TagSetRepository = void 0;
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
+var TagSetRepository = /** @class */ (function (_super) {
+    __extends(TagSetRepository, _super);
+    function TagSetRepository(client, spaceName) {
+        return _super.call(this, client, spaceName, "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tagsets{/id}{?skip,take,ids,partialName}")) || this;
+    }
+    TagSetRepository.prototype.sort = function (ids) {
+        return this.client.doUpdate("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tagsets/sortorder"), ids, { spaceName: this.spaceName });
+    };
+    return TagSetRepository;
+}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
+exports.TagSetRepository = TagSetRepository;
+
+
+/***/ }),
+
+/***/ 341:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(5305), exports);
+__exportStar(__nccwpck_require__(7026), exports);
+__exportStar(__nccwpck_require__(7444), exports);
+__exportStar(__nccwpck_require__(2830), exports);
+
+
+/***/ }),
+
+/***/ 5305:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 7026:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 7444:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.TenantRepository = void 0;
+var __1 = __nccwpck_require__(586);
+var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
+var TenantRepository = /** @class */ (function (_super) {
+    __extends(TenantRepository, _super);
+    function TenantRepository(client, spaceName) {
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/tenants{/id}{?skip,projectId,tags,take,ids,clone,partialName,clonedFromTenantId}")) || this;
+    }
+    TenantRepository.prototype.tagTest = function (tenantIds, tags) {
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/tag-test{?tenantIds,tags}"), { tenantIds: tenantIds, tags: tags });
+    };
+    TenantRepository.prototype.getVariables = function (tenant) {
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/variables"));
+    };
+    TenantRepository.prototype.setVariables = function (tenant, variables) {
+        return this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/variables"), variables);
+    };
+    TenantRepository.prototype.missingVariables = function (filterOptions, includeDetails) {
+        if (filterOptions === void 0) { filterOptions = {}; }
+        if (includeDetails === void 0) { includeDetails = false; }
+        var payload = {
+            environmentId: filterOptions.environmentId,
+            includeDetails: !!includeDetails,
+            projectId: filterOptions.projectId,
+            tenantId: filterOptions.tenantId,
+        };
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/variables-missing{?tenantId,projectId,environmentId,includeDetails}"), payload);
+    };
+    return TenantRepository;
+}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
+exports.TenantRepository = TenantRepository;
+
+
+/***/ }),
+
+/***/ 2830:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 41:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 1321:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.IdentityType = void 0;
+var IdentityType;
+(function (IdentityType) {
+    IdentityType["Guest"] = "Guest";
+    IdentityType["UsernamePassword"] = "UsernamePassword";
+    IdentityType["ActiveDirectory"] = "ActiveDirectory";
+    IdentityType["OAuth"] = "OAuth";
+})(IdentityType = exports.IdentityType || (exports.IdentityType = {}));
+
+
+/***/ }),
+
+/***/ 3217:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(41), exports);
+__exportStar(__nccwpck_require__(1321), exports);
+__exportStar(__nccwpck_require__(4438), exports);
+__exportStar(__nccwpck_require__(1380), exports);
+
+
+/***/ }),
+
+/***/ 1380:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.userGetCurrent = void 0;
+var __1 = __nccwpck_require__(586);
+function userGetCurrent(client) {
+    return __awaiter(this, void 0, void 0, function () {
+        var user;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, client.get("".concat(__1.apiLocation, "/users/me"))];
+                case 1:
+                    user = _a.sent();
+                    return [2 /*return*/, user];
+            }
+        });
+    });
+}
+exports.userGetCurrent = userGetCurrent;
+
+
+/***/ }),
+
+/***/ 4438:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 621:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(9790), exports);
+
+
+/***/ }),
+
+/***/ 9790:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isSensitiveValue = exports.NewSensitiveValue = void 0;
+function NewSensitiveValue(value, hint) {
+    return {
+        HasValue: true,
+        Hint: hint,
+        NewValue: value,
+    };
+}
+exports.NewSensitiveValue = NewSensitiveValue;
+function isSensitiveValue(value) {
+    if (typeof value === "string" || value === null) {
+        return false;
+    }
+    return Object.prototype.hasOwnProperty.call(value, "HasValue");
+}
+exports.isSensitiveValue = isSensitiveValue;
+
+
+/***/ }),
+
+/***/ 586:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(5024), exports);
+__exportStar(__nccwpck_require__(1542), exports);
+__exportStar(__nccwpck_require__(7083), exports);
+__exportStar(__nccwpck_require__(3024), exports);
+__exportStar(__nccwpck_require__(2399), exports);
+__exportStar(__nccwpck_require__(5966), exports);
+__exportStar(__nccwpck_require__(2101), exports);
+__exportStar(__nccwpck_require__(7948), exports);
+__exportStar(__nccwpck_require__(6397), exports);
+__exportStar(__nccwpck_require__(5758), exports);
+__exportStar(__nccwpck_require__(6050), exports);
+__exportStar(__nccwpck_require__(661), exports);
+__exportStar(__nccwpck_require__(5924), exports);
+__exportStar(__nccwpck_require__(6447), exports);
+__exportStar(__nccwpck_require__(5435), exports);
+__exportStar(__nccwpck_require__(8043), exports);
+__exportStar(__nccwpck_require__(2850), exports);
+__exportStar(__nccwpck_require__(6742), exports);
+__exportStar(__nccwpck_require__(2138), exports);
+__exportStar(__nccwpck_require__(232), exports);
+__exportStar(__nccwpck_require__(2054), exports);
+__exportStar(__nccwpck_require__(5626), exports);
+__exportStar(__nccwpck_require__(3667), exports);
+__exportStar(__nccwpck_require__(3295), exports);
+__exportStar(__nccwpck_require__(492), exports);
+__exportStar(__nccwpck_require__(7218), exports);
+__exportStar(__nccwpck_require__(1547), exports);
+__exportStar(__nccwpck_require__(7132), exports);
+
+
+/***/ }),
+
+/***/ 5924:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 6447:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 408:
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.OctopusError = void 0;
+// Octopus prefix is used here as there is already a built-in type called Error
+var OctopusError = /** @class */ (function (_super) {
+    __extends(OctopusError, _super);
+    function OctopusError(StatusCode, message) {
+        var _this = _super.call(this, message) || this;
+        _this.StatusCode = StatusCode;
+        _this.ErrorMessage = message;
+        _this.Errors = [];
+        Object.setPrototypeOf(_this, OctopusError.prototype);
+        return _this;
+    }
+    OctopusError.create = function (statusCode, response) {
+        var e = new OctopusError(statusCode);
+        var n = __assign(__assign({}, e), response);
+        Object.setPrototypeOf(n, OctopusError.prototype);
+        return n;
+    };
+    return OctopusError;
+}(Error));
+exports.OctopusError = OctopusError;
+
+
+/***/ }),
+
+/***/ 5435:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 8043:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Resolver = void 0;
+var URI = __nccwpck_require__(4190);
+var URITemplate = __nccwpck_require__(3423);
+var Resolver = /** @class */ (function () {
+    function Resolver(baseUri) {
+        this.baseUri = baseUri;
+        this.baseUri = this.baseUri.endsWith("/") ? this.baseUri : this.baseUri + "/";
+        var lastIndexOfMandatorySegment = this.baseUri.lastIndexOf("/api/");
+        if (lastIndexOfMandatorySegment >= 1) {
+            this.baseUri = this.baseUri.substring(0, lastIndexOfMandatorySegment);
+        }
+        else {
+            if (this.baseUri.endsWith("/api")) {
+                this.baseUri = this.baseUri.substring(0, -4);
+            }
+        }
+        this.baseUri = this.baseUri.endsWith("/") ? this.baseUri.substring(0, this.baseUri.length - 1) : this.baseUri;
+        var parsed = URI(this.baseUri);
+        this.rootUri = parsed.scheme() + "://" + parsed.authority();
+        this.rootUri = this.rootUri.endsWith("/") ? this.rootUri.substring(0, this.rootUri.length - 1) : this.rootUri;
+    }
+    Resolver.prototype.resolve = function (path, uriTemplateParameters) {
+        if (!path) {
+            throw new Error("The link is not set to a value");
+        }
+        if (path.startsWith("~/")) {
+            path = path.substring(1, path.length);
+            path = this.baseUri + path;
+        }
+        else {
+            path = this.rootUri + path;
+        }
+        var template = new URITemplate(path);
+        var result = template.expand(uriTemplateParameters || {});
+        return result;
+    };
+    return Resolver;
+}());
+exports.Resolver = Resolver;
+
+
+/***/ }),
+
+/***/ 2850:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isResource = void 0;
+function isResource(resource) {
+    return "Id" in resource;
+}
+exports.isResource = isResource;
+
+
+/***/ }),
+
+/***/ 6742:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 2138:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 232:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 2054:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.resolveSpaceId = void 0;
+var apiLocation_1 = __nccwpck_require__(7083);
+var knownSpaces = {};
+function resolveSpaceId(client, spaceName) {
+    return __awaiter(this, void 0, void 0, function () {
+        var spaces, spaceId;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (knownSpaces[spaceName]) {
+                        return [2 /*return*/, knownSpaces[spaceName]];
+                    }
+                    client.debug("Resolving space from name '".concat(spaceName, "'"));
+                    return [4 /*yield*/, client.get("".concat(apiLocation_1.apiLocation, "/spaces"), { partialName: spaceName })];
+                case 1:
+                    spaces = _a.sent();
+                    spaceId = "";
+                    if (spaces.TotalResults === 0) {
+                        client.error("No spaces exist with name '".concat(spaceName, "'"));
+                        throw new Error("No spaces exist with name '".concat(spaceName, "'"));
+                    }
+                    spaces.Items.forEach(function (space) {
+                        if (space.Name == spaceName) {
+                            spaceId = space.Id;
+                            knownSpaces[spaceName] = spaceId;
+                            client.debug("Resolved space name '".concat(spaceName, "' to Id ").concat(spaceId));
+                        }
+                    });
+                    if (spaceId === "") {
+                        client.error("Unable to resolve space name '".concat(spaceName, "'"));
+                        throw new Error("Unable to resolve space name '".concat(spaceName, "'"));
+                    }
+                    return [2 /*return*/, spaceId];
+            }
+        });
+    });
+}
+exports.resolveSpaceId = resolveSpaceId;
+
+
+/***/ }),
+
+/***/ 5626:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isSpaceScopedArgs = void 0;
+function isSpaceScopedArgs(args) {
+    return "spaceName" in args;
+}
+exports.isSpaceScopedArgs = isSpaceScopedArgs;
+
+
+/***/ }),
+
+/***/ 3667:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isSpaceScopedOperation = void 0;
+function isSpaceScopedOperation(command) {
+    return "spaceName" in command;
+}
+exports.isSpaceScopedOperation = isSpaceScopedOperation;
+
+
+/***/ }),
+
+/***/ 3295:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isSpaceScopedRequest = void 0;
+function isSpaceScopedRequest(command) {
+    return "spaceName" in command;
+}
+exports.isSpaceScopedRequest = isSpaceScopedRequest;
+
+
+/***/ }),
+
+/***/ 492:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isSpaceScopedResource = void 0;
+function isSpaceScopedResource(resource) {
+    return "SpaceId" in resource;
+}
+exports.isSpaceScopedResource = isSpaceScopedResource;
+
+
+/***/ }),
+
+/***/ 7218:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.NewUsernamePasswordAccount = void 0;
-var accountType_1 = __nccwpck_require__(34914);
-function NewUsernamePasswordAccount(name, username, password) {
-    return {
-        AccountType: accountType_1.AccountType.UsernamePassword,
-        Name: name,
-        Password: password,
-        Username: username,
-    };
-}
-exports.NewUsernamePasswordAccount = NewUsernamePasswordAccount;
-//# sourceMappingURL=usernamePasswordAccountResource.js.map
+exports.spaceScopedRoutePrefix = void 0;
+var apiLocation_1 = __nccwpck_require__(7083);
+exports.spaceScopedRoutePrefix = "".concat(apiLocation_1.apiLocation, "/{spaceId}");
+
 
 /***/ }),
 
-/***/ 12765:
+/***/ 1547:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isPropertyDefinedAndNotNull = exports.typeSafeHasOwnProperty = void 0;
+exports.SubscriptionRecord = void 0;
+var SubscriptionRecord = /** @class */ (function () {
+    function SubscriptionRecord() {
+        this.subscriptions = {};
+    }
+    SubscriptionRecord.prototype.subscribe = function (registrationName, callback) {
+        var _this = this;
+        this.subscriptions[registrationName] = callback;
+        return function () { return _this.unsubscribe(registrationName); };
+    };
+    SubscriptionRecord.prototype.unsubscribe = function (registrationName) {
+        delete this.subscriptions[registrationName];
+    };
+    SubscriptionRecord.prototype.notify = function (predicate, data) {
+        var _this = this;
+        Object.keys(this.subscriptions)
+            .filter(predicate)
+            .forEach(function (key) { return _this.subscriptions[key](data); });
+    };
+    SubscriptionRecord.prototype.notifyAll = function (data) {
+        this.notify(function () { return true; }, data);
+    };
+    SubscriptionRecord.prototype.notifySingle = function (registrationName, data) {
+        if (registrationName in this.subscriptions) {
+            this.subscriptions[registrationName](data);
+        }
+    };
+    return SubscriptionRecord;
+}());
+exports.SubscriptionRecord = SubscriptionRecord;
+
+
+/***/ }),
+
+/***/ 7132:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.isPropertyDefinedAndNotNull = exports.typeSafeHasOwnProperty = exports.ensureSuffix = exports.ensurePrefix = exports.determineServerEndpoint = exports.getResolver = exports.getServerEndpoint = exports.getQueryValue = void 0;
+var lodash_1 = __nccwpck_require__(250);
+var urijs_1 = __importDefault(__nccwpck_require__(4190));
+var resolver_1 = __nccwpck_require__(8043);
+var getQueryValue = function (key, location) {
+    var result;
+    (0, urijs_1.default)(location).hasQuery(key, function (value) {
+        result = value;
+    });
+    return result;
+};
+exports.getQueryValue = getQueryValue;
+var getServerEndpoint = function (location) {
+    if (location === void 0) { location = window.location; }
+    return (0, exports.getQueryValue)("octopus.server", location.href) || (0, exports.determineServerEndpoint)(location);
+};
+exports.getServerEndpoint = getServerEndpoint;
+var getResolver = function (base) {
+    var resolver = new resolver_1.Resolver(base);
+    return resolver.resolve.bind(resolver);
+};
+exports.getResolver = getResolver;
+var determineServerEndpoint = function (location) {
+    var endpoint = (0, exports.ensureSuffix)("//", "" + location.protocol) + location.host;
+    var path = (0, exports.ensurePrefix)("/", location.pathname);
+    if (path.length >= 1) {
+        var lastSegmentIndex = path.lastIndexOf("/");
+        if (lastSegmentIndex >= 0) {
+            path = path.substring(0, lastSegmentIndex + 1);
+        }
+    }
+    endpoint = endpoint + path;
+    return endpoint;
+};
+exports.determineServerEndpoint = determineServerEndpoint;
+exports.ensurePrefix = (0, lodash_1.curry)(function (prefix, value) { return (!value.startsWith(prefix) ? "".concat(prefix).concat(value) : value); });
+exports.ensureSuffix = (0, lodash_1.curry)(function (suffix, value) { return (!value.endsWith(suffix) ? "".concat(value).concat(suffix) : value); });
 var typeSafeHasOwnProperty = function (target, key) {
     return target.hasOwnProperty(key);
 };
 exports.typeSafeHasOwnProperty = typeSafeHasOwnProperty;
 var isPropertyDefinedAndNotNull = function (target, key) {
-    return ((0, exports.typeSafeHasOwnProperty)(target, key) &&
-        target[key] !== null &&
-        target[key] !== undefined);
+    return (0, exports.typeSafeHasOwnProperty)(target, key) && target[key] !== null && target[key] !== undefined;
 };
 exports.isPropertyDefinedAndNotNull = isPropertyDefinedAndNotNull;
-//# sourceMappingURL=utils.js.map
+
 
 /***/ }),
 
-/***/ 7151:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=variablePromptOptions.js.map
-
-/***/ }),
-
-/***/ 90269:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=variableResource.js.map
-
-/***/ }),
-
-/***/ 32280:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.VariableSetContentType = void 0;
-var VariableSetContentType;
-(function (VariableSetContentType) {
-    VariableSetContentType["Variables"] = "Variables";
-    VariableSetContentType["ScriptModule"] = "ScriptModule";
-})(VariableSetContentType = exports.VariableSetContentType || (exports.VariableSetContentType = {}));
-//# sourceMappingURL=variableSetContentType.js.map
-
-/***/ }),
-
-/***/ 36186:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=variableSetResource.js.map
-
-/***/ }),
-
-/***/ 71283:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.VariableType = void 0;
-var VariableType;
-(function (VariableType) {
-    VariableType["AmazonWebServicesAccount"] = "AmazonWebServicesAccount";
-    VariableType["AzureAccount"] = "AzureAccount";
-    VariableType["Certificate"] = "Certificate";
-    VariableType["GoogleCloudAccount"] = "GoogleCloudAccount";
-    VariableType["Sensitive"] = "Sensitive";
-    VariableType["String"] = "String";
-    VariableType["WorkerPool"] = "WorkerPool";
-})(VariableType = exports.VariableType || (exports.VariableType = {}));
-//# sourceMappingURL=variableType.js.map
-
-/***/ }),
-
-/***/ 71879:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=variablesScopedToEnvironmentResponse.js.map
-
-/***/ }),
-
-/***/ 63823:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=vcsRunbookResourceLinks.js.map
-
-/***/ }),
-
-/***/ 94620:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getBasePathToShowByDefault = exports.branchNameToShowByDefault = void 0;
-exports.branchNameToShowByDefault = "main";
-var getBasePathToShowByDefault = function (projectName) {
-    return ".octopus/".concat(projectName);
-};
-exports.getBasePathToShowByDefault = getBasePathToShowByDefault;
-//# sourceMappingURL=versionControlledResource.js.map
-
-/***/ }),
-
-/***/ 82668:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=versionRuleTestResponse.js.map
-
-/***/ }),
-
-/***/ 51496:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=workItemLink.js.map
-
-/***/ }),
-
-/***/ 24090:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.isWorkerMachine = void 0;
-function isWorkerMachine(machine) {
-    return machine.WorkerPoolIds !== undefined;
-}
-exports.isWorkerMachine = isWorkerMachine;
-//# sourceMappingURL=workerMachineResource.js.map
-
-/***/ }),
-
-/***/ 3282:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=workerPoolResource.js.map
-
-/***/ }),
-
-/***/ 99028:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=workerPoolResourceBase.js.map
-
-/***/ }),
-
-/***/ 48773:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=workerPoolSummary.js.map
-
-/***/ }),
-
-/***/ 51578:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=workerPoolSummaryResource.js.map
-
-/***/ }),
-
-/***/ 30742:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.WorkerPoolType = void 0;
-var WorkerPoolType;
-(function (WorkerPoolType) {
-    WorkerPoolType["Static"] = "StaticWorkerPool";
-    WorkerPoolType["Dynamic"] = "DynamicWorkerPool";
-})(WorkerPoolType = exports.WorkerPoolType || (exports.WorkerPoolType = {}));
-//# sourceMappingURL=workerPoolType.js.map
-
-/***/ }),
-
-/***/ 44021:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=workerPoolsSummaryResource.js.map
-
-/***/ }),
-
-/***/ 31613:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=workerPoolsSupportedTypesResource.js.map
-
-/***/ }),
-
-/***/ 17678:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-//# sourceMappingURL=workerToolsLatestImages.js.map
-
-/***/ }),
-
-/***/ 14812:
+/***/ 4812:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 module.exports =
 {
   parallel      : __nccwpck_require__(8210),
-  serial        : __nccwpck_require__(50445),
+  serial        : __nccwpck_require__(445),
   serialOrdered : __nccwpck_require__(3578)
 };
 
@@ -13906,10 +6572,10 @@ function clean(key)
 
 /***/ }),
 
-/***/ 72794:
+/***/ 2794:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var defer = __nccwpck_require__(15295);
+var defer = __nccwpck_require__(5295);
 
 // API
 module.exports = async;
@@ -13947,7 +6613,7 @@ function async(callback)
 
 /***/ }),
 
-/***/ 15295:
+/***/ 5295:
 /***/ ((module) => {
 
 module.exports = defer;
@@ -13983,7 +6649,7 @@ function defer(fn)
 /***/ 9023:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var async = __nccwpck_require__(72794)
+var async = __nccwpck_require__(2794)
   , abort = __nccwpck_require__(1700)
   ;
 
@@ -14062,7 +6728,7 @@ function runJob(iterator, key, item, callback)
 
 /***/ }),
 
-/***/ 42474:
+/***/ 2474:
 /***/ ((module) => {
 
 // API
@@ -14106,11 +6772,11 @@ function state(list, sortMethod)
 
 /***/ }),
 
-/***/ 37942:
+/***/ 7942:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 var abort = __nccwpck_require__(1700)
-  , async = __nccwpck_require__(72794)
+  , async = __nccwpck_require__(2794)
   ;
 
 // API
@@ -14146,8 +6812,8 @@ function terminator(callback)
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 var iterate    = __nccwpck_require__(9023)
-  , initState  = __nccwpck_require__(42474)
-  , terminator = __nccwpck_require__(37942)
+  , initState  = __nccwpck_require__(2474)
+  , terminator = __nccwpck_require__(7942)
   ;
 
 // Public API
@@ -14192,7 +6858,7 @@ function parallel(list, iterator, callback)
 
 /***/ }),
 
-/***/ 50445:
+/***/ 445:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 var serialOrdered = __nccwpck_require__(3578);
@@ -14220,8 +6886,8 @@ function serial(list, iterator, callback)
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 var iterate    = __nccwpck_require__(9023)
-  , initState  = __nccwpck_require__(42474)
-  , terminator = __nccwpck_require__(37942)
+  , initState  = __nccwpck_require__(2474)
+  , terminator = __nccwpck_require__(7942)
   ;
 
 // Public API
@@ -14298,33 +6964,33 @@ function descending(a, b)
 
 /***/ }),
 
-/***/ 96545:
+/***/ 6545:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = __nccwpck_require__(52618);
+module.exports = __nccwpck_require__(2618);
 
 /***/ }),
 
-/***/ 68104:
+/***/ 8104:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
-var settle = __nccwpck_require__(13211);
-var buildFullPath = __nccwpck_require__(41934);
-var buildURL = __nccwpck_require__(30646);
-var http = __nccwpck_require__(13685);
-var https = __nccwpck_require__(95687);
-var httpFollow = (__nccwpck_require__(67707).http);
-var httpsFollow = (__nccwpck_require__(67707).https);
-var url = __nccwpck_require__(57310);
-var zlib = __nccwpck_require__(59796);
-var VERSION = (__nccwpck_require__(94322).version);
-var transitionalDefaults = __nccwpck_require__(40936);
-var AxiosError = __nccwpck_require__(72093);
-var CanceledError = __nccwpck_require__(34098);
+var utils = __nccwpck_require__(328);
+var settle = __nccwpck_require__(3211);
+var buildFullPath = __nccwpck_require__(1934);
+var buildURL = __nccwpck_require__(646);
+var http = __nccwpck_require__(3685);
+var https = __nccwpck_require__(5687);
+var httpFollow = (__nccwpck_require__(7707).http);
+var httpsFollow = (__nccwpck_require__(7707).https);
+var url = __nccwpck_require__(7310);
+var zlib = __nccwpck_require__(9796);
+var VERSION = (__nccwpck_require__(4322).version);
+var transitionalDefaults = __nccwpck_require__(936);
+var AxiosError = __nccwpck_require__(2093);
+var CanceledError = __nccwpck_require__(4098);
 
 var isHttps = /https:?/;
 
@@ -14743,17 +7409,17 @@ module.exports = function httpAdapter(config) {
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
-var settle = __nccwpck_require__(13211);
-var cookies = __nccwpck_require__(21545);
-var buildURL = __nccwpck_require__(30646);
-var buildFullPath = __nccwpck_require__(41934);
-var parseHeaders = __nccwpck_require__(86455);
-var isURLSameOrigin = __nccwpck_require__(33608);
-var transitionalDefaults = __nccwpck_require__(40936);
-var AxiosError = __nccwpck_require__(72093);
-var CanceledError = __nccwpck_require__(34098);
-var parseProtocol = __nccwpck_require__(66107);
+var utils = __nccwpck_require__(328);
+var settle = __nccwpck_require__(3211);
+var cookies = __nccwpck_require__(1545);
+var buildURL = __nccwpck_require__(646);
+var buildFullPath = __nccwpck_require__(1934);
+var parseHeaders = __nccwpck_require__(6455);
+var isURLSameOrigin = __nccwpck_require__(3608);
+var transitionalDefaults = __nccwpck_require__(936);
+var AxiosError = __nccwpck_require__(2093);
+var CanceledError = __nccwpck_require__(4098);
+var parseProtocol = __nccwpck_require__(6107);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -14967,17 +7633,17 @@ module.exports = function xhrAdapter(config) {
 
 /***/ }),
 
-/***/ 52618:
+/***/ 2618:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
-var bind = __nccwpck_require__(77065);
-var Axios = __nccwpck_require__(98178);
-var mergeConfig = __nccwpck_require__(74831);
-var defaults = __nccwpck_require__(21626);
+var utils = __nccwpck_require__(328);
+var bind = __nccwpck_require__(7065);
+var Axios = __nccwpck_require__(8178);
+var mergeConfig = __nccwpck_require__(4831);
+var defaults = __nccwpck_require__(1626);
 
 /**
  * Create an instance of Axios
@@ -15010,14 +7676,14 @@ var axios = createInstance(defaults);
 axios.Axios = Axios;
 
 // Expose Cancel & CancelToken
-axios.CanceledError = __nccwpck_require__(34098);
-axios.CancelToken = __nccwpck_require__(71587);
-axios.isCancel = __nccwpck_require__(64057);
-axios.VERSION = (__nccwpck_require__(94322).version);
-axios.toFormData = __nccwpck_require__(20470);
+axios.CanceledError = __nccwpck_require__(4098);
+axios.CancelToken = __nccwpck_require__(1587);
+axios.isCancel = __nccwpck_require__(4057);
+axios.VERSION = (__nccwpck_require__(4322).version);
+axios.toFormData = __nccwpck_require__(470);
 
 // Expose AxiosError class
-axios.AxiosError = __nccwpck_require__(72093);
+axios.AxiosError = __nccwpck_require__(2093);
 
 // alias for CanceledError for backward compatibility
 axios.Cancel = axios.CanceledError;
@@ -15026,10 +7692,10 @@ axios.Cancel = axios.CanceledError;
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __nccwpck_require__(74850);
+axios.spread = __nccwpck_require__(4850);
 
 // Expose isAxiosError
-axios.isAxiosError = __nccwpck_require__(60650);
+axios.isAxiosError = __nccwpck_require__(650);
 
 module.exports = axios;
 
@@ -15039,13 +7705,13 @@ module.exports["default"] = axios;
 
 /***/ }),
 
-/***/ 71587:
+/***/ 1587:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var CanceledError = __nccwpck_require__(34098);
+var CanceledError = __nccwpck_require__(4098);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -15166,14 +7832,14 @@ module.exports = CancelToken;
 
 /***/ }),
 
-/***/ 34098:
+/***/ 4098:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var AxiosError = __nccwpck_require__(72093);
-var utils = __nccwpck_require__(20328);
+var AxiosError = __nccwpck_require__(2093);
+var utils = __nccwpck_require__(328);
 
 /**
  * A `CanceledError` is an object that is thrown when an operation is canceled.
@@ -15196,7 +7862,7 @@ module.exports = CanceledError;
 
 /***/ }),
 
-/***/ 64057:
+/***/ 4057:
 /***/ ((module) => {
 
 "use strict";
@@ -15209,19 +7875,19 @@ module.exports = function isCancel(value) {
 
 /***/ }),
 
-/***/ 98178:
+/***/ 8178:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
-var buildURL = __nccwpck_require__(30646);
+var utils = __nccwpck_require__(328);
+var buildURL = __nccwpck_require__(646);
 var InterceptorManager = __nccwpck_require__(3214);
-var dispatchRequest = __nccwpck_require__(85062);
-var mergeConfig = __nccwpck_require__(74831);
-var buildFullPath = __nccwpck_require__(41934);
-var validator = __nccwpck_require__(51632);
+var dispatchRequest = __nccwpck_require__(5062);
+var mergeConfig = __nccwpck_require__(4831);
+var buildFullPath = __nccwpck_require__(1934);
+var validator = __nccwpck_require__(1632);
 
 var validators = validator.validators;
 /**
@@ -15377,13 +8043,13 @@ module.exports = Axios;
 
 /***/ }),
 
-/***/ 72093:
+/***/ 2093:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -15477,7 +8143,7 @@ module.exports = AxiosError;
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -15533,14 +8199,14 @@ module.exports = InterceptorManager;
 
 /***/ }),
 
-/***/ 41934:
+/***/ 1934:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var isAbsoluteURL = __nccwpck_require__(41301);
-var combineURLs = __nccwpck_require__(57189);
+var isAbsoluteURL = __nccwpck_require__(1301);
+var combineURLs = __nccwpck_require__(7189);
 
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
@@ -15561,17 +8227,17 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 
 /***/ }),
 
-/***/ 85062:
+/***/ 5062:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
-var transformData = __nccwpck_require__(19812);
-var isCancel = __nccwpck_require__(64057);
-var defaults = __nccwpck_require__(21626);
-var CanceledError = __nccwpck_require__(34098);
+var utils = __nccwpck_require__(328);
+var transformData = __nccwpck_require__(9812);
+var isCancel = __nccwpck_require__(4057);
+var defaults = __nccwpck_require__(1626);
+var CanceledError = __nccwpck_require__(4098);
 
 /**
  * Throws a `CanceledError` if cancellation has been requested.
@@ -15656,13 +8322,13 @@ module.exports = function dispatchRequest(config) {
 
 /***/ }),
 
-/***/ 74831:
+/***/ 4831:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 /**
  * Config-specific merge-function which creates a new config-object
@@ -15764,13 +8430,13 @@ module.exports = function mergeConfig(config1, config2) {
 
 /***/ }),
 
-/***/ 13211:
+/***/ 3211:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var AxiosError = __nccwpck_require__(72093);
+var AxiosError = __nccwpck_require__(2093);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -15797,14 +8463,14 @@ module.exports = function settle(resolve, reject, response) {
 
 /***/ }),
 
-/***/ 19812:
+/***/ 9812:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
-var defaults = __nccwpck_require__(21626);
+var utils = __nccwpck_require__(328);
+var defaults = __nccwpck_require__(1626);
 
 /**
  * Transform the data for a request or a response
@@ -15827,26 +8493,26 @@ module.exports = function transformData(data, headers, fns) {
 
 /***/ }),
 
-/***/ 17024:
+/***/ 7024:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 // eslint-disable-next-line strict
-module.exports = __nccwpck_require__(64334);
+module.exports = __nccwpck_require__(4334);
 
 
 /***/ }),
 
-/***/ 21626:
+/***/ 1626:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
-var normalizeHeaderName = __nccwpck_require__(36240);
-var AxiosError = __nccwpck_require__(72093);
-var transitionalDefaults = __nccwpck_require__(40936);
-var toFormData = __nccwpck_require__(20470);
+var utils = __nccwpck_require__(328);
+var normalizeHeaderName = __nccwpck_require__(6240);
+var AxiosError = __nccwpck_require__(2093);
+var transitionalDefaults = __nccwpck_require__(936);
+var toFormData = __nccwpck_require__(470);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -15865,7 +8531,7 @@ function getDefaultAdapter() {
     adapter = __nccwpck_require__(3454);
   } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
     // For node use HTTP adapter
-    adapter = __nccwpck_require__(68104);
+    adapter = __nccwpck_require__(8104);
   }
   return adapter;
 }
@@ -15963,7 +8629,7 @@ var defaults = {
   maxBodyLength: -1,
 
   env: {
-    FormData: __nccwpck_require__(17024)
+    FormData: __nccwpck_require__(7024)
   },
 
   validateStatus: function validateStatus(status) {
@@ -15990,7 +8656,7 @@ module.exports = defaults;
 
 /***/ }),
 
-/***/ 40936:
+/***/ 936:
 /***/ ((module) => {
 
 "use strict";
@@ -16005,7 +8671,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 94322:
+/***/ 4322:
 /***/ ((module) => {
 
 module.exports = {
@@ -16014,7 +8680,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 77065:
+/***/ 7065:
 /***/ ((module) => {
 
 "use strict";
@@ -16033,13 +8699,13 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
-/***/ 30646:
+/***/ 646:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -16111,7 +8777,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 /***/ }),
 
-/***/ 57189:
+/***/ 7189:
 /***/ ((module) => {
 
 "use strict";
@@ -16133,13 +8799,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 /***/ }),
 
-/***/ 21545:
+/***/ 1545:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -16194,7 +8860,7 @@ module.exports = (
 
 /***/ }),
 
-/***/ 41301:
+/***/ 1301:
 /***/ ((module) => {
 
 "use strict";
@@ -16216,13 +8882,13 @@ module.exports = function isAbsoluteURL(url) {
 
 /***/ }),
 
-/***/ 60650:
+/***/ 650:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 /**
  * Determines whether the payload is an error thrown by Axios
@@ -16237,13 +8903,13 @@ module.exports = function isAxiosError(payload) {
 
 /***/ }),
 
-/***/ 33608:
+/***/ 3608:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -16313,13 +8979,13 @@ module.exports = (
 
 /***/ }),
 
-/***/ 36240:
+/***/ 6240:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -16333,13 +8999,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 /***/ }),
 
-/***/ 86455:
+/***/ 6455:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -16394,7 +9060,7 @@ module.exports = function parseHeaders(headers) {
 
 /***/ }),
 
-/***/ 66107:
+/***/ 6107:
 /***/ ((module) => {
 
 "use strict";
@@ -16408,7 +9074,7 @@ module.exports = function parseProtocol(url) {
 
 /***/ }),
 
-/***/ 74850:
+/***/ 4850:
 /***/ ((module) => {
 
 "use strict";
@@ -16443,13 +9109,13 @@ module.exports = function spread(callback) {
 
 /***/ }),
 
-/***/ 20470:
+/***/ 470:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __nccwpck_require__(20328);
+var utils = __nccwpck_require__(328);
 
 /**
  * Convert a data object to FormData
@@ -16523,14 +9189,14 @@ module.exports = toFormData;
 
 /***/ }),
 
-/***/ 51632:
+/***/ 1632:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var VERSION = (__nccwpck_require__(94322).version);
-var AxiosError = __nccwpck_require__(72093);
+var VERSION = (__nccwpck_require__(4322).version);
+var AxiosError = __nccwpck_require__(2093);
 
 var validators = {};
 
@@ -16617,13 +9283,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 20328:
+/***/ 328:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var bind = __nccwpck_require__(77065);
+var bind = __nccwpck_require__(7065);
 
 // utils is a library of generic helper functions non-specific to axios
 
@@ -17095,12 +9761,12 @@ module.exports = {
 
 /***/ }),
 
-/***/ 85443:
+/***/ 5443:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var util = __nccwpck_require__(73837);
-var Stream = (__nccwpck_require__(12781).Stream);
-var DelayedStream = __nccwpck_require__(18611);
+var util = __nccwpck_require__(3837);
+var Stream = (__nccwpck_require__(2781).Stream);
+var DelayedStream = __nccwpck_require__(8611);
 
 module.exports = CombinedStream;
 function CombinedStream() {
@@ -17310,7 +9976,7 @@ CombinedStream.prototype._emitError = function(err) {
 
 /***/ }),
 
-/***/ 28222:
+/***/ 8222:
 /***/ ((module, exports, __nccwpck_require__) => {
 
 /* eslint-env browser */
@@ -17567,7 +10233,7 @@ function localstorage() {
 	}
 }
 
-module.exports = __nccwpck_require__(46243)(exports);
+module.exports = __nccwpck_require__(6243)(exports);
 
 const {formatters} = module.exports;
 
@@ -17586,7 +10252,7 @@ formatters.j = function (v) {
 
 /***/ }),
 
-/***/ 46243:
+/***/ 6243:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 
@@ -17602,7 +10268,7 @@ function setup(env) {
 	createDebug.disable = disable;
 	createDebug.enable = enable;
 	createDebug.enabled = enabled;
-	createDebug.humanize = __nccwpck_require__(80900);
+	createDebug.humanize = __nccwpck_require__(900);
 	createDebug.destroy = destroy;
 
 	Object.keys(env).forEach(key => {
@@ -17867,7 +10533,7 @@ module.exports = setup;
 
 /***/ }),
 
-/***/ 38237:
+/***/ 8237:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /**
@@ -17876,23 +10542,23 @@ module.exports = setup;
  */
 
 if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
-	module.exports = __nccwpck_require__(28222);
+	module.exports = __nccwpck_require__(8222);
 } else {
-	module.exports = __nccwpck_require__(35332);
+	module.exports = __nccwpck_require__(4874);
 }
 
 
 /***/ }),
 
-/***/ 35332:
+/***/ 4874:
 /***/ ((module, exports, __nccwpck_require__) => {
 
 /**
  * Module dependencies.
  */
 
-const tty = __nccwpck_require__(76224);
-const util = __nccwpck_require__(73837);
+const tty = __nccwpck_require__(6224);
+const util = __nccwpck_require__(3837);
 
 /**
  * This is the Node.js implementation of `debug()`.
@@ -17918,7 +10584,7 @@ exports.colors = [6, 2, 3, 4, 5, 1];
 try {
 	// Optional dependency (as in, doesn't need to be installed, NOT like optionalDependencies in package.json)
 	// eslint-disable-next-line import/no-extraneous-dependencies
-	const supportsColor = __nccwpck_require__(59318);
+	const supportsColor = __nccwpck_require__(9318);
 
 	if (supportsColor && (supportsColor.stderr || supportsColor).level >= 2) {
 		exports.colors = [
@@ -18126,7 +10792,7 @@ function init(debug) {
 	}
 }
 
-module.exports = __nccwpck_require__(46243)(exports);
+module.exports = __nccwpck_require__(6243)(exports);
 
 const {formatters} = module.exports;
 
@@ -18154,11 +10820,11 @@ formatters.O = function (v) {
 
 /***/ }),
 
-/***/ 18611:
+/***/ 8611:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var Stream = (__nccwpck_require__(12781).Stream);
-var util = __nccwpck_require__(73837);
+var Stream = (__nccwpck_require__(2781).Stream);
+var util = __nccwpck_require__(3837);
 
 module.exports = DelayedStream;
 function DelayedStream() {
@@ -18268,7 +10934,7 @@ DelayedStream.prototype._checkIfMaxDataSizeExceeded = function() {
 
 /***/ }),
 
-/***/ 31133:
+/***/ 1133:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 var debug;
@@ -18277,7 +10943,7 @@ module.exports = function () {
   if (!debug) {
     try {
       /* eslint global-require: off */
-      debug = __nccwpck_require__(38237)("follow-redirects");
+      debug = __nccwpck_require__(8237)("follow-redirects");
     }
     catch (error) { /* */ }
     if (typeof debug !== "function") {
@@ -18290,16 +10956,16 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 67707:
+/***/ 7707:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var url = __nccwpck_require__(57310);
+var url = __nccwpck_require__(7310);
 var URL = url.URL;
-var http = __nccwpck_require__(13685);
-var https = __nccwpck_require__(95687);
-var Writable = (__nccwpck_require__(12781).Writable);
-var assert = __nccwpck_require__(39491);
-var debug = __nccwpck_require__(31133);
+var http = __nccwpck_require__(3685);
+var https = __nccwpck_require__(5687);
+var Writable = (__nccwpck_require__(2781).Writable);
+var assert = __nccwpck_require__(9491);
+var debug = __nccwpck_require__(1133);
 
 // Create handlers that pass events from native requests
 var events = ["abort", "aborted", "connect", "error", "socket", "timeout"];
@@ -18918,20 +11584,20 @@ module.exports.wrap = wrap;
 
 /***/ }),
 
-/***/ 64334:
+/***/ 4334:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var CombinedStream = __nccwpck_require__(85443);
-var util = __nccwpck_require__(73837);
-var path = __nccwpck_require__(71017);
-var http = __nccwpck_require__(13685);
-var https = __nccwpck_require__(95687);
-var parseUrl = (__nccwpck_require__(57310).parse);
-var fs = __nccwpck_require__(57147);
-var Stream = (__nccwpck_require__(12781).Stream);
-var mime = __nccwpck_require__(43583);
-var asynckit = __nccwpck_require__(14812);
-var populate = __nccwpck_require__(17142);
+var CombinedStream = __nccwpck_require__(5443);
+var util = __nccwpck_require__(3837);
+var path = __nccwpck_require__(1017);
+var http = __nccwpck_require__(3685);
+var https = __nccwpck_require__(5687);
+var parseUrl = (__nccwpck_require__(7310).parse);
+var fs = __nccwpck_require__(7147);
+var Stream = (__nccwpck_require__(2781).Stream);
+var mime = __nccwpck_require__(3583);
+var asynckit = __nccwpck_require__(4812);
+var populate = __nccwpck_require__(7142);
 
 // Public API
 module.exports = FormData;
@@ -19426,7 +12092,7 @@ FormData.prototype.toString = function () {
 
 /***/ }),
 
-/***/ 17142:
+/***/ 7142:
 /***/ ((module) => {
 
 // populates missing values
@@ -19443,7 +12109,7 @@ module.exports = function(dst, src) {
 
 /***/ }),
 
-/***/ 31621:
+/***/ 1621:
 /***/ ((module) => {
 
 "use strict";
@@ -19459,7 +12125,7 @@ module.exports = (flag, argv = process.argv) => {
 
 /***/ }),
 
-/***/ 90250:
+/***/ 250:
 /***/ (function(module, exports, __nccwpck_require__) {
 
 /* module decorator */ module = __nccwpck_require__.nmd(module);
@@ -36676,349 +29342,7 @@ module.exports = (flag, argv = process.argv) => {
 
 /***/ }),
 
-/***/ 7129:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-// A linked list to keep track of recently-used-ness
-const Yallist = __nccwpck_require__(40665)
-
-const MAX = Symbol('max')
-const LENGTH = Symbol('length')
-const LENGTH_CALCULATOR = Symbol('lengthCalculator')
-const ALLOW_STALE = Symbol('allowStale')
-const MAX_AGE = Symbol('maxAge')
-const DISPOSE = Symbol('dispose')
-const NO_DISPOSE_ON_SET = Symbol('noDisposeOnSet')
-const LRU_LIST = Symbol('lruList')
-const CACHE = Symbol('cache')
-const UPDATE_AGE_ON_GET = Symbol('updateAgeOnGet')
-
-const naiveLength = () => 1
-
-// lruList is a yallist where the head is the youngest
-// item, and the tail is the oldest.  the list contains the Hit
-// objects as the entries.
-// Each Hit object has a reference to its Yallist.Node.  This
-// never changes.
-//
-// cache is a Map (or PseudoMap) that matches the keys to
-// the Yallist.Node object.
-class LRUCache {
-  constructor (options) {
-    if (typeof options === 'number')
-      options = { max: options }
-
-    if (!options)
-      options = {}
-
-    if (options.max && (typeof options.max !== 'number' || options.max < 0))
-      throw new TypeError('max must be a non-negative number')
-    // Kind of weird to have a default max of Infinity, but oh well.
-    const max = this[MAX] = options.max || Infinity
-
-    const lc = options.length || naiveLength
-    this[LENGTH_CALCULATOR] = (typeof lc !== 'function') ? naiveLength : lc
-    this[ALLOW_STALE] = options.stale || false
-    if (options.maxAge && typeof options.maxAge !== 'number')
-      throw new TypeError('maxAge must be a number')
-    this[MAX_AGE] = options.maxAge || 0
-    this[DISPOSE] = options.dispose
-    this[NO_DISPOSE_ON_SET] = options.noDisposeOnSet || false
-    this[UPDATE_AGE_ON_GET] = options.updateAgeOnGet || false
-    this.reset()
-  }
-
-  // resize the cache when the max changes.
-  set max (mL) {
-    if (typeof mL !== 'number' || mL < 0)
-      throw new TypeError('max must be a non-negative number')
-
-    this[MAX] = mL || Infinity
-    trim(this)
-  }
-  get max () {
-    return this[MAX]
-  }
-
-  set allowStale (allowStale) {
-    this[ALLOW_STALE] = !!allowStale
-  }
-  get allowStale () {
-    return this[ALLOW_STALE]
-  }
-
-  set maxAge (mA) {
-    if (typeof mA !== 'number')
-      throw new TypeError('maxAge must be a non-negative number')
-
-    this[MAX_AGE] = mA
-    trim(this)
-  }
-  get maxAge () {
-    return this[MAX_AGE]
-  }
-
-  // resize the cache when the lengthCalculator changes.
-  set lengthCalculator (lC) {
-    if (typeof lC !== 'function')
-      lC = naiveLength
-
-    if (lC !== this[LENGTH_CALCULATOR]) {
-      this[LENGTH_CALCULATOR] = lC
-      this[LENGTH] = 0
-      this[LRU_LIST].forEach(hit => {
-        hit.length = this[LENGTH_CALCULATOR](hit.value, hit.key)
-        this[LENGTH] += hit.length
-      })
-    }
-    trim(this)
-  }
-  get lengthCalculator () { return this[LENGTH_CALCULATOR] }
-
-  get length () { return this[LENGTH] }
-  get itemCount () { return this[LRU_LIST].length }
-
-  rforEach (fn, thisp) {
-    thisp = thisp || this
-    for (let walker = this[LRU_LIST].tail; walker !== null;) {
-      const prev = walker.prev
-      forEachStep(this, fn, walker, thisp)
-      walker = prev
-    }
-  }
-
-  forEach (fn, thisp) {
-    thisp = thisp || this
-    for (let walker = this[LRU_LIST].head; walker !== null;) {
-      const next = walker.next
-      forEachStep(this, fn, walker, thisp)
-      walker = next
-    }
-  }
-
-  keys () {
-    return this[LRU_LIST].toArray().map(k => k.key)
-  }
-
-  values () {
-    return this[LRU_LIST].toArray().map(k => k.value)
-  }
-
-  reset () {
-    if (this[DISPOSE] &&
-        this[LRU_LIST] &&
-        this[LRU_LIST].length) {
-      this[LRU_LIST].forEach(hit => this[DISPOSE](hit.key, hit.value))
-    }
-
-    this[CACHE] = new Map() // hash of items by key
-    this[LRU_LIST] = new Yallist() // list of items in order of use recency
-    this[LENGTH] = 0 // length of items in the list
-  }
-
-  dump () {
-    return this[LRU_LIST].map(hit =>
-      isStale(this, hit) ? false : {
-        k: hit.key,
-        v: hit.value,
-        e: hit.now + (hit.maxAge || 0)
-      }).toArray().filter(h => h)
-  }
-
-  dumpLru () {
-    return this[LRU_LIST]
-  }
-
-  set (key, value, maxAge) {
-    maxAge = maxAge || this[MAX_AGE]
-
-    if (maxAge && typeof maxAge !== 'number')
-      throw new TypeError('maxAge must be a number')
-
-    const now = maxAge ? Date.now() : 0
-    const len = this[LENGTH_CALCULATOR](value, key)
-
-    if (this[CACHE].has(key)) {
-      if (len > this[MAX]) {
-        del(this, this[CACHE].get(key))
-        return false
-      }
-
-      const node = this[CACHE].get(key)
-      const item = node.value
-
-      // dispose of the old one before overwriting
-      // split out into 2 ifs for better coverage tracking
-      if (this[DISPOSE]) {
-        if (!this[NO_DISPOSE_ON_SET])
-          this[DISPOSE](key, item.value)
-      }
-
-      item.now = now
-      item.maxAge = maxAge
-      item.value = value
-      this[LENGTH] += len - item.length
-      item.length = len
-      this.get(key)
-      trim(this)
-      return true
-    }
-
-    const hit = new Entry(key, value, len, now, maxAge)
-
-    // oversized objects fall out of cache automatically.
-    if (hit.length > this[MAX]) {
-      if (this[DISPOSE])
-        this[DISPOSE](key, value)
-
-      return false
-    }
-
-    this[LENGTH] += hit.length
-    this[LRU_LIST].unshift(hit)
-    this[CACHE].set(key, this[LRU_LIST].head)
-    trim(this)
-    return true
-  }
-
-  has (key) {
-    if (!this[CACHE].has(key)) return false
-    const hit = this[CACHE].get(key).value
-    return !isStale(this, hit)
-  }
-
-  get (key) {
-    return get(this, key, true)
-  }
-
-  peek (key) {
-    return get(this, key, false)
-  }
-
-  pop () {
-    const node = this[LRU_LIST].tail
-    if (!node)
-      return null
-
-    del(this, node)
-    return node.value
-  }
-
-  del (key) {
-    del(this, this[CACHE].get(key))
-  }
-
-  load (arr) {
-    // reset the cache
-    this.reset()
-
-    const now = Date.now()
-    // A previous serialized cache has the most recent items first
-    for (let l = arr.length - 1; l >= 0; l--) {
-      const hit = arr[l]
-      const expiresAt = hit.e || 0
-      if (expiresAt === 0)
-        // the item was created without expiration in a non aged cache
-        this.set(hit.k, hit.v)
-      else {
-        const maxAge = expiresAt - now
-        // dont add already expired items
-        if (maxAge > 0) {
-          this.set(hit.k, hit.v, maxAge)
-        }
-      }
-    }
-  }
-
-  prune () {
-    this[CACHE].forEach((value, key) => get(this, key, false))
-  }
-}
-
-const get = (self, key, doUse) => {
-  const node = self[CACHE].get(key)
-  if (node) {
-    const hit = node.value
-    if (isStale(self, hit)) {
-      del(self, node)
-      if (!self[ALLOW_STALE])
-        return undefined
-    } else {
-      if (doUse) {
-        if (self[UPDATE_AGE_ON_GET])
-          node.value.now = Date.now()
-        self[LRU_LIST].unshiftNode(node)
-      }
-    }
-    return hit.value
-  }
-}
-
-const isStale = (self, hit) => {
-  if (!hit || (!hit.maxAge && !self[MAX_AGE]))
-    return false
-
-  const diff = Date.now() - hit.now
-  return hit.maxAge ? diff > hit.maxAge
-    : self[MAX_AGE] && (diff > self[MAX_AGE])
-}
-
-const trim = self => {
-  if (self[LENGTH] > self[MAX]) {
-    for (let walker = self[LRU_LIST].tail;
-      self[LENGTH] > self[MAX] && walker !== null;) {
-      // We know that we're about to delete this one, and also
-      // what the next least recently used key will be, so just
-      // go ahead and set it now.
-      const prev = walker.prev
-      del(self, walker)
-      walker = prev
-    }
-  }
-}
-
-const del = (self, node) => {
-  if (node) {
-    const hit = node.value
-    if (self[DISPOSE])
-      self[DISPOSE](hit.key, hit.value)
-
-    self[LENGTH] -= hit.length
-    self[CACHE].delete(hit.key)
-    self[LRU_LIST].removeNode(node)
-  }
-}
-
-class Entry {
-  constructor (key, value, length, now, maxAge) {
-    this.key = key
-    this.value = value
-    this.length = length
-    this.now = now
-    this.maxAge = maxAge || 0
-  }
-}
-
-const forEachStep = (self, fn, node, thisp) => {
-  let hit = node.value
-  if (isStale(self, hit)) {
-    del(self, node)
-    if (!self[ALLOW_STALE])
-      hit = undefined
-  }
-  if (hit)
-    fn.call(thisp, hit.value, hit.key, self)
-}
-
-module.exports = LRUCache
-
-
-/***/ }),
-
-/***/ 47426:
+/***/ 7426:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /*!
@@ -37032,12 +29356,12 @@ module.exports = LRUCache
  * Module exports.
  */
 
-module.exports = __nccwpck_require__(53765)
+module.exports = __nccwpck_require__(3765)
 
 
 /***/ }),
 
-/***/ 43583:
+/***/ 3583:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -37055,8 +29379,8 @@ module.exports = __nccwpck_require__(53765)
  * @private
  */
 
-var db = __nccwpck_require__(47426)
-var extname = (__nccwpck_require__(71017).extname)
+var db = __nccwpck_require__(7426)
+var extname = (__nccwpck_require__(1017).extname)
 
 /**
  * Module variables.
@@ -37233,7 +29557,7 @@ function populateMaps (extensions, types) {
 
 /***/ }),
 
-/***/ 80900:
+/***/ 900:
 /***/ ((module) => {
 
 /**
@@ -37402,2326 +29726,14 @@ function plural(ms, msAbs, n, name) {
 
 /***/ }),
 
-/***/ 91532:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const ANY = Symbol('SemVer ANY')
-// hoisted class for cyclic dependency
-class Comparator {
-  static get ANY () {
-    return ANY
-  }
-
-  constructor (comp, options) {
-    options = parseOptions(options)
-
-    if (comp instanceof Comparator) {
-      if (comp.loose === !!options.loose) {
-        return comp
-      } else {
-        comp = comp.value
-      }
-    }
-
-    debug('comparator', comp, options)
-    this.options = options
-    this.loose = !!options.loose
-    this.parse(comp)
-
-    if (this.semver === ANY) {
-      this.value = ''
-    } else {
-      this.value = this.operator + this.semver.version
-    }
-
-    debug('comp', this)
-  }
-
-  parse (comp) {
-    const r = this.options.loose ? re[t.COMPARATORLOOSE] : re[t.COMPARATOR]
-    const m = comp.match(r)
-
-    if (!m) {
-      throw new TypeError(`Invalid comparator: ${comp}`)
-    }
-
-    this.operator = m[1] !== undefined ? m[1] : ''
-    if (this.operator === '=') {
-      this.operator = ''
-    }
-
-    // if it literally is just '>' or '' then allow anything.
-    if (!m[2]) {
-      this.semver = ANY
-    } else {
-      this.semver = new SemVer(m[2], this.options.loose)
-    }
-  }
-
-  toString () {
-    return this.value
-  }
-
-  test (version) {
-    debug('Comparator.test', version, this.options.loose)
-
-    if (this.semver === ANY || version === ANY) {
-      return true
-    }
-
-    if (typeof version === 'string') {
-      try {
-        version = new SemVer(version, this.options)
-      } catch (er) {
-        return false
-      }
-    }
-
-    return cmp(version, this.operator, this.semver, this.options)
-  }
-
-  intersects (comp, options) {
-    if (!(comp instanceof Comparator)) {
-      throw new TypeError('a Comparator is required')
-    }
-
-    if (!options || typeof options !== 'object') {
-      options = {
-        loose: !!options,
-        includePrerelease: false,
-      }
-    }
-
-    if (this.operator === '') {
-      if (this.value === '') {
-        return true
-      }
-      return new Range(comp.value, options).test(this.value)
-    } else if (comp.operator === '') {
-      if (comp.value === '') {
-        return true
-      }
-      return new Range(this.value, options).test(comp.semver)
-    }
-
-    const sameDirectionIncreasing =
-      (this.operator === '>=' || this.operator === '>') &&
-      (comp.operator === '>=' || comp.operator === '>')
-    const sameDirectionDecreasing =
-      (this.operator === '<=' || this.operator === '<') &&
-      (comp.operator === '<=' || comp.operator === '<')
-    const sameSemVer = this.semver.version === comp.semver.version
-    const differentDirectionsInclusive =
-      (this.operator === '>=' || this.operator === '<=') &&
-      (comp.operator === '>=' || comp.operator === '<=')
-    const oppositeDirectionsLessThan =
-      cmp(this.semver, '<', comp.semver, options) &&
-      (this.operator === '>=' || this.operator === '>') &&
-        (comp.operator === '<=' || comp.operator === '<')
-    const oppositeDirectionsGreaterThan =
-      cmp(this.semver, '>', comp.semver, options) &&
-      (this.operator === '<=' || this.operator === '<') &&
-        (comp.operator === '>=' || comp.operator === '>')
-
-    return (
-      sameDirectionIncreasing ||
-      sameDirectionDecreasing ||
-      (sameSemVer && differentDirectionsInclusive) ||
-      oppositeDirectionsLessThan ||
-      oppositeDirectionsGreaterThan
-    )
-  }
-}
-
-module.exports = Comparator
-
-const parseOptions = __nccwpck_require__(40785)
-const { re, t } = __nccwpck_require__(9523)
-const cmp = __nccwpck_require__(75098)
-const debug = __nccwpck_require__(50427)
-const SemVer = __nccwpck_require__(48088)
-const Range = __nccwpck_require__(9828)
-
-
-/***/ }),
-
-/***/ 9828:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-// hoisted class for cyclic dependency
-class Range {
-  constructor (range, options) {
-    options = parseOptions(options)
-
-    if (range instanceof Range) {
-      if (
-        range.loose === !!options.loose &&
-        range.includePrerelease === !!options.includePrerelease
-      ) {
-        return range
-      } else {
-        return new Range(range.raw, options)
-      }
-    }
-
-    if (range instanceof Comparator) {
-      // just put it in the set and return
-      this.raw = range.value
-      this.set = [[range]]
-      this.format()
-      return this
-    }
-
-    this.options = options
-    this.loose = !!options.loose
-    this.includePrerelease = !!options.includePrerelease
-
-    // First, split based on boolean or ||
-    this.raw = range
-    this.set = range
-      .split('||')
-      // map the range to a 2d array of comparators
-      .map(r => this.parseRange(r.trim()))
-      // throw out any comparator lists that are empty
-      // this generally means that it was not a valid range, which is allowed
-      // in loose mode, but will still throw if the WHOLE range is invalid.
-      .filter(c => c.length)
-
-    if (!this.set.length) {
-      throw new TypeError(`Invalid SemVer Range: ${range}`)
-    }
-
-    // if we have any that are not the null set, throw out null sets.
-    if (this.set.length > 1) {
-      // keep the first one, in case they're all null sets
-      const first = this.set[0]
-      this.set = this.set.filter(c => !isNullSet(c[0]))
-      if (this.set.length === 0) {
-        this.set = [first]
-      } else if (this.set.length > 1) {
-        // if we have any that are *, then the range is just *
-        for (const c of this.set) {
-          if (c.length === 1 && isAny(c[0])) {
-            this.set = [c]
-            break
-          }
-        }
-      }
-    }
-
-    this.format()
-  }
-
-  format () {
-    this.range = this.set
-      .map((comps) => {
-        return comps.join(' ').trim()
-      })
-      .join('||')
-      .trim()
-    return this.range
-  }
-
-  toString () {
-    return this.range
-  }
-
-  parseRange (range) {
-    range = range.trim()
-
-    // memoize range parsing for performance.
-    // this is a very hot path, and fully deterministic.
-    const memoOpts = Object.keys(this.options).join(',')
-    const memoKey = `parseRange:${memoOpts}:${range}`
-    const cached = cache.get(memoKey)
-    if (cached) {
-      return cached
-    }
-
-    const loose = this.options.loose
-    // `1.2.3 - 1.2.4` => `>=1.2.3 <=1.2.4`
-    const hr = loose ? re[t.HYPHENRANGELOOSE] : re[t.HYPHENRANGE]
-    range = range.replace(hr, hyphenReplace(this.options.includePrerelease))
-    debug('hyphen replace', range)
-    // `> 1.2.3 < 1.2.5` => `>1.2.3 <1.2.5`
-    range = range.replace(re[t.COMPARATORTRIM], comparatorTrimReplace)
-    debug('comparator trim', range)
-
-    // `~ 1.2.3` => `~1.2.3`
-    range = range.replace(re[t.TILDETRIM], tildeTrimReplace)
-
-    // `^ 1.2.3` => `^1.2.3`
-    range = range.replace(re[t.CARETTRIM], caretTrimReplace)
-
-    // normalize spaces
-    range = range.split(/\s+/).join(' ')
-
-    // At this point, the range is completely trimmed and
-    // ready to be split into comparators.
-
-    let rangeList = range
-      .split(' ')
-      .map(comp => parseComparator(comp, this.options))
-      .join(' ')
-      .split(/\s+/)
-      // >=0.0.0 is equivalent to *
-      .map(comp => replaceGTE0(comp, this.options))
-
-    if (loose) {
-      // in loose mode, throw out any that are not valid comparators
-      rangeList = rangeList.filter(comp => {
-        debug('loose invalid filter', comp, this.options)
-        return !!comp.match(re[t.COMPARATORLOOSE])
-      })
-    }
-    debug('range list', rangeList)
-
-    // if any comparators are the null set, then replace with JUST null set
-    // if more than one comparator, remove any * comparators
-    // also, don't include the same comparator more than once
-    const rangeMap = new Map()
-    const comparators = rangeList.map(comp => new Comparator(comp, this.options))
-    for (const comp of comparators) {
-      if (isNullSet(comp)) {
-        return [comp]
-      }
-      rangeMap.set(comp.value, comp)
-    }
-    if (rangeMap.size > 1 && rangeMap.has('')) {
-      rangeMap.delete('')
-    }
-
-    const result = [...rangeMap.values()]
-    cache.set(memoKey, result)
-    return result
-  }
-
-  intersects (range, options) {
-    if (!(range instanceof Range)) {
-      throw new TypeError('a Range is required')
-    }
-
-    return this.set.some((thisComparators) => {
-      return (
-        isSatisfiable(thisComparators, options) &&
-        range.set.some((rangeComparators) => {
-          return (
-            isSatisfiable(rangeComparators, options) &&
-            thisComparators.every((thisComparator) => {
-              return rangeComparators.every((rangeComparator) => {
-                return thisComparator.intersects(rangeComparator, options)
-              })
-            })
-          )
-        })
-      )
-    })
-  }
-
-  // if ANY of the sets match ALL of its comparators, then pass
-  test (version) {
-    if (!version) {
-      return false
-    }
-
-    if (typeof version === 'string') {
-      try {
-        version = new SemVer(version, this.options)
-      } catch (er) {
-        return false
-      }
-    }
-
-    for (let i = 0; i < this.set.length; i++) {
-      if (testSet(this.set[i], version, this.options)) {
-        return true
-      }
-    }
-    return false
-  }
-}
-module.exports = Range
-
-const LRU = __nccwpck_require__(7129)
-const cache = new LRU({ max: 1000 })
-
-const parseOptions = __nccwpck_require__(40785)
-const Comparator = __nccwpck_require__(91532)
-const debug = __nccwpck_require__(50427)
-const SemVer = __nccwpck_require__(48088)
-const {
-  re,
-  t,
-  comparatorTrimReplace,
-  tildeTrimReplace,
-  caretTrimReplace,
-} = __nccwpck_require__(9523)
-
-const isNullSet = c => c.value === '<0.0.0-0'
-const isAny = c => c.value === ''
-
-// take a set of comparators and determine whether there
-// exists a version which can satisfy it
-const isSatisfiable = (comparators, options) => {
-  let result = true
-  const remainingComparators = comparators.slice()
-  let testComparator = remainingComparators.pop()
-
-  while (result && remainingComparators.length) {
-    result = remainingComparators.every((otherComparator) => {
-      return testComparator.intersects(otherComparator, options)
-    })
-
-    testComparator = remainingComparators.pop()
-  }
-
-  return result
-}
-
-// comprised of xranges, tildes, stars, and gtlt's at this point.
-// already replaced the hyphen ranges
-// turn into a set of JUST comparators.
-const parseComparator = (comp, options) => {
-  debug('comp', comp, options)
-  comp = replaceCarets(comp, options)
-  debug('caret', comp)
-  comp = replaceTildes(comp, options)
-  debug('tildes', comp)
-  comp = replaceXRanges(comp, options)
-  debug('xrange', comp)
-  comp = replaceStars(comp, options)
-  debug('stars', comp)
-  return comp
-}
-
-const isX = id => !id || id.toLowerCase() === 'x' || id === '*'
-
-// ~, ~> --> * (any, kinda silly)
-// ~2, ~2.x, ~2.x.x, ~>2, ~>2.x ~>2.x.x --> >=2.0.0 <3.0.0-0
-// ~2.0, ~2.0.x, ~>2.0, ~>2.0.x --> >=2.0.0 <2.1.0-0
-// ~1.2, ~1.2.x, ~>1.2, ~>1.2.x --> >=1.2.0 <1.3.0-0
-// ~1.2.3, ~>1.2.3 --> >=1.2.3 <1.3.0-0
-// ~1.2.0, ~>1.2.0 --> >=1.2.0 <1.3.0-0
-const replaceTildes = (comp, options) =>
-  comp.trim().split(/\s+/).map((c) => {
-    return replaceTilde(c, options)
-  }).join(' ')
-
-const replaceTilde = (comp, options) => {
-  const r = options.loose ? re[t.TILDELOOSE] : re[t.TILDE]
-  return comp.replace(r, (_, M, m, p, pr) => {
-    debug('tilde', comp, _, M, m, p, pr)
-    let ret
-
-    if (isX(M)) {
-      ret = ''
-    } else if (isX(m)) {
-      ret = `>=${M}.0.0 <${+M + 1}.0.0-0`
-    } else if (isX(p)) {
-      // ~1.2 == >=1.2.0 <1.3.0-0
-      ret = `>=${M}.${m}.0 <${M}.${+m + 1}.0-0`
-    } else if (pr) {
-      debug('replaceTilde pr', pr)
-      ret = `>=${M}.${m}.${p}-${pr
-      } <${M}.${+m + 1}.0-0`
-    } else {
-      // ~1.2.3 == >=1.2.3 <1.3.0-0
-      ret = `>=${M}.${m}.${p
-      } <${M}.${+m + 1}.0-0`
-    }
-
-    debug('tilde return', ret)
-    return ret
-  })
-}
-
-// ^ --> * (any, kinda silly)
-// ^2, ^2.x, ^2.x.x --> >=2.0.0 <3.0.0-0
-// ^2.0, ^2.0.x --> >=2.0.0 <3.0.0-0
-// ^1.2, ^1.2.x --> >=1.2.0 <2.0.0-0
-// ^1.2.3 --> >=1.2.3 <2.0.0-0
-// ^1.2.0 --> >=1.2.0 <2.0.0-0
-const replaceCarets = (comp, options) =>
-  comp.trim().split(/\s+/).map((c) => {
-    return replaceCaret(c, options)
-  }).join(' ')
-
-const replaceCaret = (comp, options) => {
-  debug('caret', comp, options)
-  const r = options.loose ? re[t.CARETLOOSE] : re[t.CARET]
-  const z = options.includePrerelease ? '-0' : ''
-  return comp.replace(r, (_, M, m, p, pr) => {
-    debug('caret', comp, _, M, m, p, pr)
-    let ret
-
-    if (isX(M)) {
-      ret = ''
-    } else if (isX(m)) {
-      ret = `>=${M}.0.0${z} <${+M + 1}.0.0-0`
-    } else if (isX(p)) {
-      if (M === '0') {
-        ret = `>=${M}.${m}.0${z} <${M}.${+m + 1}.0-0`
-      } else {
-        ret = `>=${M}.${m}.0${z} <${+M + 1}.0.0-0`
-      }
-    } else if (pr) {
-      debug('replaceCaret pr', pr)
-      if (M === '0') {
-        if (m === '0') {
-          ret = `>=${M}.${m}.${p}-${pr
-          } <${M}.${m}.${+p + 1}-0`
-        } else {
-          ret = `>=${M}.${m}.${p}-${pr
-          } <${M}.${+m + 1}.0-0`
-        }
-      } else {
-        ret = `>=${M}.${m}.${p}-${pr
-        } <${+M + 1}.0.0-0`
-      }
-    } else {
-      debug('no pr')
-      if (M === '0') {
-        if (m === '0') {
-          ret = `>=${M}.${m}.${p
-          }${z} <${M}.${m}.${+p + 1}-0`
-        } else {
-          ret = `>=${M}.${m}.${p
-          }${z} <${M}.${+m + 1}.0-0`
-        }
-      } else {
-        ret = `>=${M}.${m}.${p
-        } <${+M + 1}.0.0-0`
-      }
-    }
-
-    debug('caret return', ret)
-    return ret
-  })
-}
-
-const replaceXRanges = (comp, options) => {
-  debug('replaceXRanges', comp, options)
-  return comp.split(/\s+/).map((c) => {
-    return replaceXRange(c, options)
-  }).join(' ')
-}
-
-const replaceXRange = (comp, options) => {
-  comp = comp.trim()
-  const r = options.loose ? re[t.XRANGELOOSE] : re[t.XRANGE]
-  return comp.replace(r, (ret, gtlt, M, m, p, pr) => {
-    debug('xRange', comp, ret, gtlt, M, m, p, pr)
-    const xM = isX(M)
-    const xm = xM || isX(m)
-    const xp = xm || isX(p)
-    const anyX = xp
-
-    if (gtlt === '=' && anyX) {
-      gtlt = ''
-    }
-
-    // if we're including prereleases in the match, then we need
-    // to fix this to -0, the lowest possible prerelease value
-    pr = options.includePrerelease ? '-0' : ''
-
-    if (xM) {
-      if (gtlt === '>' || gtlt === '<') {
-        // nothing is allowed
-        ret = '<0.0.0-0'
-      } else {
-        // nothing is forbidden
-        ret = '*'
-      }
-    } else if (gtlt && anyX) {
-      // we know patch is an x, because we have any x at all.
-      // replace X with 0
-      if (xm) {
-        m = 0
-      }
-      p = 0
-
-      if (gtlt === '>') {
-        // >1 => >=2.0.0
-        // >1.2 => >=1.3.0
-        gtlt = '>='
-        if (xm) {
-          M = +M + 1
-          m = 0
-          p = 0
-        } else {
-          m = +m + 1
-          p = 0
-        }
-      } else if (gtlt === '<=') {
-        // <=0.7.x is actually <0.8.0, since any 0.7.x should
-        // pass.  Similarly, <=7.x is actually <8.0.0, etc.
-        gtlt = '<'
-        if (xm) {
-          M = +M + 1
-        } else {
-          m = +m + 1
-        }
-      }
-
-      if (gtlt === '<') {
-        pr = '-0'
-      }
-
-      ret = `${gtlt + M}.${m}.${p}${pr}`
-    } else if (xm) {
-      ret = `>=${M}.0.0${pr} <${+M + 1}.0.0-0`
-    } else if (xp) {
-      ret = `>=${M}.${m}.0${pr
-      } <${M}.${+m + 1}.0-0`
-    }
-
-    debug('xRange return', ret)
-
-    return ret
-  })
-}
-
-// Because * is AND-ed with everything else in the comparator,
-// and '' means "any version", just remove the *s entirely.
-const replaceStars = (comp, options) => {
-  debug('replaceStars', comp, options)
-  // Looseness is ignored here.  star is always as loose as it gets!
-  return comp.trim().replace(re[t.STAR], '')
-}
-
-const replaceGTE0 = (comp, options) => {
-  debug('replaceGTE0', comp, options)
-  return comp.trim()
-    .replace(re[options.includePrerelease ? t.GTE0PRE : t.GTE0], '')
-}
-
-// This function is passed to string.replace(re[t.HYPHENRANGE])
-// M, m, patch, prerelease, build
-// 1.2 - 3.4.5 => >=1.2.0 <=3.4.5
-// 1.2.3 - 3.4 => >=1.2.0 <3.5.0-0 Any 3.4.x will do
-// 1.2 - 3.4 => >=1.2.0 <3.5.0-0
-const hyphenReplace = incPr => ($0,
-  from, fM, fm, fp, fpr, fb,
-  to, tM, tm, tp, tpr, tb) => {
-  if (isX(fM)) {
-    from = ''
-  } else if (isX(fm)) {
-    from = `>=${fM}.0.0${incPr ? '-0' : ''}`
-  } else if (isX(fp)) {
-    from = `>=${fM}.${fm}.0${incPr ? '-0' : ''}`
-  } else if (fpr) {
-    from = `>=${from}`
-  } else {
-    from = `>=${from}${incPr ? '-0' : ''}`
-  }
-
-  if (isX(tM)) {
-    to = ''
-  } else if (isX(tm)) {
-    to = `<${+tM + 1}.0.0-0`
-  } else if (isX(tp)) {
-    to = `<${tM}.${+tm + 1}.0-0`
-  } else if (tpr) {
-    to = `<=${tM}.${tm}.${tp}-${tpr}`
-  } else if (incPr) {
-    to = `<${tM}.${tm}.${+tp + 1}-0`
-  } else {
-    to = `<=${to}`
-  }
-
-  return (`${from} ${to}`).trim()
-}
-
-const testSet = (set, version, options) => {
-  for (let i = 0; i < set.length; i++) {
-    if (!set[i].test(version)) {
-      return false
-    }
-  }
-
-  if (version.prerelease.length && !options.includePrerelease) {
-    // Find the set of versions that are allowed to have prereleases
-    // For example, ^1.2.3-pr.1 desugars to >=1.2.3-pr.1 <2.0.0
-    // That should allow `1.2.3-pr.2` to pass.
-    // However, `1.2.4-alpha.notready` should NOT be allowed,
-    // even though it's within the range set by the comparators.
-    for (let i = 0; i < set.length; i++) {
-      debug(set[i].semver)
-      if (set[i].semver === Comparator.ANY) {
-        continue
-      }
-
-      if (set[i].semver.prerelease.length > 0) {
-        const allowed = set[i].semver
-        if (allowed.major === version.major &&
-            allowed.minor === version.minor &&
-            allowed.patch === version.patch) {
-          return true
-        }
-      }
-    }
-
-    // Version has a -pre, but it's not one of the ones we like.
-    return false
-  }
-
-  return true
-}
-
-
-/***/ }),
-
-/***/ 48088:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const debug = __nccwpck_require__(50427)
-const { MAX_LENGTH, MAX_SAFE_INTEGER } = __nccwpck_require__(42293)
-const { re, t } = __nccwpck_require__(9523)
-
-const parseOptions = __nccwpck_require__(40785)
-const { compareIdentifiers } = __nccwpck_require__(92463)
-class SemVer {
-  constructor (version, options) {
-    options = parseOptions(options)
-
-    if (version instanceof SemVer) {
-      if (version.loose === !!options.loose &&
-          version.includePrerelease === !!options.includePrerelease) {
-        return version
-      } else {
-        version = version.version
-      }
-    } else if (typeof version !== 'string') {
-      throw new TypeError(`Invalid Version: ${version}`)
-    }
-
-    if (version.length > MAX_LENGTH) {
-      throw new TypeError(
-        `version is longer than ${MAX_LENGTH} characters`
-      )
-    }
-
-    debug('SemVer', version, options)
-    this.options = options
-    this.loose = !!options.loose
-    // this isn't actually relevant for versions, but keep it so that we
-    // don't run into trouble passing this.options around.
-    this.includePrerelease = !!options.includePrerelease
-
-    const m = version.trim().match(options.loose ? re[t.LOOSE] : re[t.FULL])
-
-    if (!m) {
-      throw new TypeError(`Invalid Version: ${version}`)
-    }
-
-    this.raw = version
-
-    // these are actually numbers
-    this.major = +m[1]
-    this.minor = +m[2]
-    this.patch = +m[3]
-
-    if (this.major > MAX_SAFE_INTEGER || this.major < 0) {
-      throw new TypeError('Invalid major version')
-    }
-
-    if (this.minor > MAX_SAFE_INTEGER || this.minor < 0) {
-      throw new TypeError('Invalid minor version')
-    }
-
-    if (this.patch > MAX_SAFE_INTEGER || this.patch < 0) {
-      throw new TypeError('Invalid patch version')
-    }
-
-    // numberify any prerelease numeric ids
-    if (!m[4]) {
-      this.prerelease = []
-    } else {
-      this.prerelease = m[4].split('.').map((id) => {
-        if (/^[0-9]+$/.test(id)) {
-          const num = +id
-          if (num >= 0 && num < MAX_SAFE_INTEGER) {
-            return num
-          }
-        }
-        return id
-      })
-    }
-
-    this.build = m[5] ? m[5].split('.') : []
-    this.format()
-  }
-
-  format () {
-    this.version = `${this.major}.${this.minor}.${this.patch}`
-    if (this.prerelease.length) {
-      this.version += `-${this.prerelease.join('.')}`
-    }
-    return this.version
-  }
-
-  toString () {
-    return this.version
-  }
-
-  compare (other) {
-    debug('SemVer.compare', this.version, this.options, other)
-    if (!(other instanceof SemVer)) {
-      if (typeof other === 'string' && other === this.version) {
-        return 0
-      }
-      other = new SemVer(other, this.options)
-    }
-
-    if (other.version === this.version) {
-      return 0
-    }
-
-    return this.compareMain(other) || this.comparePre(other)
-  }
-
-  compareMain (other) {
-    if (!(other instanceof SemVer)) {
-      other = new SemVer(other, this.options)
-    }
-
-    return (
-      compareIdentifiers(this.major, other.major) ||
-      compareIdentifiers(this.minor, other.minor) ||
-      compareIdentifiers(this.patch, other.patch)
-    )
-  }
-
-  comparePre (other) {
-    if (!(other instanceof SemVer)) {
-      other = new SemVer(other, this.options)
-    }
-
-    // NOT having a prerelease is > having one
-    if (this.prerelease.length && !other.prerelease.length) {
-      return -1
-    } else if (!this.prerelease.length && other.prerelease.length) {
-      return 1
-    } else if (!this.prerelease.length && !other.prerelease.length) {
-      return 0
-    }
-
-    let i = 0
-    do {
-      const a = this.prerelease[i]
-      const b = other.prerelease[i]
-      debug('prerelease compare', i, a, b)
-      if (a === undefined && b === undefined) {
-        return 0
-      } else if (b === undefined) {
-        return 1
-      } else if (a === undefined) {
-        return -1
-      } else if (a === b) {
-        continue
-      } else {
-        return compareIdentifiers(a, b)
-      }
-    } while (++i)
-  }
-
-  compareBuild (other) {
-    if (!(other instanceof SemVer)) {
-      other = new SemVer(other, this.options)
-    }
-
-    let i = 0
-    do {
-      const a = this.build[i]
-      const b = other.build[i]
-      debug('prerelease compare', i, a, b)
-      if (a === undefined && b === undefined) {
-        return 0
-      } else if (b === undefined) {
-        return 1
-      } else if (a === undefined) {
-        return -1
-      } else if (a === b) {
-        continue
-      } else {
-        return compareIdentifiers(a, b)
-      }
-    } while (++i)
-  }
-
-  // preminor will bump the version up to the next minor release, and immediately
-  // down to pre-release. premajor and prepatch work the same way.
-  inc (release, identifier) {
-    switch (release) {
-      case 'premajor':
-        this.prerelease.length = 0
-        this.patch = 0
-        this.minor = 0
-        this.major++
-        this.inc('pre', identifier)
-        break
-      case 'preminor':
-        this.prerelease.length = 0
-        this.patch = 0
-        this.minor++
-        this.inc('pre', identifier)
-        break
-      case 'prepatch':
-        // If this is already a prerelease, it will bump to the next version
-        // drop any prereleases that might already exist, since they are not
-        // relevant at this point.
-        this.prerelease.length = 0
-        this.inc('patch', identifier)
-        this.inc('pre', identifier)
-        break
-      // If the input is a non-prerelease version, this acts the same as
-      // prepatch.
-      case 'prerelease':
-        if (this.prerelease.length === 0) {
-          this.inc('patch', identifier)
-        }
-        this.inc('pre', identifier)
-        break
-
-      case 'major':
-        // If this is a pre-major version, bump up to the same major version.
-        // Otherwise increment major.
-        // 1.0.0-5 bumps to 1.0.0
-        // 1.1.0 bumps to 2.0.0
-        if (
-          this.minor !== 0 ||
-          this.patch !== 0 ||
-          this.prerelease.length === 0
-        ) {
-          this.major++
-        }
-        this.minor = 0
-        this.patch = 0
-        this.prerelease = []
-        break
-      case 'minor':
-        // If this is a pre-minor version, bump up to the same minor version.
-        // Otherwise increment minor.
-        // 1.2.0-5 bumps to 1.2.0
-        // 1.2.1 bumps to 1.3.0
-        if (this.patch !== 0 || this.prerelease.length === 0) {
-          this.minor++
-        }
-        this.patch = 0
-        this.prerelease = []
-        break
-      case 'patch':
-        // If this is not a pre-release version, it will increment the patch.
-        // If it is a pre-release it will bump up to the same patch version.
-        // 1.2.0-5 patches to 1.2.0
-        // 1.2.0 patches to 1.2.1
-        if (this.prerelease.length === 0) {
-          this.patch++
-        }
-        this.prerelease = []
-        break
-      // This probably shouldn't be used publicly.
-      // 1.0.0 'pre' would become 1.0.0-0 which is the wrong direction.
-      case 'pre':
-        if (this.prerelease.length === 0) {
-          this.prerelease = [0]
-        } else {
-          let i = this.prerelease.length
-          while (--i >= 0) {
-            if (typeof this.prerelease[i] === 'number') {
-              this.prerelease[i]++
-              i = -2
-            }
-          }
-          if (i === -1) {
-            // didn't increment anything
-            this.prerelease.push(0)
-          }
-        }
-        if (identifier) {
-          // 1.2.0-beta.1 bumps to 1.2.0-beta.2,
-          // 1.2.0-beta.fooblz or 1.2.0-beta bumps to 1.2.0-beta.0
-          if (compareIdentifiers(this.prerelease[0], identifier) === 0) {
-            if (isNaN(this.prerelease[1])) {
-              this.prerelease = [identifier, 0]
-            }
-          } else {
-            this.prerelease = [identifier, 0]
-          }
-        }
-        break
-
-      default:
-        throw new Error(`invalid increment argument: ${release}`)
-    }
-    this.format()
-    this.raw = this.version
-    return this
-  }
-}
-
-module.exports = SemVer
-
-
-/***/ }),
-
-/***/ 48848:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const parse = __nccwpck_require__(75925)
-const clean = (version, options) => {
-  const s = parse(version.trim().replace(/^[=v]+/, ''), options)
-  return s ? s.version : null
-}
-module.exports = clean
-
-
-/***/ }),
-
-/***/ 75098:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const eq = __nccwpck_require__(91898)
-const neq = __nccwpck_require__(6017)
-const gt = __nccwpck_require__(84123)
-const gte = __nccwpck_require__(15522)
-const lt = __nccwpck_require__(80194)
-const lte = __nccwpck_require__(77520)
-
-const cmp = (a, op, b, loose) => {
-  switch (op) {
-    case '===':
-      if (typeof a === 'object') {
-        a = a.version
-      }
-      if (typeof b === 'object') {
-        b = b.version
-      }
-      return a === b
-
-    case '!==':
-      if (typeof a === 'object') {
-        a = a.version
-      }
-      if (typeof b === 'object') {
-        b = b.version
-      }
-      return a !== b
-
-    case '':
-    case '=':
-    case '==':
-      return eq(a, b, loose)
-
-    case '!=':
-      return neq(a, b, loose)
-
-    case '>':
-      return gt(a, b, loose)
-
-    case '>=':
-      return gte(a, b, loose)
-
-    case '<':
-      return lt(a, b, loose)
-
-    case '<=':
-      return lte(a, b, loose)
-
-    default:
-      throw new TypeError(`Invalid operator: ${op}`)
-  }
-}
-module.exports = cmp
-
-
-/***/ }),
-
-/***/ 13466:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const parse = __nccwpck_require__(75925)
-const { re, t } = __nccwpck_require__(9523)
-
-const coerce = (version, options) => {
-  if (version instanceof SemVer) {
-    return version
-  }
-
-  if (typeof version === 'number') {
-    version = String(version)
-  }
-
-  if (typeof version !== 'string') {
-    return null
-  }
-
-  options = options || {}
-
-  let match = null
-  if (!options.rtl) {
-    match = version.match(re[t.COERCE])
-  } else {
-    // Find the right-most coercible string that does not share
-    // a terminus with a more left-ward coercible string.
-    // Eg, '1.2.3.4' wants to coerce '2.3.4', not '3.4' or '4'
-    //
-    // Walk through the string checking with a /g regexp
-    // Manually set the index so as to pick up overlapping matches.
-    // Stop when we get a match that ends at the string end, since no
-    // coercible string can be more right-ward without the same terminus.
-    let next
-    while ((next = re[t.COERCERTL].exec(version)) &&
-        (!match || match.index + match[0].length !== version.length)
-    ) {
-      if (!match ||
-            next.index + next[0].length !== match.index + match[0].length) {
-        match = next
-      }
-      re[t.COERCERTL].lastIndex = next.index + next[1].length + next[2].length
-    }
-    // leave it in a clean state
-    re[t.COERCERTL].lastIndex = -1
-  }
-
-  if (match === null) {
-    return null
-  }
-
-  return parse(`${match[2]}.${match[3] || '0'}.${match[4] || '0'}`, options)
-}
-module.exports = coerce
-
-
-/***/ }),
-
-/***/ 92156:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const compareBuild = (a, b, loose) => {
-  const versionA = new SemVer(a, loose)
-  const versionB = new SemVer(b, loose)
-  return versionA.compare(versionB) || versionA.compareBuild(versionB)
-}
-module.exports = compareBuild
-
-
-/***/ }),
-
-/***/ 62804:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compare = __nccwpck_require__(44309)
-const compareLoose = (a, b) => compare(a, b, true)
-module.exports = compareLoose
-
-
-/***/ }),
-
-/***/ 44309:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const compare = (a, b, loose) =>
-  new SemVer(a, loose).compare(new SemVer(b, loose))
-
-module.exports = compare
-
-
-/***/ }),
-
-/***/ 64297:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const parse = __nccwpck_require__(75925)
-const eq = __nccwpck_require__(91898)
-
-const diff = (version1, version2) => {
-  if (eq(version1, version2)) {
-    return null
-  } else {
-    const v1 = parse(version1)
-    const v2 = parse(version2)
-    const hasPre = v1.prerelease.length || v2.prerelease.length
-    const prefix = hasPre ? 'pre' : ''
-    const defaultResult = hasPre ? 'prerelease' : ''
-    for (const key in v1) {
-      if (key === 'major' || key === 'minor' || key === 'patch') {
-        if (v1[key] !== v2[key]) {
-          return prefix + key
-        }
-      }
-    }
-    return defaultResult // may be undefined
-  }
-}
-module.exports = diff
-
-
-/***/ }),
-
-/***/ 91898:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compare = __nccwpck_require__(44309)
-const eq = (a, b, loose) => compare(a, b, loose) === 0
-module.exports = eq
-
-
-/***/ }),
-
-/***/ 84123:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compare = __nccwpck_require__(44309)
-const gt = (a, b, loose) => compare(a, b, loose) > 0
-module.exports = gt
-
-
-/***/ }),
-
-/***/ 15522:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compare = __nccwpck_require__(44309)
-const gte = (a, b, loose) => compare(a, b, loose) >= 0
-module.exports = gte
-
-
-/***/ }),
-
-/***/ 30900:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-
-const inc = (version, release, options, identifier) => {
-  if (typeof (options) === 'string') {
-    identifier = options
-    options = undefined
-  }
-
-  try {
-    return new SemVer(
-      version instanceof SemVer ? version.version : version,
-      options
-    ).inc(release, identifier).version
-  } catch (er) {
-    return null
-  }
-}
-module.exports = inc
-
-
-/***/ }),
-
-/***/ 80194:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compare = __nccwpck_require__(44309)
-const lt = (a, b, loose) => compare(a, b, loose) < 0
-module.exports = lt
-
-
-/***/ }),
-
-/***/ 77520:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compare = __nccwpck_require__(44309)
-const lte = (a, b, loose) => compare(a, b, loose) <= 0
-module.exports = lte
-
-
-/***/ }),
-
-/***/ 76688:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const major = (a, loose) => new SemVer(a, loose).major
-module.exports = major
-
-
-/***/ }),
-
-/***/ 38447:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const minor = (a, loose) => new SemVer(a, loose).minor
-module.exports = minor
-
-
-/***/ }),
-
-/***/ 6017:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compare = __nccwpck_require__(44309)
-const neq = (a, b, loose) => compare(a, b, loose) !== 0
-module.exports = neq
-
-
-/***/ }),
-
-/***/ 75925:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const { MAX_LENGTH } = __nccwpck_require__(42293)
-const { re, t } = __nccwpck_require__(9523)
-const SemVer = __nccwpck_require__(48088)
-
-const parseOptions = __nccwpck_require__(40785)
-const parse = (version, options) => {
-  options = parseOptions(options)
-
-  if (version instanceof SemVer) {
-    return version
-  }
-
-  if (typeof version !== 'string') {
-    return null
-  }
-
-  if (version.length > MAX_LENGTH) {
-    return null
-  }
-
-  const r = options.loose ? re[t.LOOSE] : re[t.FULL]
-  if (!r.test(version)) {
-    return null
-  }
-
-  try {
-    return new SemVer(version, options)
-  } catch (er) {
-    return null
-  }
-}
-
-module.exports = parse
-
-
-/***/ }),
-
-/***/ 42866:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const patch = (a, loose) => new SemVer(a, loose).patch
-module.exports = patch
-
-
-/***/ }),
-
-/***/ 24016:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const parse = __nccwpck_require__(75925)
-const prerelease = (version, options) => {
-  const parsed = parse(version, options)
-  return (parsed && parsed.prerelease.length) ? parsed.prerelease : null
-}
-module.exports = prerelease
-
-
-/***/ }),
-
-/***/ 76417:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compare = __nccwpck_require__(44309)
-const rcompare = (a, b, loose) => compare(b, a, loose)
-module.exports = rcompare
-
-
-/***/ }),
-
-/***/ 8701:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compareBuild = __nccwpck_require__(92156)
-const rsort = (list, loose) => list.sort((a, b) => compareBuild(b, a, loose))
-module.exports = rsort
-
-
-/***/ }),
-
-/***/ 6055:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const Range = __nccwpck_require__(9828)
-const satisfies = (version, range, options) => {
-  try {
-    range = new Range(range, options)
-  } catch (er) {
-    return false
-  }
-  return range.test(version)
-}
-module.exports = satisfies
-
-
-/***/ }),
-
-/***/ 61426:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const compareBuild = __nccwpck_require__(92156)
-const sort = (list, loose) => list.sort((a, b) => compareBuild(a, b, loose))
-module.exports = sort
-
-
-/***/ }),
-
-/***/ 19601:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const parse = __nccwpck_require__(75925)
-const valid = (version, options) => {
-  const v = parse(version, options)
-  return v ? v.version : null
-}
-module.exports = valid
-
-
-/***/ }),
-
-/***/ 11383:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-// just pre-load all the stuff that index.js lazily exports
-const internalRe = __nccwpck_require__(9523)
-module.exports = {
-  re: internalRe.re,
-  src: internalRe.src,
-  tokens: internalRe.t,
-  SEMVER_SPEC_VERSION: (__nccwpck_require__(42293).SEMVER_SPEC_VERSION),
-  SemVer: __nccwpck_require__(48088),
-  compareIdentifiers: (__nccwpck_require__(92463).compareIdentifiers),
-  rcompareIdentifiers: (__nccwpck_require__(92463).rcompareIdentifiers),
-  parse: __nccwpck_require__(75925),
-  valid: __nccwpck_require__(19601),
-  clean: __nccwpck_require__(48848),
-  inc: __nccwpck_require__(30900),
-  diff: __nccwpck_require__(64297),
-  major: __nccwpck_require__(76688),
-  minor: __nccwpck_require__(38447),
-  patch: __nccwpck_require__(42866),
-  prerelease: __nccwpck_require__(24016),
-  compare: __nccwpck_require__(44309),
-  rcompare: __nccwpck_require__(76417),
-  compareLoose: __nccwpck_require__(62804),
-  compareBuild: __nccwpck_require__(92156),
-  sort: __nccwpck_require__(61426),
-  rsort: __nccwpck_require__(8701),
-  gt: __nccwpck_require__(84123),
-  lt: __nccwpck_require__(80194),
-  eq: __nccwpck_require__(91898),
-  neq: __nccwpck_require__(6017),
-  gte: __nccwpck_require__(15522),
-  lte: __nccwpck_require__(77520),
-  cmp: __nccwpck_require__(75098),
-  coerce: __nccwpck_require__(13466),
-  Comparator: __nccwpck_require__(91532),
-  Range: __nccwpck_require__(9828),
-  satisfies: __nccwpck_require__(6055),
-  toComparators: __nccwpck_require__(52706),
-  maxSatisfying: __nccwpck_require__(20579),
-  minSatisfying: __nccwpck_require__(10832),
-  minVersion: __nccwpck_require__(34179),
-  validRange: __nccwpck_require__(2098),
-  outside: __nccwpck_require__(60420),
-  gtr: __nccwpck_require__(9380),
-  ltr: __nccwpck_require__(33323),
-  intersects: __nccwpck_require__(27008),
-  simplifyRange: __nccwpck_require__(75297),
-  subset: __nccwpck_require__(7863),
-}
-
-
-/***/ }),
-
-/***/ 42293:
-/***/ ((module) => {
-
-// Note: this is the semver.org version of the spec that it implements
-// Not necessarily the package version of this code.
-const SEMVER_SPEC_VERSION = '2.0.0'
-
-const MAX_LENGTH = 256
-const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER ||
-/* istanbul ignore next */ 9007199254740991
-
-// Max safe segment length for coercion.
-const MAX_SAFE_COMPONENT_LENGTH = 16
-
-module.exports = {
-  SEMVER_SPEC_VERSION,
-  MAX_LENGTH,
-  MAX_SAFE_INTEGER,
-  MAX_SAFE_COMPONENT_LENGTH,
-}
-
-
-/***/ }),
-
-/***/ 50427:
-/***/ ((module) => {
-
-const debug = (
-  typeof process === 'object' &&
-  process.env &&
-  process.env.NODE_DEBUG &&
-  /\bsemver\b/i.test(process.env.NODE_DEBUG)
-) ? (...args) => console.error('SEMVER', ...args)
-  : () => {}
-
-module.exports = debug
-
-
-/***/ }),
-
-/***/ 92463:
-/***/ ((module) => {
-
-const numeric = /^[0-9]+$/
-const compareIdentifiers = (a, b) => {
-  const anum = numeric.test(a)
-  const bnum = numeric.test(b)
-
-  if (anum && bnum) {
-    a = +a
-    b = +b
-  }
-
-  return a === b ? 0
-    : (anum && !bnum) ? -1
-    : (bnum && !anum) ? 1
-    : a < b ? -1
-    : 1
-}
-
-const rcompareIdentifiers = (a, b) => compareIdentifiers(b, a)
-
-module.exports = {
-  compareIdentifiers,
-  rcompareIdentifiers,
-}
-
-
-/***/ }),
-
-/***/ 40785:
-/***/ ((module) => {
-
-// parse out just the options we care about so we always get a consistent
-// obj with keys in a consistent order.
-const opts = ['includePrerelease', 'loose', 'rtl']
-const parseOptions = options =>
-  !options ? {}
-  : typeof options !== 'object' ? { loose: true }
-  : opts.filter(k => options[k]).reduce((o, k) => {
-    o[k] = true
-    return o
-  }, {})
-module.exports = parseOptions
-
-
-/***/ }),
-
-/***/ 9523:
-/***/ ((module, exports, __nccwpck_require__) => {
-
-const { MAX_SAFE_COMPONENT_LENGTH } = __nccwpck_require__(42293)
-const debug = __nccwpck_require__(50427)
-exports = module.exports = {}
-
-// The actual regexps go on exports.re
-const re = exports.re = []
-const src = exports.src = []
-const t = exports.t = {}
-let R = 0
-
-const createToken = (name, value, isGlobal) => {
-  const index = R++
-  debug(name, index, value)
-  t[name] = index
-  src[index] = value
-  re[index] = new RegExp(value, isGlobal ? 'g' : undefined)
-}
-
-// The following Regular Expressions can be used for tokenizing,
-// validating, and parsing SemVer version strings.
-
-// ## Numeric Identifier
-// A single `0`, or a non-zero digit followed by zero or more digits.
-
-createToken('NUMERICIDENTIFIER', '0|[1-9]\\d*')
-createToken('NUMERICIDENTIFIERLOOSE', '[0-9]+')
-
-// ## Non-numeric Identifier
-// Zero or more digits, followed by a letter or hyphen, and then zero or
-// more letters, digits, or hyphens.
-
-createToken('NONNUMERICIDENTIFIER', '\\d*[a-zA-Z-][a-zA-Z0-9-]*')
-
-// ## Main Version
-// Three dot-separated numeric identifiers.
-
-createToken('MAINVERSION', `(${src[t.NUMERICIDENTIFIER]})\\.` +
-                   `(${src[t.NUMERICIDENTIFIER]})\\.` +
-                   `(${src[t.NUMERICIDENTIFIER]})`)
-
-createToken('MAINVERSIONLOOSE', `(${src[t.NUMERICIDENTIFIERLOOSE]})\\.` +
-                        `(${src[t.NUMERICIDENTIFIERLOOSE]})\\.` +
-                        `(${src[t.NUMERICIDENTIFIERLOOSE]})`)
-
-// ## Pre-release Version Identifier
-// A numeric identifier, or a non-numeric identifier.
-
-createToken('PRERELEASEIDENTIFIER', `(?:${src[t.NUMERICIDENTIFIER]
-}|${src[t.NONNUMERICIDENTIFIER]})`)
-
-createToken('PRERELEASEIDENTIFIERLOOSE', `(?:${src[t.NUMERICIDENTIFIERLOOSE]
-}|${src[t.NONNUMERICIDENTIFIER]})`)
-
-// ## Pre-release Version
-// Hyphen, followed by one or more dot-separated pre-release version
-// identifiers.
-
-createToken('PRERELEASE', `(?:-(${src[t.PRERELEASEIDENTIFIER]
-}(?:\\.${src[t.PRERELEASEIDENTIFIER]})*))`)
-
-createToken('PRERELEASELOOSE', `(?:-?(${src[t.PRERELEASEIDENTIFIERLOOSE]
-}(?:\\.${src[t.PRERELEASEIDENTIFIERLOOSE]})*))`)
-
-// ## Build Metadata Identifier
-// Any combination of digits, letters, or hyphens.
-
-createToken('BUILDIDENTIFIER', '[0-9A-Za-z-]+')
-
-// ## Build Metadata
-// Plus sign, followed by one or more period-separated build metadata
-// identifiers.
-
-createToken('BUILD', `(?:\\+(${src[t.BUILDIDENTIFIER]
-}(?:\\.${src[t.BUILDIDENTIFIER]})*))`)
-
-// ## Full Version String
-// A main version, followed optionally by a pre-release version and
-// build metadata.
-
-// Note that the only major, minor, patch, and pre-release sections of
-// the version string are capturing groups.  The build metadata is not a
-// capturing group, because it should not ever be used in version
-// comparison.
-
-createToken('FULLPLAIN', `v?${src[t.MAINVERSION]
-}${src[t.PRERELEASE]}?${
-  src[t.BUILD]}?`)
-
-createToken('FULL', `^${src[t.FULLPLAIN]}$`)
-
-// like full, but allows v1.2.3 and =1.2.3, which people do sometimes.
-// also, 1.0.0alpha1 (prerelease without the hyphen) which is pretty
-// common in the npm registry.
-createToken('LOOSEPLAIN', `[v=\\s]*${src[t.MAINVERSIONLOOSE]
-}${src[t.PRERELEASELOOSE]}?${
-  src[t.BUILD]}?`)
-
-createToken('LOOSE', `^${src[t.LOOSEPLAIN]}$`)
-
-createToken('GTLT', '((?:<|>)?=?)')
-
-// Something like "2.*" or "1.2.x".
-// Note that "x.x" is a valid xRange identifer, meaning "any version"
-// Only the first item is strictly required.
-createToken('XRANGEIDENTIFIERLOOSE', `${src[t.NUMERICIDENTIFIERLOOSE]}|x|X|\\*`)
-createToken('XRANGEIDENTIFIER', `${src[t.NUMERICIDENTIFIER]}|x|X|\\*`)
-
-createToken('XRANGEPLAIN', `[v=\\s]*(${src[t.XRANGEIDENTIFIER]})` +
-                   `(?:\\.(${src[t.XRANGEIDENTIFIER]})` +
-                   `(?:\\.(${src[t.XRANGEIDENTIFIER]})` +
-                   `(?:${src[t.PRERELEASE]})?${
-                     src[t.BUILD]}?` +
-                   `)?)?`)
-
-createToken('XRANGEPLAINLOOSE', `[v=\\s]*(${src[t.XRANGEIDENTIFIERLOOSE]})` +
-                        `(?:\\.(${src[t.XRANGEIDENTIFIERLOOSE]})` +
-                        `(?:\\.(${src[t.XRANGEIDENTIFIERLOOSE]})` +
-                        `(?:${src[t.PRERELEASELOOSE]})?${
-                          src[t.BUILD]}?` +
-                        `)?)?`)
-
-createToken('XRANGE', `^${src[t.GTLT]}\\s*${src[t.XRANGEPLAIN]}$`)
-createToken('XRANGELOOSE', `^${src[t.GTLT]}\\s*${src[t.XRANGEPLAINLOOSE]}$`)
-
-// Coercion.
-// Extract anything that could conceivably be a part of a valid semver
-createToken('COERCE', `${'(^|[^\\d])' +
-              '(\\d{1,'}${MAX_SAFE_COMPONENT_LENGTH}})` +
-              `(?:\\.(\\d{1,${MAX_SAFE_COMPONENT_LENGTH}}))?` +
-              `(?:\\.(\\d{1,${MAX_SAFE_COMPONENT_LENGTH}}))?` +
-              `(?:$|[^\\d])`)
-createToken('COERCERTL', src[t.COERCE], true)
-
-// Tilde ranges.
-// Meaning is "reasonably at or greater than"
-createToken('LONETILDE', '(?:~>?)')
-
-createToken('TILDETRIM', `(\\s*)${src[t.LONETILDE]}\\s+`, true)
-exports.tildeTrimReplace = '$1~'
-
-createToken('TILDE', `^${src[t.LONETILDE]}${src[t.XRANGEPLAIN]}$`)
-createToken('TILDELOOSE', `^${src[t.LONETILDE]}${src[t.XRANGEPLAINLOOSE]}$`)
-
-// Caret ranges.
-// Meaning is "at least and backwards compatible with"
-createToken('LONECARET', '(?:\\^)')
-
-createToken('CARETTRIM', `(\\s*)${src[t.LONECARET]}\\s+`, true)
-exports.caretTrimReplace = '$1^'
-
-createToken('CARET', `^${src[t.LONECARET]}${src[t.XRANGEPLAIN]}$`)
-createToken('CARETLOOSE', `^${src[t.LONECARET]}${src[t.XRANGEPLAINLOOSE]}$`)
-
-// A simple gt/lt/eq thing, or just "" to indicate "any version"
-createToken('COMPARATORLOOSE', `^${src[t.GTLT]}\\s*(${src[t.LOOSEPLAIN]})$|^$`)
-createToken('COMPARATOR', `^${src[t.GTLT]}\\s*(${src[t.FULLPLAIN]})$|^$`)
-
-// An expression to strip any whitespace between the gtlt and the thing
-// it modifies, so that `> 1.2.3` ==> `>1.2.3`
-createToken('COMPARATORTRIM', `(\\s*)${src[t.GTLT]
-}\\s*(${src[t.LOOSEPLAIN]}|${src[t.XRANGEPLAIN]})`, true)
-exports.comparatorTrimReplace = '$1$2$3'
-
-// Something like `1.2.3 - 1.2.4`
-// Note that these all use the loose form, because they'll be
-// checked against either the strict or loose comparator form
-// later.
-createToken('HYPHENRANGE', `^\\s*(${src[t.XRANGEPLAIN]})` +
-                   `\\s+-\\s+` +
-                   `(${src[t.XRANGEPLAIN]})` +
-                   `\\s*$`)
-
-createToken('HYPHENRANGELOOSE', `^\\s*(${src[t.XRANGEPLAINLOOSE]})` +
-                        `\\s+-\\s+` +
-                        `(${src[t.XRANGEPLAINLOOSE]})` +
-                        `\\s*$`)
-
-// Star ranges basically just allow anything at all.
-createToken('STAR', '(<|>)?=?\\s*\\*')
-// >=0.0.0 is like a star
-createToken('GTE0', '^\\s*>=\\s*0\\.0\\.0\\s*$')
-createToken('GTE0PRE', '^\\s*>=\\s*0\\.0\\.0-0\\s*$')
-
-
-/***/ }),
-
-/***/ 9380:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-// Determine if version is greater than all the versions possible in the range.
-const outside = __nccwpck_require__(60420)
-const gtr = (version, range, options) => outside(version, range, '>', options)
-module.exports = gtr
-
-
-/***/ }),
-
-/***/ 27008:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const Range = __nccwpck_require__(9828)
-const intersects = (r1, r2, options) => {
-  r1 = new Range(r1, options)
-  r2 = new Range(r2, options)
-  return r1.intersects(r2)
-}
-module.exports = intersects
-
-
-/***/ }),
-
-/***/ 33323:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const outside = __nccwpck_require__(60420)
-// Determine if version is less than all the versions possible in the range
-const ltr = (version, range, options) => outside(version, range, '<', options)
-module.exports = ltr
-
-
-/***/ }),
-
-/***/ 20579:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const Range = __nccwpck_require__(9828)
-
-const maxSatisfying = (versions, range, options) => {
-  let max = null
-  let maxSV = null
-  let rangeObj = null
-  try {
-    rangeObj = new Range(range, options)
-  } catch (er) {
-    return null
-  }
-  versions.forEach((v) => {
-    if (rangeObj.test(v)) {
-      // satisfies(v, range, options)
-      if (!max || maxSV.compare(v) === -1) {
-        // compare(max, v, true)
-        max = v
-        maxSV = new SemVer(max, options)
-      }
-    }
-  })
-  return max
-}
-module.exports = maxSatisfying
-
-
-/***/ }),
-
-/***/ 10832:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const Range = __nccwpck_require__(9828)
-const minSatisfying = (versions, range, options) => {
-  let min = null
-  let minSV = null
-  let rangeObj = null
-  try {
-    rangeObj = new Range(range, options)
-  } catch (er) {
-    return null
-  }
-  versions.forEach((v) => {
-    if (rangeObj.test(v)) {
-      // satisfies(v, range, options)
-      if (!min || minSV.compare(v) === 1) {
-        // compare(min, v, true)
-        min = v
-        minSV = new SemVer(min, options)
-      }
-    }
-  })
-  return min
-}
-module.exports = minSatisfying
-
-
-/***/ }),
-
-/***/ 34179:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const Range = __nccwpck_require__(9828)
-const gt = __nccwpck_require__(84123)
-
-const minVersion = (range, loose) => {
-  range = new Range(range, loose)
-
-  let minver = new SemVer('0.0.0')
-  if (range.test(minver)) {
-    return minver
-  }
-
-  minver = new SemVer('0.0.0-0')
-  if (range.test(minver)) {
-    return minver
-  }
-
-  minver = null
-  for (let i = 0; i < range.set.length; ++i) {
-    const comparators = range.set[i]
-
-    let setMin = null
-    comparators.forEach((comparator) => {
-      // Clone to avoid manipulating the comparator's semver object.
-      const compver = new SemVer(comparator.semver.version)
-      switch (comparator.operator) {
-        case '>':
-          if (compver.prerelease.length === 0) {
-            compver.patch++
-          } else {
-            compver.prerelease.push(0)
-          }
-          compver.raw = compver.format()
-          /* fallthrough */
-        case '':
-        case '>=':
-          if (!setMin || gt(compver, setMin)) {
-            setMin = compver
-          }
-          break
-        case '<':
-        case '<=':
-          /* Ignore maximum versions */
-          break
-        /* istanbul ignore next */
-        default:
-          throw new Error(`Unexpected operation: ${comparator.operator}`)
-      }
-    })
-    if (setMin && (!minver || gt(minver, setMin))) {
-      minver = setMin
-    }
-  }
-
-  if (minver && range.test(minver)) {
-    return minver
-  }
-
-  return null
-}
-module.exports = minVersion
-
-
-/***/ }),
-
-/***/ 60420:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const SemVer = __nccwpck_require__(48088)
-const Comparator = __nccwpck_require__(91532)
-const { ANY } = Comparator
-const Range = __nccwpck_require__(9828)
-const satisfies = __nccwpck_require__(6055)
-const gt = __nccwpck_require__(84123)
-const lt = __nccwpck_require__(80194)
-const lte = __nccwpck_require__(77520)
-const gte = __nccwpck_require__(15522)
-
-const outside = (version, range, hilo, options) => {
-  version = new SemVer(version, options)
-  range = new Range(range, options)
-
-  let gtfn, ltefn, ltfn, comp, ecomp
-  switch (hilo) {
-    case '>':
-      gtfn = gt
-      ltefn = lte
-      ltfn = lt
-      comp = '>'
-      ecomp = '>='
-      break
-    case '<':
-      gtfn = lt
-      ltefn = gte
-      ltfn = gt
-      comp = '<'
-      ecomp = '<='
-      break
-    default:
-      throw new TypeError('Must provide a hilo val of "<" or ">"')
-  }
-
-  // If it satisfies the range it is not outside
-  if (satisfies(version, range, options)) {
-    return false
-  }
-
-  // From now on, variable terms are as if we're in "gtr" mode.
-  // but note that everything is flipped for the "ltr" function.
-
-  for (let i = 0; i < range.set.length; ++i) {
-    const comparators = range.set[i]
-
-    let high = null
-    let low = null
-
-    comparators.forEach((comparator) => {
-      if (comparator.semver === ANY) {
-        comparator = new Comparator('>=0.0.0')
-      }
-      high = high || comparator
-      low = low || comparator
-      if (gtfn(comparator.semver, high.semver, options)) {
-        high = comparator
-      } else if (ltfn(comparator.semver, low.semver, options)) {
-        low = comparator
-      }
-    })
-
-    // If the edge version comparator has a operator then our version
-    // isn't outside it
-    if (high.operator === comp || high.operator === ecomp) {
-      return false
-    }
-
-    // If the lowest version comparator has an operator and our version
-    // is less than it then it isn't higher than the range
-    if ((!low.operator || low.operator === comp) &&
-        ltefn(version, low.semver)) {
-      return false
-    } else if (low.operator === ecomp && ltfn(version, low.semver)) {
-      return false
-    }
-  }
-  return true
-}
-
-module.exports = outside
-
-
-/***/ }),
-
-/***/ 75297:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-// given a set of versions and a range, create a "simplified" range
-// that includes the same versions that the original range does
-// If the original range is shorter than the simplified one, return that.
-const satisfies = __nccwpck_require__(6055)
-const compare = __nccwpck_require__(44309)
-module.exports = (versions, range, options) => {
-  const set = []
-  let first = null
-  let prev = null
-  const v = versions.sort((a, b) => compare(a, b, options))
-  for (const version of v) {
-    const included = satisfies(version, range, options)
-    if (included) {
-      prev = version
-      if (!first) {
-        first = version
-      }
-    } else {
-      if (prev) {
-        set.push([first, prev])
-      }
-      prev = null
-      first = null
-    }
-  }
-  if (first) {
-    set.push([first, null])
-  }
-
-  const ranges = []
-  for (const [min, max] of set) {
-    if (min === max) {
-      ranges.push(min)
-    } else if (!max && min === v[0]) {
-      ranges.push('*')
-    } else if (!max) {
-      ranges.push(`>=${min}`)
-    } else if (min === v[0]) {
-      ranges.push(`<=${max}`)
-    } else {
-      ranges.push(`${min} - ${max}`)
-    }
-  }
-  const simplified = ranges.join(' || ')
-  const original = typeof range.raw === 'string' ? range.raw : String(range)
-  return simplified.length < original.length ? simplified : range
-}
-
-
-/***/ }),
-
-/***/ 7863:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const Range = __nccwpck_require__(9828)
-const Comparator = __nccwpck_require__(91532)
-const { ANY } = Comparator
-const satisfies = __nccwpck_require__(6055)
-const compare = __nccwpck_require__(44309)
-
-// Complex range `r1 || r2 || ...` is a subset of `R1 || R2 || ...` iff:
-// - Every simple range `r1, r2, ...` is a null set, OR
-// - Every simple range `r1, r2, ...` which is not a null set is a subset of
-//   some `R1, R2, ...`
-//
-// Simple range `c1 c2 ...` is a subset of simple range `C1 C2 ...` iff:
-// - If c is only the ANY comparator
-//   - If C is only the ANY comparator, return true
-//   - Else if in prerelease mode, return false
-//   - else replace c with `[>=0.0.0]`
-// - If C is only the ANY comparator
-//   - if in prerelease mode, return true
-//   - else replace C with `[>=0.0.0]`
-// - Let EQ be the set of = comparators in c
-// - If EQ is more than one, return true (null set)
-// - Let GT be the highest > or >= comparator in c
-// - Let LT be the lowest < or <= comparator in c
-// - If GT and LT, and GT.semver > LT.semver, return true (null set)
-// - If any C is a = range, and GT or LT are set, return false
-// - If EQ
-//   - If GT, and EQ does not satisfy GT, return true (null set)
-//   - If LT, and EQ does not satisfy LT, return true (null set)
-//   - If EQ satisfies every C, return true
-//   - Else return false
-// - If GT
-//   - If GT.semver is lower than any > or >= comp in C, return false
-//   - If GT is >=, and GT.semver does not satisfy every C, return false
-//   - If GT.semver has a prerelease, and not in prerelease mode
-//     - If no C has a prerelease and the GT.semver tuple, return false
-// - If LT
-//   - If LT.semver is greater than any < or <= comp in C, return false
-//   - If LT is <=, and LT.semver does not satisfy every C, return false
-//   - If GT.semver has a prerelease, and not in prerelease mode
-//     - If no C has a prerelease and the LT.semver tuple, return false
-// - Else return true
-
-const subset = (sub, dom, options = {}) => {
-  if (sub === dom) {
-    return true
-  }
-
-  sub = new Range(sub, options)
-  dom = new Range(dom, options)
-  let sawNonNull = false
-
-  OUTER: for (const simpleSub of sub.set) {
-    for (const simpleDom of dom.set) {
-      const isSub = simpleSubset(simpleSub, simpleDom, options)
-      sawNonNull = sawNonNull || isSub !== null
-      if (isSub) {
-        continue OUTER
-      }
-    }
-    // the null set is a subset of everything, but null simple ranges in
-    // a complex range should be ignored.  so if we saw a non-null range,
-    // then we know this isn't a subset, but if EVERY simple range was null,
-    // then it is a subset.
-    if (sawNonNull) {
-      return false
-    }
-  }
-  return true
-}
-
-const simpleSubset = (sub, dom, options) => {
-  if (sub === dom) {
-    return true
-  }
-
-  if (sub.length === 1 && sub[0].semver === ANY) {
-    if (dom.length === 1 && dom[0].semver === ANY) {
-      return true
-    } else if (options.includePrerelease) {
-      sub = [new Comparator('>=0.0.0-0')]
-    } else {
-      sub = [new Comparator('>=0.0.0')]
-    }
-  }
-
-  if (dom.length === 1 && dom[0].semver === ANY) {
-    if (options.includePrerelease) {
-      return true
-    } else {
-      dom = [new Comparator('>=0.0.0')]
-    }
-  }
-
-  const eqSet = new Set()
-  let gt, lt
-  for (const c of sub) {
-    if (c.operator === '>' || c.operator === '>=') {
-      gt = higherGT(gt, c, options)
-    } else if (c.operator === '<' || c.operator === '<=') {
-      lt = lowerLT(lt, c, options)
-    } else {
-      eqSet.add(c.semver)
-    }
-  }
-
-  if (eqSet.size > 1) {
-    return null
-  }
-
-  let gtltComp
-  if (gt && lt) {
-    gtltComp = compare(gt.semver, lt.semver, options)
-    if (gtltComp > 0) {
-      return null
-    } else if (gtltComp === 0 && (gt.operator !== '>=' || lt.operator !== '<=')) {
-      return null
-    }
-  }
-
-  // will iterate one or zero times
-  for (const eq of eqSet) {
-    if (gt && !satisfies(eq, String(gt), options)) {
-      return null
-    }
-
-    if (lt && !satisfies(eq, String(lt), options)) {
-      return null
-    }
-
-    for (const c of dom) {
-      if (!satisfies(eq, String(c), options)) {
-        return false
-      }
-    }
-
-    return true
-  }
-
-  let higher, lower
-  let hasDomLT, hasDomGT
-  // if the subset has a prerelease, we need a comparator in the superset
-  // with the same tuple and a prerelease, or it's not a subset
-  let needDomLTPre = lt &&
-    !options.includePrerelease &&
-    lt.semver.prerelease.length ? lt.semver : false
-  let needDomGTPre = gt &&
-    !options.includePrerelease &&
-    gt.semver.prerelease.length ? gt.semver : false
-  // exception: <1.2.3-0 is the same as <1.2.3
-  if (needDomLTPre && needDomLTPre.prerelease.length === 1 &&
-      lt.operator === '<' && needDomLTPre.prerelease[0] === 0) {
-    needDomLTPre = false
-  }
-
-  for (const c of dom) {
-    hasDomGT = hasDomGT || c.operator === '>' || c.operator === '>='
-    hasDomLT = hasDomLT || c.operator === '<' || c.operator === '<='
-    if (gt) {
-      if (needDomGTPre) {
-        if (c.semver.prerelease && c.semver.prerelease.length &&
-            c.semver.major === needDomGTPre.major &&
-            c.semver.minor === needDomGTPre.minor &&
-            c.semver.patch === needDomGTPre.patch) {
-          needDomGTPre = false
-        }
-      }
-      if (c.operator === '>' || c.operator === '>=') {
-        higher = higherGT(gt, c, options)
-        if (higher === c && higher !== gt) {
-          return false
-        }
-      } else if (gt.operator === '>=' && !satisfies(gt.semver, String(c), options)) {
-        return false
-      }
-    }
-    if (lt) {
-      if (needDomLTPre) {
-        if (c.semver.prerelease && c.semver.prerelease.length &&
-            c.semver.major === needDomLTPre.major &&
-            c.semver.minor === needDomLTPre.minor &&
-            c.semver.patch === needDomLTPre.patch) {
-          needDomLTPre = false
-        }
-      }
-      if (c.operator === '<' || c.operator === '<=') {
-        lower = lowerLT(lt, c, options)
-        if (lower === c && lower !== lt) {
-          return false
-        }
-      } else if (lt.operator === '<=' && !satisfies(lt.semver, String(c), options)) {
-        return false
-      }
-    }
-    if (!c.operator && (lt || gt) && gtltComp !== 0) {
-      return false
-    }
-  }
-
-  // if there was a < or >, and nothing in the dom, then must be false
-  // UNLESS it was limited by another range in the other direction.
-  // Eg, >1.0.0 <1.0.1 is still a subset of <2.0.0
-  if (gt && hasDomLT && !lt && gtltComp !== 0) {
-    return false
-  }
-
-  if (lt && hasDomGT && !gt && gtltComp !== 0) {
-    return false
-  }
-
-  // we needed a prerelease range in a specific tuple, but didn't get one
-  // then this isn't a subset.  eg >=1.2.3-pre is not a subset of >=1.0.0,
-  // because it includes prereleases in the 1.2.3 tuple
-  if (needDomGTPre || needDomLTPre) {
-    return false
-  }
-
-  return true
-}
-
-// >=1.2.3 is lower than >1.2.3
-const higherGT = (a, b, options) => {
-  if (!a) {
-    return b
-  }
-  const comp = compare(a.semver, b.semver, options)
-  return comp > 0 ? a
-    : comp < 0 ? b
-    : b.operator === '>' && a.operator === '>=' ? b
-    : a
-}
-
-// <=1.2.3 is higher than <1.2.3
-const lowerLT = (a, b, options) => {
-  if (!a) {
-    return b
-  }
-  const comp = compare(a.semver, b.semver, options)
-  return comp < 0 ? a
-    : comp > 0 ? b
-    : b.operator === '<' && a.operator === '<=' ? b
-    : a
-}
-
-module.exports = subset
-
-
-/***/ }),
-
-/***/ 52706:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const Range = __nccwpck_require__(9828)
-
-// Mostly just for testing and legacy API reasons
-const toComparators = (range, options) =>
-  new Range(range, options).set
-    .map(comp => comp.map(c => c.value).join(' ').trim().split(' '))
-
-module.exports = toComparators
-
-
-/***/ }),
-
-/***/ 2098:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const Range = __nccwpck_require__(9828)
-const validRange = (range, options) => {
-  try {
-    // Return '*' instead of '' so that truthiness works.
-    // This will throw if it's invalid anyway
-    return new Range(range, options).range || '*'
-  } catch (er) {
-    return null
-  }
-}
-module.exports = validRange
-
-
-/***/ }),
-
-/***/ 59318:
+/***/ 9318:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const os = __nccwpck_require__(22037);
-const tty = __nccwpck_require__(76224);
-const hasFlag = __nccwpck_require__(31621);
+const os = __nccwpck_require__(2037);
+const tty = __nccwpck_require__(6224);
+const hasFlag = __nccwpck_require__(1621);
 
 const {env} = process;
 
@@ -39857,27 +29869,27 @@ module.exports = {
 
 /***/ }),
 
-/***/ 74294:
+/***/ 4294:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = __nccwpck_require__(54219);
+module.exports = __nccwpck_require__(4219);
 
 
 /***/ }),
 
-/***/ 54219:
+/***/ 4219:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var net = __nccwpck_require__(41808);
-var tls = __nccwpck_require__(24404);
-var http = __nccwpck_require__(13685);
-var https = __nccwpck_require__(95687);
-var events = __nccwpck_require__(82361);
-var assert = __nccwpck_require__(39491);
-var util = __nccwpck_require__(73837);
+var net = __nccwpck_require__(1808);
+var tls = __nccwpck_require__(4404);
+var http = __nccwpck_require__(3685);
+var https = __nccwpck_require__(5687);
+var events = __nccwpck_require__(2361);
+var assert = __nccwpck_require__(9491);
+var util = __nccwpck_require__(3837);
 
 
 exports.httpOverHttp = httpOverHttp;
@@ -40137,7 +30149,7 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 47009:
+/***/ 7009:
 /***/ (function(module) {
 
 /*!
@@ -40329,7 +30341,7 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 39440:
+/***/ 9440:
 /***/ (function(module) {
 
 /*!
@@ -40581,7 +30593,7 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 34190:
+/***/ 4190:
 /***/ (function(module, __unused_webpack_exports, __nccwpck_require__) {
 
 /*!
@@ -40601,7 +30613,7 @@ exports.debug = debug; // for test
   // https://github.com/umdjs/umd/blob/master/returnExports.js
   if ( true && module.exports) {
     // Node
-    module.exports = factory(__nccwpck_require__(99382), __nccwpck_require__(47009), __nccwpck_require__(39440));
+    module.exports = factory(__nccwpck_require__(9382), __nccwpck_require__(7009), __nccwpck_require__(9440));
   } else if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['./punycode', './IPv6', './SecondLevelDomains'], factory);
@@ -42952,7 +32964,7 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 23423:
+/***/ 3423:
 /***/ (function(module, __unused_webpack_exports, __nccwpck_require__) {
 
 /*!
@@ -42973,7 +32985,7 @@ exports.debug = debug; // for test
   // https://github.com/umdjs/umd/blob/master/returnExports.js
   if ( true && module.exports) {
     // Node
-    module.exports = factory(__nccwpck_require__(34190));
+    module.exports = factory(__nccwpck_require__(4190));
   } else if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['./URI'], factory);
@@ -43475,7 +33487,7 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 99382:
+/***/ 9382:
 /***/ (function(module, exports, __nccwpck_require__) {
 
 /* module decorator */ module = __nccwpck_require__.nmd(module);
@@ -44016,7 +34028,7 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 75840:
+/***/ 5840:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44080,23 +34092,23 @@ Object.defineProperty(exports, "parse", ({
   }
 }));
 
-var _v = _interopRequireDefault(__nccwpck_require__(78628));
+var _v = _interopRequireDefault(__nccwpck_require__(8628));
 
-var _v2 = _interopRequireDefault(__nccwpck_require__(86409));
+var _v2 = _interopRequireDefault(__nccwpck_require__(6409));
 
-var _v3 = _interopRequireDefault(__nccwpck_require__(85122));
+var _v3 = _interopRequireDefault(__nccwpck_require__(5122));
 
-var _v4 = _interopRequireDefault(__nccwpck_require__(79120));
+var _v4 = _interopRequireDefault(__nccwpck_require__(9120));
 
-var _nil = _interopRequireDefault(__nccwpck_require__(25332));
+var _nil = _interopRequireDefault(__nccwpck_require__(5332));
 
-var _version = _interopRequireDefault(__nccwpck_require__(81595));
+var _version = _interopRequireDefault(__nccwpck_require__(1595));
 
-var _validate = _interopRequireDefault(__nccwpck_require__(66900));
+var _validate = _interopRequireDefault(__nccwpck_require__(6900));
 
-var _stringify = _interopRequireDefault(__nccwpck_require__(18950));
+var _stringify = _interopRequireDefault(__nccwpck_require__(8950));
 
-var _parse = _interopRequireDefault(__nccwpck_require__(62746));
+var _parse = _interopRequireDefault(__nccwpck_require__(2746));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44132,7 +34144,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 25332:
+/***/ 5332:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -44147,7 +34159,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 62746:
+/***/ 2746:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44158,7 +34170,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _validate = _interopRequireDefault(__nccwpck_require__(66900));
+var _validate = _interopRequireDefault(__nccwpck_require__(6900));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44199,7 +34211,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 40814:
+/***/ 814:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -44214,7 +34226,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 50807:
+/***/ 807:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44245,7 +34257,7 @@ function rng() {
 
 /***/ }),
 
-/***/ 85274:
+/***/ 5274:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44275,7 +34287,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 18950:
+/***/ 8950:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44286,7 +34298,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _validate = _interopRequireDefault(__nccwpck_require__(66900));
+var _validate = _interopRequireDefault(__nccwpck_require__(6900));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44321,7 +34333,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 78628:
+/***/ 8628:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44332,9 +34344,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _rng = _interopRequireDefault(__nccwpck_require__(50807));
+var _rng = _interopRequireDefault(__nccwpck_require__(807));
 
-var _stringify = _interopRequireDefault(__nccwpck_require__(18950));
+var _stringify = _interopRequireDefault(__nccwpck_require__(8950));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44435,7 +34447,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 86409:
+/***/ 6409:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44446,7 +34458,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _v = _interopRequireDefault(__nccwpck_require__(65998));
+var _v = _interopRequireDefault(__nccwpck_require__(5998));
 
 var _md = _interopRequireDefault(__nccwpck_require__(4569));
 
@@ -44458,7 +34470,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 65998:
+/***/ 5998:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44470,9 +34482,9 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = _default;
 exports.URL = exports.DNS = void 0;
 
-var _stringify = _interopRequireDefault(__nccwpck_require__(18950));
+var _stringify = _interopRequireDefault(__nccwpck_require__(8950));
 
-var _parse = _interopRequireDefault(__nccwpck_require__(62746));
+var _parse = _interopRequireDefault(__nccwpck_require__(2746));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44543,7 +34555,7 @@ function _default(name, version, hashfunc) {
 
 /***/ }),
 
-/***/ 85122:
+/***/ 5122:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44554,9 +34566,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _rng = _interopRequireDefault(__nccwpck_require__(50807));
+var _rng = _interopRequireDefault(__nccwpck_require__(807));
 
-var _stringify = _interopRequireDefault(__nccwpck_require__(18950));
+var _stringify = _interopRequireDefault(__nccwpck_require__(8950));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44587,7 +34599,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 79120:
+/***/ 9120:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44598,9 +34610,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _v = _interopRequireDefault(__nccwpck_require__(65998));
+var _v = _interopRequireDefault(__nccwpck_require__(5998));
 
-var _sha = _interopRequireDefault(__nccwpck_require__(85274));
+var _sha = _interopRequireDefault(__nccwpck_require__(5274));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44610,7 +34622,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 66900:
+/***/ 6900:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44621,7 +34633,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _regex = _interopRequireDefault(__nccwpck_require__(40814));
+var _regex = _interopRequireDefault(__nccwpck_require__(814));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44634,7 +34646,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 81595:
+/***/ 1595:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -44645,7 +34657,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = void 0;
 
-var _validate = _interopRequireDefault(__nccwpck_require__(66900));
+var _validate = _interopRequireDefault(__nccwpck_require__(6900));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44662,457 +34674,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 4091:
-/***/ ((module) => {
-
-"use strict";
-
-module.exports = function (Yallist) {
-  Yallist.prototype[Symbol.iterator] = function* () {
-    for (let walker = this.head; walker; walker = walker.next) {
-      yield walker.value
-    }
-  }
-}
-
-
-/***/ }),
-
-/***/ 40665:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-module.exports = Yallist
-
-Yallist.Node = Node
-Yallist.create = Yallist
-
-function Yallist (list) {
-  var self = this
-  if (!(self instanceof Yallist)) {
-    self = new Yallist()
-  }
-
-  self.tail = null
-  self.head = null
-  self.length = 0
-
-  if (list && typeof list.forEach === 'function') {
-    list.forEach(function (item) {
-      self.push(item)
-    })
-  } else if (arguments.length > 0) {
-    for (var i = 0, l = arguments.length; i < l; i++) {
-      self.push(arguments[i])
-    }
-  }
-
-  return self
-}
-
-Yallist.prototype.removeNode = function (node) {
-  if (node.list !== this) {
-    throw new Error('removing node which does not belong to this list')
-  }
-
-  var next = node.next
-  var prev = node.prev
-
-  if (next) {
-    next.prev = prev
-  }
-
-  if (prev) {
-    prev.next = next
-  }
-
-  if (node === this.head) {
-    this.head = next
-  }
-  if (node === this.tail) {
-    this.tail = prev
-  }
-
-  node.list.length--
-  node.next = null
-  node.prev = null
-  node.list = null
-
-  return next
-}
-
-Yallist.prototype.unshiftNode = function (node) {
-  if (node === this.head) {
-    return
-  }
-
-  if (node.list) {
-    node.list.removeNode(node)
-  }
-
-  var head = this.head
-  node.list = this
-  node.next = head
-  if (head) {
-    head.prev = node
-  }
-
-  this.head = node
-  if (!this.tail) {
-    this.tail = node
-  }
-  this.length++
-}
-
-Yallist.prototype.pushNode = function (node) {
-  if (node === this.tail) {
-    return
-  }
-
-  if (node.list) {
-    node.list.removeNode(node)
-  }
-
-  var tail = this.tail
-  node.list = this
-  node.prev = tail
-  if (tail) {
-    tail.next = node
-  }
-
-  this.tail = node
-  if (!this.head) {
-    this.head = node
-  }
-  this.length++
-}
-
-Yallist.prototype.push = function () {
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    push(this, arguments[i])
-  }
-  return this.length
-}
-
-Yallist.prototype.unshift = function () {
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    unshift(this, arguments[i])
-  }
-  return this.length
-}
-
-Yallist.prototype.pop = function () {
-  if (!this.tail) {
-    return undefined
-  }
-
-  var res = this.tail.value
-  this.tail = this.tail.prev
-  if (this.tail) {
-    this.tail.next = null
-  } else {
-    this.head = null
-  }
-  this.length--
-  return res
-}
-
-Yallist.prototype.shift = function () {
-  if (!this.head) {
-    return undefined
-  }
-
-  var res = this.head.value
-  this.head = this.head.next
-  if (this.head) {
-    this.head.prev = null
-  } else {
-    this.tail = null
-  }
-  this.length--
-  return res
-}
-
-Yallist.prototype.forEach = function (fn, thisp) {
-  thisp = thisp || this
-  for (var walker = this.head, i = 0; walker !== null; i++) {
-    fn.call(thisp, walker.value, i, this)
-    walker = walker.next
-  }
-}
-
-Yallist.prototype.forEachReverse = function (fn, thisp) {
-  thisp = thisp || this
-  for (var walker = this.tail, i = this.length - 1; walker !== null; i--) {
-    fn.call(thisp, walker.value, i, this)
-    walker = walker.prev
-  }
-}
-
-Yallist.prototype.get = function (n) {
-  for (var i = 0, walker = this.head; walker !== null && i < n; i++) {
-    // abort out of the list early if we hit a cycle
-    walker = walker.next
-  }
-  if (i === n && walker !== null) {
-    return walker.value
-  }
-}
-
-Yallist.prototype.getReverse = function (n) {
-  for (var i = 0, walker = this.tail; walker !== null && i < n; i++) {
-    // abort out of the list early if we hit a cycle
-    walker = walker.prev
-  }
-  if (i === n && walker !== null) {
-    return walker.value
-  }
-}
-
-Yallist.prototype.map = function (fn, thisp) {
-  thisp = thisp || this
-  var res = new Yallist()
-  for (var walker = this.head; walker !== null;) {
-    res.push(fn.call(thisp, walker.value, this))
-    walker = walker.next
-  }
-  return res
-}
-
-Yallist.prototype.mapReverse = function (fn, thisp) {
-  thisp = thisp || this
-  var res = new Yallist()
-  for (var walker = this.tail; walker !== null;) {
-    res.push(fn.call(thisp, walker.value, this))
-    walker = walker.prev
-  }
-  return res
-}
-
-Yallist.prototype.reduce = function (fn, initial) {
-  var acc
-  var walker = this.head
-  if (arguments.length > 1) {
-    acc = initial
-  } else if (this.head) {
-    walker = this.head.next
-    acc = this.head.value
-  } else {
-    throw new TypeError('Reduce of empty list with no initial value')
-  }
-
-  for (var i = 0; walker !== null; i++) {
-    acc = fn(acc, walker.value, i)
-    walker = walker.next
-  }
-
-  return acc
-}
-
-Yallist.prototype.reduceReverse = function (fn, initial) {
-  var acc
-  var walker = this.tail
-  if (arguments.length > 1) {
-    acc = initial
-  } else if (this.tail) {
-    walker = this.tail.prev
-    acc = this.tail.value
-  } else {
-    throw new TypeError('Reduce of empty list with no initial value')
-  }
-
-  for (var i = this.length - 1; walker !== null; i--) {
-    acc = fn(acc, walker.value, i)
-    walker = walker.prev
-  }
-
-  return acc
-}
-
-Yallist.prototype.toArray = function () {
-  var arr = new Array(this.length)
-  for (var i = 0, walker = this.head; walker !== null; i++) {
-    arr[i] = walker.value
-    walker = walker.next
-  }
-  return arr
-}
-
-Yallist.prototype.toArrayReverse = function () {
-  var arr = new Array(this.length)
-  for (var i = 0, walker = this.tail; walker !== null; i++) {
-    arr[i] = walker.value
-    walker = walker.prev
-  }
-  return arr
-}
-
-Yallist.prototype.slice = function (from, to) {
-  to = to || this.length
-  if (to < 0) {
-    to += this.length
-  }
-  from = from || 0
-  if (from < 0) {
-    from += this.length
-  }
-  var ret = new Yallist()
-  if (to < from || to < 0) {
-    return ret
-  }
-  if (from < 0) {
-    from = 0
-  }
-  if (to > this.length) {
-    to = this.length
-  }
-  for (var i = 0, walker = this.head; walker !== null && i < from; i++) {
-    walker = walker.next
-  }
-  for (; walker !== null && i < to; i++, walker = walker.next) {
-    ret.push(walker.value)
-  }
-  return ret
-}
-
-Yallist.prototype.sliceReverse = function (from, to) {
-  to = to || this.length
-  if (to < 0) {
-    to += this.length
-  }
-  from = from || 0
-  if (from < 0) {
-    from += this.length
-  }
-  var ret = new Yallist()
-  if (to < from || to < 0) {
-    return ret
-  }
-  if (from < 0) {
-    from = 0
-  }
-  if (to > this.length) {
-    to = this.length
-  }
-  for (var i = this.length, walker = this.tail; walker !== null && i > to; i--) {
-    walker = walker.prev
-  }
-  for (; walker !== null && i > from; i--, walker = walker.prev) {
-    ret.push(walker.value)
-  }
-  return ret
-}
-
-Yallist.prototype.splice = function (start, deleteCount, ...nodes) {
-  if (start > this.length) {
-    start = this.length - 1
-  }
-  if (start < 0) {
-    start = this.length + start;
-  }
-
-  for (var i = 0, walker = this.head; walker !== null && i < start; i++) {
-    walker = walker.next
-  }
-
-  var ret = []
-  for (var i = 0; walker && i < deleteCount; i++) {
-    ret.push(walker.value)
-    walker = this.removeNode(walker)
-  }
-  if (walker === null) {
-    walker = this.tail
-  }
-
-  if (walker !== this.head && walker !== this.tail) {
-    walker = walker.prev
-  }
-
-  for (var i = 0; i < nodes.length; i++) {
-    walker = insert(this, walker, nodes[i])
-  }
-  return ret;
-}
-
-Yallist.prototype.reverse = function () {
-  var head = this.head
-  var tail = this.tail
-  for (var walker = head; walker !== null; walker = walker.prev) {
-    var p = walker.prev
-    walker.prev = walker.next
-    walker.next = p
-  }
-  this.head = tail
-  this.tail = head
-  return this
-}
-
-function insert (self, node, value) {
-  var inserted = node === self.head ?
-    new Node(value, null, node, self) :
-    new Node(value, node, node.next, self)
-
-  if (inserted.next === null) {
-    self.tail = inserted
-  }
-  if (inserted.prev === null) {
-    self.head = inserted
-  }
-
-  self.length++
-
-  return inserted
-}
-
-function push (self, item) {
-  self.tail = new Node(item, self.tail, null, self)
-  if (!self.head) {
-    self.head = self.tail
-  }
-  self.length++
-}
-
-function unshift (self, item) {
-  self.head = new Node(item, null, self.head, self)
-  if (!self.tail) {
-    self.tail = self.head
-  }
-  self.length++
-}
-
-function Node (value, prev, next, list) {
-  if (!(this instanceof Node)) {
-    return new Node(value, prev, next, list)
-  }
-
-  this.list = list
-  this.value = value
-
-  if (prev) {
-    prev.next = this
-    this.prev = prev
-  } else {
-    this.prev = null
-  }
-
-  if (next) {
-    next.prev = this
-    this.next = next
-  } else {
-    this.next = null
-  }
-}
-
-try {
-  // add if support for Symbol.iterator is present
-  __nccwpck_require__(4091)(Yallist)
-} catch (er) {}
-
-
-/***/ }),
-
-/***/ 34636:
+/***/ 4636:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -45128,7 +34690,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createReleaseFromInputs = void 0;
-const api_client_1 = __nccwpck_require__(80586);
+const api_client_1 = __nccwpck_require__(586);
 function createReleaseFromInputs(client, parameters) {
     return __awaiter(this, void 0, void 0, function* () {
         client.info('🐙 Creating a release in Octopus Deploy...');
@@ -45145,7 +34707,8 @@ function createReleaseFromInputs(client, parameters) {
             IgnoreIfAlreadyExists: parameters.ignoreExisting,
             IgnoreChannelRules: false
         };
-        const allocatedReleaseNumber = yield (0, api_client_1.releaseCreate)(client, command);
+        const repository = new api_client_1.ReleaseRepository(client, parameters.space);
+        const allocatedReleaseNumber = yield repository.create(command);
         client.info(`🎉 Release ${allocatedReleaseNumber.ReleaseVersion} created successfully!`);
         return allocatedReleaseNumber.ReleaseVersion;
     });
@@ -45155,7 +34718,7 @@ exports.createReleaseFromInputs = createReleaseFromInputs;
 
 /***/ }),
 
-/***/ 39148:
+/***/ 9148:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -45170,11 +34733,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const input_parameters_1 = __nccwpck_require__(89519);
-const core_1 = __nccwpck_require__(42186);
-const fs_1 = __nccwpck_require__(57147);
-const api_client_1 = __nccwpck_require__(80586);
-const api_wrapper_1 = __nccwpck_require__(34636);
+const input_parameters_1 = __nccwpck_require__(9519);
+const core_1 = __nccwpck_require__(2186);
+const fs_1 = __nccwpck_require__(7147);
+const api_client_1 = __nccwpck_require__(586);
+const api_wrapper_1 = __nccwpck_require__(4636);
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const logger = {
@@ -45221,14 +34784,14 @@ const api_wrapper_1 = __nccwpck_require__(34636);
 
 /***/ }),
 
-/***/ 89519:
+/***/ 9519:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getInputParameters = void 0;
-const core_1 = __nccwpck_require__(42186);
+const core_1 = __nccwpck_require__(2186);
 const EnvironmentVariables = {
     URL: 'OCTOPUS_URL',
     ApiKey: 'OCTOPUS_API_KEY',
@@ -45269,7 +34832,7 @@ exports.getInputParameters = getInputParameters;
 
 /***/ }),
 
-/***/ 39491:
+/***/ 9491:
 /***/ ((module) => {
 
 "use strict";
@@ -45285,7 +34848,7 @@ module.exports = require("crypto");
 
 /***/ }),
 
-/***/ 82361:
+/***/ 2361:
 /***/ ((module) => {
 
 "use strict";
@@ -45293,7 +34856,7 @@ module.exports = require("events");
 
 /***/ }),
 
-/***/ 57147:
+/***/ 7147:
 /***/ ((module) => {
 
 "use strict";
@@ -45301,7 +34864,7 @@ module.exports = require("fs");
 
 /***/ }),
 
-/***/ 13685:
+/***/ 3685:
 /***/ ((module) => {
 
 "use strict";
@@ -45309,7 +34872,7 @@ module.exports = require("http");
 
 /***/ }),
 
-/***/ 95687:
+/***/ 5687:
 /***/ ((module) => {
 
 "use strict";
@@ -45317,7 +34880,7 @@ module.exports = require("https");
 
 /***/ }),
 
-/***/ 41808:
+/***/ 1808:
 /***/ ((module) => {
 
 "use strict";
@@ -45325,7 +34888,7 @@ module.exports = require("net");
 
 /***/ }),
 
-/***/ 22037:
+/***/ 2037:
 /***/ ((module) => {
 
 "use strict";
@@ -45333,7 +34896,7 @@ module.exports = require("os");
 
 /***/ }),
 
-/***/ 71017:
+/***/ 1017:
 /***/ ((module) => {
 
 "use strict";
@@ -45341,7 +34904,7 @@ module.exports = require("path");
 
 /***/ }),
 
-/***/ 12781:
+/***/ 2781:
 /***/ ((module) => {
 
 "use strict";
@@ -45349,7 +34912,7 @@ module.exports = require("stream");
 
 /***/ }),
 
-/***/ 24404:
+/***/ 4404:
 /***/ ((module) => {
 
 "use strict";
@@ -45357,7 +34920,7 @@ module.exports = require("tls");
 
 /***/ }),
 
-/***/ 76224:
+/***/ 6224:
 /***/ ((module) => {
 
 "use strict";
@@ -45365,7 +34928,7 @@ module.exports = require("tty");
 
 /***/ }),
 
-/***/ 57310:
+/***/ 7310:
 /***/ ((module) => {
 
 "use strict";
@@ -45373,7 +34936,7 @@ module.exports = require("url");
 
 /***/ }),
 
-/***/ 73837:
+/***/ 3837:
 /***/ ((module) => {
 
 "use strict";
@@ -45381,7 +34944,7 @@ module.exports = require("util");
 
 /***/ }),
 
-/***/ 59796:
+/***/ 9796:
 /***/ ((module) => {
 
 "use strict";
@@ -45389,7 +34952,7 @@ module.exports = require("zlib");
 
 /***/ }),
 
-/***/ 53765:
+/***/ 3765:
 /***/ ((module) => {
 
 "use strict";
@@ -45451,7 +35014,7 @@ module.exports = JSON.parse('{"application/1d-interleaved-parityfec":{"source":"
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(39148);
+/******/ 	var __webpack_exports__ = __nccwpck_require__(9148);
 /******/ 	module.exports = __webpack_exports__;
 /******/ 	
 /******/ })()
