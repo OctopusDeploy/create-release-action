@@ -1,10 +1,21 @@
 import { createReleaseFromInputs } from '../../src/api-wrapper'
 // we use the Octopus API client to setup and teardown integration test data, it doesn't form part of create-release-action at this point
-import { PackageRequirement, RunCondition, StartTrigger } from '@octopusdeploy/message-contracts'
-import { Client, ClientConfiguration, Logger, Repository } from '@octopusdeploy/api-client'
+import {
+  Client,
+  ClientConfiguration,
+  DeploymentProcessRepository,
+  LifecycleRepository,
+  Logger,
+  PackageRequirement,
+  Project,
+  ProjectGroupRepository,
+  ProjectRepository,
+  RunCondition,
+  RunConditionForAction,
+  StartTrigger
+} from '@octopusdeploy/api-client'
 import { randomBytes } from 'crypto'
 import { CleanupHelper } from './cleanup-helper'
-import { RunConditionForAction } from '@octopusdeploy/message-contracts/dist/runConditionForAction'
 import { setOutput } from '@actions/core'
 import { CaptureOutput } from '../test-helpers'
 import { InputParameters } from '../../src/input-parameters'
@@ -41,31 +52,34 @@ describe('integration tests', () => {
   }
 
   let apiClient: Client
-  beforeAll(async () => {
-    apiClient = await Client.create({ autoConnect: true, ...apiClientConfig })
+  let project: Project
 
-    const repository = new Repository(apiClient)
+  beforeAll(async () => {
+    apiClient = await Client.create(apiClientConfig)
 
     // pre-reqs: We need a project, which needs to have a deployment process
 
-    const lifeCycle = (await repository.lifecycles.all())[0]
-    if (!lifeCycle) throw new Error("Can't find first lifecycle")
+    const lifecycleRepository = new LifecycleRepository(apiClient, standardInputParameters.space)
+    const lifecycle = (await lifecycleRepository.list({ take: 1 })).Items[0]
+    if (!lifecycle) throw new Error("Can't find first lifecycle")
 
-    const projectGroup = (await repository.projectGroups.all())[0]
+    const projectGroup = (await new ProjectGroupRepository(apiClient, standardInputParameters.space).list({ take: 1 }))
+      .Items[0]
     if (!projectGroup) throw new Error("Can't find first projectGroup")
 
-    const project = await repository.projects.create({
+    const projectRepository = new ProjectRepository(apiClient, standardInputParameters.space)
+    project = await projectRepository.create({
       Name: localProjectName,
-      LifecycleId: lifeCycle.Id,
+      LifecycleId: lifecycle.Id,
       ProjectGroupId: projectGroup.Id
     })
-    globalCleanup.add(() => repository.projects.del(project))
+    globalCleanup.add(async () => await projectRepository.del(project))
 
-    const deploymentProcess = await repository.deploymentProcesses.get(project.DeploymentProcessId, undefined)
+    const deploymentProcessRepository = new DeploymentProcessRepository(apiClient, standardInputParameters.space)
+    const deploymentProcess = await deploymentProcessRepository.get(project)
     deploymentProcess.Steps = [
       {
         Condition: RunCondition.Success,
-        Links: {},
         PackageRequirement: PackageRequirement.LetOctopusDecide,
         StartTrigger: StartTrigger.StartAfterPrevious,
         Id: '',
@@ -97,14 +111,13 @@ describe('integration tests', () => {
               'Octopus.Action.Script.ScriptSource': 'Inline',
               'Octopus.Action.Script.Syntax': 'Bash',
               'Octopus.Action.Script.ScriptBody': "echo 'hello'"
-            },
-            Links: {}
+            }
           }
         ]
       }
     ]
 
-    await repository.deploymentProcesses.saveToProject(project, deploymentProcess)
+    await deploymentProcessRepository.update(project, deploymentProcess)
   })
 
   afterAll(() => {
