@@ -2343,6 +2343,20 @@ var Client = /** @class */ (function () {
     };
     Client.prototype.doCreate = function (path, command, args) {
         return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.doCommand("POST", path, command, args)];
+            });
+        });
+    };
+    Client.prototype.doUpdate = function (path, command, args) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.doCommand("PUT", path, command, args)];
+            });
+        });
+    };
+    Client.prototype.doCommand = function (verb, path, command, args) {
+        return __awaiter(this, void 0, void 0, function () {
             var spaceId, spaceId, url;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -2364,28 +2378,7 @@ var Client = /** @class */ (function () {
                     case 4:
                         url = this.resolveUrl(path, args);
                         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-                        return [2 /*return*/, this.dispatchRequest("POST", url, command)];
-                }
-            });
-        });
-    };
-    Client.prototype.doUpdate = function (path, command, args) {
-        return __awaiter(this, void 0, void 0, function () {
-            var spaceId, url;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!(0, spaceScopedOperation_1.isSpaceScopedOperation)(command)) return [3 /*break*/, 2];
-                        return [4 /*yield*/, (0, spaceResolver_1.resolveSpaceId)(this, command.spaceName)];
-                    case 1:
-                        spaceId = _a.sent();
-                        args = __assign({ spaceId: spaceId }, args);
-                        command = __assign({ spaceId: spaceId }, command);
-                        _a.label = 2;
-                    case 2:
-                        url = this.resolveUrl(path, args);
-                        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-                        return [2 /*return*/, this.dispatchRequest("PUT", url, command)];
+                        return [2 /*return*/, this.dispatchRequest(verb, url, command)];
                 }
             });
         });
@@ -2415,46 +2408,24 @@ var Client = /** @class */ (function () {
         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         return this.dispatchRequest("POST", url, resource);
     };
-    Client.prototype.create = function (path, resource, args) {
-        var _this = this;
-        var url = this.resolve(path, args);
-        return new Promise(function (resolve, reject) {
-            _this.dispatchRequest("POST", url, resource).then(function (result) {
-                var _a;
-                var selfLink = (_a = result.Links) === null || _a === void 0 ? void 0 : _a.Self;
-                if (selfLink) {
-                    var result2 = _this.get(selfLink);
-                    resolve(result2);
-                    return;
+    Client.prototype.del = function (path, args) {
+        return __awaiter(this, void 0, void 0, function () {
+            var spaceId, url;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(args && (0, spaceScopedArgs_1.isSpaceScopedArgs)(args))) return [3 /*break*/, 2];
+                        return [4 /*yield*/, (0, spaceResolver_1.resolveSpaceId)(this, args.spaceName)];
+                    case 1:
+                        spaceId = _a.sent();
+                        args = __assign({ spaceId: spaceId }, args);
+                        _a.label = 2;
+                    case 2:
+                        url = this.resolve(path, args);
+                        return [2 /*return*/, this.dispatchRequest("DELETE", url, undefined)];
                 }
-                resolve(result);
-            }, reject);
+            });
         });
-    };
-    Client.prototype.update = function (path, resource, args) {
-        var _this = this;
-        var url = this.resolve(path, args);
-        return new Promise(function (resolve, reject) {
-            _this.dispatchRequest("PUT", url, resource).then(function (result) {
-                var _a;
-                var selfLink = (_a = result.Links) === null || _a === void 0 ? void 0 : _a.Self;
-                if (selfLink) {
-                    var result2 = _this.get(selfLink);
-                    resolve(result2);
-                    return;
-                }
-                resolve(result);
-            }, reject);
-        });
-    };
-    Client.prototype.del = function (path, resource, args) {
-        var url = this.resolve(path, args);
-        return this.dispatchRequest("DELETE", url, resource);
-    };
-    Client.prototype.put = function (path, resource, args) {
-        var url = this.resolveUrl(path, args);
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-        return this.dispatchRequest("PUT", url, resource);
     };
     Client.prototype.getServerInformation = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -2615,47 +2586,11 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.BasicRepository = void 0;
 // Repositories provide a helpful abstraction around the Octopus Deploy API
 var BasicRepository = /** @class */ (function () {
-    function BasicRepository(client, baseApiTemplate) {
+    function BasicRepository(client, baseApiPathTemplate, listParametersTemplate) {
         var _this = this;
         this.takeAll = 2147483647;
         this.takeDefaultPageSize = 30;
@@ -2664,31 +2599,28 @@ var BasicRepository = /** @class */ (function () {
             return resource;
         };
         this.client = client;
-        this.baseApiTemplate = baseApiTemplate;
+        this.baseApiPathTemplate = baseApiPathTemplate;
+        this.listParametersTemplate = listParametersTemplate;
         this.subscribersToDataModifications = {};
     }
     BasicRepository.prototype.del = function (resource) {
         var _this = this;
-        return this.client.del("".concat(this.baseApiTemplate, "/").concat(resource.Id)).then(function (d) { return _this.notifySubscribersToDataModifications(resource); });
+        return this.client.del("".concat(this.baseApiPathTemplate, "/").concat(resource.Id)).then(function (d) { return _this.notifySubscribersToDataModifications(resource); });
     };
     BasicRepository.prototype.create = function (resource, args) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.doCreate(this.baseApiTemplate, resource, args).then(function (r) { return _this.notifySubscribersToDataModifications(r); })];
-            });
-        });
+        var _this = this;
+        return this.client.doCreate(this.baseApiPathTemplate, resource, args).then(function (r) { return _this.notifySubscribersToDataModifications(r); });
     };
     BasicRepository.prototype.get = function (id) {
-        return this.client.get(this.baseApiTemplate, { id: id });
+        return this.client.get("".concat(this.baseApiPathTemplate, "/").concat(id));
     };
     BasicRepository.prototype.list = function (args) {
-        return this.client.get(this.baseApiTemplate, args);
+        return this.client.request("".concat(this.baseApiPathTemplate, "{?").concat(this.listParametersTemplate, "}"), args);
     };
     BasicRepository.prototype.modify = function (resource, args) {
         var _this = this;
         return this.client
-            .doUpdate(this.baseApiTemplate, resource, __assign({ id: resource.Id }, args))
+            .doUpdate("".concat(this.baseApiPathTemplate, "/").concat(resource.Id), resource, args)
             .then(function (r) { return _this.notifySubscribersToDataModifications(r); });
     };
     BasicRepository.prototype.save = function (resource) {
@@ -2762,6 +2694,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.BuildInformationRepository = void 0;
 var overwriteMode_1 = __nccwpck_require__(7758);
@@ -2774,32 +2717,42 @@ var BuildInformationRepository = /** @class */ (function () {
     BuildInformationRepository.prototype.push = function (buildInformation, overwriteMode) {
         if (overwriteMode === void 0) { overwriteMode = overwriteMode_1.OverwriteMode.FailIfExists; }
         return __awaiter(this, void 0, void 0, function () {
-            var tasks, _i, _a, pkg;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var tasks, _a, _b, pkg;
+            var e_1, _c;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
                     case 0:
                         tasks = [];
-                        for (_i = 0, _a = buildInformation.Packages; _i < _a.length; _i++) {
-                            pkg = _a[_i];
-                            tasks.push(this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/build-information{?overwriteMode}"), {
-                                spaceName: buildInformation.spaceName,
-                                PackageId: pkg.Id,
-                                Version: pkg.Version,
-                                OctopusBuildInformation: {
-                                    Branch: buildInformation.Branch,
-                                    BuildEnvironment: buildInformation.BuildEnvironment,
-                                    BuildNumber: buildInformation.BuildNumber,
-                                    BuildUrl: buildInformation.BuildUrl,
-                                    Commits: buildInformation.Commits.map(function (c) { return ({ Id: c.Id, Comment: c.Comment }); }),
-                                    VcsCommitNumber: buildInformation.VcsCommitNumber,
-                                    VcsRoot: buildInformation.VcsRoot,
-                                    VcsType: buildInformation.VcsType,
-                                },
-                            }, { overwriteMode: overwriteMode }));
+                        try {
+                            for (_a = __values(buildInformation.Packages), _b = _a.next(); !_b.done; _b = _a.next()) {
+                                pkg = _b.value;
+                                tasks.push(this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/build-information{?overwriteMode}"), {
+                                    spaceName: buildInformation.spaceName,
+                                    PackageId: pkg.Id,
+                                    Version: pkg.Version,
+                                    OctopusBuildInformation: {
+                                        Branch: buildInformation.Branch,
+                                        BuildEnvironment: buildInformation.BuildEnvironment,
+                                        BuildNumber: buildInformation.BuildNumber,
+                                        BuildUrl: buildInformation.BuildUrl,
+                                        Commits: buildInformation.Commits.map(function (c) { return ({ Id: c.Id, Comment: c.Comment }); }),
+                                        VcsCommitNumber: buildInformation.VcsCommitNumber,
+                                        VcsRoot: buildInformation.VcsRoot,
+                                        VcsType: buildInformation.VcsType,
+                                    },
+                                }, { overwriteMode: overwriteMode }));
+                            }
                         }
-                        return [4 /*yield*/, Promise.all(tasks)];
+                        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                        finally {
+                            try {
+                                if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+                            }
+                            finally { if (e_1) throw e_1.error; }
+                        }
+                        return [4 /*yield*/, Promise.allSettled(tasks)];
                     case 1:
-                        _b.sent();
+                        _d.sent();
                         return [2 /*return*/];
                 }
             });
@@ -2936,19 +2889,19 @@ var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
 var EnvironmentRepository = /** @class */ (function (_super) {
     __extends(EnvironmentRepository, _super);
     function EnvironmentRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/environments{/id}{?skip,take,ids,partialName}")) || this;
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/environments"), "skip,take,ids,partialName") || this;
     }
     // getMetadata(environment: DeploymentEnvironment): Promise<EnvironmentSettingsMetadata[]> {
     //     return this.client.get('${spaceScopedRoutePrefix}/environments/{id}/metadata', { spaceId: environment.SpaceId, id: environment.Id });
     // }
     EnvironmentRepository.prototype.sort = function (order) {
-        return this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/environments/sortorder"), order, { spaceName: this.spaceName });
+        return this.client.doUpdate("".concat(this.baseApiPathTemplate, "/sortorder"), order, { spaceName: this.spaceName });
     };
     EnvironmentRepository.prototype.summary = function (args) {
-        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/summary{?ids,partialName,machinePartialName,roles,isDisabled,healthStatuses,commStyles,tenantIds,tenantTags,hideEmptyEnvironments,shellNames,deploymentTargetTypes}"), __assign({ spaceName: this.spaceName }, args));
+        return this.client.request("".concat(this.baseApiPathTemplate, "/summary{?ids,partialName,machinePartialName,roles,isDisabled,healthStatuses,commStyles,tenantIds,tenantTags,hideEmptyEnvironments,shellNames,deploymentTargetTypes}"), __assign({ spaceName: this.spaceName }, args));
     };
     EnvironmentRepository.prototype.machines = function (environment, args) {
-        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/{id}/machines{?skip,take,partialName,roles,isDisabled,healthStatuses,commStyles,tenantIds,tenantTags,shellNames,deploymentTargetTypes}"), __assign({ spaceName: this.spaceName, id: environment.Id }, args));
+        return this.client.request("".concat(this.baseApiPathTemplate, "/").concat(environment.Id, "/machines{?skip,take,partialName,roles,isDisabled,healthStatuses,commStyles,tenantIds,tenantTags,shellNames,deploymentTargetTypes}"), __assign({ spaceName: this.spaceName }, args));
     };
     EnvironmentRepository.prototype.variablesScopedOnlyToThisEnvironment = function (environment) {
         return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/{id}/singlyScopedVariableDetails"), {
@@ -3103,7 +3056,7 @@ var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
 var FeedRepository = /** @class */ (function (_super) {
     __extends(FeedRepository, _super);
     function FeedRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/feeds{/id}{?skip,take,ids,partialName,feedType}")) || this;
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/feeds"), "skip,take,ids,partialName,feedType") || this;
     }
     return FeedRepository;
 }(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
@@ -3416,7 +3369,7 @@ var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
 var LifecycleRepository = /** @class */ (function (_super) {
     __extends(LifecycleRepository, _super);
     function LifecycleRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/lifecycles{/id}{?skip,take,ids,partialName}")) || this;
+        return _super.call(this, client, spaceName, "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/lifecycles"), "skip,take,ids,partialName") || this;
     }
     return LifecycleRepository;
 }(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
@@ -3556,6 +3509,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -3608,20 +3572,30 @@ var PackageRepository = /** @class */ (function () {
     PackageRepository.prototype.push = function (packages, overwriteMode) {
         if (overwriteMode === void 0) { overwriteMode = overwriteMode_1.OverwriteMode.FailIfExists; }
         return __awaiter(this, void 0, void 0, function () {
-            var spaceId, tasks, _i, packages_1, packagePath;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var spaceId, tasks, packages_1, packages_1_1, packagePath;
+            var e_1, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0: return [4 /*yield*/, (0, spaceResolver_1.resolveSpaceId)(this.client, this.spaceName)];
                     case 1:
-                        spaceId = _a.sent();
+                        spaceId = _b.sent();
                         tasks = [];
-                        for (_i = 0, packages_1 = packages; _i < packages_1.length; _i++) {
-                            packagePath = packages_1[_i];
-                            tasks.push(this.packageUpload(spaceId, packagePath, overwriteMode));
+                        try {
+                            for (packages_1 = __values(packages), packages_1_1 = packages_1.next(); !packages_1_1.done; packages_1_1 = packages_1.next()) {
+                                packagePath = packages_1_1.value;
+                                tasks.push(this.packageUpload(spaceId, packagePath, overwriteMode));
+                            }
                         }
-                        return [4 /*yield*/, Promise.all(tasks)];
+                        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                        finally {
+                            try {
+                                if (packages_1_1 && !packages_1_1.done && (_a = packages_1.return)) _a.call(packages_1);
+                            }
+                            finally { if (e_1) throw e_1.error; }
+                        }
+                        return [4 /*yield*/, Promise.allSettled(tasks)];
                     case 2:
-                        _a.sent();
+                        _b.sent();
                         this.client.info("Packages uploaded");
                         return [2 /*return*/];
                 }
@@ -3862,7 +3836,7 @@ var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
 var ProjectGroupRepository = /** @class */ (function (_super) {
     __extends(ProjectGroupRepository, _super);
     function ProjectGroupRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/projectgroups{/id}{?skip,take,ids,partialName}")) || this;
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/projectgroups"), "skip,take,ids,partialName") || this;
     }
     return ProjectGroupRepository;
 }(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
@@ -3960,6 +3934,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -4043,7 +4033,7 @@ function InitialisePrimaryPackageReference(packages, feeds, itemsKeyedBy) {
         if (!primaryPackage.Properties.SelectionMode) {
             primaryPackage.Properties.SelectionMode = packageReference_1.PackageSelectionMode.Immediate;
         }
-        return __spreadArray([], packages, true);
+        return __spreadArray([], __read(packages), false);
     }
     var packagesWithoutDefault = RemovePrimaryPackageReference(packages);
     var builtInFeed = feeds.find(function (f) { return f.FeedType === feeds_1.FeedType.BuiltIn; });
@@ -4058,7 +4048,7 @@ function InitialisePrimaryPackageReference(packages, feeds, itemsKeyedBy) {
                 SelectionMode: packageReference_1.PackageSelectionMode.Immediate,
             },
         }
-    ], packagesWithoutDefault, true);
+    ], __read(packagesWithoutDefault), false);
 }
 exports.InitialisePrimaryPackageReference = InitialisePrimaryPackageReference;
 
@@ -4202,8 +4192,8 @@ var DeploymentProcessRepository = /** @class */ (function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.client.get("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/deploymentprocesses"), {
-                            spaceId: project.SpaceId,
+                    case 0: return [4 /*yield*/, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/deploymentprocesses"), {
+                            spaceName: this.spaceName,
                             projectId: project.Id,
                         })];
                     case 1:
@@ -4218,8 +4208,8 @@ var DeploymentProcessRepository = /** @class */ (function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.client.get("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/{gitRef}/deploymentprocesses"), {
-                            spaceId: project.SpaceId,
+                    case 0: return [4 /*yield*/, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/{gitRef}/deploymentprocesses"), {
+                            spaceName: this.spaceName,
                             projectId: project.Id,
                             gitRef: gitRef,
                         })];
@@ -4235,8 +4225,8 @@ var DeploymentProcessRepository = /** @class */ (function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.client.update("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/deploymentprocesses"), deploymentProcess, {
-                            spaceId: deploymentProcess.SpaceId,
+                    case 0: return [4 /*yield*/, this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/deploymentprocesses"), deploymentProcess, {
+                            spaceName: this.spaceName,
                             projectId: project.Id,
                         })];
                     case 1:
@@ -4251,10 +4241,9 @@ var DeploymentProcessRepository = /** @class */ (function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.client.update("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/{gitRef}/deploymentprocesses"), deploymentProcess, {
-                            spaceId: deploymentProcess.SpaceId,
+                    case 0: return [4 /*yield*/, this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/{gitRef}/deploymentprocesses"), deploymentProcess, {
+                            spaceName: this.spaceName,
                             projectId: project.Id,
-                            deploymentProcessId: deploymentProcess.Id,
                             gitRef: gitRef,
                         })];
                     case 1:
@@ -4404,123 +4393,6 @@ var RunConditionForAction;
 
 /***/ }),
 
-/***/ 1334:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ExecutionWaiter = void 0;
-var serverTasks_1 = __nccwpck_require__(6568);
-var ExecutionWaiter = /** @class */ (function () {
-    function ExecutionWaiter(client, spaceName) {
-        this.client = client;
-        this.spaceName = spaceName;
-    }
-    ExecutionWaiter.prototype.waitForExecutionsToComplete = function (serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback) {
-        return __awaiter(this, void 0, void 0, function () {
-            var taskPromises, _i, serverTaskIds_1, taskId;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        taskPromises = [];
-                        for (_i = 0, serverTaskIds_1 = serverTaskIds; _i < serverTaskIds_1.length; _i++) {
-                            taskId = serverTaskIds_1[_i];
-                            taskPromises.push(this.waitForExecutionToComplete(taskId, statusCheckSleepCycle, timeout, pollingCallback));
-                        }
-                        return [4 /*yield*/, Promise.allSettled(taskPromises)];
-                    case 1: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    ExecutionWaiter.prototype.waitForExecutionToComplete = function (serverTaskId, statusCheckSleepCycle, timeout, pollingCallback) {
-        return __awaiter(this, void 0, void 0, function () {
-            var sleep, stop, t, taskDetails, task;
-            var _this = this;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        sleep = function (ms) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
-                            return [2 /*return*/, new Promise(function (r) { return setTimeout(r, ms); })];
-                        }); }); };
-                        stop = false;
-                        t = setTimeout(function () {
-                            stop = true;
-                        }, timeout);
-                        _a.label = 1;
-                    case 1:
-                        if (!!stop) return [3 /*break*/, 7];
-                        if (!pollingCallback) return [3 /*break*/, 3];
-                        return [4 /*yield*/, (0, serverTasks_1.serverTaskDetailsGet)(this.client, this.spaceName, serverTaskId)];
-                    case 2:
-                        taskDetails = _a.sent();
-                        pollingCallback(taskDetails);
-                        if (taskDetails.Task.IsCompleted) {
-                            clearTimeout(t);
-                            return [2 /*return*/, taskDetails.Task];
-                        }
-                        return [3 /*break*/, 5];
-                    case 3: return [4 /*yield*/, (0, serverTasks_1.serverTaskGet)(this.client, this.spaceName, serverTaskId)];
-                    case 4:
-                        task = _a.sent();
-                        if (task.IsCompleted) {
-                            clearTimeout(t);
-                            return [2 /*return*/, task];
-                        }
-                        _a.label = 5;
-                    case 5: return [4 /*yield*/, sleep(statusCheckSleepCycle)];
-                    case 6:
-                        _a.sent();
-                        return [3 /*break*/, 1];
-                    case 7: return [2 /*return*/, null];
-                }
-            });
-        });
-    };
-    return ExecutionWaiter;
-}());
-exports.ExecutionWaiter = ExecutionWaiter;
-
-
-/***/ }),
-
 /***/ 9259:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -4555,7 +4427,6 @@ __exportStar(__nccwpck_require__(7274), exports);
 __exportStar(__nccwpck_require__(3820), exports);
 __exportStar(__nccwpck_require__(5068), exports);
 __exportStar(__nccwpck_require__(7397), exports);
-__exportStar(__nccwpck_require__(1334), exports);
 __exportStar(__nccwpck_require__(9259), exports);
 __exportStar(__nccwpck_require__(7748), exports);
 __exportStar(__nccwpck_require__(3041), exports);
@@ -4646,7 +4517,7 @@ var __1 = __nccwpck_require__(586);
 var ProjectRepository = /** @class */ (function (_super) {
     __extends(ProjectRepository, _super);
     function ProjectRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/projects{/id}{?skip,take,ids,partialName,clonedFromProjectId}")) || this;
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/projects"), "skip,take,ids,partialName,clonedFromProjectId") || this;
     }
     return ProjectRepository;
 }(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
@@ -4762,15 +4633,15 @@ exports.DeploymentRepository = void 0;
 var __1 = __nccwpck_require__(586);
 var DeploymentRepository = /** @class */ (function () {
     function DeploymentRepository(client, spaceName) {
-        this.baseApiTemplate = "".concat(__1.spaceScopedRoutePrefix, "/deployments{/id}{?skip,take,ids,projects,environments,tenants,channels,taskState}");
+        this.baseApiPathTemplate = "".concat(__1.spaceScopedRoutePrefix, "/deployments");
         this.client = client;
         this.spaceName = spaceName;
     }
     DeploymentRepository.prototype.get = function (id) {
-        return this.client.request(this.baseApiTemplate, { id: id, spaceName: this.spaceName });
+        return this.client.request("".concat(this.baseApiPathTemplate, "/").concat(id), { spaceName: this.spaceName });
     };
     DeploymentRepository.prototype.list = function (args) {
-        return this.client.request(this.baseApiTemplate, __assign({ spaceName: this.spaceName }, args));
+        return this.client.request("".concat(this.baseApiPathTemplate, "{?skip,take,ids,projects,environments,tenants,channels,taskState}"), __assign({ spaceName: this.spaceName }, args));
     };
     DeploymentRepository.prototype.create = function (command) {
         return __awaiter(this, void 0, void 0, function () {
@@ -4779,7 +4650,7 @@ var DeploymentRepository = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.client.debug("Deploying a release...");
-                        return [4 /*yield*/, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/deployments/create/untenanted/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
+                        return [4 /*yield*/, this.client.doCreate("".concat(this.baseApiPathTemplate, "/create/untenanted/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
                     case 1:
                         response = _a.sent();
                         if (response.DeploymentServerTasks.length == 0) {
@@ -4806,7 +4677,7 @@ var DeploymentRepository = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         this.client.debug("Deploying a tenanted release...");
-                        return [4 /*yield*/, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/deployments/create/tenanted/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
+                        return [4 /*yield*/, this.client.doCreate("".concat(this.baseApiPathTemplate, "/create/tenanted/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
                     case 1:
                         response = _a.sent();
                         if (response.DeploymentServerTasks.length == 0) {
@@ -4968,7 +4839,6 @@ exports.ReleaseRepository = void 0;
 var __1 = __nccwpck_require__(586);
 var ReleaseRepository = /** @class */ (function () {
     function ReleaseRepository(client, spaceName) {
-        this.baseApiTemplate = "".concat(__1.spaceScopedRoutePrefix, "/releases{/id}{?skip,take,ids}");
         this.client = client;
         this.spaceName = spaceName;
     }
@@ -5016,20 +4886,14 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 __exportStar(__nccwpck_require__(7890), exports);
-__exportStar(__nccwpck_require__(6362), exports);
 __exportStar(__nccwpck_require__(9664), exports);
 __exportStar(__nccwpck_require__(9825), exports);
 __exportStar(__nccwpck_require__(1379), exports);
-
-
-/***/ }),
-
-/***/ 6362:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(4916), exports);
+__exportStar(__nccwpck_require__(8920), exports);
+__exportStar(__nccwpck_require__(3196), exports);
+__exportStar(__nccwpck_require__(2938), exports);
+__exportStar(__nccwpck_require__(7068), exports);
 
 
 /***/ }),
@@ -5040,15 +4904,6 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.IsNonVcsRunbook = void 0;
-// We have to use this type assertion instead of "IsVcsRunbook", because a VcsRunbook is structurally a NonVcsRunbookResource
-// I.e. they share all the same properties. This causes typescript to fail to narrow the type.
-// However, if you do it this way, then it works :shrug:
-function IsNonVcsRunbook(runbook) {
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    return runbook.ProjectId !== undefined;
-}
-exports.IsNonVcsRunbook = IsNonVcsRunbook;
 
 
 /***/ }),
@@ -5097,6 +4952,234 @@ exports.processResourcePermission = processResourcePermission;
 
 /***/ }),
 
+/***/ 4916:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.RunbookProcessRepository = void 0;
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+var RunbookProcessRepository = /** @class */ (function () {
+    function RunbookProcessRepository(client, spaceName, project) {
+        this.client = client;
+        this.spaceName = spaceName;
+        this.projectId = project.Id;
+    }
+    RunbookProcessRepository.prototype.get = function (runbook) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/projects/{projectId}/runbookProcesses{/id}"), {
+                            spaceName: this.spaceName,
+                            projectId: this.projectId,
+                            id: runbook.RunbookProcessId,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    RunbookProcessRepository.prototype.update = function (runbookProcess) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.doUpdate("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/projects/{projectId}/runbookProcesses{/id}"), runbookProcess, {
+                            spaceName: this.spaceName,
+                            projectId: this.projectId,
+                            id: runbookProcess.Id,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    return RunbookProcessRepository;
+}());
+exports.RunbookProcessRepository = RunbookProcessRepository;
+
+
+/***/ }),
+
+/***/ 8920:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.RunbookRepository = void 0;
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
+var RunbookRepository = /** @class */ (function (_super) {
+    __extends(RunbookRepository, _super);
+    function RunbookRepository(client, spaceName, project) {
+        return _super.call(this, client, spaceName, "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/projects/").concat(project.Id, "/runbooks"), "skip,take,ids,partialName") || this;
+    }
+    return RunbookRepository;
+}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
+exports.RunbookRepository = RunbookRepository;
+
+
+/***/ }),
+
+/***/ 3196:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 2938:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 7068:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.RunbookSnapshotRepository = void 0;
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+var RunbookSnapshotRepository = /** @class */ (function () {
+    function RunbookSnapshotRepository(client, spaceName, project) {
+        this.client = client;
+        this.spaceName = spaceName;
+        this.projectId = project.Id;
+    }
+    RunbookSnapshotRepository.prototype.create = function (runbook, name, publish, notes) {
+        return __awaiter(this, void 0, void 0, function () {
+            var snapshot, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        snapshot = {
+                            ProjectId: this.projectId,
+                            RunbookId: runbook.Id,
+                            Name: name,
+                            Notes: notes,
+                        };
+                        return [4 /*yield*/, this.client.doCreate("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/projects/{projectId}/runbookSnapshots{?publish}"), snapshot, {
+                                spaceName: this.spaceName,
+                                projectId: this.projectId,
+                                publish: publish ? "true" : undefined,
+                            })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    return RunbookSnapshotRepository;
+}());
+exports.RunbookSnapshotRepository = RunbookSnapshotRepository;
+
+
+/***/ }),
+
 /***/ 4010:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -5128,7 +5211,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 __exportStar(__nccwpck_require__(4010), exports);
-__exportStar(__nccwpck_require__(6145), exports);
 __exportStar(__nccwpck_require__(2562), exports);
 __exportStar(__nccwpck_require__(827), exports);
 __exportStar(__nccwpck_require__(2493), exports);
@@ -5136,8 +5218,18 @@ __exportStar(__nccwpck_require__(2493), exports);
 
 /***/ }),
 
-/***/ 6145:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ 2562:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 827:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -5189,80 +5281,49 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.runRunbook = void 0;
-function runRunbook(client, command) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, mappedTasks;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    client.debug("Running a runbook...");
-                    return [4 /*yield*/, client.doCreate("runbook-runs/create/v1", __assign({ spaceIdOrName: command.spaceName }, command))];
-                case 1:
-                    response = _a.sent();
-                    if (response.RunbookRunServerTasks.length == 0) {
-                        throw new Error("No server task details returned");
-                    }
-                    mappedTasks = response.RunbookRunServerTasks.map(function (x) {
-                        return {
-                            RunbookRunId: x.RunbookRunId || x.runbookRunId,
-                            ServerTaskId: x.ServerTaskId || x.serverTaskId,
-                        };
-                    });
-                    client.debug("Runbook executed successfully. [".concat(mappedTasks.map(function (t) { return t.ServerTaskId; }).join(", "), "]"));
-                    return [2 /*return*/, {
-                            RunbookRunServerTasks: mappedTasks,
-                        }];
-            }
-        });
-    });
-}
-exports.runRunbook = runRunbook;
-
-
-/***/ }),
-
-/***/ 2562:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 827:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RunbookRunRepository = void 0;
 var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
-var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
-var RunbookRunRepository = /** @class */ (function (_super) {
-    __extends(RunbookRunRepository, _super);
+var RunbookRunRepository = /** @class */ (function () {
     function RunbookRunRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/runbookRuns{/id}{?skip,take,ids,projects,environments,tenants,runbooks,taskState,partialName}")) || this;
+        this.baseApiPathTemplate = "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/runbookRuns");
+        this.client = client;
+        this.spaceName = spaceName;
     }
+    RunbookRunRepository.prototype.get = function (id) {
+        return this.client.request("".concat(this.baseApiPathTemplate, "/").concat(id), { spaceName: this.spaceName });
+    };
+    RunbookRunRepository.prototype.list = function (args) {
+        return this.client.request("".concat(this.baseApiPathTemplate, "{?skip,take,ids,projects,environments,tenants,runbooks,taskState,partialName}"), __assign({ spaceName: this.spaceName }, args));
+    };
+    RunbookRunRepository.prototype.create = function (command) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response, mappedTasks;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.client.debug("Running a runbook...");
+                        return [4 /*yield*/, this.client.doCreate("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/runbook-runs/create/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
+                    case 1:
+                        response = _a.sent();
+                        if (response.RunbookRunServerTasks.length == 0) {
+                            throw new Error("No server task details returned");
+                        }
+                        mappedTasks = response.RunbookRunServerTasks.map(function (x) {
+                            return {
+                                RunbookRunId: x.RunbookRunId || x.runbookRunId,
+                                ServerTaskId: x.ServerTaskId || x.serverTaskId,
+                            };
+                        });
+                        this.client.debug("Runbook executed successfully. [".concat(mappedTasks.map(function (t) { return t.ServerTaskId; }).join(", "), "]"));
+                        return [2 /*return*/, {
+                                RunbookRunServerTasks: mappedTasks,
+                            }];
+                }
+            });
+        });
+    };
     return RunbookRunRepository;
-}(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
+}());
 exports.RunbookRunRepository = RunbookRunRepository;
 
 
@@ -5295,128 +5356,6 @@ var TenantedDeploymentMode;
 
 /***/ }),
 
-/***/ 1616:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.serverTaskRawGet = exports.serverTaskDetailsGet = exports.serverTasksGet = exports.serverTaskGet = void 0;
-var lodash_1 = __nccwpck_require__(250);
-var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
-function serverTaskGet(client, spaceName, serverTaskId) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!serverTaskId) {
-                        throw new Error("Server Task Id was not provided");
-                    }
-                    return [4 /*yield*/, client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tasks/{serverTaskId}"), { spaceName: spaceName, serverTaskId: serverTaskId })];
-                case 1:
-                    response = _a.sent();
-                    return [2 /*return*/, response];
-            }
-        });
-    });
-}
-exports.serverTaskGet = serverTaskGet;
-function serverTasksGet(client, spaceName, serverTaskIds) {
-    return __awaiter(this, void 0, void 0, function () {
-        var batchSize, idArrays, promises;
-        return __generator(this, function (_a) {
-            batchSize = 300;
-            idArrays = (0, lodash_1.chunk)(serverTaskIds, batchSize);
-            promises = idArrays.map(function (i, index) {
-                return client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tasks{?skip,take,ids,partialName}"), {
-                    spaceName: spaceName,
-                    ids: i,
-                    skip: index * batchSize,
-                    take: batchSize,
-                });
-            });
-            return [2 /*return*/, Promise.all(promises).then(function (result) { return (0, lodash_1.flatMap)(result, function (c) { return c.Items; }); })];
-        });
-    });
-}
-exports.serverTasksGet = serverTasksGet;
-function serverTaskDetailsGet(client, spaceName, serverTaskId) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!serverTaskId) {
-                        throw new Error("Server Task Id was not provided");
-                    }
-                    return [4 /*yield*/, client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tasks/{serverTaskId}/details"), { spaceName: spaceName, serverTaskId: serverTaskId })];
-                case 1:
-                    response = _a.sent();
-                    return [2 /*return*/, response];
-            }
-        });
-    });
-}
-exports.serverTaskDetailsGet = serverTaskDetailsGet;
-function serverTaskRawGet(client, spaceName, serverTaskId) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!serverTaskId) {
-                        throw new Error("Server Task Id was not provided");
-                    }
-                    return [4 /*yield*/, client.request("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tasks/{serverTaskId}/raw"), { spaceName: spaceName, serverTaskId: serverTaskId })];
-                case 1:
-                    response = _a.sent();
-                    return [2 /*return*/, response];
-            }
-        });
-    });
-}
-exports.serverTaskRawGet = serverTaskRawGet;
-
-
-/***/ }),
-
 /***/ 6568:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -5437,10 +5376,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(1616), exports);
-__exportStar(__nccwpck_require__(9144), exports);
 __exportStar(__nccwpck_require__(4013), exports);
 __exportStar(__nccwpck_require__(1038), exports);
+__exportStar(__nccwpck_require__(1613), exports);
+__exportStar(__nccwpck_require__(3797), exports);
+__exportStar(__nccwpck_require__(9144), exports);
 
 
 /***/ }),
@@ -5489,6 +5429,322 @@ var ActivityLogEntryCategory;
     ActivityLogEntryCategory["Finished"] = "Finished";
     ActivityLogEntryCategory["Abandoned"] = "Abandoned";
 })(ActivityLogEntryCategory = exports.ActivityLogEntryCategory || (exports.ActivityLogEntryCategory = {}));
+
+
+/***/ }),
+
+/***/ 1613:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ServerTaskWaiter = void 0;
+var serverTasks_1 = __nccwpck_require__(6568);
+var ServerTaskWaiter = /** @class */ (function () {
+    function ServerTaskWaiter(client, spaceName) {
+        this.client = client;
+        this.spaceName = spaceName;
+    }
+    ServerTaskWaiter.prototype.waitForServerTasksToComplete = function (serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback) {
+        return __awaiter(this, void 0, void 0, function () {
+            var spaceServerTaskRepository, taskPromises, serverTaskIds_1, serverTaskIds_1_1, serverTaskId;
+            var e_1, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        spaceServerTaskRepository = new serverTasks_1.SpaceServerTaskRepository(this.client, this.spaceName);
+                        taskPromises = [];
+                        try {
+                            for (serverTaskIds_1 = __values(serverTaskIds), serverTaskIds_1_1 = serverTaskIds_1.next(); !serverTaskIds_1_1.done; serverTaskIds_1_1 = serverTaskIds_1.next()) {
+                                serverTaskId = serverTaskIds_1_1.value;
+                                taskPromises.push(this.waitForTask(spaceServerTaskRepository, serverTaskId, statusCheckSleepCycle, timeout, pollingCallback));
+                            }
+                        }
+                        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                        finally {
+                            try {
+                                if (serverTaskIds_1_1 && !serverTaskIds_1_1.done && (_a = serverTaskIds_1.return)) _a.call(serverTaskIds_1);
+                            }
+                            finally { if (e_1) throw e_1.error; }
+                        }
+                        return [4 /*yield*/, Promise.allSettled(taskPromises)];
+                    case 1: return [2 /*return*/, _b.sent()];
+                }
+            });
+        });
+    };
+    ServerTaskWaiter.prototype.waitForServerTaskToComplete = function (serverTaskId, statusCheckSleepCycle, timeout, pollingCallback) {
+        return __awaiter(this, void 0, void 0, function () {
+            var spaceServerTaskRepository;
+            return __generator(this, function (_a) {
+                spaceServerTaskRepository = new serverTasks_1.SpaceServerTaskRepository(this.client, this.spaceName);
+                return [2 /*return*/, this.waitForTask(spaceServerTaskRepository, serverTaskId, statusCheckSleepCycle, timeout, pollingCallback)];
+            });
+        });
+    };
+    ServerTaskWaiter.prototype.waitForTask = function (spaceServerTaskRepository, serverTaskId, statusCheckSleepCycle, timeout, pollingCallback) {
+        return __awaiter(this, void 0, void 0, function () {
+            var sleep, stop, t, taskDetails, task;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        sleep = function (ms) { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
+                            return [2 /*return*/, new Promise(function (r) { return setTimeout(r, ms); })];
+                        }); }); };
+                        stop = false;
+                        t = setTimeout(function () {
+                            stop = true;
+                        }, timeout);
+                        _a.label = 1;
+                    case 1:
+                        if (!!stop) return [3 /*break*/, 7];
+                        if (!pollingCallback) return [3 /*break*/, 3];
+                        return [4 /*yield*/, spaceServerTaskRepository.getDetails(serverTaskId)];
+                    case 2:
+                        taskDetails = _a.sent();
+                        pollingCallback(taskDetails);
+                        if (taskDetails.Task.IsCompleted) {
+                            clearTimeout(t);
+                            return [2 /*return*/, taskDetails.Task];
+                        }
+                        return [3 /*break*/, 5];
+                    case 3: return [4 /*yield*/, spaceServerTaskRepository.getById(serverTaskId)];
+                    case 4:
+                        task = _a.sent();
+                        if (task.IsCompleted) {
+                            clearTimeout(t);
+                            return [2 /*return*/, task];
+                        }
+                        _a.label = 5;
+                    case 5: return [4 /*yield*/, sleep(statusCheckSleepCycle)];
+                    case 6:
+                        _a.sent();
+                        return [3 /*break*/, 1];
+                    case 7: return [2 /*return*/, null];
+                }
+            });
+        });
+    };
+    return ServerTaskWaiter;
+}());
+exports.ServerTaskWaiter = ServerTaskWaiter;
+
+
+/***/ }),
+
+/***/ 3797:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SpaceServerTaskRepository = void 0;
+var lodash_1 = __nccwpck_require__(250);
+var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
+var SpaceServerTaskRepository = /** @class */ (function () {
+    function SpaceServerTaskRepository(client, spaceName) {
+        this.baseApiPathTemplate = "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tasks");
+        this.client = client;
+        this.spaceName = spaceName;
+    }
+    SpaceServerTaskRepository.prototype.getById = function (serverTaskId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!serverTaskId) {
+                            throw new Error("Server Task Id was not provided");
+                        }
+                        return [4 /*yield*/, this.client.request("".concat(this.baseApiPathTemplate, "/").concat(serverTaskId), { spaceName: this.spaceName })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    SpaceServerTaskRepository.prototype.getByIds = function (serverTaskIds) {
+        return __awaiter(this, void 0, void 0, function () {
+            var batchSize, idArrays, promises, _a, _b, _c, index, ids;
+            var e_1, _d;
+            return __generator(this, function (_e) {
+                batchSize = 300;
+                idArrays = (0, lodash_1.chunk)(serverTaskIds, batchSize);
+                promises = [];
+                try {
+                    for (_a = __values(idArrays.entries()), _b = _a.next(); !_b.done; _b = _a.next()) {
+                        _c = __read(_b.value, 2), index = _c[0], ids = _c[1];
+                        promises.push(this.client.request("".concat(this.baseApiPathTemplate, "{?skip,take,ids,partialName}"), {
+                            spaceName: this.spaceName,
+                            ids: ids,
+                            skip: index * batchSize,
+                            take: batchSize,
+                        }));
+                    }
+                }
+                catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                finally {
+                    try {
+                        if (_b && !_b.done && (_d = _a.return)) _d.call(_a);
+                    }
+                    finally { if (e_1) throw e_1.error; }
+                }
+                return [2 /*return*/, Promise.allSettled(promises).then(function (result) { return (0, lodash_1.flatMap)(result, function (c) { return (c.status == "fulfilled" ? c.value.Items : []); }); })];
+            });
+        });
+    };
+    SpaceServerTaskRepository.prototype.getDetails = function (serverTaskId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!serverTaskId) {
+                            throw new Error("Server Task Id was not provided");
+                        }
+                        return [4 /*yield*/, this.client.request("".concat(this.baseApiPathTemplate, "/").concat(serverTaskId, "/details"), {
+                                spaceName: this.spaceName,
+                            })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    SpaceServerTaskRepository.prototype.getRaw = function (serverTaskId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!serverTaskId) {
+                            throw new Error("Server Task Id was not provided");
+                        }
+                        return [4 /*yield*/, this.client.request("".concat(this.baseApiPathTemplate, "/").concat(serverTaskId, "/raw"), { spaceName: this.spaceName })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    return SpaceServerTaskRepository;
+}());
+exports.SpaceServerTaskRepository = SpaceServerTaskRepository;
 
 
 /***/ }),
@@ -5551,23 +5807,30 @@ var basicRepository_1 = __nccwpck_require__(2966);
 var spaceScopedRoutePrefix_1 = __nccwpck_require__(7218);
 var SpaceScopedBasicRepository = /** @class */ (function (_super) {
     __extends(SpaceScopedBasicRepository, _super);
-    function SpaceScopedBasicRepository(client, spaceName, baseApiTemplate) {
-        var _this = _super.call(this, client, baseApiTemplate) || this;
-        if (!baseApiTemplate.startsWith(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix)) {
+    function SpaceScopedBasicRepository(client, spaceName, baseApiPathTemplate, listParametersTemplate) {
+        var _this = _super.call(this, client, baseApiPathTemplate, listParametersTemplate) || this;
+        if (!baseApiPathTemplate.startsWith(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix)) {
             throw new Error("Space scoped repositories must prefix their baseApiTemplate with `spaceScopedRoutePrefix`");
         }
         _this.spaceName = spaceName;
         return _this;
     }
+    SpaceScopedBasicRepository.prototype.del = function (resource) {
+        var _this = this;
+        return this.client
+            .del("".concat(this.baseApiPathTemplate, "/").concat(resource.Id), { spaceName: this.spaceName })
+            .then(function (d) { return _this.notifySubscribersToDataModifications(resource); });
+    };
     SpaceScopedBasicRepository.prototype.create = function (resource, args) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         return _super.prototype.create.call(this, resource, __assign({ spaceName: this.spaceName }, args));
     };
     SpaceScopedBasicRepository.prototype.get = function (id) {
-        return this.client.request(this.baseApiTemplate, { id: id, spaceName: this.spaceName });
+        return this.client.request("".concat(this.baseApiPathTemplate, "/").concat(id), { spaceName: this.spaceName });
     };
     SpaceScopedBasicRepository.prototype.list = function (args) {
-        return this.client.request(this.baseApiTemplate, __assign({ spaceName: this.spaceName }, args));
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return _super.prototype.list.call(this, __assign({ spaceName: this.spaceName }, args));
     };
     SpaceScopedBasicRepository.prototype.modify = function (resource, args) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -5643,7 +5906,7 @@ var basicRepository_1 = __nccwpck_require__(2966);
 var SpaceRepository = /** @class */ (function (_super) {
     __extends(SpaceRepository, _super);
     function SpaceRepository(client) {
-        return _super.call(this, client, "".concat(__1.apiLocation, "/spaces{/id}{?skip,ids,take,partialName}")) || this;
+        return _super.call(this, client, "".concat(__1.apiLocation, "/spaces"), "skip,ids,take,partialName") || this;
     }
     return SpaceRepository;
 }(basicRepository_1.BasicRepository));
@@ -5726,7 +5989,7 @@ var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
 var TagSetRepository = /** @class */ (function (_super) {
     __extends(TagSetRepository, _super);
     function TagSetRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tagsets{/id}{?skip,take,ids,partialName}")) || this;
+        return _super.call(this, client, spaceName, "".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tagsets"), "skip,take,ids,partialName") || this;
     }
     TagSetRepository.prototype.sort = function (ids) {
         return this.client.doUpdate("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/tagsets/sortorder"), ids, { spaceName: this.spaceName });
@@ -5813,7 +6076,7 @@ var spaceScopedBasicRepository_1 = __nccwpck_require__(3496);
 var TenantRepository = /** @class */ (function (_super) {
     __extends(TenantRepository, _super);
     function TenantRepository(client, spaceName) {
-        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/tenants{/id}{?skip,projectId,tags,take,ids,clone,partialName,clonedFromTenantId}")) || this;
+        return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/tenants"), "skip,projectId,tags,take,ids,clone,partialName,clonedFromTenantId") || this;
     }
     TenantRepository.prototype.tagTest = function (tenantIds, tags) {
         return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/tag-test{?tenantIds,tags}"), { tenantIds: tenantIds, tags: tags });
@@ -5829,7 +6092,7 @@ var TenantRepository = /** @class */ (function (_super) {
         if (includeDetails === void 0) { includeDetails = false; }
         var payload = {
             environmentId: filterOptions.environmentId,
-            includeDetails: !!includeDetails,
+            includeDetails: includeDetails,
             projectId: filterOptions.projectId,
             tenantId: filterOptions.tenantId,
         };
@@ -34777,6 +35040,9 @@ const api_wrapper_1 = __nccwpck_require__(4636);
     catch (e) {
         if (e instanceof Error) {
             (0, core_1.setFailed)(e);
+        }
+        else {
+            (0, core_1.setFailed)(`Unknown error: ${e}`);
         }
     }
 }))();

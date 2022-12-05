@@ -51,6 +51,8 @@ import { createReleaseFromInputs } from './api-wrapper'
   } catch (e: unknown) {
     if (e instanceof Error) {
       setFailed(e)
+    } else {
+      setFailed(`Unknown error: ${e}`)
     }
   }
 })()
