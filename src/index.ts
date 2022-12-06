@@ -1,16 +1,41 @@
 import { getInputParameters } from './input-parameters'
-import { info, warning, setFailed, setOutput } from '@actions/core'
-import { CliInputs, createRelease } from './octopus-cli-wrapper'
+import { debug, info, warning, error, setFailed, setOutput, isDebug } from '@actions/core'
 import { writeFileSync } from 'fs'
-import { CliOutput } from './cli-util'
+import { Client, ClientConfiguration, Logger } from '@octopusdeploy/api-client'
+import { createReleaseFromInputs } from './api-wrapper'
 
 // GitHub actions entrypoint
-async function run(): Promise<void> {
+;(async (): Promise<void> => {
   try {
-    const inputs: CliInputs = { parameters: getInputParameters(), env: process.env }
-    const outputs: CliOutput = { info: s => info(s), warn: s => warning(s) }
+    const logger: Logger = {
+      debug: message => {
+        if (isDebug()) {
+          debug(message)
+        }
+      },
+      info: message => info(message),
+      warn: message => warning(message),
+      error: (message, err) => {
+        if (err !== undefined) {
+          error(err.message)
+        } else {
+          error(message)
+        }
+      }
+    }
 
-    const allocatedReleaseNumber = await createRelease(inputs, outputs, 'octo')
+    const parameters = getInputParameters()
+
+    const config: ClientConfiguration = {
+      userAgentApp: 'GitHubActions create-release-action',
+      instanceURL: parameters.server,
+      apiKey: parameters.apiKey,
+      logging: logger
+    }
+
+    const client = await Client.create(config)
+
+    const allocatedReleaseNumber = await createReleaseFromInputs(client, parameters)
 
     if (allocatedReleaseNumber) {
       setOutput('release_number', allocatedReleaseNumber)
@@ -20,14 +45,14 @@ async function run(): Promise<void> {
     if (stepSummaryFile && allocatedReleaseNumber) {
       writeFileSync(
         stepSummaryFile,
-        `🐙 Octopus Deploy Created Release **${allocatedReleaseNumber}** in Project **${inputs.parameters.project}**.`
+        `🐙 Octopus Deploy Created Release **${allocatedReleaseNumber}** in Project **${parameters.project}**.`
       )
     }
   } catch (e: unknown) {
     if (e instanceof Error) {
       setFailed(e)
+    } else {
+      setFailed(`Unknown error: ${e}`)
     }
   }
-}
-
-run()
+})()

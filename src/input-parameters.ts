@@ -1,78 +1,68 @@
 import { getBooleanInput, getInput, getMultilineInput } from '@actions/core'
 
+const EnvironmentVariables = {
+  URL: 'OCTOPUS_URL',
+  ApiKey: 'OCTOPUS_API_KEY',
+  Space: 'OCTOPUS_SPACE'
+} as const
+
 export interface InputParameters {
-  // Required
-  project: string
+  // Optional: A server is required, but you should use the OCTOPUS_URL env
+  server: string
   // Optional: An API key is required, but you should use the OCTOPUS_API_KEY environment variable instead of this.
   apiKey: string
-  channel: string
-  gitRef: string
-  gitCommit: string
-  ignoreExisting: boolean
-  packages: string[]
-  packageVersion: string
-
-  // Optional: Prefer the OCTOPUS_PROXY environment variable
-  proxy: string
-  // Optional: Prefer the OCTOPUS_PROXY_PASSWORD environment variable
-  proxyPassword: string
-  // Optional: Prefer the OCTOPUS_PROXY_USERNAME environment variable
-  proxyUsername: string
-
-  // Optional
-  releaseNotes: string
-  // Optional: Overrides release_notes
-  releaseNotesFile: string
-  releaseNumber: string
-  // Optional: A server is required, but you should use the OCTOPUS_HOST env
-  server: string
   // Optional: You should prefer the OCTOPUS_SPACE environment variable
   space: string
+  // Required
+  project: string
+  releaseNumber?: string
+  channel?: string
+  packageVersion?: string
+  packages?: string[]
+  gitRef?: string
+  gitCommit?: string
+  ignoreExisting?: boolean
+
+  // Optional
+  releaseNotes?: string
 }
 
 export function getInputParameters(): InputParameters {
-  return {
-    apiKey: getInput('api_key'),
-    channel: getInput('channel'),
-    gitRef: getInput('git_ref'),
-    gitCommit: getInput('git_commit'),
-    ignoreExisting: getBooleanInput('ignore_existing'),
-    packages: getMultilineInput('packages').map(p => p.trim()),
-    packageVersion: getInput('package_version'),
-    project: getInput('project'),
-    proxy: getInput('proxy'),
-    proxyPassword: getInput('proxy_password'),
-    proxyUsername: getInput('proxy_username'),
-    releaseNotes: getInput('release_notes'),
-    releaseNotesFile: getInput('release_notes_file'),
-    releaseNumber: getInput('release_number'),
-    server: getInput('server'),
-    space: getInput('space')
-  }
-}
-
-export function makeInputParameters(override: Partial<InputParameters> | undefined = undefined): InputParameters {
-  const template = {
-    project: '',
-    apiKey: '',
-    channel: '',
-    gitRef: '',
-    gitCommit: '',
-    ignoreExisting: false,
-    packages: [],
-    packageVersion: '',
-    proxy: '',
-    proxyPassword: '',
-    proxyUsername: '',
-    releaseNotes: '',
-    releaseNotesFile: '',
-    releaseNumber: '',
-    server: '',
-    space: ''
+  const parameters: InputParameters = {
+    server: getInput('server') || process.env[EnvironmentVariables.URL] || '',
+    apiKey: getInput('api_key') || process.env[EnvironmentVariables.ApiKey] || '',
+    space: getInput('space') || process.env[EnvironmentVariables.Space] || '',
+    project: getInput('project', { required: true }),
+    releaseNumber: getInput('release_number') || undefined,
+    channel: getInput('channel') || undefined,
+    packageVersion: getInput('package_version') || undefined,
+    packages: getMultilineInput('packages').map(p => p.trim()) || undefined,
+    gitRef: getInput('git_ref') || undefined,
+    gitCommit: getInput('git_commit') || undefined,
+    ignoreExisting: getBooleanInput('ignore_existing') || undefined,
+    releaseNotes: getInput('release_notes') || undefined
   }
 
-  if (override) {
-    Object.assign(template, override)
+  const errors: string[] = []
+  if (!parameters.server) {
+    errors.push(
+      "The Octopus instance URL is required, please specify explictly through the 'server' input or set the OCTOPUS_URL environment variable."
+    )
   }
-  return template
+  if (!parameters.apiKey) {
+    errors.push(
+      "The Octopus API Key is required, please specify explictly through the 'api_key' input or set the OCTOPUS_API_KEY environment variable."
+    )
+  }
+  if (!parameters.space) {
+    errors.push(
+      "The Octopus space name is required, please specify explictly through the 'space' input or set the OCTOPUS_SPACE environment variable."
+    )
+  }
+
+  if (errors.length > 0) {
+    throw new Error(errors.join('\n'))
+  }
+
+  return parameters
 }

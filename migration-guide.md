@@ -1,5 +1,19 @@
 # Migration Guide
 
+## v2 to v3
+
+The action has been ported to use a native TypeScript client to talk directly to the Octopus API, so there is no longer any need to install the CLI to get this action to work.
+
+The input parameters have been further condensed, to remove proxy configuration and the release notes file parameters. If you have a build process that produces its own release notes we recommend setting them as an output on your action and then feeding them directly into the `release_notes` parameter on this action.
+
+If you are using the recommended approach of environment variables for things like the API key then the following changes are required:
+`OCTOPUS_CLI_SERVER` => `OCTOPUS_URL`
+`OCTOPUS_CLI_API_KEY` => `OCTOPUS_API_KEY`
+
+`OCTOPUS_HOST` has been dropped, in favour of `OCTOPUS_URL`.
+
+`OCTOPUS_SPACE` is now supported for setting the name of the Space
+
 ## v1 to v2
 
 The number of input parameters have been greatly reduced in v2 of this action. This change was made to reflect the majority of use cases observed across GitHub repositories.
