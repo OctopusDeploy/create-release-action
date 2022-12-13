@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.0.0](https://github.com/OctopusDeploy/create-release-action/compare/v2.1.0...v3.0.0) (2022-12-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update action to use the native API client
+
+### Features
+
+* Update action to use the native API client ([982b7d4](https://github.com/OctopusDeploy/create-release-action/commit/982b7d4ab80a7c5f43aa38a90c9092c2b72768e8))
+
+
+### Bug Fixes
+
+* updated dependencies ([c10ca9e](https://github.com/OctopusDeploy/create-release-action/commit/c10ca9e5a3d9e030bba775cd474c54bbe0aab4e9))
+
 ## [2.1.0](https://github.com/OctopusDeploy/create-release-action/compare/v2.0.1...v2.1.0) (2022-11-03)
 
 
