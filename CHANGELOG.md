@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.0...v3.0.1) (2022-12-19)
+
+
+### Bug Fixes
+
+* updated dependencies ([9085cc2](https://github.com/OctopusDeploy/create-release-action/commit/9085cc2391362d4bd67cfd97ab069d882df376a2))
+
 ## [3.0.0](https://github.com/OctopusDeploy/create-release-action/compare/v2.1.0...v3.0.0) (2022-12-13)
 
 
