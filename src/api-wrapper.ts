@@ -1,8 +1,15 @@
 import { InputParameters } from './input-parameters'
 import { Client, CreateReleaseCommandV1, ReleaseRepository } from '@octopusdeploy/api-client'
+import fs from 'fs'
 
 export async function createReleaseFromInputs(client: Client, parameters: InputParameters): Promise<string> {
   client.info('🐙 Creating a release in Octopus Deploy...')
+
+  let releaseNotes = parameters.releaseNotes
+  if (parameters.releaseNotesFile) {
+    const data = fs.readFileSync(parameters.releaseNotesFile)
+    releaseNotes = data.toString()
+  }
 
   const command: CreateReleaseCommandV1 = {
     spaceName: parameters.space,
@@ -13,7 +20,7 @@ export async function createReleaseFromInputs(client: Client, parameters: InputP
     Packages: parameters.packages,
     GitRef: parameters.gitRef,
     GitCommit: parameters.gitCommit,
-    ReleaseNotes: parameters.releaseNotes,
+    ReleaseNotes: releaseNotes,
     IgnoreIfAlreadyExists: parameters.ignoreExisting,
     IgnoreChannelRules: false
   }

@@ -25,6 +25,7 @@ export interface InputParameters {
 
   // Optional
   releaseNotes?: string
+  releaseNotesFile?: string
 }
 
 export function getInputParameters(): InputParameters {
@@ -40,7 +41,8 @@ export function getInputParameters(): InputParameters {
     gitRef: getInput('git_ref') || undefined,
     gitCommit: getInput('git_commit') || undefined,
     ignoreExisting: getBooleanInput('ignore_existing') || undefined,
-    releaseNotes: getInput('release_notes') || undefined
+    releaseNotes: getInput('release_notes') || undefined,
+    releaseNotesFile: getInput('release_notes_file') || undefined
   }
 
   const errors: string[] = []
@@ -57,6 +59,11 @@ export function getInputParameters(): InputParameters {
   if (!parameters.space) {
     errors.push(
       "The Octopus space name is required, please specify explictly through the 'space' input or set the OCTOPUS_SPACE environment variable."
+    )
+  }
+  if (parameters.releaseNotes && parameters.releaseNotesFile) {
+    errors.push(
+      'Please specify one or other of `release_notes` and `release_notes_files`. Specifying both is not supported.'
     )
   }
 
