@@ -25,7 +25,9 @@ inputs:
     default: false
     description: 'Ignore existing releases if present in Octopus Deploy with the matching version number.'
   release_notes:
-    description: 'The release notes associated with the new release (Markdown is supported).'
+    description: 'The release notes text associated with the new release (Markdown is supported).'
+  release_notes_file:
+    description: 'A file containing the release notes associated with the new release (Markdown is supported). Use either `release_notes` or this input, supplying both is not supported.'
   server:
     description: 'The instance URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The instance URL is required, but you may also use the OCTOPUS_URL environment variable.'
   api_key:
