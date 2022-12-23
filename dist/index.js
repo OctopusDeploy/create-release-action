@@ -38892,12 +38892,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createReleaseFromInputs = void 0;
 const api_client_1 = __nccwpck_require__(586);
+const fs_1 = __importDefault(__nccwpck_require__(7147));
 function createReleaseFromInputs(client, parameters) {
     return __awaiter(this, void 0, void 0, function* () {
         client.info('🐙 Creating a release in Octopus Deploy...');
+        let releaseNotes = parameters.releaseNotes;
+        if (parameters.releaseNotesFile) {
+            const data = fs_1.default.readFileSync(parameters.releaseNotesFile);
+            releaseNotes = data.toString();
+        }
         const command = {
             spaceName: parameters.space,
             ProjectName: parameters.project,
@@ -38907,7 +38916,7 @@ function createReleaseFromInputs(client, parameters) {
             Packages: parameters.packages,
             GitRef: parameters.gitRef,
             GitCommit: parameters.gitCommit,
-            ReleaseNotes: parameters.releaseNotes,
+            ReleaseNotes: releaseNotes,
             IgnoreIfAlreadyExists: parameters.ignoreExisting,
             IgnoreChannelRules: false
         };
@@ -39017,7 +39026,8 @@ function getInputParameters() {
         gitRef: (0, core_1.getInput)('git_ref') || undefined,
         gitCommit: (0, core_1.getInput)('git_commit') || undefined,
         ignoreExisting: (0, core_1.getBooleanInput)('ignore_existing') || undefined,
-        releaseNotes: (0, core_1.getInput)('release_notes') || undefined
+        releaseNotes: (0, core_1.getInput)('release_notes') || undefined,
+        releaseNotesFile: (0, core_1.getInput)('release_notes_file') || undefined
     };
     const errors = [];
     if (!parameters.server) {
@@ -39028,6 +39038,9 @@ function getInputParameters() {
     }
     if (!parameters.space) {
         errors.push("The Octopus space name is required, please specify explictly through the 'space' input or set the OCTOPUS_SPACE environment variable.");
+    }
+    if (parameters.releaseNotes && parameters.releaseNotesFile) {
+        errors.push('Please specify one or other of `release_notes` and `release_notes_files`. Specifying both is not supported.');
     }
     if (errors.length > 0) {
         throw new Error(errors.join('\n'));

@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.1...v3.0.2) (2022-12-23)
+
+
+### Bug Fixes
+
+* Added release notes file back in, as trying to pass large data through action outputs isn't practical ([#367](https://github.com/OctopusDeploy/create-release-action/issues/367)) ([f4b624a](https://github.com/OctopusDeploy/create-release-action/commit/f4b624abdcf20d8e9decf6d743936c4e7570b909))
+
 ## [3.0.1](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.0...v3.0.1) (2022-12-19)
 
 
