@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.3](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.2...v3.0.3) (2023-01-31)
+
+
+### Bug Fixes
+
+* Updated client library to get better error messages capabilities and required Octopus version ([072c13b](https://github.com/OctopusDeploy/create-release-action/commit/072c13b5a0ddccc663a0c0d8b098229b40c65690))
+
 ## [3.0.2](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.1...v3.0.2) (2022-12-23)
 
 
