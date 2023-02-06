@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.4](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.3...v3.0.4) (2023-02-06)
+
+
+### Bug Fixes
+
+* Fixed a bug with the capability API checks ([#374](https://github.com/OctopusDeploy/create-release-action/issues/374)) ([ba5e15f](https://github.com/OctopusDeploy/create-release-action/commit/ba5e15f05a270dd2f45fb81b356f2d114fc00ab7))
+
 ## [3.0.3](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.2...v3.0.3) (2023-01-31)
 
 
