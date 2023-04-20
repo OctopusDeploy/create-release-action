@@ -2595,7 +2595,6 @@ exports.BasicRepository = void 0;
 var BasicRepository = /** @class */ (function () {
     function BasicRepository(client, baseApiPathTemplate, listParametersTemplate) {
         var _this = this;
-        this.takeAll = 2147483647;
         this.takeDefaultPageSize = 30;
         this.notifySubscribersToDataModifications = function (resource) {
             Object.keys(_this.subscribersToDataModifications).forEach(function (key) { return _this.subscribersToDataModifications[key](resource); });
@@ -2649,6 +2648,7 @@ var BasicRepository = /** @class */ (function () {
     BasicRepository.prototype.extend = function (arg1, arg2) {
         return __assign(__assign({}, arg1), arg2);
     };
+    BasicRepository.TakeAll = 2147483647;
     return BasicRepository;
 }());
 exports.BasicRepository = BasicRepository;
@@ -3890,12 +3890,13 @@ var setCompressionLevel = function (zip, level) {
 };
 function expandGlobs(filePatterns) {
     return __awaiter(this, void 0, void 0, function () {
-        var files, filePatterns_1, filePatterns_1_1, filePattern, _a, _b, fileName, filePaths, filePaths_1, filePaths_1_1, filePath, e_2_1, e_3_1;
+        var files, options, filePatterns_1, filePatterns_1_1, filePattern, _a, _b, fileName, filePaths, filePaths_1, filePaths_1_1, filePath, e_2_1, e_3_1;
         var e_3, _c, e_2, _d, e_4, _e;
         return __generator(this, function (_f) {
             switch (_f.label) {
                 case 0:
                     files = [];
+                    options = { dot: true };
                     _f.label = 1;
                 case 1:
                     _f.trys.push([1, 13, 14, 15]);
@@ -3913,7 +3914,7 @@ function expandGlobs(filePatterns) {
                     if (!!_b.done) return [3 /*break*/, 8];
                     fileName = _b.value;
                     if (!glob_1.glob.hasMagic(fileName)) return [3 /*break*/, 6];
-                    return [4 /*yield*/, globp(fileName)];
+                    return [4 /*yield*/, globp(fileName, options)];
                 case 5:
                     filePaths = _f.sent();
                     try {
@@ -5209,14 +5210,13 @@ var DeploymentRepository = /** @class */ (function () {
     DeploymentRepository.prototype.create = function (command) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var serverInformation, serverVersion, response, mappedTasks;
+            var serverInformation, response, mappedTasks;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0: return [4 /*yield*/, this.client.getServerInformation()];
                     case 1:
                         serverInformation = _c.sent();
-                        serverVersion = new semver_1.SemVer(serverInformation.version);
-                        if (serverVersion < new semver_1.SemVer("2022.3.5512")) {
+                        if ((0, semver_1.lt)(serverInformation.version, "2022.3.5512")) {
                             (_b = (_a = this.client).error) === null || _b === void 0 ? void 0 : _b.call(_a, "The Octopus instance doesn't support deploying releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
                             throw new Error("The Octopus instance doesn't support deploying releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
                         }
@@ -5244,14 +5244,13 @@ var DeploymentRepository = /** @class */ (function () {
     DeploymentRepository.prototype.createTenanted = function (command) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var serverInformation, serverVersion, response, mappedTasks;
+            var serverInformation, response, mappedTasks;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0: return [4 /*yield*/, this.client.getServerInformation()];
                     case 1:
                         serverInformation = _c.sent();
-                        serverVersion = new semver_1.SemVer(serverInformation.version);
-                        if (serverVersion < new semver_1.SemVer("2022.3.5512")) {
+                        if ((0, semver_1.lt)(serverInformation.version, "2022.3.5512")) {
                             (_b = (_a = this.client).error) === null || _b === void 0 ? void 0 : _b.call(_a, "The Octopus instance doesn't support deploying tenanted releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
                             throw new Error("The Octopus instance doesn't support deploying tenanted releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
                         }
@@ -5425,14 +5424,13 @@ var ReleaseRepository = /** @class */ (function () {
     ReleaseRepository.prototype.create = function (command) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var serverInformation, serverVersion, response;
+            var serverInformation, response;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0: return [4 /*yield*/, this.client.getServerInformation()];
                     case 1:
                         serverInformation = _c.sent();
-                        serverVersion = new semver_1.SemVer(serverInformation.version);
-                        if (serverVersion < new semver_1.SemVer("2022.3.5512")) {
+                        if ((0, semver_1.lt)(serverInformation.version, "2022.3.5512")) {
                             (_b = (_a = this.client).error) === null || _b === void 0 ? void 0 : _b.call(_a, "The Octopus instance doesn't support creating releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
                             throw new Error("The Octopus instance doesn't support creating releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
                         }
@@ -5887,14 +5885,13 @@ var RunbookRunRepository = /** @class */ (function () {
     RunbookRunRepository.prototype.create = function (command) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function () {
-            var serverInformation, serverVersion, response, mappedTasks;
+            var serverInformation, response, mappedTasks;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0: return [4 /*yield*/, this.client.getServerInformation()];
                     case 1:
                         serverInformation = _c.sent();
-                        serverVersion = new semver_1.SemVer(serverInformation.version);
-                        if (serverVersion < new semver_1.SemVer("2022.3.5512")) {
+                        if ((0, semver_1.lt)(serverInformation.version, "2022.3.5512")) {
                             (_b = (_a = this.client).error) === null || _b === void 0 ? void 0 : _b.call(_a, "The Octopus instance doesn't support running runbooks using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
                             throw new Error("The Octopus instance doesn't support running runbooks using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
                         }
@@ -6704,18 +6701,29 @@ var TenantRepository = /** @class */ (function (_super) {
         return _super.call(this, client, spaceName, "".concat(__1.spaceScopedRoutePrefix, "/tenants"), "skip,projectId,tags,take,ids,clone,partialName,clonedFromTenantId") || this;
     }
     TenantRepository.prototype.tagTest = function (tenantIds, tags) {
-        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/tag-test{?tenantIds,tags}"), { tenantIds: tenantIds, tags: tags });
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/tag-test{?tenantIds,tags}"), {
+            spaceName: this.spaceName,
+            tenantIds: tenantIds,
+            tags: tags,
+        });
     };
     TenantRepository.prototype.getVariables = function (tenant) {
-        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/variables"));
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/variables"), {
+            spaceName: this.spaceName,
+            id: tenant.Id,
+        });
     };
     TenantRepository.prototype.setVariables = function (tenant, variables) {
-        return this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/variables"), variables);
+        return this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/variables"), variables, {
+            spaceName: this.spaceName,
+            id: tenant.Id,
+        });
     };
     TenantRepository.prototype.missingVariables = function (filterOptions, includeDetails) {
         if (filterOptions === void 0) { filterOptions = {}; }
         if (includeDetails === void 0) { includeDetails = false; }
         var payload = {
+            spaceName: this.spaceName,
             environmentId: filterOptions.environmentId,
             includeDetails: includeDetails,
             projectId: filterOptions.projectId,
@@ -7200,6 +7208,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.resolveSpaceId = void 0;
 var apiLocation_1 = __nccwpck_require__(7083);
+var features_1 = __nccwpck_require__(5024);
 var knownSpaces = {};
 function resolveSpaceId(client, spaceName) {
     return __awaiter(this, void 0, void 0, function () {
@@ -7211,7 +7220,7 @@ function resolveSpaceId(client, spaceName) {
                         return [2 /*return*/, knownSpaces[spaceName]];
                     }
                     client.debug("Resolving space from name '".concat(spaceName, "'"));
-                    return [4 /*yield*/, client.get("".concat(apiLocation_1.apiLocation, "/spaces"), { partialName: spaceName })];
+                    return [4 /*yield*/, client.get("".concat(apiLocation_1.apiLocation, "/spaces?partialName=").concat(encodeURIComponent(spaceName), "&skip=0&take=").concat(features_1.BasicRepository.TakeAll))];
                 case 1:
                     spaces = _a.sent();
                     spaceId = "";
