@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.5](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.4...v3.0.5) (2023-04-20)
+
+
+### Bug Fixes
+
+* incorrectly error when server version is checked ([cc3cf65](https://github.com/OctopusDeploy/create-release-action/commit/cc3cf6523203fe302422fa6be94a3e78d39a8580))
+
 ## [3.0.4](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.3...v3.0.4) (2023-02-06)
 
 
