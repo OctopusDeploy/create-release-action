@@ -1833,7 +1833,7 @@ var AxiosAdapter = /** @class */ (function () {
     function AxiosAdapter() {
     }
     AxiosAdapter.prototype.execute = function (options) {
-        var _a, _b;
+        var _a;
         return __awaiter(this, void 0, void 0, function () {
             function formatError(response) {
                 if (!response.data) {
@@ -1841,6 +1841,7 @@ var AxiosAdapter = /** @class */ (function () {
                 }
                 var message = response.data.ErrorMessage;
                 if (response.data.Errors) {
+                    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                     var errors = response.data.Errors;
                     for (var i = 0; i < errors.length; i++) {
                         message += "\n".concat(errors[i]);
@@ -1848,22 +1849,29 @@ var AxiosAdapter = /** @class */ (function () {
                 }
                 return message;
             }
-            var config, userAgent, response, error_1;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            var headers, config, userAgent, response, error_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        _c.trys.push([0, 2, , 3]);
+                        _b.trys.push([0, 2, , 3]);
+                        headers = {
+                            "Accept-Encoding": "gzip,deflate,compress", // HACK: required for https://github.com/axios/axios/issues/5346 -- this line can be removed once this bug has been fixed
+                        };
+                        if (options.configuration.apiKey) {
+                            headers["X-Octopus-ApiKey"] = options.configuration.apiKey;
+                        }
+                        if (options.configuration.accessToken) {
+                            headers["Authorization"] = "Bearer ".concat(options.configuration.accessToken);
+                        }
                         config = {
                             httpsAgent: options.configuration.httpsAgent,
                             url: options.url,
                             maxContentLength: Infinity,
                             maxBodyLength: Infinity,
+                            // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                             method: options.method,
                             data: options.requestBody,
-                            headers: {
-                                "Accept-Encoding": "gzip,deflate,compress",
-                                "X-Octopus-ApiKey": (_a = options.configuration.apiKey) !== null && _a !== void 0 ? _a : "",
-                            },
+                            headers: headers,
                             responseType: "json",
                         };
                         if (typeof XMLHttpRequest === "undefined") {
@@ -1877,15 +1885,15 @@ var AxiosAdapter = /** @class */ (function () {
                         }
                         return [4 /*yield*/, axios_1.default.request(config)];
                     case 1:
-                        response = _c.sent();
+                        response = _b.sent();
                         return [2 /*return*/, {
                                 data: response.data,
                                 statusCode: response.status,
                             }];
                     case 2:
-                        error_1 = _c.sent();
+                        error_1 = _b.sent();
                         if (axios_1.default.isAxiosError(error_1) && error_1.response) {
-                            throw new adapter_1.AdapterError(error_1.response.status, (_b = formatError(error_1.response)) !== null && _b !== void 0 ? _b : error_1.message);
+                            throw new adapter_1.AdapterError(error_1.response.status, (_a = formatError(error_1.response)) !== null && _a !== void 0 ? _a : error_1.message);
                         }
                         else {
                             throw error_1;
@@ -42340,6 +42348,7 @@ const api_wrapper_1 = __nccwpck_require__(4636);
             userAgentApp: 'GitHubActions (release;create;v3)',
             instanceURL: parameters.server,
             apiKey: parameters.apiKey,
+            accessToken: parameters.accessToken,
             logging: logger
         };
         const client = yield api_client_1.Client.create(config);
@@ -42376,12 +42385,14 @@ const core_1 = __nccwpck_require__(2186);
 const EnvironmentVariables = {
     URL: 'OCTOPUS_URL',
     ApiKey: 'OCTOPUS_API_KEY',
+    AccessToken: 'OCTOPUS_ACCESS_TOKEN',
     Space: 'OCTOPUS_SPACE'
 };
 function getInputParameters() {
     const parameters = {
         server: (0, core_1.getInput)('server') || process.env[EnvironmentVariables.URL] || '',
-        apiKey: (0, core_1.getInput)('api_key') || process.env[EnvironmentVariables.ApiKey] || '',
+        apiKey: (0, core_1.getInput)('api_key') || process.env[EnvironmentVariables.ApiKey],
+        accessToken: (0, core_1.getInput)('access_token') || process.env[EnvironmentVariables.AccessToken],
         space: (0, core_1.getInput)('space') || process.env[EnvironmentVariables.Space] || '',
         project: (0, core_1.getInput)('project', { required: true }),
         releaseNumber: (0, core_1.getInput)('release_number') || undefined,
@@ -42396,13 +42407,14 @@ function getInputParameters() {
     };
     const errors = [];
     if (!parameters.server) {
-        errors.push("The Octopus instance URL is required, please specify explictly through the 'server' input or set the OCTOPUS_URL environment variable.");
+        errors.push("The Octopus instance URL is required, please specify explicitly through the 'server' input or set the OCTOPUS_URL environment variable.");
     }
-    if (!parameters.apiKey) {
-        errors.push("The Octopus API Key is required, please specify explictly through the 'api_key' input or set the OCTOPUS_API_KEY environment variable.");
-    }
+    if (!parameters.apiKey && !parameters.accessToken)
+        errors.push("One of API Key or Access Token are required, please specify explicitly through the 'api_key' or 'access_token' inputs or set the OCTOPUS_API_KEY/OCTOPUS_ACCESS_TOKEN environment variable.");
+    if (parameters.apiKey && parameters.accessToken)
+        errors.push('Only one of API Key or Access Token can be supplied.');
     if (!parameters.space) {
-        errors.push("The Octopus space name is required, please specify explictly through the 'space' input or set the OCTOPUS_SPACE environment variable.");
+        errors.push("The Octopus space name is required, please specify explictily through the 'space' input or set the OCTOPUS_SPACE environment variable.");
     }
     if (parameters.releaseNotes && parameters.releaseNotesFile) {
         errors.push('Please specify one or other of `release_notes` and `release_notes_files`. Specifying both is not supported.');
