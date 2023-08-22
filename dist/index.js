@@ -42410,11 +42410,11 @@ function getInputParameters() {
         errors.push("The Octopus instance URL is required, please specify explicitly through the 'server' input or set the OCTOPUS_URL environment variable.");
     }
     if (!parameters.apiKey && !parameters.accessToken)
-        errors.push("One of API Key or Access Token are required, please specify explicitly through the 'api_key' or 'access_token' inputs or set the OCTOPUS_API_KEY/OCTOPUS_ACCESS_TOKEN environment variable.");
+        errors.push("One of API Key or Access Token are required, please specify explicitly through the 'api_key'/'access_token' inputs or set the OCTOPUS_API_KEY/OCTOPUS_ACCESS_TOKEN environment variable.");
     if (parameters.apiKey && parameters.accessToken)
         errors.push('Only one of API Key or Access Token can be supplied.');
     if (!parameters.space) {
-        errors.push("The Octopus space name is required, please specify explictily through the 'space' input or set the OCTOPUS_SPACE environment variable.");
+        errors.push("The Octopus space name is required, please specify explicitly through the 'space' input or set the OCTOPUS_SPACE environment variable.");
     }
     if (parameters.releaseNotes && parameters.releaseNotesFile) {
         errors.push('Please specify one or other of `release_notes` and `release_notes_files`. Specifying both is not supported.');
