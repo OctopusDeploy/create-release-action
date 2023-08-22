@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@octopusdeploy/api-client": "3.1.0-geoffl-access-token-auth.1",
+    "@octopusdeploy/api-client": "^3.1.0",
     "tmp": "^0.2.1"
   },
   "description": "GitHub Action to Create a Release in Octopus Deploy",

@@ -1829,6 +1829,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AxiosAdapter = void 0;
 var axios_1 = __importDefault(__nccwpck_require__(8757));
 var adapter_1 = __nccwpck_require__(937);
+var createRequestHeaders_1 = __nccwpck_require__(7843);
 var AxiosAdapter = /** @class */ (function () {
     function AxiosAdapter() {
     }
@@ -1849,20 +1850,11 @@ var AxiosAdapter = /** @class */ (function () {
                 }
                 return message;
             }
-            var headers, config, userAgent, response, error_1;
+            var config, userAgent, response, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        headers = {
-                            "Accept-Encoding": "gzip,deflate,compress", // HACK: required for https://github.com/axios/axios/issues/5346 -- this line can be removed once this bug has been fixed
-                        };
-                        if (options.configuration.apiKey) {
-                            headers["X-Octopus-ApiKey"] = options.configuration.apiKey;
-                        }
-                        if (options.configuration.accessToken) {
-                            headers["Authorization"] = "Bearer ".concat(options.configuration.accessToken);
-                        }
                         config = {
                             httpsAgent: options.configuration.httpsAgent,
                             url: options.url,
@@ -1871,7 +1863,7 @@ var AxiosAdapter = /** @class */ (function () {
                             // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                             method: options.method,
                             data: options.requestBody,
-                            headers: headers,
+                            headers: (0, createRequestHeaders_1.createRequestHeaders)(options.configuration),
                             responseType: "json",
                         };
                         if (typeof XMLHttpRequest === "undefined") {
@@ -1907,6 +1899,34 @@ var AxiosAdapter = /** @class */ (function () {
     return AxiosAdapter;
 }());
 exports.AxiosAdapter = AxiosAdapter;
+
+
+/***/ }),
+
+/***/ 7843:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.createRequestHeaders = void 0;
+function createRequestHeaders(configuration) {
+    var headers = {
+        "Accept-Encoding": "gzip,deflate,compress", // HACK: required for https://github.com/axios/axios/issues/5346 -- this line can be removed once this bug has been fixed
+    };
+    if (configuration.apiKey) {
+        headers["X-Octopus-ApiKey"] = configuration.apiKey;
+    }
+    if (configuration.accessToken) {
+        headers["Authorization"] = "Bearer ".concat(configuration.accessToken);
+    }
+    if (!configuration.accessToken && !configuration.apiKey) {
+        // Backward compatibility: Add the api key header in with a blank value
+        headers["X-Octopus-ApiKey"] = "";
+    }
+    return headers;
+}
+exports.createRequestHeaders = createRequestHeaders;
 
 
 /***/ }),
