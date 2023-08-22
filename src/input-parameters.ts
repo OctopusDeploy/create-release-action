@@ -58,14 +58,14 @@ export function getInputParameters(): InputParameters {
 
   if (!parameters.apiKey && !parameters.accessToken)
     errors.push(
-      "One of API Key or Access Token are required, please specify explicitly through the 'api_key' or 'access_token' inputs or set the OCTOPUS_API_KEY/OCTOPUS_ACCESS_TOKEN environment variable."
+      "One of API Key or Access Token are required, please specify explicitly through the 'api_key'/'access_token' inputs or set the OCTOPUS_API_KEY/OCTOPUS_ACCESS_TOKEN environment variable."
     )
 
   if (parameters.apiKey && parameters.accessToken) errors.push('Only one of API Key or Access Token can be supplied.')
 
   if (!parameters.space) {
     errors.push(
-      "The Octopus space name is required, please specify explictily through the 'space' input or set the OCTOPUS_SPACE environment variable."
+      "The Octopus space name is required, please specify explicitly through the 'space' input or set the OCTOPUS_SPACE environment variable."
     )
   }
 
