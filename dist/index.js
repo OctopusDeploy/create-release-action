@@ -42432,8 +42432,6 @@ function getInputParameters() {
     if (!parameters.apiKey && !parameters.accessToken) {
         errors.push("The Octopus API Key is required, please specify explicitly through the 'api_key' input or set the OCTOPUS_API_KEY environment variable.");
     }
-    if (parameters.apiKey && parameters.accessToken)
-        errors.push('Only one of API Key or Access Token can be supplied.');
     if (!parameters.space) {
         errors.push("The Octopus space name is required, please specify explicitly through the 'space' input or set the OCTOPUS_SPACE environment variable.");
     }
