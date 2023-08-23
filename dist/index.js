@@ -42412,7 +42412,7 @@ function getInputParameters() {
     const parameters = {
         server: (0, core_1.getInput)('server') || process.env[EnvironmentVariables.URL] || '',
         apiKey: (0, core_1.getInput)('api_key') || process.env[EnvironmentVariables.ApiKey],
-        accessToken: (0, core_1.getInput)('access_token') || process.env[EnvironmentVariables.AccessToken],
+        accessToken: process.env[EnvironmentVariables.AccessToken],
         space: (0, core_1.getInput)('space') || process.env[EnvironmentVariables.Space] || '',
         project: (0, core_1.getInput)('project', { required: true }),
         releaseNumber: (0, core_1.getInput)('release_number') || undefined,
@@ -42429,8 +42429,9 @@ function getInputParameters() {
     if (!parameters.server) {
         errors.push("The Octopus instance URL is required, please specify explicitly through the 'server' input or set the OCTOPUS_URL environment variable.");
     }
-    if (!parameters.apiKey && !parameters.accessToken)
-        errors.push("One of API Key or Access Token are required, please specify explicitly through the 'api_key'/'access_token' inputs or set the OCTOPUS_API_KEY/OCTOPUS_ACCESS_TOKEN environment variable.");
+    if (!parameters.apiKey && !parameters.accessToken) {
+        errors.push("The Octopus API Key is required, please specify explicitly through the 'api_key' input or set the OCTOPUS_API_KEY environment variable.");
+    }
     if (parameters.apiKey && parameters.accessToken)
         errors.push('Only one of API Key or Access Token can be supplied.');
     if (!parameters.space) {
