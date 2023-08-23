@@ -31,9 +31,7 @@ inputs:
   server:
     description: 'The instance URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). The instance URL is required, but you may also use the OCTOPUS_URL environment variable.'
   api_key:
-    description: 'The API key used to access Octopus Deploy. One of API key or Access Token are required, but you may also use the OCTOPUS_API_KEY environment variable. It is strongly recommended that this value retrieved from a GitHub secret.'
-  access_token:
-    description: 'The access token used to access Octopus Deploy. One of API key or Access Token are required, to obtain an access token please use the `OctopusDeploy/login` action. You may also use the OCTOPUS_ACCESS_TOKEN environment variable if you are obtaining a token another way.'
+    description: 'The API key used to access Octopus Deploy. An API key is required, but you may also use the OCTOPUS_API_KEY environment variable. It is strongly recommended that this value retrieved from a GitHub secret.'
   space:
     description: 'The name of a space within which this command will be executed. The space name is required, but you may also use the OCTOPUS_SPACE environment variable.'
 
