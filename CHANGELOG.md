@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.5...v3.1.0) (2023-08-30)
+
+
+### Features
+
+* Adds support for authenticating with access token ([#385](https://github.com/OctopusDeploy/create-release-action/issues/385)) ([a28e03d](https://github.com/OctopusDeploy/create-release-action/commit/a28e03d98e4de1a7b5c424268cf5ae36c1166d82))
+
 ## [3.0.5](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.4...v3.0.5) (2023-04-20)
 
 
