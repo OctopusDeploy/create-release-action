@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.1.0...v3.2.0) (2023-12-14)
+
+
+### Features
+
+* Upgrade to node 20 ([#391](https://github.com/OctopusDeploy/create-release-action/issues/391)) ([ebb2d20](https://github.com/OctopusDeploy/create-release-action/commit/ebb2d2085f6a6155d8f3102e0e1fa8fbd8e2f07b))
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([d748faa](https://github.com/OctopusDeploy/create-release-action/commit/d748faaf7303fd63d10a01ff47540d9d081e4493))
+
 ## [3.1.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.5...v3.1.0) (2023-08-30)
 
 
