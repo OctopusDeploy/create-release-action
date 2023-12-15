@@ -12,7 +12,7 @@
   "devDependencies": {
     "@octopusdeploy/runtime-inputs": "0.16.0",
     "@types/jest": "29.4.0",
-    "@types/json-patch": "0.0.30",
+    "@types/json-patch": "0.0.33",
     "@types/lodash": "4.14.191",
     "@types/node": "20.10.4",
     "@types/tmp": "0.2.3",
