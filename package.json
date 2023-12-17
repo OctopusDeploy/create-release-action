@@ -15,7 +15,7 @@
     "@types/json-patch": "0.0.33",
     "@types/lodash": "4.14.202",
     "@types/node": "20.10.4",
-    "@types/tmp": "0.2.3",
+    "@types/tmp": "0.2.6",
     "@typescript-eslint/parser": "5.49.0",
     "@vercel/ncc": "0.36.1",
     "eslint": "8.33.0",
