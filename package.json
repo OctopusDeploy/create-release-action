@@ -11,7 +11,7 @@
   "description": "GitHub Action to Create a Release in Octopus Deploy",
   "devDependencies": {
     "@octopusdeploy/runtime-inputs": "0.16.0",
-    "@types/jest": "29.5.11",
+    "@types/jest": "29.5.12",
     "@types/json-patch": "0.0.33",
     "@types/lodash": "4.14.202",
     "@types/node": "20.11.10",
