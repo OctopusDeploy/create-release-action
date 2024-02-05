@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.1](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.0...v3.2.1) (2024-02-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/core to v1.10.1 ([991d8c8](https://github.com/OctopusDeploy/create-release-action/commit/991d8c87003711033a677597d51fde8b16759f35))
+
 ## [3.2.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.1.0...v3.2.0) (2023-12-14)
 
 
