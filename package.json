@@ -13,7 +13,7 @@
     "@octopusdeploy/runtime-inputs": "0.16.0",
     "@types/jest": "29.5.12",
     "@types/json-patch": "0.0.33",
-    "@types/lodash": "4.17.1",
+    "@types/lodash": "4.17.4",
     "@types/node": "20.12.12",
     "@types/tmp": "0.2.6",
     "@typescript-eslint/parser": "5.62.0",
