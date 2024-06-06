@@ -54,6 +54,24 @@ steps:
       git_commit: ${{ github.event.after || github.event.pull_request.head.sha }}
 ```
 
+To specify the version of a package referenced in a step to use in the release, add the `packages` field:
+
+```yml
+env:
+  OCTOPUS_API_KEY: ${{ secrets.API_KEY  }}
+  OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
+  OCTOPUS_SPACE: 'Outer Space'
+steps:
+  # ...
+  - name: Create a release in Octopus Deploy 🐙
+    uses: OctopusDeploy/create-release-action@v3
+    with:
+      project: 'MyProject'
+      packages: |
+        StepName:PackageReferenceName:Version
+        PackageID:Version
+```
+
 ## ✍️ Environment Variables
 
 | Name              | Description                                                                                                                                          |
@@ -70,7 +88,7 @@ steps:
 | `release_number`     | The number for the new release. If omitted, Octopus Deploy will generate a release number.                                                                                                                                                                                                                                      |
 | `channel`            | The name of the channel to use for the new release. If omitted, the best channel will be selected.                                                                                                                                                                                                                              |
 | `package_version`    | The version number of all packages to use for this release.                                                                                                                                                                                                                                                                     |
-| `packages`           | A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("\*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted. |
+| `packages`           | A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("\*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted. **NOTE** these values should not be enclosed in single-quotes (`'`) |
 | `git_ref`            | Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects. E.g. `${{ github.ref }}` to use the branch or tag ref that triggered the workflow.                                                                                                    |
 | `git_commit`         | Git commit pointing to the specific resources of a version controlled Octopus Project.  This is required for version controlled projects. E.g. `${{ github.event.after \|\| github.event.pull_request.head.sha }}` to use the commit that triggered the workflow.                                                       |
 | `ignore_existing`    | Ignore existing releases if present in Octopus Deploy with the matching version number. Defaults to **false**                                                                                                                                                                                                                   |
