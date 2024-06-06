@@ -54,6 +54,23 @@ steps:
       git_commit: ${{ github.event.after || github.event.pull_request.head.sha }}
 ```
 
+To specify the version of a package referenced in a step to use in the release, add the `packages` field:
+
+```yml
+env:
+  OCTOPUS_API_KEY: ${{ secrets.API_KEY  }}
+  OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
+  OCTOPUS_SPACE: 'Outer Space'
+steps:
+  # ...
+  - name: Create a release in Octopus Deploy 🐙
+    uses: OctopusDeploy/create-release-action@v3
+    with:
+      project: 'MyProject'
+      packages: |
+        StepName:PackageReferenceName:Version
+```
+
 ## ✍️ Environment Variables
 
 | Name              | Description                                                                                                                                          |
