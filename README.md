@@ -69,6 +69,7 @@ steps:
       project: 'MyProject'
       packages: |
         StepName:PackageReferenceName:Version
+        PackageID:Version
 ```
 
 ## ✍️ Environment Variables
