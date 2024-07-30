@@ -3858,12 +3858,12 @@ var globp = (0, util_1.promisify)(glob_1.glob);
  * @param {boolean} overwrite Whether to overwrite the Zip file if it already exists. Defaults to true if not specified.
  */
 function doZip(basePath, inputFilePatterns, outputFolder, zipFilename, logger, compressionLevel, overwrite) {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     return __awaiter(this, void 0, void 0, function () {
         var archivePath, initialWorkingDirectory, zip, files, files_1, files_1_1, file, dirName;
-        var e_1, _d;
-        return __generator(this, function (_e) {
-            switch (_e.label) {
+        var e_1, _e;
+        return __generator(this, function (_f) {
+            switch (_f.label) {
                 case 0:
                     archivePath = path_1.default.resolve(outputFolder, zipFilename);
                     (_a = logger.info) === null || _a === void 0 ? void 0 : _a.call(logger, "Writing to package: ".concat(archivePath, "..."));
@@ -3872,7 +3872,7 @@ function doZip(basePath, inputFilePatterns, outputFolder, zipFilename, logger, c
                     zip = new adm_zip_1.default();
                     return [4 /*yield*/, expandGlobs(inputFilePatterns)];
                 case 1:
-                    files = _e.sent();
+                    files = _f.sent();
                     try {
                         for (files_1 = __values(files), files_1_1 = files_1.next(); !files_1_1.done; files_1_1 = files_1.next()) {
                             file = files_1_1.value;
@@ -3889,7 +3889,7 @@ function doZip(basePath, inputFilePatterns, outputFolder, zipFilename, logger, c
                     catch (e_1_1) { e_1 = { error: e_1_1 }; }
                     finally {
                         try {
-                            if (files_1_1 && !files_1_1.done && (_d = files_1.return)) _d.call(files_1);
+                            if (files_1_1 && !files_1_1.done && (_e = files_1.return)) _e.call(files_1);
                         }
                         finally { if (e_1) throw e_1.error; }
                     }
@@ -3898,10 +3898,11 @@ function doZip(basePath, inputFilePatterns, outputFolder, zipFilename, logger, c
                     }
                     setCompressionLevel(zip, compressionLevel || 8);
                     process.chdir(initialWorkingDirectory);
-                    return [4 /*yield*/, zip.writeZipPromise(archivePath, { overwrite: overwrite || true })];
-                case 2:
-                    _e.sent();
-                    return [2 /*return*/];
+                    if (fs_1.default.existsSync(archivePath) && overwrite === false) {
+                        (_d = logger.info) === null || _d === void 0 ? void 0 : _d.call(logger, "Found an existing archive at ".concat(archivePath, " and overwrite is disabled. The existing archive will not be overwritten."));
+                        return [2 /*return*/];
+                    }
+                    return [2 /*return*/, zip.writeZip(archivePath, function () { })];
             }
         });
     });
@@ -6160,30 +6161,31 @@ var ServerTaskWaiter = /** @class */ (function () {
                             stop = true;
                         }, timeout);
                         completedTasks = [];
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, , 5, 6]);
                         _loop_1 = function () {
-                            var tasks_2, unknownTaskIds, nowCompletedTaskIds_1, tasks_1, tasks_1_1, task;
+                            var tasks, unknownTaskIds, nowCompletedTaskIds, tasks_1, tasks_1_1, task;
                             var e_1, _b;
                             return __generator(this, function (_c) {
                                 switch (_c.label) {
-                                    case 0:
-                                        _c.trys.push([0, , 2, 3]);
-                                        return [4 /*yield*/, spaceServerTaskRepository.getByIds(serverTaskIds)];
+                                    case 0: return [4 /*yield*/, spaceServerTaskRepository.getByIds(serverTaskIds)];
                                     case 1:
-                                        tasks_2 = _c.sent();
-                                        unknownTaskIds = serverTaskIds.filter(function (id) { return tasks_2.filter(function (t) { return t.Id === id; }).length == 0; });
+                                        tasks = _c.sent();
+                                        unknownTaskIds = serverTaskIds.filter(function (id) { return tasks.filter(function (t) { return t.Id === id; }).length == 0; });
                                         if (unknownTaskIds.length) {
                                             throw new Error("Unknown task Id(s) ".concat(unknownTaskIds.join(", ")));
                                         }
-                                        nowCompletedTaskIds_1 = [];
+                                        nowCompletedTaskIds = [];
                                         try {
-                                            for (tasks_1 = (e_1 = void 0, __values(tasks_2)), tasks_1_1 = tasks_1.next(); !tasks_1_1.done; tasks_1_1 = tasks_1.next()) {
+                                            for (tasks_1 = (e_1 = void 0, __values(tasks)), tasks_1_1 = tasks_1.next(); !tasks_1_1.done; tasks_1_1 = tasks_1.next()) {
                                                 task = tasks_1_1.value;
                                                 if (pollingCallback) {
                                                     pollingCallback(task);
                                                 }
                                                 // once the task is complete
                                                 if (task.IsCompleted) {
-                                                    nowCompletedTaskIds_1.push(task.Id);
+                                                    nowCompletedTaskIds.push(task.Id);
                                                     completedTasks.push(task);
                                                 }
                                             }
@@ -6196,30 +6198,31 @@ var ServerTaskWaiter = /** @class */ (function () {
                                             finally { if (e_1) throw e_1.error; }
                                         }
                                         // filter down the ids to only those that haven't completed for the next time around the loop
-                                        serverTaskIds = serverTaskIds.filter(function (id) { return nowCompletedTaskIds_1.indexOf(id) < 0; });
+                                        serverTaskIds = serverTaskIds.filter(function (id) { return nowCompletedTaskIds.indexOf(id) < 0; });
                                         // once all tasks have completed we can stop the loop
-                                        if (serverTaskIds.length === 0 || tasks_2.length === 0) {
+                                        if (serverTaskIds.length === 0 || tasks.length === 0) {
                                             stop = true;
+                                            clearTimeout(t);
                                         }
-                                        return [3 /*break*/, 3];
+                                        return [4 /*yield*/, sleep(statusCheckSleepCycle)];
                                     case 2:
-                                        clearTimeout(t);
-                                        return [7 /*endfinally*/];
-                                    case 3: return [4 /*yield*/, sleep(statusCheckSleepCycle)];
-                                    case 4:
                                         _c.sent();
                                         return [2 /*return*/];
                                 }
                             });
                         };
-                        _a.label = 1;
-                    case 1:
-                        if (!!stop) return [3 /*break*/, 3];
-                        return [5 /*yield**/, _loop_1()];
+                        _a.label = 2;
                     case 2:
+                        if (!!stop) return [3 /*break*/, 4];
+                        return [5 /*yield**/, _loop_1()];
+                    case 3:
                         _a.sent();
-                        return [3 /*break*/, 1];
-                    case 3: return [2 /*return*/, completedTasks];
+                        return [3 /*break*/, 2];
+                    case 4: return [3 /*break*/, 6];
+                    case 5:
+                        clearTimeout(t);
+                        return [7 /*endfinally*/];
+                    case 6: return [2 /*return*/, completedTasks];
                 }
             });
         });
