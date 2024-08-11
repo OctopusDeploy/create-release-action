@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       sqlserver:
-        image: mcr.microsoft.com/mssql/server:2019-latest
+        image: mcr.microsoft.com/mssql/server:2019-CU27-ubuntu-20.04
         env:
           ACCEPT_EULA: Y
           SA_PASSWORD: ${{ env.SA_PASSWORD }}
