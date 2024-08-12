@@ -81,3 +81,19 @@ jobs:
 
       - name: Echo package number from self-test
         run: echo "Release Created [${{ steps.self_test.outputs.release_number }}]"
+
+  notify: 
+    runs-on: ubuntu-latest
+    name: Slack - Notify on nightly build failure
+    needs: [test]
+    if: ${{ github.event_name == 'schedule' && failure() }}
+
+    steps:
+      - name: Notify
+        uses: zuplo/github-action-slack-notify-build@v2
+        with:
+          channel_id: ${{ secrets.SLACK_NOTIFICATIONS_CHANNEL_ID }}
+          status: FAILED
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_TOKEN }}
