@@ -4,7 +4,11 @@
 
 This is a GitHub Action to create a release in [Octopus Deploy](https://octopus.com/).
 
-**\*NOTE:** if you have used earlier versions of this action, as of v3 of this action there is no longer a dependency to the Octopus CLI, so the installer action is no longer required in order to use this step.\*
+> [!NOTE]
+> If you have used earlier versions of this action, as of **v3** of this action there is no longer a dependency to the Octopus CLI, so the installer action is no longer required in order to use this step.
+
+> [!IMPORTANT]
+> As of **v3** of this action, Octopus Server version `2022.3.5512` or newer is required.
 
 ## Releases in Octopus Deploy
 
