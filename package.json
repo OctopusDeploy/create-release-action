@@ -4,7 +4,7 @@
     "url": "https://github.com/OctopusDeploy/create-release-action/issues"
   },
   "dependencies": {
-    "@actions/core": "1.10.1",
+    "@actions/core": "1.11.1",
     "@octopusdeploy/api-client": "3.5.1",
     "tmp": "0.2.3"
   },
