@@ -4,7 +4,11 @@
 
 This is a GitHub Action to create a release in [Octopus Deploy](https://octopus.com/).
 
-**\*NOTE:** if you have used earlier versions of this action, as of v3 of this action there is no longer a dependency to the Octopus CLI, so the installer action is no longer required in order to use this step.\*
+> [!NOTE]
+> If you have used earlier versions of this action, as of **v3** of this action there is no longer a dependency to the Octopus CLI, so the installer action is no longer required in order to use this step.
+
+> [!IMPORTANT]
+> As of **v3** of this action, Octopus Server version `2022.3.5512` or newer is required.
 
 ## Releases in Octopus Deploy
 
@@ -37,6 +41,41 @@ steps:
       project: 'MyProject'
 ```
 
+To use an version controlled Octopus project, add the `git_ref` and `git_commit` fields:
+
+```yml
+env:
+  OCTOPUS_API_KEY: ${{ secrets.API_KEY  }}
+  OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
+  OCTOPUS_SPACE: 'Outer Space'
+steps:
+  # ...
+  - name: Create a release in Octopus Deploy 🐙
+    uses: OctopusDeploy/create-release-action@v3
+    with:
+      project: 'MyProject'
+      git_ref: ${{ (github.ref_type == 'tag' && github.event.repository.default_branch ) || (github.head_ref || github.ref) }}
+      git_commit: ${{ github.event.after || github.event.pull_request.head.sha }}
+```
+
+To specify the version of a package referenced in a step to use in the release, add the `packages` field:
+
+```yml
+env:
+  OCTOPUS_API_KEY: ${{ secrets.API_KEY  }}
+  OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
+  OCTOPUS_SPACE: 'Outer Space'
+steps:
+  # ...
+  - name: Create a release in Octopus Deploy 🐙
+    uses: OctopusDeploy/create-release-action@v3
+    with:
+      project: 'MyProject'
+      packages: |
+        StepName:PackageReferenceName:Version
+        PackageID:Version
+```
+
 ## ✍️ Environment Variables
 
 | Name              | Description                                                                                                                                          |
@@ -53,9 +92,9 @@ steps:
 | `release_number`     | The number for the new release. If omitted, Octopus Deploy will generate a release number.                                                                                                                                                                                                                                      |
 | `channel`            | The name of the channel to use for the new release. If omitted, the best channel will be selected.                                                                                                                                                                                                                              |
 | `package_version`    | The version number of all packages to use for this release.                                                                                                                                                                                                                                                                     |
-| `packages`           | A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("\*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted. |
-| `git_ref`            | Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects. E.g. `${{ github.ref }}` to use the branch or tag ref that triggered the workflow.                                                                                                    |
-| `git_commit`         | Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter. E.g. `${{ github.sha }}` to use the commit SHA that triggered the workflow.                                                                                      |
+| `packages`           | A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("\*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted. **NOTE** these values should not be enclosed in single-quotes (`'`) |
+| `git_ref`            | Git reference, _branch name or tag_, to the specific resources of a version controlled Octopus Project. This should be used for version controlled projects when OCL files are stored in a different repository or branch as the application being built. E.g. Use the `main` branch, regardless of the location of the repository where the application(s) are being built as they are different **or** `${{ github.ref }}` to use the branch or tag ref that triggered the workflow.                                                                                                    |
+| `git_commit`         | Git commit, _commit SHA-1 hash_, pointing to the specific resources of a version controlled Octopus Project. This should be used for version controlled projects when OCL files are stored in the same repository or branch as the application being built. E.g. `${{ github.event.after \|\| github.event.pull_request.head.sha }}` to use the commit that triggered the workflow.                                                       |
 | `ignore_existing`    | Ignore existing releases if present in Octopus Deploy with the matching version number. Defaults to **false**                                                                                                                                                                                                                   |
 | `release_notes`      | The release notes text associated with the new release (Markdown is supported).                                                                                                                                                                                                                                                 |
 | `release_notes_file` | A file containing the release notes associated with the new release (Markdown is supported). Use either `release_notes` or this input, supplying both is not supported.                                                                                                                                                         |

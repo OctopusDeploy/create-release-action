@@ -40,5 +40,5 @@ outputs:
     description: 'The release number assigned to the Release in Octopus Deploy'
 
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'

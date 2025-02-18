@@ -30,6 +30,7 @@ import { createReleaseFromInputs } from './api-wrapper'
       userAgentApp: 'GitHubActions (release;create;v3)',
       instanceURL: parameters.server,
       apiKey: parameters.apiKey,
+      accessToken: parameters.accessToken,
       logging: logger
     }
 

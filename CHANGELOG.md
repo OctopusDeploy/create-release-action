@@ -1,5 +1,52 @@
 # Changelog
 
+## [3.2.3](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.2...v3.2.3) (2025-02-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @octopusdeploy/api-client to v3.5.1 ([183cf55](https://github.com/OctopusDeploy/create-release-action/commit/183cf55a3d58348be860144ab93bec7de2c3ef94))
+
+## [3.2.2](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.1...v3.2.2) (2024-08-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tmp to v0.2.3 ([fe13cc6](https://github.com/OctopusDeploy/create-release-action/commit/fe13cc69c1c037cb7bb085981b152f5e35257e1f))
+
+## [3.2.1](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.0...v3.2.1) (2024-02-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/core to v1.10.1 ([991d8c8](https://github.com/OctopusDeploy/create-release-action/commit/991d8c87003711033a677597d51fde8b16759f35))
+
+## [3.2.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.1.0...v3.2.0) (2023-12-14)
+
+
+### Features
+
+* Upgrade to node 20 ([#391](https://github.com/OctopusDeploy/create-release-action/issues/391)) ([ebb2d20](https://github.com/OctopusDeploy/create-release-action/commit/ebb2d2085f6a6155d8f3102e0e1fa8fbd8e2f07b))
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([d748faa](https://github.com/OctopusDeploy/create-release-action/commit/d748faaf7303fd63d10a01ff47540d9d081e4493))
+
+## [3.1.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.5...v3.1.0) (2023-08-30)
+
+
+### Features
+
+* Adds support for authenticating with access token ([#385](https://github.com/OctopusDeploy/create-release-action/issues/385)) ([a28e03d](https://github.com/OctopusDeploy/create-release-action/commit/a28e03d98e4de1a7b5c424268cf5ae36c1166d82))
+
+## [3.0.5](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.4...v3.0.5) (2023-04-20)
+
+
+### Bug Fixes
+
+* incorrectly error when server version is checked ([cc3cf65](https://github.com/OctopusDeploy/create-release-action/commit/cc3cf6523203fe302422fa6be94a3e78d39a8580))
+
 ## [3.0.4](https://github.com/OctopusDeploy/create-release-action/compare/v3.0.3...v3.0.4) (2023-02-06)
 
 
