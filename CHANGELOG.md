@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.3.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.4...v3.3.0) (2025-06-30)
+
+
+### Features
+
+* Add custom fields ([#563](https://github.com/OctopusDeploy/create-release-action/issues/563)) ([82e31ae](https://github.com/OctopusDeploy/create-release-action/commit/82e31aecde03dd2523bcd395f08fa392df3ca17d))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @octopusdeploy/api-client to v3.6.0 ([#564](https://github.com/OctopusDeploy/create-release-action/issues/564)) ([2d972fc](https://github.com/OctopusDeploy/create-release-action/commit/2d972fc651a061e6b27ee4821c33d9a5c1b36ba1))
+
 ## [3.2.4](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.3...v3.2.4) (2025-03-12)
 
 
