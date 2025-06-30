@@ -8338,6 +8338,62 @@ var TenantRepository = /** @class */ (function (_super) {
         };
         return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/variables-missing{?tenantId,projectId,environmentId,includeDetails}"), payload);
     };
+    TenantRepository.prototype.getCommonVariables = function (tenant, includeMissingVariables) {
+        if (includeMissingVariables === void 0) { includeMissingVariables = false; }
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/commonvariables{?includeMissingVariables}"), {
+            spaceName: this.spaceName,
+            id: tenant.Id,
+            includeMissingVariables: includeMissingVariables,
+        });
+    };
+    TenantRepository.prototype.getCommonVariablesById = function (tenantId, includeMissingVariables) {
+        if (includeMissingVariables === void 0) { includeMissingVariables = false; }
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/commonvariables{?includeMissingVariables}"), {
+            spaceName: this.spaceName,
+            id: tenantId,
+            includeMissingVariables: includeMissingVariables,
+        });
+    };
+    TenantRepository.prototype.getProjectVariables = function (tenant, includeMissingVariables) {
+        if (includeMissingVariables === void 0) { includeMissingVariables = false; }
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/projectvariables{?includeMissingVariables}"), {
+            spaceName: this.spaceName,
+            id: tenant.Id,
+            includeMissingVariables: includeMissingVariables,
+        });
+    };
+    TenantRepository.prototype.getProjectVariablesById = function (tenantId, includeMissingVariables) {
+        if (includeMissingVariables === void 0) { includeMissingVariables = false; }
+        return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/projectvariables{?includeMissingVariables}"), {
+            spaceName: this.spaceName,
+            id: tenantId,
+            includeMissingVariables: includeMissingVariables,
+        });
+    };
+    TenantRepository.prototype.modifyCommonVariables = function (tenant, variables) {
+        return this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/commonvariables"), variables, {
+            spaceName: this.spaceName,
+            id: tenant.Id,
+        });
+    };
+    TenantRepository.prototype.modifyCommonVariablesById = function (tenantId, variables) {
+        return this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/commonvariables"), variables, {
+            spaceName: this.spaceName,
+            id: tenantId,
+        });
+    };
+    TenantRepository.prototype.modifyProjectVariables = function (tenant, variables) {
+        return this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/projectvariables"), variables, {
+            spaceName: this.spaceName,
+            id: tenant.Id,
+        });
+    };
+    TenantRepository.prototype.modifyProjectVariablesById = function (tenantId, variables) {
+        return this.client.doUpdate("".concat(__1.spaceScopedRoutePrefix, "/tenants/{id}/projectvariables"), variables, {
+            spaceName: this.spaceName,
+            id: tenantId,
+        });
+    };
     return TenantRepository;
 }(spaceScopedBasicRepository_1.SpaceScopedBasicRepository));
 exports.TenantRepository = TenantRepository;
