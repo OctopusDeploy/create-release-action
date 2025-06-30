@@ -29,6 +29,17 @@ export interface InputParameters {
   // Optional
   releaseNotes?: string
   releaseNotesFile?: string
+  customFields?: Record<string, string>
+}
+
+const createCustomFields = (inputParamaters: string[]): Record<string, string> => {
+  return inputParamaters.reduce((acc, field) => {
+    const [key, value] = field.split(':').map(part => part.trim())
+    if (key && value) {
+      acc[key] = value
+    }
+    return acc
+  }, {} as Record<string, string>)
 }
 
 export function getInputParameters(): InputParameters {
@@ -46,7 +57,8 @@ export function getInputParameters(): InputParameters {
     gitCommit: getInput('git_commit') || undefined,
     ignoreExisting: getBooleanInput('ignore_existing') || undefined,
     releaseNotes: getInput('release_notes') || undefined,
-    releaseNotesFile: getInput('release_notes_file') || undefined
+    releaseNotesFile: getInput('release_notes_file') || undefined,
+    customFields: createCustomFields(getMultilineInput('custom_fields'))
   }
 
   const errors: string[] = []
