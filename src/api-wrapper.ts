@@ -22,7 +22,8 @@ export async function createReleaseFromInputs(client: Client, parameters: InputP
     GitCommit: parameters.gitCommit,
     ReleaseNotes: releaseNotes,
     IgnoreIfAlreadyExists: parameters.ignoreExisting,
-    IgnoreChannelRules: false
+    IgnoreChannelRules: false,
+    CustomFields: parameters.customFields
   }
 
   const repository = new ReleaseRepository(client, parameters.space)
