@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.1](https://github.com/OctopusDeploy/create-release-action/compare/v3.3.0...v3.3.1) (2025-08-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tmp to v0.2.4 [security] ([#576](https://github.com/OctopusDeploy/create-release-action/issues/576)) ([02c0ac0](https://github.com/OctopusDeploy/create-release-action/commit/02c0ac01aaa929e46d2d3df9e165e917441b628a))
+
 ## [3.3.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.4...v3.3.0) (2025-06-30)
 
 
