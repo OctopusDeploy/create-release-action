@@ -43967,7 +43967,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.createReleaseFromInputs = void 0;
+exports.createReleaseFromInputs = createReleaseFromInputs;
 const api_client_1 = __nccwpck_require__(1212);
 const fs_1 = __importDefault(__nccwpck_require__(9896));
 function createReleaseFromInputs(client, parameters) {
@@ -43998,7 +43998,6 @@ function createReleaseFromInputs(client, parameters) {
         return allocatedReleaseNumber.ReleaseVersion;
     });
 }
-exports.createReleaseFromInputs = createReleaseFromInputs;
 
 
 /***/ }),
@@ -44079,7 +44078,7 @@ const api_wrapper_1 = __nccwpck_require__(6049);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getInputParameters = void 0;
+exports.getInputParameters = getInputParameters;
 const core_1 = __nccwpck_require__(7484);
 const EnvironmentVariables = {
     URL: 'OCTOPUS_URL',
@@ -44132,7 +44131,6 @@ function getInputParameters() {
     }
     return parameters;
 }
-exports.getInputParameters = getInputParameters;
 
 
 /***/ }),
