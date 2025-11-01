@@ -4405,10 +4405,47 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EnvironmentRepository = void 0;
 var __1 = __nccwpck_require__(1212);
 var spaceScopedBasicRepository_1 = __nccwpck_require__(7852);
+var console_1 = __nccwpck_require__(4236);
 var EnvironmentRepository = /** @class */ (function (_super) {
     __extends(EnvironmentRepository, _super);
     function EnvironmentRepository(client, spaceName) {
@@ -4430,6 +4467,94 @@ var EnvironmentRepository = /** @class */ (function (_super) {
         return this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/{id}/singlyScopedVariableDetails"), {
             spaceName: this.spaceName,
             id: environment.Id,
+        });
+    };
+    EnvironmentRepository.prototype.createEphemeralEnvironment = function (environmentName, projectId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/environments/ephemeral"), { EnvironmentName: environmentName }, {
+                            spaceName: this.spaceName,
+                            projectId: projectId,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    EnvironmentRepository.prototype.getEphemeralEnvironmentProjectStatus = function (environmentId, projectId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/environments/ephemeral/{id}/status"), {
+                            spaceName: this.spaceName,
+                            projectId: projectId,
+                            id: environmentId,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    EnvironmentRepository.prototype.deprovisionEphemeralEnvironmentForProject = function (environmentId, projectId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/environments/ephemeral/{environmentId}/deprovision"), {}, {
+                            spaceName: this.spaceName,
+                            environmentId: environmentId,
+                            projectId: projectId,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    EnvironmentRepository.prototype.deprovisionEphemeralEnvironment = function (environmentId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/environments/ephemeral/{environmentId}/deprovision"), {}, {
+                            spaceName: this.spaceName,
+                            environmentId: environmentId,
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    EnvironmentRepository.prototype.getEnvironmentByName = function (environmentName) {
+        return __awaiter(this, void 0, void 0, function () {
+            var listResponse, matchingEnvironments;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/v2{?partialName,take,skip}"), {
+                            spaceName: this.spaceName,
+                            partialName: environmentName,
+                            skip: 0,
+                            take: 100,
+                        })];
+                    case 1:
+                        listResponse = _a.sent();
+                        matchingEnvironments = listResponse.Items.filter(function (env) { return env.Name.toLowerCase() === environmentName.toLowerCase(); });
+                        if (matchingEnvironments.length > 1) {
+                            throw (0, console_1.error)("Multiple environments found with the name '".concat(environmentName));
+                        }
+                        return [2 /*return*/, matchingEnvironments.length == 1 ? matchingEnvironments[0] : null];
+                }
+            });
         });
     };
     return EnvironmentRepository;
@@ -4824,6 +4949,7 @@ __exportStar(__nccwpck_require__(7708), exports);
 __exportStar(__nccwpck_require__(9608), exports);
 __exportStar(__nccwpck_require__(5355), exports);
 __exportStar(__nccwpck_require__(7852), exports);
+__exportStar(__nccwpck_require__(3040), exports);
 
 
 /***/ }),
@@ -4924,6 +5050,444 @@ var RetentionUnit;
     RetentionUnit["Days"] = "Days";
     RetentionUnit["Items"] = "Items";
 })(RetentionUnit = exports.RetentionUnit || (exports.RetentionUnit = {}));
+
+
+/***/ }),
+
+/***/ 7480:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 3040:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__nccwpck_require__(7480), exports);
+__exportStar(__nccwpck_require__(1298), exports);
+__exportStar(__nccwpck_require__(3446), exports);
+__exportStar(__nccwpck_require__(8486), exports);
+__exportStar(__nccwpck_require__(7683), exports);
+__exportStar(__nccwpck_require__(4839), exports);
+__exportStar(__nccwpck_require__(7889), exports);
+__exportStar(__nccwpck_require__(186), exports);
+
+
+/***/ }),
+
+/***/ 186:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.KubernetesMonitorRepository = void 0;
+var __1 = __nccwpck_require__(1212);
+var KubernetesMonitorRepository = /** @class */ (function () {
+    function KubernetesMonitorRepository(client, spaceName) {
+        this.client = client;
+        this.spaceName = spaceName;
+    }
+    KubernetesMonitorRepository.prototype.registerKubernetesMonitor = function (installationId, machineId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        _b = (_a = this.client).post;
+                        _c = ["~/api/spaces/{spaceId}/observability/kubernetes-monitors",
+                            {
+                                installationId: installationId,
+                                machineId: machineId,
+                            }];
+                        _d = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d)]))];
+                }
+            });
+        });
+    };
+    KubernetesMonitorRepository.prototype.getById = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        _b = (_a = this.client).get;
+                        _c = ["~/api/spaces/{spaceId}/observability/kubernetes-monitors/{id}"];
+                        _d = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(),
+                                _d.id = id,
+                                _d)]))];
+                }
+            });
+        });
+    };
+    KubernetesMonitorRepository.prototype.deleteById = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        _b = (_a = this.client).del;
+                        _c = ["~/api/spaces/{spaceId}/observability/kubernetes-monitors/{id}"];
+                        _d = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(),
+                                _d.id = id,
+                                _d)]))];
+                }
+            });
+        });
+    };
+    return KubernetesMonitorRepository;
+}());
+exports.KubernetesMonitorRepository = KubernetesMonitorRepository;
+
+
+/***/ }),
+
+/***/ 1298:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 3446:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 7889:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ObservabilityRepository = void 0;
+var __1 = __nccwpck_require__(1212);
+var ObservabilityRepository = /** @class */ (function () {
+    function ObservabilityRepository(client, spaceName) {
+        this.client = client;
+        this.spaceName = spaceName;
+    }
+    ObservabilityRepository.prototype.getLiveStatus = function (projectId, environmentId, tenantId, summaryOnly) {
+        if (summaryOnly === void 0) { summaryOnly = false; }
+        return __awaiter(this, void 0, void 0, function () {
+            var queryParams, _a, _b, _c;
+            var _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        queryParams = summaryOnly ? "?summaryOnly=true" : "";
+                        if (!(tenantId === undefined)) return [3 /*break*/, 2];
+                        _b = (_a = this.client).get;
+                        _c = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/untenanted/livestatus".concat(queryParams)];
+                        _d = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d.projectId = projectId, _d.environmentId = environmentId, _d)]))];
+                    case 2: return [2 /*return*/, this.client.get("~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/tenants/{tenantId}/livestatus".concat(queryParams), {
+                            projectId: projectId,
+                            environmentId: environmentId,
+                            tenantId: tenantId,
+                        })];
+                }
+            });
+        });
+    };
+    ObservabilityRepository.prototype.getResource = function (projectId, environmentId, tenantId, machineId, resourceId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c, _d, _e, _f;
+            var _g, _h;
+            return __generator(this, function (_j) {
+                switch (_j.label) {
+                    case 0:
+                        if (!(tenantId === undefined)) return [3 /*break*/, 2];
+                        _b = (_a = this.client).get;
+                        _c = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/untenanted/machines/{machineId}/resources/{desiredOrKubernetesMonitoredResourceId}"];
+                        _g = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_g.spaceId = _j.sent(),
+                                _g.projectId = projectId,
+                                _g.environmentId = environmentId,
+                                _g.machineId = machineId,
+                                _g.desiredOrKubernetesMonitoredResourceId = resourceId,
+                                _g)]))];
+                    case 2:
+                        _e = (_d = this.client).get;
+                        _f = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/tenants/{tenantId}/machines/{machineId}/resources/{desiredOrKubernetesMonitoredResourceId}"];
+                        _h = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 3: return [2 /*return*/, _e.apply(_d, _f.concat([(_h.spaceId = _j.sent(),
+                                _h.projectId = projectId,
+                                _h.environmentId = environmentId,
+                                _h.tenantId = tenantId,
+                                _h.machineId = machineId,
+                                _h.desiredOrKubernetesMonitoredResourceId = resourceId,
+                                _h)]))];
+                }
+            });
+        });
+    };
+    ObservabilityRepository.prototype.getResourceManifest = function (projectId, environmentId, tenantId, machineId, resourceId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c, _d, _e, _f;
+            var _g, _h;
+            return __generator(this, function (_j) {
+                switch (_j.label) {
+                    case 0:
+                        if (!(tenantId === undefined)) return [3 /*break*/, 2];
+                        _b = (_a = this.client).get;
+                        _c = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/untenanted/machines/{machineId}/resources/{desiredOrKubernetesMonitoredResourceId}/manifest"];
+                        _g = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_g.spaceId = _j.sent(),
+                                _g.projectId = projectId,
+                                _g.environmentId = environmentId,
+                                _g.machineId = machineId,
+                                _g.desiredOrKubernetesMonitoredResourceId = resourceId,
+                                _g)]))];
+                    case 2:
+                        _e = (_d = this.client).get;
+                        _f = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/tenants/{tenantId}/machines/{machineId}/resources/{desiredOrKubernetesMonitoredResourceId}/manifest"];
+                        _h = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 3: return [2 /*return*/, _e.apply(_d, _f.concat([(_h.spaceId = _j.sent(),
+                                _h.projectId = projectId,
+                                _h.environmentId = environmentId,
+                                _h.tenantId = tenantId,
+                                _h.machineId = machineId,
+                                _h.desiredOrKubernetesMonitoredResourceId = resourceId,
+                                _h)]))];
+                }
+            });
+        });
+    };
+    ObservabilityRepository.prototype.beginContainerLogsSession = function (projectId, environmentId, tenantId, machineId, resourceId, podName, containerName, showPreviousContainer) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        _b = (_a = this.client).post;
+                        _c = ["~/api/spaces/{spaceId}/observability/logs/sessions",
+                            {
+                                projectId: projectId,
+                                environmentId: environmentId,
+                                tenantId: tenantId,
+                                machineId: machineId,
+                                podName: podName,
+                                containerName: containerName,
+                                showPreviousContainer: showPreviousContainer,
+                                desiredOrKubernetesMonitoredResourceId: resourceId,
+                            }];
+                        _d = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d)]))];
+                }
+            });
+        });
+    };
+    ObservabilityRepository.prototype.getContainerLogs = function (sessionId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        _b = (_a = this.client).get;
+                        _c = ["~/api/spaces/{spaceId}/observability/logs/sessions/{sessionId}"];
+                        _d = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(),
+                                _d.sessionId = sessionId,
+                                _d)]))];
+                }
+            });
+        });
+    };
+    ObservabilityRepository.prototype.beginResourceEventsSession = function (projectId, environmentId, tenantId, machineId, resourceId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        _b = (_a = this.client).post;
+                        _c = ["~/api/spaces/{spaceId}/observability/events/sessions",
+                            {
+                                projectId: projectId,
+                                environmentId: environmentId,
+                                tenantId: tenantId,
+                                machineId: machineId,
+                                desiredOrKubernetesMonitoredResourceId: resourceId,
+                            }];
+                        _d = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d)]))];
+                }
+            });
+        });
+    };
+    ObservabilityRepository.prototype.getResourceEvents = function (sessionId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        _b = (_a = this.client).get;
+                        _c = ["~/api/spaces/{spaceId}/observability/events/sessions/{sessionId}"];
+                        _d = {};
+                        return [4 /*yield*/, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                    case 1: return [2 /*return*/, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(),
+                                _d.sessionId = sessionId,
+                                _d)]))];
+                }
+            });
+        });
+    };
+    return ObservabilityRepository;
+}());
+exports.ObservabilityRepository = ObservabilityRepository;
+
+
+/***/ }),
+
+/***/ 8486:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 7683:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 4839:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+;
 
 
 /***/ }),
@@ -6764,8 +7328,19 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 __exportStar(__nccwpck_require__(9459), exports);
 __exportStar(__nccwpck_require__(9046), exports);
 __exportStar(__nccwpck_require__(6547), exports);
+__exportStar(__nccwpck_require__(5665), exports);
 __exportStar(__nccwpck_require__(7064), exports);
 __exportStar(__nccwpck_require__(8593), exports);
+
+
+/***/ }),
+
+/***/ 5665:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 
 /***/ }),
@@ -6861,6 +7436,27 @@ var ReleaseRepository = /** @class */ (function () {
                         this.client.debug("Release created successfully.");
                         return [2 /*return*/, response];
                 }
+            });
+        });
+    };
+    ReleaseRepository.prototype.get = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/releases/").concat(id), { spaceName: this.spaceName })];
+            });
+        });
+    };
+    ReleaseRepository.prototype.list = function (args) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/releases{?skip,take}"), __assign({ spaceName: this.spaceName }, args))];
+            });
+        });
+    };
+    ReleaseRepository.prototype.listForProject = function (projectId, args) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/projects/").concat(projectId, "/releases{?skip,take,searchByVersion}"), __assign({ spaceName: this.spaceName }, args))];
             });
         });
     };
@@ -7577,6 +8173,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 __exportStar(__nccwpck_require__(4970), exports);
 __exportStar(__nccwpck_require__(93), exports);
+__exportStar(__nccwpck_require__(4250), exports);
 __exportStar(__nccwpck_require__(3240), exports);
 __exportStar(__nccwpck_require__(7374), exports);
 __exportStar(__nccwpck_require__(2216), exports);
@@ -7628,6 +8225,78 @@ var ActivityLogEntryCategory;
     ActivityLogEntryCategory["Finished"] = "Finished";
     ActivityLogEntryCategory["Abandoned"] = "Abandoned";
 })(ActivityLogEntryCategory = exports.ActivityLogEntryCategory || (exports.ActivityLogEntryCategory = {}));
+
+
+/***/ }),
+
+/***/ 4250:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ServerTaskRepository = void 0;
+var apiLocation_1 = __nccwpck_require__(7963);
+var ServerTaskRepository = /** @class */ (function () {
+    function ServerTaskRepository(client) {
+        this.baseApiPathTemplate = "".concat(apiLocation_1.apiLocation, "/tasks");
+        this.client = client;
+    }
+    ServerTaskRepository.prototype.cancel = function (serverTaskId) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!serverTaskId) {
+                            throw new Error("Server Task Id was not provided");
+                        }
+                        return [4 /*yield*/, this.client.post("".concat(this.baseApiPathTemplate, "/").concat(serverTaskId, "/cancel"), {})];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return ServerTaskRepository;
+}());
+exports.ServerTaskRepository = ServerTaskRepository;
 
 
 /***/ }),
@@ -7687,28 +8356,33 @@ var __values = (this && this.__values) || function(o) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ServerTaskWaiter = void 0;
 var serverTasks_1 = __nccwpck_require__(9814);
+var serverTasks_2 = __nccwpck_require__(9814);
 var ServerTaskWaiter = /** @class */ (function () {
     function ServerTaskWaiter(client, spaceName) {
         this.client = client;
         this.spaceName = spaceName;
     }
-    ServerTaskWaiter.prototype.waitForServerTasksToComplete = function (serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback) {
+    ServerTaskWaiter.prototype.waitForServerTasksToComplete = function (serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback, cancelOnTimeout) {
+        if (cancelOnTimeout === void 0) { cancelOnTimeout = false; }
         return __awaiter(this, void 0, void 0, function () {
-            var spaceServerTaskRepository;
+            var spaceServerTaskRepository, serverTaskRepository;
             return __generator(this, function (_a) {
                 spaceServerTaskRepository = new serverTasks_1.SpaceServerTaskRepository(this.client, this.spaceName);
-                return [2 /*return*/, this.waitForTasks(spaceServerTaskRepository, serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback)];
+                serverTaskRepository = new serverTasks_2.ServerTaskRepository(this.client);
+                return [2 /*return*/, this.waitForTasks(spaceServerTaskRepository, serverTaskRepository, serverTaskIds, statusCheckSleepCycle, timeout, cancelOnTimeout, pollingCallback)];
             });
         });
     };
-    ServerTaskWaiter.prototype.waitForServerTaskToComplete = function (serverTaskId, statusCheckSleepCycle, timeout, pollingCallback) {
+    ServerTaskWaiter.prototype.waitForServerTaskToComplete = function (serverTaskId, statusCheckSleepCycle, timeout, pollingCallback, cancelOnTimeout) {
+        if (cancelOnTimeout === void 0) { cancelOnTimeout = false; }
         return __awaiter(this, void 0, void 0, function () {
-            var spaceServerTaskRepository, tasks;
+            var spaceServerTaskRepository, serverTaskRepository, tasks;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         spaceServerTaskRepository = new serverTasks_1.SpaceServerTaskRepository(this.client, this.spaceName);
-                        return [4 /*yield*/, this.waitForTasks(spaceServerTaskRepository, [serverTaskId], statusCheckSleepCycle, timeout, pollingCallback)];
+                        serverTaskRepository = new serverTasks_2.ServerTaskRepository(this.client);
+                        return [4 /*yield*/, this.waitForTasks(spaceServerTaskRepository, serverTaskRepository, [serverTaskId], statusCheckSleepCycle, timeout, cancelOnTimeout, pollingCallback)];
                     case 1:
                         tasks = _a.sent();
                         return [2 /*return*/, tasks[0]];
@@ -7716,9 +8390,9 @@ var ServerTaskWaiter = /** @class */ (function () {
             });
         });
     };
-    ServerTaskWaiter.prototype.waitForTasks = function (spaceServerTaskRepository, serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback) {
+    ServerTaskWaiter.prototype.waitForTasks = function (spaceServerTaskRepository, serverTaskRepository, serverTaskIds, statusCheckSleepCycle, timeout, cancelOnTimeout, pollingCallback) {
         return __awaiter(this, void 0, void 0, function () {
-            var sleep, stop, t, completedTasks, _loop_1;
+            var sleep, stop, timedOut, t, completedTasks, _loop_1;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -7733,13 +8407,15 @@ var ServerTaskWaiter = /** @class */ (function () {
                             return [2 /*return*/, new Promise(function (r) { return setTimeout(r, ms); })];
                         }); }); };
                         stop = false;
+                        timedOut = false;
                         t = setTimeout(function () {
                             stop = true;
+                            timedOut = true;
                         }, timeout);
                         completedTasks = [];
                         _a.label = 1;
                     case 1:
-                        _a.trys.push([1, , 5, 6]);
+                        _a.trys.push([1, , 7, 8]);
                         _loop_1 = function () {
                             var tasks, unknownTaskIds, nowCompletedTaskIds, tasks_1, tasks_1_1, task;
                             var e_1, _b;
@@ -7794,11 +8470,64 @@ var ServerTaskWaiter = /** @class */ (function () {
                     case 3:
                         _a.sent();
                         return [3 /*break*/, 2];
-                    case 4: return [3 /*break*/, 6];
+                    case 4:
+                        if (!(timedOut && cancelOnTimeout && serverTaskIds.length > 0)) return [3 /*break*/, 6];
+                        return [4 /*yield*/, this.cancelTasks(serverTaskRepository, serverTaskIds)];
                     case 5:
+                        _a.sent();
+                        _a.label = 6;
+                    case 6:
+                        if (timedOut && cancelOnTimeout) {
+                            throw new Error("Timeout reached after ".concat(timeout / 1000, " seconds. Tasks were cancelled."));
+                        }
+                        return [3 /*break*/, 8];
+                    case 7:
                         clearTimeout(t);
                         return [7 /*endfinally*/];
-                    case 6: return [2 /*return*/, completedTasks];
+                    case 8: return [2 /*return*/, completedTasks];
+                }
+            });
+        });
+    };
+    ServerTaskWaiter.prototype.cancelTasks = function (serverTaskRepository, taskIds) {
+        return __awaiter(this, void 0, void 0, function () {
+            var taskIds_1, taskIds_1_1, taskId, error_1, e_2_1;
+            var e_2, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 7, 8, 9]);
+                        taskIds_1 = __values(taskIds), taskIds_1_1 = taskIds_1.next();
+                        _b.label = 1;
+                    case 1:
+                        if (!!taskIds_1_1.done) return [3 /*break*/, 6];
+                        taskId = taskIds_1_1.value;
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, 4, , 5]);
+                        return [4 /*yield*/, serverTaskRepository.cancel(taskId)];
+                    case 3:
+                        _b.sent();
+                        return [3 /*break*/, 5];
+                    case 4:
+                        error_1 = _b.sent();
+                        console.warn("Failed to cancel task ".concat(taskId, ":"), error_1);
+                        return [3 /*break*/, 5];
+                    case 5:
+                        taskIds_1_1 = taskIds_1.next();
+                        return [3 /*break*/, 1];
+                    case 6: return [3 /*break*/, 9];
+                    case 7:
+                        e_2_1 = _b.sent();
+                        e_2 = { error: e_2_1 };
+                        return [3 /*break*/, 9];
+                    case 8:
+                        try {
+                            if (taskIds_1_1 && !taskIds_1_1.done && (_a = taskIds_1.return)) _a.call(taskIds_1);
+                        }
+                        finally { if (e_2) throw e_2.error; }
+                        return [7 /*endfinally*/];
+                    case 9: return [2 /*return*/];
                 }
             });
         });
@@ -8950,7 +9679,7 @@ exports.isSpaceScopedOperation = isSpaceScopedOperation;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.isSpaceScopedRequest = void 0;
 function isSpaceScopedRequest(command) {
-    return "spaceName" in command;
+    return command && "spaceName" in command;
 }
 exports.isSpaceScopedRequest = isSpaceScopedRequest;
 
@@ -44161,6 +44890,14 @@ module.exports = require("child_process");
 
 /***/ }),
 
+/***/ 4236:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("console");
+
+/***/ }),
+
 /***/ 6982:
 /***/ ((module) => {
 
@@ -44190,6 +44927,14 @@ module.exports = require("fs");
 
 "use strict";
 module.exports = require("http");
+
+/***/ }),
+
+/***/ 5675:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http2");
 
 /***/ }),
 
@@ -44293,12 +45038,13 @@ module.exports = require("zlib");
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
-/*! Axios v1.12.1 Copyright (c) 2025 Matt Zabriskie and contributors */
+/*! Axios v1.13.1 Copyright (c) 2025 Matt Zabriskie and contributors */
 
 
 const FormData$1 = __nccwpck_require__(6454);
 const crypto = __nccwpck_require__(6982);
 const url = __nccwpck_require__(7016);
+const http2 = __nccwpck_require__(5675);
 const proxyFromEnv = __nccwpck_require__(7777);
 const http = __nccwpck_require__(8611);
 const https = __nccwpck_require__(5692);
@@ -44321,6 +45067,13 @@ const followRedirects__default = /*#__PURE__*/_interopDefaultLegacy(followRedire
 const zlib__default = /*#__PURE__*/_interopDefaultLegacy(zlib);
 const stream__default = /*#__PURE__*/_interopDefaultLegacy(stream);
 
+/**
+ * Create a bound version of a function with a specified `this` context
+ *
+ * @param {Function} fn - The function to bind
+ * @param {*} thisArg - The value to be passed as the `this` parameter
+ * @returns {Function} A new function that will call the original function with the specified `this` context
+ */
 function bind(fn, thisArg) {
   return function wrap() {
     return fn.apply(thisArg, arguments);
@@ -44676,10 +45429,8 @@ function merge(/* obj1, obj2, obj3, ... */) {
       result[targetKey] = merge({}, val);
     } else if (isArray(val)) {
       result[targetKey] = val.slice();
-    } else {
-      if (!skipUndefined || !isUndefined(val)) {
-        result[targetKey] = val;
-      }
+    } else if (!skipUndefined || !isUndefined(val)) {
+      result[targetKey] = val;
     }
   };
 
@@ -45572,7 +46323,7 @@ class InterceptorManager {
    *
    * @param {Number} id The ID that was returned by `use`
    *
-   * @returns {Boolean} `true` if the interceptor was removed, `false` otherwise
+   * @returns {void}
    */
   eject(id) {
     if (this.handlers[id]) {
@@ -46447,7 +47198,7 @@ function buildFullPath(baseURL, requestedURL, allowAbsoluteUrls) {
   return requestedURL;
 }
 
-const VERSION = "1.12.1";
+const VERSION = "1.13.1";
 
 function parseProtocol(url) {
   const match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
@@ -47024,6 +47775,13 @@ const brotliOptions = {
   finishFlush: zlib__default["default"].constants.BROTLI_OPERATION_FLUSH
 };
 
+const {
+  HTTP2_HEADER_SCHEME,
+  HTTP2_HEADER_METHOD,
+  HTTP2_HEADER_PATH,
+  HTTP2_HEADER_STATUS
+} = http2.constants;
+
 const isBrotliSupported = utils$1.isFunction(zlib__default["default"].createBrotliDecompress);
 
 const {http: httpFollow, https: httpsFollow} = followRedirects__default["default"];
@@ -47042,6 +47800,100 @@ const flushOnFinish = (stream, [throttled, flush]) => {
 
   return throttled;
 };
+
+class Http2Sessions {
+  constructor() {
+    this.sessions = Object.create(null);
+  }
+
+  getSession(authority, options) {
+    options = Object.assign({
+      sessionTimeout: 1000
+    }, options);
+
+    let authoritySessions;
+
+    if ((authoritySessions = this.sessions[authority])) {
+      let len = authoritySessions.length;
+
+      for (let i = 0; i < len; i++) {
+        const [sessionHandle, sessionOptions] = authoritySessions[i];
+        if (!sessionHandle.destroyed && !sessionHandle.closed && util__default["default"].isDeepStrictEqual(sessionOptions, options)) {
+          return sessionHandle;
+        }
+      }
+    }
+
+    const session = http2.connect(authority, options);
+
+    let removed;
+
+    const removeSession = () => {
+      if (removed) {
+        return;
+      }
+
+      removed = true;
+
+      let entries = authoritySessions, len = entries.length, i = len;
+
+      while (i--) {
+        if (entries[i][0] === session) {
+          entries.splice(i, 1);
+          if (len === 1) {
+            delete this.sessions[authority];
+            return;
+          }
+        }
+      }
+    };
+
+    const originalRequestFn = session.request;
+
+    const {sessionTimeout} = options;
+
+    if(sessionTimeout != null) {
+
+      let timer;
+      let streamsCount = 0;
+
+      session.request = function () {
+        const stream = originalRequestFn.apply(this, arguments);
+
+        streamsCount++;
+
+        if (timer) {
+          clearTimeout(timer);
+          timer = null;
+        }
+
+        stream.once('close', () => {
+          if (!--streamsCount) {
+            timer = setTimeout(() => {
+              timer = null;
+              removeSession();
+            }, sessionTimeout);
+          }
+        });
+
+        return stream;
+      };
+    }
+
+    session.once('close', removeSession);
+
+    let entries = this.sessions[authority], entry = [
+      session,
+      options
+    ];
+
+    entries ? this.sessions[authority].push(entry) : authoritySessions =  this.sessions[authority] = [entry];
+
+    return session;
+  }
+}
+
+const http2Sessions = new Http2Sessions();
 
 
 /**
@@ -47155,15 +48007,67 @@ const resolveFamily = ({address, family}) => {
 
 const buildAddressEntry = (address, family) => resolveFamily(utils$1.isObject(address) ? address : {address, family});
 
+const http2Transport = {
+  request(options, cb) {
+      const authority = options.protocol + '//' + options.hostname + ':' + (options.port || 80);
+
+      const {http2Options, headers} = options;
+
+      const session = http2Sessions.getSession(authority, http2Options);
+
+      const http2Headers = {
+        [HTTP2_HEADER_SCHEME]: options.protocol.replace(':', ''),
+        [HTTP2_HEADER_METHOD]: options.method,
+        [HTTP2_HEADER_PATH]: options.path,
+      };
+
+      utils$1.forEach(headers, (header, name) => {
+        name.charAt(0) !== ':' && (http2Headers[name] = header);
+      });
+
+      const req = session.request(http2Headers);
+
+      req.once('response', (responseHeaders) => {
+        const response = req; //duplex
+
+        responseHeaders = Object.assign({}, responseHeaders);
+
+        const status = responseHeaders[HTTP2_HEADER_STATUS];
+
+        delete responseHeaders[HTTP2_HEADER_STATUS];
+
+        response.headers = responseHeaders;
+
+        response.statusCode = +status;
+
+        cb(response);
+      });
+
+      return req;
+  }
+};
+
 /*eslint consistent-return:0*/
 const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
   return wrapAsync(async function dispatchHttpRequest(resolve, reject, onDone) {
-    let {data, lookup, family} = config;
+    let {data, lookup, family, httpVersion = 1, http2Options} = config;
     const {responseType, responseEncoding} = config;
     const method = config.method.toUpperCase();
     let isDone;
     let rejected = false;
     let req;
+
+    httpVersion = +httpVersion;
+
+    if (Number.isNaN(httpVersion)) {
+      throw TypeError(`Invalid protocol version: '${config.httpVersion}' is not a number`);
+    }
+
+    if (httpVersion !== 1 && httpVersion !== 2) {
+      throw TypeError(`Unsupported protocol version '${httpVersion}'`);
+    }
+
+    const isHttp2 = httpVersion === 2;
 
     if (lookup) {
       const _lookup = callbackify$1(lookup, (value) => utils$1.isArray(value) ? value : [value]);
@@ -47181,8 +48085,17 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
       };
     }
 
-    // temporary internal emitter until the AxiosRequest class will be implemented
-    const emitter = new events.EventEmitter();
+    const abortEmitter = new events.EventEmitter();
+
+    function abort(reason) {
+      try {
+        abortEmitter.emit('abort', !reason || reason.type ? new CanceledError(null, config, req) : reason);
+      } catch(err) {
+        console.warn('emit error', err);
+      }
+    }
+
+    abortEmitter.once('abort', reject);
 
     const onFinished = () => {
       if (config.cancelToken) {
@@ -47193,22 +48106,8 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
         config.signal.removeEventListener('abort', abort);
       }
 
-      emitter.removeAllListeners();
+      abortEmitter.removeAllListeners();
     };
-
-    onDone((value, isRejected) => {
-      isDone = true;
-      if (isRejected) {
-        rejected = true;
-        onFinished();
-      }
-    });
-
-    function abort(reason) {
-      emitter.emit('abort', !reason || reason.type ? new CanceledError(null, config, req) : reason);
-    }
-
-    emitter.once('abort', reject);
 
     if (config.cancelToken || config.signal) {
       config.cancelToken && config.cancelToken.subscribe(abort);
@@ -47216,6 +48115,31 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
         config.signal.aborted ? abort() : config.signal.addEventListener('abort', abort);
       }
     }
+
+    onDone((response, isRejected) => {
+      isDone = true;
+
+      if (isRejected) {
+        rejected = true;
+        onFinished();
+        return;
+      }
+
+      const {data} = response;
+
+      if (data instanceof stream__default["default"].Readable || data instanceof stream__default["default"].Duplex) {
+        const offListeners = stream__default["default"].finished(data, () => {
+          offListeners();
+          onFinished();
+        });
+      } else {
+        onFinished();
+      }
+    });
+
+
+
+
 
     // Parse url
     const fullPath = buildFullPath(config.baseURL, config.url, config.allowAbsoluteUrls);
@@ -47421,7 +48345,8 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
       protocol,
       family,
       beforeRedirect: dispatchBeforeRedirect,
-      beforeRedirects: {}
+      beforeRedirects: {},
+      http2Options
     };
 
     // cacheable-lookup integration hotfix
@@ -47438,18 +48363,23 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
     let transport;
     const isHttpsRequest = isHttps.test(options.protocol);
     options.agent = isHttpsRequest ? config.httpsAgent : config.httpAgent;
-    if (config.transport) {
-      transport = config.transport;
-    } else if (config.maxRedirects === 0) {
-      transport = isHttpsRequest ? https__default["default"] : http__default["default"];
+
+    if (isHttp2) {
+       transport = http2Transport;
     } else {
-      if (config.maxRedirects) {
-        options.maxRedirects = config.maxRedirects;
+      if (config.transport) {
+        transport = config.transport;
+      } else if (config.maxRedirects === 0) {
+        transport = isHttpsRequest ? https__default["default"] : http__default["default"];
+      } else {
+        if (config.maxRedirects) {
+          options.maxRedirects = config.maxRedirects;
+        }
+        if (config.beforeRedirect) {
+          options.beforeRedirects.config = config.beforeRedirect;
+        }
+        transport = isHttpsRequest ? httpsFollow : httpFollow;
       }
-      if (config.beforeRedirect) {
-        options.beforeRedirects.config = config.beforeRedirect;
-      }
-      transport = isHttpsRequest ? httpsFollow : httpFollow;
     }
 
     if (config.maxBodyLength > -1) {
@@ -47469,7 +48399,7 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
 
       const streams = [res];
 
-      const responseLength = +res.headers['content-length'];
+      const responseLength = utils$1.toFiniteNumber(res.headers['content-length']);
 
       if (onDownloadProgress || maxDownloadRate) {
         const transformStream = new AxiosTransformStream$1({
@@ -47532,10 +48462,7 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
 
       responseStream = streams.length > 1 ? stream__default["default"].pipeline(streams, utils$1.noop) : streams[0];
 
-      const offListeners = stream__default["default"].finished(responseStream, () => {
-        offListeners();
-        onFinished();
-      });
+
 
       const response = {
         status: res.statusCode,
@@ -47561,7 +48488,7 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
             // stream.destroy() emit aborted event before calling reject() on Node.js v16
             rejected = true;
             responseStream.destroy();
-            reject(new AxiosError('maxContentLength size of ' + config.maxContentLength + ' exceeded',
+            abort(new AxiosError('maxContentLength size of ' + config.maxContentLength + ' exceeded',
               AxiosError.ERR_BAD_RESPONSE, config, lastRequest));
           }
         });
@@ -47603,7 +48530,7 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
         });
       }
 
-      emitter.once('abort', err => {
+      abortEmitter.once('abort', err => {
         if (!responseStream.destroyed) {
           responseStream.emit('error', err);
           responseStream.destroy();
@@ -47611,9 +48538,12 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
       });
     });
 
-    emitter.once('abort', err => {
-      reject(err);
-      req.destroy(err);
+    abortEmitter.once('abort', err => {
+      if (req.close) {
+        req.close();
+      } else {
+        req.destroy(err);
+      }
     });
 
     // Handle errors
@@ -47635,7 +48565,7 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
       const timeout = parseInt(config.timeout, 10);
 
       if (Number.isNaN(timeout)) {
-        reject(new AxiosError(
+        abort(new AxiosError(
           'error trying to parse `config.timeout` to int',
           AxiosError.ERR_BAD_OPTION_VALUE,
           config,
@@ -47657,13 +48587,12 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
         if (config.timeoutErrorMessage) {
           timeoutErrorMessage = config.timeoutErrorMessage;
         }
-        reject(new AxiosError(
+        abort(new AxiosError(
           timeoutErrorMessage,
           transitional.clarifyTimeoutError ? AxiosError.ETIMEDOUT : AxiosError.ECONNABORTED,
           config,
           req
         ));
-        abort();
       });
     }
 
@@ -47690,7 +48619,8 @@ const httpAdapter = isHttpAdapterSupported && function httpAdapter(config) {
 
       data.pipe(req);
     } else {
-      req.end(data);
+      data && req.write(data);
+      req.end();
     }
   });
 };
@@ -47712,27 +48642,38 @@ const cookies = platform.hasStandardBrowserEnv ?
 
   // Standard browser envs support document.cookie
   {
-    write(name, value, expires, path, domain, secure) {
-      const cookie = [name + '=' + encodeURIComponent(value)];
+    write(name, value, expires, path, domain, secure, sameSite) {
+      if (typeof document === 'undefined') return;
 
-      utils$1.isNumber(expires) && cookie.push('expires=' + new Date(expires).toGMTString());
+      const cookie = [`${name}=${encodeURIComponent(value)}`];
 
-      utils$1.isString(path) && cookie.push('path=' + path);
-
-      utils$1.isString(domain) && cookie.push('domain=' + domain);
-
-      secure === true && cookie.push('secure');
+      if (utils$1.isNumber(expires)) {
+        cookie.push(`expires=${new Date(expires).toUTCString()}`);
+      }
+      if (utils$1.isString(path)) {
+        cookie.push(`path=${path}`);
+      }
+      if (utils$1.isString(domain)) {
+        cookie.push(`domain=${domain}`);
+      }
+      if (secure === true) {
+        cookie.push('secure');
+      }
+      if (utils$1.isString(sameSite)) {
+        cookie.push(`SameSite=${sameSite}`);
+      }
 
       document.cookie = cookie.join('; ');
     },
 
     read(name) {
-      const match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-      return (match ? decodeURIComponent(match[3]) : null);
+      if (typeof document === 'undefined') return null;
+      const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+      return match ? decodeURIComponent(match[1]) : null;
     },
 
     remove(name) {
-      this.write(name, '', Date.now() - 86400000);
+      this.write(name, '', Date.now() - 86400000, '/');
     }
   }
 
@@ -47775,11 +48716,11 @@ function mergeConfig(config1, config2) {
   }
 
   // eslint-disable-next-line consistent-return
-  function mergeDeepProperties(a, b, prop , caseless) {
+  function mergeDeepProperties(a, b, prop, caseless) {
     if (!utils$1.isUndefined(b)) {
-      return getMergedValue(a, b, prop , caseless);
+      return getMergedValue(a, b, prop, caseless);
     } else if (!utils$1.isUndefined(a)) {
-      return getMergedValue(undefined, a, prop , caseless);
+      return getMergedValue(undefined, a, prop, caseless);
     }
   }
 
@@ -47837,7 +48778,7 @@ function mergeConfig(config1, config2) {
     socketPath: defaultToConfig2,
     responseEncoding: defaultToConfig2,
     validateStatus: mergeDirectKeys,
-    headers: (a, b , prop) => mergeDeepProperties(headersToObject(a), headersToObject(b),prop, true)
+    headers: (a, b, prop) => mergeDeepProperties(headersToObject(a), headersToObject(b), prop, true)
   };
 
   utils$1.forEach(Object.keys({...config1, ...config2}), function computeConfigValue(prop) {
@@ -48227,9 +49168,9 @@ const DEFAULT_CHUNK_SIZE = 64 * 1024;
 
 const {isFunction} = utils$1;
 
-const globalFetchAPI = (({fetch, Request, Response}) => ({
-    fetch, Request, Response
-  }))(utils$1.global);
+const globalFetchAPI = (({Request, Response}) => ({
+  Request, Response
+}))(utils$1.global);
 
 const {
   ReadableStream: ReadableStream$1, TextEncoder: TextEncoder$1
@@ -48245,8 +49186,12 @@ const test = (fn, ...args) => {
 };
 
 const factory = (env) => {
-  const {fetch, Request, Response} = Object.assign({}, globalFetchAPI, env);
-  const isFetchSupported = isFunction(fetch);
+  env = utils$1.merge.call({
+    skipUndefined: true
+  }, globalFetchAPI, env);
+
+  const {fetch: envFetch, Request, Response} = env;
+  const isFetchSupported = envFetch ? isFunction(envFetch) : typeof fetch === 'function';
   const isRequestSupported = isFunction(Request);
   const isResponseSupported = isFunction(Response);
 
@@ -48349,6 +49294,8 @@ const factory = (env) => {
       fetchOptions
     } = resolveConfig(config);
 
+    let _fetch = envFetch || fetch;
+
     responseType = responseType ? (responseType + '').toLowerCase() : 'text';
 
     let composedSignal = composeSignals$1([signal, cancelToken && cancelToken.toAbortSignal()], timeout);
@@ -48408,7 +49355,7 @@ const factory = (env) => {
 
       request = isRequestSupported && new Request(url, resolvedOptions);
 
-      let response = await (isRequestSupported ? fetch(request, fetchOptions) : fetch(url, resolvedOptions));
+      let response = await (isRequestSupported ? _fetch(request, fetchOptions) : _fetch(url, resolvedOptions));
 
       const isStreamResponse = supportsResponseStream && (responseType === 'stream' || responseType === 'response');
 
@@ -48471,12 +49418,8 @@ const factory = (env) => {
 const seedCache = new Map();
 
 const getFetch = (config) => {
-  let env = utils$1.merge.call({
-    skipUndefined: true
-  }, globalFetchAPI, config ? config.env : null);
-
+  let env = (config && config.env) || {};
   const {fetch, Request, Response} = env;
-
   const seeds = [
     Request, Response, fetch
   ];
@@ -48498,6 +49441,15 @@ const getFetch = (config) => {
 
 getFetch();
 
+/**
+ * Known adapters mapping.
+ * Provides environment-specific adapters for Axios:
+ * - `http` for Node.js
+ * - `xhr` for browsers
+ * - `fetch` for fetch API-based requests
+ * 
+ * @type {Object<string, Function|Object>}
+ */
 const knownAdapters = {
   http: httpAdapter,
   xhr: xhrAdapter,
@@ -48506,71 +49458,107 @@ const knownAdapters = {
   }
 };
 
+// Assign adapter names for easier debugging and identification
 utils$1.forEach(knownAdapters, (fn, value) => {
   if (fn) {
     try {
-      Object.defineProperty(fn, 'name', {value});
+      Object.defineProperty(fn, 'name', { value });
     } catch (e) {
       // eslint-disable-next-line no-empty
     }
-    Object.defineProperty(fn, 'adapterName', {value});
+    Object.defineProperty(fn, 'adapterName', { value });
   }
 });
 
+/**
+ * Render a rejection reason string for unknown or unsupported adapters
+ * 
+ * @param {string} reason
+ * @returns {string}
+ */
 const renderReason = (reason) => `- ${reason}`;
 
+/**
+ * Check if the adapter is resolved (function, null, or false)
+ * 
+ * @param {Function|null|false} adapter
+ * @returns {boolean}
+ */
 const isResolvedHandle = (adapter) => utils$1.isFunction(adapter) || adapter === null || adapter === false;
 
-const adapters = {
-  getAdapter: (adapters, config) => {
-    adapters = utils$1.isArray(adapters) ? adapters : [adapters];
+/**
+ * Get the first suitable adapter from the provided list.
+ * Tries each adapter in order until a supported one is found.
+ * Throws an AxiosError if no adapter is suitable.
+ * 
+ * @param {Array<string|Function>|string|Function} adapters - Adapter(s) by name or function.
+ * @param {Object} config - Axios request configuration
+ * @throws {AxiosError} If no suitable adapter is available
+ * @returns {Function} The resolved adapter function
+ */
+function getAdapter(adapters, config) {
+  adapters = utils$1.isArray(adapters) ? adapters : [adapters];
 
-    const {length} = adapters;
-    let nameOrAdapter;
-    let adapter;
+  const { length } = adapters;
+  let nameOrAdapter;
+  let adapter;
 
-    const rejectedReasons = {};
+  const rejectedReasons = {};
 
-    for (let i = 0; i < length; i++) {
-      nameOrAdapter = adapters[i];
-      let id;
+  for (let i = 0; i < length; i++) {
+    nameOrAdapter = adapters[i];
+    let id;
 
-      adapter = nameOrAdapter;
+    adapter = nameOrAdapter;
 
-      if (!isResolvedHandle(nameOrAdapter)) {
-        adapter = knownAdapters[(id = String(nameOrAdapter)).toLowerCase()];
+    if (!isResolvedHandle(nameOrAdapter)) {
+      adapter = knownAdapters[(id = String(nameOrAdapter)).toLowerCase()];
 
-        if (adapter === undefined) {
-          throw new AxiosError(`Unknown adapter '${id}'`);
-        }
+      if (adapter === undefined) {
+        throw new AxiosError(`Unknown adapter '${id}'`);
       }
-
-      if (adapter && (utils$1.isFunction(adapter) || (adapter = adapter.get(config)))) {
-        break;
-      }
-
-      rejectedReasons[id || '#' + i] = adapter;
     }
 
-    if (!adapter) {
+    if (adapter && (utils$1.isFunction(adapter) || (adapter = adapter.get(config)))) {
+      break;
+    }
 
-      const reasons = Object.entries(rejectedReasons)
-        .map(([id, state]) => `adapter ${id} ` +
-          (state === false ? 'is not supported by the environment' : 'is not available in the build')
-        );
+    rejectedReasons[id || '#' + i] = adapter;
+  }
 
-      let s = length ?
-        (reasons.length > 1 ? 'since :\n' + reasons.map(renderReason).join('\n') : ' ' + renderReason(reasons[0])) :
-        'as no adapter specified';
-
-      throw new AxiosError(
-        `There is no suitable adapter to dispatch the request ` + s,
-        'ERR_NOT_SUPPORT'
+  if (!adapter) {
+    const reasons = Object.entries(rejectedReasons)
+      .map(([id, state]) => `adapter ${id} ` +
+        (state === false ? 'is not supported by the environment' : 'is not available in the build')
       );
-    }
 
-    return adapter;
-  },
+    let s = length ?
+      (reasons.length > 1 ? 'since :\n' + reasons.map(renderReason).join('\n') : ' ' + renderReason(reasons[0])) :
+      'as no adapter specified';
+
+    throw new AxiosError(
+      `There is no suitable adapter to dispatch the request ` + s,
+      'ERR_NOT_SUPPORT'
+    );
+  }
+
+  return adapter;
+}
+
+/**
+ * Exports Axios adapters and utility to resolve an adapter
+ */
+const adapters = {
+  /**
+   * Resolve an adapter from a list of adapter names or functions.
+   * @type {Function}
+   */
+  getAdapter,
+
+  /**
+   * Exposes all known adapters
+   * @type {Object<string, Function|Object>}
+   */
   adapters: knownAdapters
 };
 
@@ -48901,8 +49889,6 @@ class Axios {
 
     let newConfig = config;
 
-    i = 0;
-
     while (i < len) {
       const onFulfilled = requestInterceptorChain[i++];
       const onRejected = requestInterceptorChain[i++];
@@ -49206,6 +50192,12 @@ const HttpStatusCode = {
   LoopDetected: 508,
   NotExtended: 510,
   NetworkAuthenticationRequired: 511,
+  WebServerIsDown: 521,
+  ConnectionTimedOut: 522,
+  OriginIsUnreachable: 523,
+  TimeoutOccurred: 524,
+  SslHandshakeFailed: 525,
+  InvalidSslCertificate: 526,
 };
 
 Object.entries(HttpStatusCode).forEach(([key, value]) => {
