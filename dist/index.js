@@ -7577,6 +7577,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 __exportStar(__nccwpck_require__(4970), exports);
 __exportStar(__nccwpck_require__(93), exports);
+__exportStar(__nccwpck_require__(4250), exports);
 __exportStar(__nccwpck_require__(3240), exports);
 __exportStar(__nccwpck_require__(7374), exports);
 __exportStar(__nccwpck_require__(2216), exports);
@@ -7628,6 +7629,78 @@ var ActivityLogEntryCategory;
     ActivityLogEntryCategory["Finished"] = "Finished";
     ActivityLogEntryCategory["Abandoned"] = "Abandoned";
 })(ActivityLogEntryCategory = exports.ActivityLogEntryCategory || (exports.ActivityLogEntryCategory = {}));
+
+
+/***/ }),
+
+/***/ 4250:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ServerTaskRepository = void 0;
+var apiLocation_1 = __nccwpck_require__(7963);
+var ServerTaskRepository = /** @class */ (function () {
+    function ServerTaskRepository(client) {
+        this.baseApiPathTemplate = "".concat(apiLocation_1.apiLocation, "/tasks");
+        this.client = client;
+    }
+    ServerTaskRepository.prototype.cancel = function (serverTaskId) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!serverTaskId) {
+                            throw new Error("Server Task Id was not provided");
+                        }
+                        return [4 /*yield*/, this.client.post("".concat(this.baseApiPathTemplate, "/").concat(serverTaskId, "/cancel"), {})];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return ServerTaskRepository;
+}());
+exports.ServerTaskRepository = ServerTaskRepository;
 
 
 /***/ }),
@@ -7687,28 +7760,33 @@ var __values = (this && this.__values) || function(o) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ServerTaskWaiter = void 0;
 var serverTasks_1 = __nccwpck_require__(9814);
+var serverTasks_2 = __nccwpck_require__(9814);
 var ServerTaskWaiter = /** @class */ (function () {
     function ServerTaskWaiter(client, spaceName) {
         this.client = client;
         this.spaceName = spaceName;
     }
-    ServerTaskWaiter.prototype.waitForServerTasksToComplete = function (serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback) {
+    ServerTaskWaiter.prototype.waitForServerTasksToComplete = function (serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback, cancelOnTimeout) {
+        if (cancelOnTimeout === void 0) { cancelOnTimeout = false; }
         return __awaiter(this, void 0, void 0, function () {
-            var spaceServerTaskRepository;
+            var spaceServerTaskRepository, serverTaskRepository;
             return __generator(this, function (_a) {
                 spaceServerTaskRepository = new serverTasks_1.SpaceServerTaskRepository(this.client, this.spaceName);
-                return [2 /*return*/, this.waitForTasks(spaceServerTaskRepository, serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback)];
+                serverTaskRepository = new serverTasks_2.ServerTaskRepository(this.client);
+                return [2 /*return*/, this.waitForTasks(spaceServerTaskRepository, serverTaskRepository, serverTaskIds, statusCheckSleepCycle, timeout, cancelOnTimeout, pollingCallback)];
             });
         });
     };
-    ServerTaskWaiter.prototype.waitForServerTaskToComplete = function (serverTaskId, statusCheckSleepCycle, timeout, pollingCallback) {
+    ServerTaskWaiter.prototype.waitForServerTaskToComplete = function (serverTaskId, statusCheckSleepCycle, timeout, pollingCallback, cancelOnTimeout) {
+        if (cancelOnTimeout === void 0) { cancelOnTimeout = false; }
         return __awaiter(this, void 0, void 0, function () {
-            var spaceServerTaskRepository, tasks;
+            var spaceServerTaskRepository, serverTaskRepository, tasks;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         spaceServerTaskRepository = new serverTasks_1.SpaceServerTaskRepository(this.client, this.spaceName);
-                        return [4 /*yield*/, this.waitForTasks(spaceServerTaskRepository, [serverTaskId], statusCheckSleepCycle, timeout, pollingCallback)];
+                        serverTaskRepository = new serverTasks_2.ServerTaskRepository(this.client);
+                        return [4 /*yield*/, this.waitForTasks(spaceServerTaskRepository, serverTaskRepository, [serverTaskId], statusCheckSleepCycle, timeout, cancelOnTimeout, pollingCallback)];
                     case 1:
                         tasks = _a.sent();
                         return [2 /*return*/, tasks[0]];
@@ -7716,9 +7794,9 @@ var ServerTaskWaiter = /** @class */ (function () {
             });
         });
     };
-    ServerTaskWaiter.prototype.waitForTasks = function (spaceServerTaskRepository, serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback) {
+    ServerTaskWaiter.prototype.waitForTasks = function (spaceServerTaskRepository, serverTaskRepository, serverTaskIds, statusCheckSleepCycle, timeout, cancelOnTimeout, pollingCallback) {
         return __awaiter(this, void 0, void 0, function () {
-            var sleep, stop, t, completedTasks, _loop_1;
+            var sleep, stop, timedOut, t, completedTasks, _loop_1;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -7733,13 +7811,15 @@ var ServerTaskWaiter = /** @class */ (function () {
                             return [2 /*return*/, new Promise(function (r) { return setTimeout(r, ms); })];
                         }); }); };
                         stop = false;
+                        timedOut = false;
                         t = setTimeout(function () {
                             stop = true;
+                            timedOut = true;
                         }, timeout);
                         completedTasks = [];
                         _a.label = 1;
                     case 1:
-                        _a.trys.push([1, , 5, 6]);
+                        _a.trys.push([1, , 7, 8]);
                         _loop_1 = function () {
                             var tasks, unknownTaskIds, nowCompletedTaskIds, tasks_1, tasks_1_1, task;
                             var e_1, _b;
@@ -7794,11 +7874,64 @@ var ServerTaskWaiter = /** @class */ (function () {
                     case 3:
                         _a.sent();
                         return [3 /*break*/, 2];
-                    case 4: return [3 /*break*/, 6];
+                    case 4:
+                        if (!(timedOut && cancelOnTimeout && serverTaskIds.length > 0)) return [3 /*break*/, 6];
+                        return [4 /*yield*/, this.cancelTasks(serverTaskRepository, serverTaskIds)];
                     case 5:
+                        _a.sent();
+                        _a.label = 6;
+                    case 6:
+                        if (timedOut && cancelOnTimeout) {
+                            throw new Error("Timeout reached after ".concat(timeout / 1000, " seconds. Tasks were cancelled."));
+                        }
+                        return [3 /*break*/, 8];
+                    case 7:
                         clearTimeout(t);
                         return [7 /*endfinally*/];
-                    case 6: return [2 /*return*/, completedTasks];
+                    case 8: return [2 /*return*/, completedTasks];
+                }
+            });
+        });
+    };
+    ServerTaskWaiter.prototype.cancelTasks = function (serverTaskRepository, taskIds) {
+        return __awaiter(this, void 0, void 0, function () {
+            var taskIds_1, taskIds_1_1, taskId, error_1, e_2_1;
+            var e_2, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _b.trys.push([0, 7, 8, 9]);
+                        taskIds_1 = __values(taskIds), taskIds_1_1 = taskIds_1.next();
+                        _b.label = 1;
+                    case 1:
+                        if (!!taskIds_1_1.done) return [3 /*break*/, 6];
+                        taskId = taskIds_1_1.value;
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, 4, , 5]);
+                        return [4 /*yield*/, serverTaskRepository.cancel(taskId)];
+                    case 3:
+                        _b.sent();
+                        return [3 /*break*/, 5];
+                    case 4:
+                        error_1 = _b.sent();
+                        console.warn("Failed to cancel task ".concat(taskId, ":"), error_1);
+                        return [3 /*break*/, 5];
+                    case 5:
+                        taskIds_1_1 = taskIds_1.next();
+                        return [3 /*break*/, 1];
+                    case 6: return [3 /*break*/, 9];
+                    case 7:
+                        e_2_1 = _b.sent();
+                        e_2 = { error: e_2_1 };
+                        return [3 /*break*/, 9];
+                    case 8:
+                        try {
+                            if (taskIds_1_1 && !taskIds_1_1.done && (_a = taskIds_1.return)) _a.call(taskIds_1);
+                        }
+                        finally { if (e_2) throw e_2.error; }
+                        return [7 /*endfinally*/];
+                    case 9: return [2 /*return*/];
                 }
             });
         });
@@ -17208,7 +17341,7 @@ function expand(str, isTop) {
     var isOptions = m.body.indexOf(',') >= 0;
     if (!isSequence && !isOptions) {
       // {a},b}
-      if (m.post.match(/,.*\}/)) {
+      if (m.post.match(/,(?!,).*\}/)) {
         str = m.pre + '{' + m.body + escClose + m.post;
         return expand(str);
       }
@@ -43967,7 +44100,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.createReleaseFromInputs = void 0;
+exports.createReleaseFromInputs = createReleaseFromInputs;
 const api_client_1 = __nccwpck_require__(1212);
 const fs_1 = __importDefault(__nccwpck_require__(9896));
 function createReleaseFromInputs(client, parameters) {
@@ -43998,7 +44131,6 @@ function createReleaseFromInputs(client, parameters) {
         return allocatedReleaseNumber.ReleaseVersion;
     });
 }
-exports.createReleaseFromInputs = createReleaseFromInputs;
 
 
 /***/ }),
@@ -44079,7 +44211,7 @@ const api_wrapper_1 = __nccwpck_require__(6049);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getInputParameters = void 0;
+exports.getInputParameters = getInputParameters;
 const core_1 = __nccwpck_require__(7484);
 const EnvironmentVariables = {
     URL: 'OCTOPUS_URL',
@@ -44132,7 +44264,6 @@ function getInputParameters() {
     }
     return parameters;
 }
-exports.getInputParameters = getInputParameters;
 
 
 /***/ }),
