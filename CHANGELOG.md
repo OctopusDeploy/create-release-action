@@ -1,5 +1,23 @@
 # Changelog
 
+## [4.0.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.3.0...v4.0.0) (2025-12-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update node to node 24 ([#606](https://github.com/OctopusDeploy/create-release-action/issues/606))
+
+### Features
+
+* Document use of custom fields ([#591](https://github.com/OctopusDeploy/create-release-action/issues/591)) ([c3b12c4](https://github.com/OctopusDeploy/create-release-action/commit/c3b12c4c0df42b378ab47b2c007bbc9dd85dc527))
+* Update node to node 24 ([#606](https://github.com/OctopusDeploy/create-release-action/issues/606)) ([9201b12](https://github.com/OctopusDeploy/create-release-action/commit/9201b12c4dcfb0fa8542fff9db4fd108a56b679c))
+
+
+### Bug Fixes
+
+* **deps:** update dependency tmp to v0.2.4 [security] ([#576](https://github.com/OctopusDeploy/create-release-action/issues/576)) ([02c0ac0](https://github.com/OctopusDeploy/create-release-action/commit/02c0ac01aaa929e46d2d3df9e165e917441b628a))
+* **deps:** update dependency tmp to v0.2.5 ([#579](https://github.com/OctopusDeploy/create-release-action/issues/579)) ([4537c5c](https://github.com/OctopusDeploy/create-release-action/commit/4537c5c674267ad979a5de146b112aea614ab1cf))
+
 ## [3.3.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.4...v3.3.0) (2025-06-30)
 
 
