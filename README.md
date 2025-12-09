@@ -36,7 +36,7 @@ env:
 steps:
   # ...
   - name: Create a release in Octopus Deploy 🐙
-    uses: OctopusDeploy/create-release-action@v3
+    uses: OctopusDeploy/create-release-action@v4
     with:
       project: 'MyProject'
 ```
@@ -51,7 +51,7 @@ env:
 steps:
   # ...
   - name: Create a release in Octopus Deploy 🐙
-    uses: OctopusDeploy/create-release-action@v3
+    uses: OctopusDeploy/create-release-action@v4
     with:
       project: 'MyProject'
       git_ref: ${{ (github.ref_type == 'tag' && github.event.repository.default_branch ) || (github.head_ref || github.ref) }}
@@ -68,7 +68,7 @@ env:
 steps:
   # ...
   - name: Create a release in Octopus Deploy 🐙
-    uses: OctopusDeploy/create-release-action@v3
+    uses: OctopusDeploy/create-release-action@v4
     with:
       project: 'MyProject'
       packages: |
