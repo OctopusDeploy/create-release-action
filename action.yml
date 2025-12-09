@@ -22,7 +22,7 @@ inputs:
   git_commit:
     description: 'Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter.'
   ignore_existing:
-    default: false
+    default: "false"
     description: 'Ignore existing releases if present in Octopus Deploy with the matching version number.'
   release_notes:
     description: 'The release notes text associated with the new release (Markdown is supported).'
@@ -42,5 +42,5 @@ outputs:
     description: 'The release number assigned to the Release in Octopus Deploy'
 
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
