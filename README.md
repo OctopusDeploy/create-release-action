@@ -36,6 +36,7 @@ env:
 steps:
   # ...
   - name: Create a release in Octopus Deploy 🐙
+    id: create_a_release_in_octopus_deploy
     uses: OctopusDeploy/create-release-action@v4
     with:
       project: 'MyProject'
@@ -51,6 +52,7 @@ env:
 steps:
   # ...
   - name: Create a release in Octopus Deploy 🐙
+    id: create_a_release_in_octopus_deploy  
     uses: OctopusDeploy/create-release-action@v4
     with:
       project: 'MyProject'
@@ -68,6 +70,7 @@ env:
 steps:
   # ...
   - name: Create a release in Octopus Deploy 🐙
+    id: create_a_release_in_octopus_deploy  
     uses: OctopusDeploy/create-release-action@v4
     with:
       project: 'MyProject'
