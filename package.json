@@ -10,7 +10,7 @@
   },
   "description": "GitHub Action to Create a Release in Octopus Deploy",
   "devDependencies": {
-    "@eslint/eslintrc": "3.3.3",
+    "@eslint/eslintrc": "3.3.4",
     "@eslint/js": "9.39.3",
     "@octopusdeploy/runtime-inputs": "0.16.0",
     "@stylistic/eslint-plugin": "5.9.0",
