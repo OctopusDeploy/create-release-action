@@ -16,7 +16,7 @@
     "@stylistic/eslint-plugin": "5.9.0",
     "@types/jest": "29.5.14",
     "@types/json-patch": "0.0.33",
-    "@types/lodash": "4.17.23",
+    "@types/lodash": "4.17.24",
     "@types/node": "24.7.2",
     "@types/tmp": "0.2.6",
     "@typescript-eslint/eslint-plugin": "8.56.0",
