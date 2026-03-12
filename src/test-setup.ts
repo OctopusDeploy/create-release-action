@@ -9,7 +9,7 @@ process.env = Object.assign(process.env, {
   INPUT_DEBUG: false,
   INPUT_DEFAULT_PACKAGE_VERSION: false,
   INPUT_IGNORE_EXISTING: false,
-  INPUT_CUSTOM_FIELDS: 'key1:value\key2:value:with:colons',
+  INPUT_CUSTOM_FIELDS: 'key1:value \n key2:value:with:colons',
   INPUT_PACKAGES: ' foo:1.2.3-quux \n bar:4.5.6-xyzzy \n ',
   INPUT_PROJECT: 'Projects-7341',
   INPUT_SERVER: process.env['OCTOPUS_URL'],
