@@ -35,7 +35,9 @@ export interface InputParameters {
 const createCustomFields = (inputParameters: string[]): Record<string, string> => {
   return inputParameters.reduce(
     (acc, field) => {
-      const [key, value] = field.split(':').map(part => part.trim())
+      const colonIndex = field.indexOf(':')
+      const key = field.slice(0, colonIndex).trim()
+      const value = field.slice(colonIndex + 1).trim()
       if (key && value) {
         acc[key] = value
       }
