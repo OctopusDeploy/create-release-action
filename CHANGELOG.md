@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.1](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.0...v4.1.1) (2026-03-13)
+
+
+### Bug Fixes
+
+* Colon splitting for custom fields ([#649](https://github.com/OctopusDeploy/create-release-action/issues/649)) ([bd61d14](https://github.com/OctopusDeploy/create-release-action/commit/bd61d14ce73900bf92e9aecb6bd714da9e964f11))
+
 ## [4.1.0](https://github.com/OctopusDeploy/create-release-action/compare/v4.0.0...v4.1.0) (2026-02-27)
 
 
