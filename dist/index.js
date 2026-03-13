@@ -67008,9 +67008,7 @@ const EnvironmentVariables = {
 };
 const createCustomFields = (inputParameters) => {
     return inputParameters.reduce((acc, field) => {
-        const colonIndex = field.indexOf(':');
-        const key = field.slice(0, colonIndex).trim();
-        const value = field.slice(colonIndex + 1).trim();
+        const [key, value] = field.split(':').map(part => part.trim());
         if (key && value) {
             acc[key] = value;
         }
