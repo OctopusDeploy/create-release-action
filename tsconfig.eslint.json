@@ -3,7 +3,7 @@
     "include": [
       "src",
       "__tests__",
-      "renovate-config.js"
+      "renovate-config.cjs"
     ],
     "compilerOptions": {
       "allowJs": true

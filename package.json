@@ -4,7 +4,7 @@
     "url": "https://github.com/OctopusDeploy/create-release-action/issues"
   },
   "dependencies": {
-    "@actions/core": "1.11.1",
+    "@actions/core": "^3.0.0",
     "@octopusdeploy/api-client": "3.7.0",
     "tmp": "0.2.5"
   },
@@ -38,6 +38,9 @@
   "jest": {
     "clearMocks": true,
     "collectCoverage": true,
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
     "moduleFileExtensions": [
       "js",
       "ts"
@@ -52,7 +55,13 @@
     "testRunner": "jest-circus/runner",
     "testTimeout": 10000,
     "transform": {
-      "^.+\\.ts$": "ts-jest"
+      "^.+\\.ts$": [
+        "ts-jest",
+        {
+          "useESM": true,
+          "tsconfig": "tsconfig.test.json"
+        }
+      ]
     },
     "verbose": true
   },
@@ -85,9 +94,9 @@
     "format-check": "prettier --check **/*.ts",
     "prebuild": "eslint src/**/*.ts",
     "postbuild": "ncc build out/index.js -o dist",
-    "test": "jest --ci --reporters=default --reporters=jest-junit",
-    "test:unit": "jest --ci --reporters=default --reporters=jest-junit --testPathPattern=__tests__/unit",
-    "test:integration": "jest --ci --reporters=default --reporters=jest-junit --testPathPattern=__tests__/integration"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --ci --reporters=default --reporters=jest-junit",
+    "test:unit": "node --experimental-vm-modules node_modules/jest/bin/jest.js --ci --reporters=default --reporters=jest-junit --testPathPattern=__tests__/unit",
+    "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js --ci --reporters=default --reporters=jest-junit --testPathPattern=__tests__/integration"
   },
   "version": "4.1.1"
 }
