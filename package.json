@@ -22,6 +22,7 @@
     "@typescript-eslint/eslint-plugin": "8.57.1",
     "@typescript-eslint/parser": "8.57.1",
     "@vercel/ncc": "0.38.4",
+    "esbuild": "^0.27.4",
     "eslint": "9.39.4",
     "eslint-plugin-github": "6.0.0",
     "eslint-plugin-jest": "29.15.0",
@@ -93,7 +94,7 @@
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "prebuild": "eslint src/**/*.ts",
-    "postbuild": "ncc build out/index.js -o dist",
+    "postbuild": "esbuild src/index.ts --bundle --platform=node --format=cjs --outfile=dist/index.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --ci --reporters=default --reporters=jest-junit",
     "test:unit": "node --experimental-vm-modules node_modules/jest/bin/jest.js --ci --reporters=default --reporters=jest-junit --testPathPattern=__tests__/unit",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js --ci --reporters=default --reporters=jest-junit --testPathPattern=__tests__/integration"
