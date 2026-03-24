@@ -3,11 +3,10 @@
     "target": "es2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "outDir": "./out",
-    "rootDir": "./src",
     "strict": true,
     "noImplicitAny": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noEmit": true
   },
   "include": ["src"]
 }
