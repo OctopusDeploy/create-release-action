@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.2](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.1...v4.1.2) (2026-03-25)
+
+
+### Bug Fixes
+
+* **deps:** upgrade @actions/core from v1 to v3 with ESM migration ([#652](https://github.com/OctopusDeploy/create-release-action/issues/652)) ([aee6395](https://github.com/OctopusDeploy/create-release-action/commit/aee6395b12926cf2f1d5f59034971f1ceb8919e4))
+
 ## [4.1.1](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.0...v4.1.1) (2026-03-13)
 
 
