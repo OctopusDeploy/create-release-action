@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.1.3](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.2...v4.1.3) (2026-04-13)
+
+
+### Bug Fixes
+
+* **deps:** bump axios from 1.13.5 to 1.15.0 ([#667](https://github.com/OctopusDeploy/create-release-action/issues/667)) ([56be13b](https://github.com/OctopusDeploy/create-release-action/commit/56be13bbd1d358770836256c4811030e754a6e5c))
+* Update path to config file in Renovate workflow ([#661](https://github.com/OctopusDeploy/create-release-action/issues/661)) ([7dba9ec](https://github.com/OctopusDeploy/create-release-action/commit/7dba9ec3ae141324b809055538435771263b73ab))
+
 ## [4.1.2](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.1...v4.1.2) (2026-03-25)
 
 
