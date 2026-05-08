@@ -6,13 +6,14 @@ module.exports = {
     ':ignoreModulesAndTests',
     ':pinVersions',
     ':rebaseStalePrs',
-    ':automergeDigest',
-    ':automergePatch',
+    // Automatic merging is temporarily disabled.
+    // ':automergeDigest',
+    // ':automergePatch',
     ':automergePr',
     ':automergeRequireAllStatusChecks',
-    ':automergeLinters',
-    ':automergeTesters',
-    ':automergeTypes',
+    // ':automergeLinters',
+    // ':automergeTesters',
+    // ':automergeTypes',
     'packages:eslint',
     'workarounds:typesNodeVersioning',
     'github>whitesource/merge-confidence:beta'
@@ -20,11 +21,17 @@ module.exports = {
   branchPrefix: 'renovate/',
   platform: 'github',
   repositories: ['OctopusDeploy/create-release-action'],
-  packageRules: [],
+  packageRules: [
+    {
+      matchDatasources: ['npm'],
+      minimumReleaseAge: '2 days'
+    }
+  ],
   timezone: 'Australia/Brisbane',
   onboarding: false,
   requireConfig: false,
   allowedPostUpgradeCommands: ['.*'],
+  allowShellExecutorForPostUpgradeCommands: true,
   postUpgradeTasks: {
     commands: ['npm install && npm run build'],
     fileFilters: ['**/index.js'],

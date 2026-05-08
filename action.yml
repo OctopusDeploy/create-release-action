@@ -22,7 +22,7 @@ inputs:
   git_commit:
     description: 'Git commit pointing to the specific resources of a version controlled Octopus Project. If empty, it will use the HEAD from the corresponding gitRef parameter.'
   ignore_existing:
-    default: false
+    default: "false"
     description: 'Ignore existing releases if present in Octopus Deploy with the matching version number.'
   release_notes:
     description: 'The release notes text associated with the new release (Markdown is supported).'
@@ -34,11 +34,13 @@ inputs:
     description: 'The API key used to access Octopus Deploy. An API key is required, but you may also use the OCTOPUS_API_KEY environment variable. It is strongly recommended that this value retrieved from a GitHub secret.'
   space:
     description: 'The name of a space within which this command will be executed. The space name is required, but you may also use the OCTOPUS_SPACE environment variable.'
+  custom_fields:
+    description: 'A multi-line string of custom fields for the release. Format: customFieldName:customFieldValue \n customFieldName2:customFieldValue2.'
 
 outputs:
   release_number:
     description: 'The release number assigned to the Release in Octopus Deploy'
 
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'

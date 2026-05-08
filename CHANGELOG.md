@@ -1,5 +1,72 @@
 # Changelog
 
+## [4.1.3](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.2...v4.1.3) (2026-04-13)
+
+
+### Bug Fixes
+
+* **deps:** bump axios from 1.13.5 to 1.15.0 ([#667](https://github.com/OctopusDeploy/create-release-action/issues/667)) ([56be13b](https://github.com/OctopusDeploy/create-release-action/commit/56be13bbd1d358770836256c4811030e754a6e5c))
+* Update path to config file in Renovate workflow ([#661](https://github.com/OctopusDeploy/create-release-action/issues/661)) ([7dba9ec](https://github.com/OctopusDeploy/create-release-action/commit/7dba9ec3ae141324b809055538435771263b73ab))
+
+## [4.1.2](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.1...v4.1.2) (2026-03-25)
+
+
+### Bug Fixes
+
+* **deps:** upgrade @actions/core from v1 to v3 with ESM migration ([#652](https://github.com/OctopusDeploy/create-release-action/issues/652)) ([aee6395](https://github.com/OctopusDeploy/create-release-action/commit/aee6395b12926cf2f1d5f59034971f1ceb8919e4))
+
+## [4.1.1](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.0...v4.1.1) (2026-03-13)
+
+
+### Bug Fixes
+
+* Colon splitting for custom fields ([#649](https://github.com/OctopusDeploy/create-release-action/issues/649)) ([bd61d14](https://github.com/OctopusDeploy/create-release-action/commit/bd61d14ce73900bf92e9aecb6bd714da9e964f11))
+
+## [4.1.0](https://github.com/OctopusDeploy/create-release-action/compare/v4.0.0...v4.1.0) (2026-02-27)
+
+
+### Features
+
+* Add workflow to check for conventional commit format PR title  ([#611](https://github.com/OctopusDeploy/create-release-action/issues/611)) ([2d92dba](https://github.com/OctopusDeploy/create-release-action/commit/2d92dba1227edd614174384772a1a5593a22831f))
+
+## [4.0.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.3.0...v4.0.0) (2025-12-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update node to node 24 ([#606](https://github.com/OctopusDeploy/create-release-action/issues/606))
+
+### Features
+
+* Document use of custom fields ([#591](https://github.com/OctopusDeploy/create-release-action/issues/591)) ([c3b12c4](https://github.com/OctopusDeploy/create-release-action/commit/c3b12c4c0df42b378ab47b2c007bbc9dd85dc527))
+* Update node to node 24 ([#606](https://github.com/OctopusDeploy/create-release-action/issues/606)) ([9201b12](https://github.com/OctopusDeploy/create-release-action/commit/9201b12c4dcfb0fa8542fff9db4fd108a56b679c))
+
+
+### Bug Fixes
+
+* **deps:** update dependency tmp to v0.2.4 [security] ([#576](https://github.com/OctopusDeploy/create-release-action/issues/576)) ([02c0ac0](https://github.com/OctopusDeploy/create-release-action/commit/02c0ac01aaa929e46d2d3df9e165e917441b628a))
+* **deps:** update dependency tmp to v0.2.5 ([#579](https://github.com/OctopusDeploy/create-release-action/issues/579)) ([4537c5c](https://github.com/OctopusDeploy/create-release-action/commit/4537c5c674267ad979a5de146b112aea614ab1cf))
+
+## [3.3.0](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.4...v3.3.0) (2025-06-30)
+
+
+### Features
+
+* Add custom fields ([#563](https://github.com/OctopusDeploy/create-release-action/issues/563)) ([82e31ae](https://github.com/OctopusDeploy/create-release-action/commit/82e31aecde03dd2523bcd395f08fa392df3ca17d))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @octopusdeploy/api-client to v3.6.0 ([#564](https://github.com/OctopusDeploy/create-release-action/issues/564)) ([2d972fc](https://github.com/OctopusDeploy/create-release-action/commit/2d972fc651a061e6b27ee4821c33d9a5c1b36ba1))
+
+## [3.2.4](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.3...v3.2.4) (2025-03-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/core to v1.11.1 ([2515245](https://github.com/OctopusDeploy/create-release-action/commit/2515245da71cda14d81765f466a851f75e3127ad))
+* **deps:** update dependency @octopusdeploy/api-client to v3.5.2 ([#538](https://github.com/OctopusDeploy/create-release-action/issues/538)) ([b2907b0](https://github.com/OctopusDeploy/create-release-action/commit/b2907b0ea8568edde48847b3fcf4be9d050694f8))
+
 ## [3.2.3](https://github.com/OctopusDeploy/create-release-action/compare/v3.2.2...v3.2.3) (2025-02-11)
 
 
