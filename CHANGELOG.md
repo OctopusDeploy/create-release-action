@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.4](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.3...v4.1.4) (2026-05-12)
+
+
+### Bug Fixes
+
+* patch transitive axios vulnerability via npm audit fix ([#680](https://github.com/OctopusDeploy/create-release-action/issues/680)) ([f9e708e](https://github.com/OctopusDeploy/create-release-action/commit/f9e708e71c364b855868dd3bc2fd7d44cb99a061))
+
 ## [4.1.3](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.2...v4.1.3) (2026-04-13)
 
 
