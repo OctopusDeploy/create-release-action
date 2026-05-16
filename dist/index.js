@@ -19326,10 +19326,107 @@ var require_environmentRepository = __commonJS({
       };
       return __assign.apply(this, arguments);
     };
+    var __awaiter2 = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.EnvironmentRepository = void 0;
     var __1 = require_dist();
     var spaceScopedBasicRepository_1 = require_spaceScopedBasicRepository();
+    var console_1 = require("console");
     var EnvironmentRepository = (
       /** @class */
       function(_super) {
@@ -19352,10 +19449,240 @@ var require_environmentRepository = __commonJS({
             id: environment.Id
           });
         };
+        EnvironmentRepository2.prototype.createEphemeralEnvironment = function(environmentName, projectId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/environments/ephemeral"), { EnvironmentName: environmentName }, {
+                    spaceName: this.spaceName,
+                    projectId
+                  })];
+                case 1:
+                  response = _a.sent();
+                  return [2, response];
+              }
+            });
+          });
+        };
+        EnvironmentRepository2.prototype.getEphemeralEnvironmentProjectStatus = function(environmentId, projectId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/environments/ephemeral/{id}/status"), {
+                    spaceName: this.spaceName,
+                    projectId,
+                    id: environmentId
+                  })];
+                case 1:
+                  response = _a.sent();
+                  return [2, response];
+              }
+            });
+          });
+        };
+        EnvironmentRepository2.prototype.deprovisionEphemeralEnvironmentForProject = function(environmentId, projectId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/projects/{projectId}/environments/ephemeral/{environmentId}/deprovision"), {}, {
+                    spaceName: this.spaceName,
+                    environmentId,
+                    projectId
+                  })];
+                case 1:
+                  response = _a.sent();
+                  return [2, response];
+              }
+            });
+          });
+        };
+        EnvironmentRepository2.prototype.deprovisionEphemeralEnvironment = function(environmentId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/environments/ephemeral/{environmentId}/deprovision"), {}, {
+                    spaceName: this.spaceName,
+                    environmentId
+                  })];
+                case 1:
+                  response = _a.sent();
+                  return [2, response];
+              }
+            });
+          });
+        };
+        EnvironmentRepository2.prototype.getEnvironmentByName = function(environmentName) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var listResponse, matchingEnvironments;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
+                case 0:
+                  return [4, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/v2{?partialName,take,skip}"), {
+                    spaceName: this.spaceName,
+                    partialName: environmentName,
+                    skip: 0,
+                    take: 100
+                  })];
+                case 1:
+                  listResponse = _a.sent();
+                  matchingEnvironments = listResponse.Items.filter(function(env) {
+                    return env.Name.toLowerCase() === environmentName.toLowerCase();
+                  });
+                  if (matchingEnvironments.length > 1) {
+                    throw (0, console_1.error)("Multiple environments found with the name '".concat(environmentName));
+                  }
+                  return [2, matchingEnvironments.length == 1 ? matchingEnvironments[0] : null];
+              }
+            });
+          });
+        };
         return EnvironmentRepository2;
       }(spaceScopedBasicRepository_1.SpaceScopedBasicRepository)
     );
     exports2.EnvironmentRepository = EnvironmentRepository;
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/deploymentEnvironments/environmentV2Repository.js
+var require_environmentV2Repository = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/deploymentEnvironments/environmentV2Repository.js"(exports2) {
+    "use strict";
+    var __assign = exports2 && exports2.__assign || function() {
+      __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    var __awaiter2 = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.EnvironmentV2Repository = void 0;
+    var __1 = require_dist();
+    var EnvironmentV2Repository = (
+      /** @class */
+      function() {
+        function EnvironmentV2Repository2(client, spaceName) {
+          this.client = client;
+          this.spaceName = spaceName;
+        }
+        EnvironmentV2Repository2.prototype.list = function(args) {
+          return __awaiter2(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              return [2, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/environments/v2{?ids,partialName,type,skip,take}"), __assign({ spaceName: this.spaceName }, args))];
+            });
+          });
+        };
+        return EnvironmentV2Repository2;
+      }()
+    );
+    exports2.EnvironmentV2Repository = EnvironmentV2Repository;
   }
 });
 
@@ -19382,6 +19709,7 @@ var require_deploymentEnvironments = __commonJS({
     Object.defineProperty(exports2, "__esModule", { value: true });
     __exportStar(require_deploymentEnvironment(), exports2);
     __exportStar(require_environmentRepository(), exports2);
+    __exportStar(require_environmentV2Repository(), exports2);
   }
 });
 
@@ -41602,9 +41930,11 @@ var require_feedType = __commonJS({
       FeedType2["AwsElasticContainerRegistry"] = "AwsElasticContainerRegistry";
       FeedType2["BuiltIn"] = "BuiltIn";
       FeedType2["Docker"] = "Docker";
+      FeedType2["GcsStorage"] = "GcsStorage";
       FeedType2["GitHub"] = "GitHub";
       FeedType2["Helm"] = "Helm";
       FeedType2["Maven"] = "Maven";
+      FeedType2["Npm"] = "Npm";
       FeedType2["Nuget"] = "NuGet";
       FeedType2["OctopusProject"] = "OctopusProject";
     })(FeedType = exports2.FeedType || (exports2.FeedType = {}));
@@ -41697,6 +42027,14 @@ var require_feedRepository = __commonJS({
   }
 });
 
+// node_modules/@octopusdeploy/api-client/dist/features/feeds/gcsStorageFeed.js
+var require_gcsStorageFeed = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/feeds/gcsStorageFeed.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
 // node_modules/@octopusdeploy/api-client/dist/features/feeds/gitHubFeed.js
 var require_gitHubFeed = __commonJS({
   "node_modules/@octopusdeploy/api-client/dist/features/feeds/gitHubFeed.js"(exports2) {
@@ -41772,6 +42110,7 @@ var require_feeds = __commonJS({
     __exportStar(require_feed(), exports2);
     __exportStar(require_feedRepository(), exports2);
     __exportStar(require_feedType(), exports2);
+    __exportStar(require_gcsStorageFeed(), exports2);
     __exportStar(require_gitHubFeed(), exports2);
     __exportStar(require_helmFeed(), exports2);
     __exportStar(require_mavenFeed(), exports2);
@@ -47339,6 +47678,147 @@ var require_semver2 = __commonJS({
   }
 });
 
+// node_modules/@octopusdeploy/api-client/dist/versionCheck.js
+var require_versionCheck = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/versionCheck.js"(exports2) {
+    "use strict";
+    var __awaiter2 = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ensureServerVersionAtLeast = exports2.isServerVersionAtLeast = exports2.isLocalOctopusVersion = void 0;
+    var semver_1 = require_semver2();
+    function isLocalOctopusVersion(version) {
+      return /^0\.0\.0(?:[-+].*)?$/.test(version);
+    }
+    exports2.isLocalOctopusVersion = isLocalOctopusVersion;
+    function isServerVersionAtLeast(serverVersion, minimumVersion) {
+      if (isLocalOctopusVersion(serverVersion))
+        return true;
+      if (!(0, semver_1.valid)(serverVersion))
+        return false;
+      return !(0, semver_1.lt)(serverVersion, minimumVersion);
+    }
+    exports2.isServerVersionAtLeast = isServerVersionAtLeast;
+    function ensureServerVersionAtLeast(client, minimumVersion, featureDescription) {
+      var _a;
+      return __awaiter2(this, void 0, void 0, function() {
+        var serverInformation, message;
+        return __generator(this, function(_b) {
+          switch (_b.label) {
+            case 0:
+              return [4, client.getServerInformation()];
+            case 1:
+              serverInformation = _b.sent();
+              if (isServerVersionAtLeast(serverInformation.version, minimumVersion))
+                return [
+                  2
+                  /*return*/
+                ];
+              message = "The Octopus instance doesn't support ".concat(featureDescription, ", it will need to be upgraded to at least ").concat(minimumVersion, " in order to access this API.");
+              (_a = client.error) === null || _a === void 0 ? void 0 : _a.call(client, message);
+              throw new Error(message);
+          }
+        });
+      });
+    }
+    exports2.ensureServerVersionAtLeast = ensureServerVersionAtLeast;
+  }
+});
+
 // node_modules/@octopusdeploy/api-client/dist/features/projects/releases/deployments/deploymentRepository.js
 var require_deploymentRepository = __commonJS({
   "node_modules/@octopusdeploy/api-client/dist/features/projects/releases/deployments/deploymentRepository.js"(exports2) {
@@ -47453,7 +47933,7 @@ var require_deploymentRepository = __commonJS({
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.DeploymentRepository = void 0;
     var __1 = require_dist();
-    var semver_1 = require_semver2();
+    var versionCheck_1 = require_versionCheck();
     var DeploymentRepository = (
       /** @class */
       function() {
@@ -47469,23 +47949,18 @@ var require_deploymentRepository = __commonJS({
           return this.client.request("".concat(this.baseApiPathTemplate, "{?skip,take,ids,projects,environments,tenants,channels,taskState}"), __assign({ spaceName: this.spaceName }, args));
         };
         DeploymentRepository2.prototype.create = function(command) {
-          var _a, _b;
           return __awaiter2(this, void 0, void 0, function() {
-            var serverInformation, response, mappedTasks;
-            return __generator(this, function(_c) {
-              switch (_c.label) {
+            var response, mappedTasks;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
                 case 0:
-                  return [4, this.client.getServerInformation()];
+                  return [4, (0, versionCheck_1.ensureServerVersionAtLeast)(this.client, "2022.3.5512", "deploying releases using the Executions API")];
                 case 1:
-                  serverInformation = _c.sent();
-                  if ((0, semver_1.lt)(serverInformation.version, "2022.3.5512")) {
-                    (_b = (_a = this.client).error) === null || _b === void 0 ? void 0 : _b.call(_a, "The Octopus instance doesn't support deploying releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                    throw new Error("The Octopus instance doesn't support deploying releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                  }
+                  _a.sent();
                   this.client.debug("Deploying a release...");
                   return [4, this.client.doCreate("".concat(this.baseApiPathTemplate, "/create/untenanted/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
                 case 2:
-                  response = _c.sent();
+                  response = _a.sent();
                   if (response.DeploymentServerTasks.length == 0) {
                     throw new Error("No server task details returned");
                   }
@@ -47506,23 +47981,18 @@ var require_deploymentRepository = __commonJS({
           });
         };
         DeploymentRepository2.prototype.createTenanted = function(command) {
-          var _a, _b;
           return __awaiter2(this, void 0, void 0, function() {
-            var serverInformation, response, mappedTasks;
-            return __generator(this, function(_c) {
-              switch (_c.label) {
+            var response, mappedTasks;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
                 case 0:
-                  return [4, this.client.getServerInformation()];
+                  return [4, (0, versionCheck_1.ensureServerVersionAtLeast)(this.client, "2022.3.5512", "deploying tenanted releases using the Executions API")];
                 case 1:
-                  serverInformation = _c.sent();
-                  if ((0, semver_1.lt)(serverInformation.version, "2022.3.5512")) {
-                    (_b = (_a = this.client).error) === null || _b === void 0 ? void 0 : _b.call(_a, "The Octopus instance doesn't support deploying tenanted releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                    throw new Error("The Octopus instance doesn't support deploying tenanted releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                  }
+                  _a.sent();
                   this.client.debug("Deploying a tenanted release...");
                   return [4, this.client.doCreate("".concat(this.baseApiPathTemplate, "/create/tenanted/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
                 case 2:
-                  response = _c.sent();
+                  response = _a.sent();
                   if (response.DeploymentServerTasks.length == 0) {
                     throw new Error("No server task details returned");
                   }
@@ -47597,6 +48067,14 @@ var require_createReleaseCommandV1 = __commonJS({
 // node_modules/@octopusdeploy/api-client/dist/features/projects/releases/createReleaseResponseV1.js
 var require_createReleaseResponseV1 = __commonJS({
   "node_modules/@octopusdeploy/api-client/dist/features/projects/releases/createReleaseResponseV1.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/projects/releases/release.js
+var require_release = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/projects/releases/release.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
   }
@@ -47724,7 +48202,7 @@ var require_releaseRepository = __commonJS({
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.ReleaseRepository = void 0;
     var __1 = require_dist();
-    var semver_1 = require_semver2();
+    var versionCheck_1 = require_versionCheck();
     var ReleaseRepository2 = (
       /** @class */
       function() {
@@ -47733,26 +48211,42 @@ var require_releaseRepository = __commonJS({
           this.spaceName = spaceName;
         }
         ReleaseRepository3.prototype.create = function(command) {
-          var _a, _b;
           return __awaiter2(this, void 0, void 0, function() {
-            var serverInformation, response;
-            return __generator(this, function(_c) {
-              switch (_c.label) {
+            var response;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
                 case 0:
-                  return [4, this.client.getServerInformation()];
+                  return [4, (0, versionCheck_1.ensureServerVersionAtLeast)(this.client, "2022.3.5512", "creating releases using the Executions API")];
                 case 1:
-                  serverInformation = _c.sent();
-                  if ((0, semver_1.lt)(serverInformation.version, "2022.3.5512")) {
-                    (_b = (_a = this.client).error) === null || _b === void 0 ? void 0 : _b.call(_a, "The Octopus instance doesn't support creating releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                    throw new Error("The Octopus instance doesn't support creating releases using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                  }
+                  _a.sent();
                   this.client.debug("Creating a release...");
                   return [4, this.client.doCreate("".concat(__1.spaceScopedRoutePrefix, "/releases/create/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
                 case 2:
-                  response = _c.sent();
+                  response = _a.sent();
                   this.client.debug("Release created successfully.");
                   return [2, response];
               }
+            });
+          });
+        };
+        ReleaseRepository3.prototype.get = function(id) {
+          return __awaiter2(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              return [2, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/releases/").concat(id), { spaceName: this.spaceName })];
+            });
+          });
+        };
+        ReleaseRepository3.prototype.list = function(args) {
+          return __awaiter2(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              return [2, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/releases{?skip,take}"), __assign({ spaceName: this.spaceName }, args))];
+            });
+          });
+        };
+        ReleaseRepository3.prototype.listForProject = function(projectId, args) {
+          return __awaiter2(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+              return [2, this.client.request("".concat(__1.spaceScopedRoutePrefix, "/projects/").concat(projectId, "/releases{?skip,take,searchByVersion}"), __assign({ spaceName: this.spaceName }, args))];
             });
           });
         };
@@ -47787,6 +48281,7 @@ var require_releases = __commonJS({
     __exportStar(require_deployments(), exports2);
     __exportStar(require_createReleaseCommandV1(), exports2);
     __exportStar(require_createReleaseResponseV1(), exports2);
+    __exportStar(require_release(), exports2);
     __exportStar(require_releaseChanges(), exports2);
     __exportStar(require_releaseRepository(), exports2);
   }
@@ -47922,7 +48417,7 @@ var require_runbookRunRepository = __commonJS({
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.RunbookRunRepository = void 0;
     var spaceScopedRoutePrefix_1 = require_spaceScopedRoutePrefix();
-    var semver_1 = require_semver2();
+    var versionCheck_1 = require_versionCheck();
     var RunbookRunRepository = (
       /** @class */
       function() {
@@ -47938,23 +48433,18 @@ var require_runbookRunRepository = __commonJS({
           return this.client.request("".concat(this.baseApiPathTemplate, "{?skip,take,ids,projects,environments,tenants,runbooks,taskState,partialName}"), __assign({ spaceName: this.spaceName }, args));
         };
         RunbookRunRepository2.prototype.create = function(command) {
-          var _a, _b;
           return __awaiter2(this, void 0, void 0, function() {
-            var serverInformation, response, mappedTasks;
-            return __generator(this, function(_c) {
-              switch (_c.label) {
+            var response, mappedTasks;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
                 case 0:
-                  return [4, this.client.getServerInformation()];
+                  return [4, (0, versionCheck_1.ensureServerVersionAtLeast)(this.client, "2022.3.5512", "running runbooks using the Executions API")];
                 case 1:
-                  serverInformation = _c.sent();
-                  if ((0, semver_1.lt)(serverInformation.version, "2022.3.5512")) {
-                    (_b = (_a = this.client).error) === null || _b === void 0 ? void 0 : _b.call(_a, "The Octopus instance doesn't support running runbooks using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                    throw new Error("The Octopus instance doesn't support running runbooks using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                  }
+                  _a.sent();
                   this.client.debug("Running a runbook...");
                   return [4, this.client.doCreate("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/runbook-runs/create/v1"), __assign({ spaceIdOrName: command.spaceName }, command))];
                 case 2:
-                  response = _c.sent();
+                  response = _a.sent();
                   if (response.RunbookRunServerTasks.length == 0) {
                     throw new Error("No server task details returned");
                   }
@@ -47975,23 +48465,18 @@ var require_runbookRunRepository = __commonJS({
           });
         };
         RunbookRunRepository2.prototype.createGit = function(command, gitRef) {
-          var _a, _b;
           return __awaiter2(this, void 0, void 0, function() {
-            var serverInformation, response, mappedTasks;
-            return __generator(this, function(_c) {
-              switch (_c.label) {
+            var response, mappedTasks;
+            return __generator(this, function(_a) {
+              switch (_a.label) {
                 case 0:
-                  return [4, this.client.getServerInformation()];
+                  return [4, (0, versionCheck_1.ensureServerVersionAtLeast)(this.client, "2022.3.5512", "running runbooks using the Executions API")];
                 case 1:
-                  serverInformation = _c.sent();
-                  if ((0, semver_1.lt)(serverInformation.version, "2022.3.5512")) {
-                    (_b = (_a = this.client).error) === null || _b === void 0 ? void 0 : _b.call(_a, "The Octopus instance doesn't support running runbooks using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                    throw new Error("The Octopus instance doesn't support running runbooks using the Executions API, it will need to be upgraded to at least 2022.3.5512 in order to access this API.");
-                  }
+                  _a.sent();
                   this.client.debug("Running a runbook...");
                   return [4, this.client.doCreate("".concat(spaceScopedRoutePrefix_1.spaceScopedRoutePrefix, "/runbook-runs/git/create/v1"), __assign({ spaceIdOrName: command.spaceName, gitRef }, command))];
                 case 2:
-                  response = _c.sent();
+                  response = _a.sent();
                   if (response.RunbookRunServerTasks.length == 0) {
                     throw new Error("No server task details returned");
                   }
@@ -49132,9 +49617,12 @@ var require_serverTaskWaiter = __commonJS({
     var ServerTaskWaiter = (
       /** @class */
       function() {
-        function ServerTaskWaiter2(client, spaceName) {
+        function ServerTaskWaiter2(client, spaceName, options) {
+          var _a, _b;
           this.client = client;
           this.spaceName = spaceName;
+          this.maxRetries = (_a = options === null || options === void 0 ? void 0 : options.maxRetries) !== null && _a !== void 0 ? _a : 3;
+          this.retryBackoffMs = (_b = options === null || options === void 0 ? void 0 : options.retryBackoffMs) !== null && _b !== void 0 ? _b : 5e3;
         }
         ServerTaskWaiter2.prototype.waitForServerTasksToComplete = function(serverTaskIds, statusCheckSleepCycle, timeout, pollingCallback, cancelOnTimeout) {
           if (cancelOnTimeout === void 0) {
@@ -49170,7 +49658,7 @@ var require_serverTaskWaiter = __commonJS({
         };
         ServerTaskWaiter2.prototype.waitForTasks = function(spaceServerTaskRepository, serverTaskRepository, serverTaskIds, statusCheckSleepCycle, timeout, cancelOnTimeout, pollingCallback) {
           return __awaiter2(this, void 0, void 0, function() {
-            var sleep, stop, timedOut, t, completedTasks, _loop_1;
+            var sleep, stop, timedOut, t, completedTasks, _loop_1, this_1;
             var _this = this;
             return __generator(this, function(_a) {
               switch (_a.label) {
@@ -49203,7 +49691,7 @@ var require_serverTaskWaiter = __commonJS({
                     return __generator(this, function(_c) {
                       switch (_c.label) {
                         case 0:
-                          return [4, spaceServerTaskRepository.getByIds(serverTaskIds)];
+                          return [4, this_1.getTasksWithRetry(spaceServerTaskRepository, serverTaskIds)];
                         case 1:
                           tasks = _c.sent();
                           unknownTaskIds = serverTaskIds.filter(function(id) {
@@ -49252,6 +49740,7 @@ var require_serverTaskWaiter = __commonJS({
                       }
                     });
                   };
+                  this_1 = this;
                   _a.label = 2;
                 case 2:
                   if (!!stop) return [3, 4];
@@ -49333,6 +49822,99 @@ var require_serverTaskWaiter = __commonJS({
               }
             });
           });
+        };
+        ServerTaskWaiter2.prototype.getTasksWithRetry = function(repository, taskIds) {
+          var _a;
+          return __awaiter2(this, void 0, void 0, function() {
+            var lastError, _loop_2, this_2, attempt, state_1;
+            return __generator(this, function(_b) {
+              switch (_b.label) {
+                case 0:
+                  _loop_2 = function(attempt2) {
+                    var _c, error_2, errorMessage, statusCode, isRetryable, backoffDelay_1;
+                    return __generator(this, function(_d) {
+                      switch (_d.label) {
+                        case 0:
+                          _d.trys.push([0, 2, , 4]);
+                          _c = {};
+                          return [4, repository.getByIds(taskIds)];
+                        case 1:
+                          return [2, (_c.value = _d.sent(), _c)];
+                        case 2:
+                          error_2 = _d.sent();
+                          lastError = error_2;
+                          errorMessage = error_2 instanceof Error ? error_2.message : String(error_2);
+                          statusCode = error_2.StatusCode || (typeof error_2.code === "number" ? error_2.code : null) || ((_a = error_2.response) === null || _a === void 0 ? void 0 : _a.status) || error_2.status;
+                          isRetryable = this_2.isRetryableError(error_2, statusCode);
+                          if (!isRetryable)
+                            throw error_2;
+                          if (attempt2 === this_2.maxRetries)
+                            throw new Error("Failed to connect to Octopus server after ".concat(this_2.maxRetries, " attempts. ") + "Last error: ".concat(errorMessage));
+                          backoffDelay_1 = this_2.retryBackoffMs * Math.pow(2, attempt2);
+                          this_2.client.warn("HTTP request failed (attempt ".concat(attempt2 + 1, "/").concat(this_2.maxRetries, "): ").concat(errorMessage).concat(statusCode ? " [".concat(statusCode, "]") : "", ". Retrying in ").concat(backoffDelay_1, "ms..."));
+                          return [4, new Promise(function(resolve) {
+                            return setTimeout(resolve, backoffDelay_1);
+                          })];
+                        case 3:
+                          _d.sent();
+                          return [3, 4];
+                        case 4:
+                          return [
+                            2
+                            /*return*/
+                          ];
+                      }
+                    });
+                  };
+                  this_2 = this;
+                  attempt = 0;
+                  _b.label = 1;
+                case 1:
+                  if (!(attempt <= this.maxRetries)) return [3, 4];
+                  return [5, _loop_2(attempt)];
+                case 2:
+                  state_1 = _b.sent();
+                  if (typeof state_1 === "object")
+                    return [2, state_1.value];
+                  _b.label = 3;
+                case 3:
+                  attempt++;
+                  return [3, 1];
+                case 4:
+                  throw lastError;
+              }
+            });
+          });
+        };
+        ServerTaskWaiter2.prototype.isRetryableError = function(error2, statusCode) {
+          if (!error2)
+            return false;
+          if (statusCode && [408, 429, 500, 502, 503, 504].includes(statusCode)) {
+            return true;
+          }
+          try {
+            var errorStr_1 = String(error2.message || error2).toLowerCase();
+            var errorCode_1 = error2.code ? String(error2.code).toLowerCase() : "";
+            var keywords = [
+              "timeout",
+              "etimedout",
+              "econnreset",
+              "econnrefused",
+              "econnaborted",
+              "enotfound",
+              "eai_again",
+              "epipe",
+              "ehostunreach",
+              "enetunreach",
+              "socket",
+              "network"
+            ];
+            return keywords.some(function(k) {
+              return errorStr_1.includes(k) || errorCode_1.includes(k);
+            });
+          } catch (_a) {
+            return false;
+          }
         };
         return ServerTaskWaiter2;
       }()
@@ -49500,36 +50082,40 @@ var require_spaceServerTaskRepository = __commonJS({
         };
         SpaceServerTaskRepository2.prototype.getByIds = function(serverTaskIds) {
           return __awaiter2(this, void 0, void 0, function() {
-            var batchSize, idArrays, promises3, _a, _b, _c, index, ids;
+            var batchSize, idArrays, promises3, _a, _b, _c, index, ids, results;
             var e_1, _d;
             return __generator(this, function(_e) {
-              batchSize = 300;
-              idArrays = (0, lodash_1.chunk)(serverTaskIds, batchSize);
-              promises3 = [];
-              try {
-                for (_a = __values(idArrays.entries()), _b = _a.next(); !_b.done; _b = _a.next()) {
-                  _c = __read(_b.value, 2), index = _c[0], ids = _c[1];
-                  promises3.push(this.client.request("".concat(this.baseApiPathTemplate, "{?skip,take,ids,partialName}"), {
-                    spaceName: this.spaceName,
-                    ids,
-                    skip: index * batchSize,
-                    take: batchSize
-                  }));
-                }
-              } catch (e_1_1) {
-                e_1 = { error: e_1_1 };
-              } finally {
-                try {
-                  if (_b && !_b.done && (_d = _a.return)) _d.call(_a);
-                } finally {
-                  if (e_1) throw e_1.error;
-                }
+              switch (_e.label) {
+                case 0:
+                  batchSize = 300;
+                  idArrays = (0, lodash_1.chunk)(serverTaskIds, batchSize);
+                  promises3 = [];
+                  try {
+                    for (_a = __values(idArrays.entries()), _b = _a.next(); !_b.done; _b = _a.next()) {
+                      _c = __read(_b.value, 2), index = _c[0], ids = _c[1];
+                      promises3.push(this.client.request("".concat(this.baseApiPathTemplate, "{?skip,take,ids,partialName}"), {
+                        spaceName: this.spaceName,
+                        ids,
+                        skip: index * batchSize,
+                        take: batchSize
+                      }));
+                    }
+                  } catch (e_1_1) {
+                    e_1 = { error: e_1_1 };
+                  } finally {
+                    try {
+                      if (_b && !_b.done && (_d = _a.return)) _d.call(_a);
+                    } finally {
+                      if (e_1) throw e_1.error;
+                    }
+                  }
+                  return [4, Promise.all(promises3)];
+                case 1:
+                  results = _e.sent();
+                  return [2, (0, lodash_1.flatMap)(results, function(c) {
+                    return c.Items;
+                  })];
               }
-              return [2, Promise.allSettled(promises3).then(function(result) {
-                return (0, lodash_1.flatMap)(result, function(c) {
-                  return c.status == "fulfilled" ? c.value.Items : [];
-                });
-              })];
             });
           });
         };
@@ -50233,6 +50819,544 @@ var require_extensionSettingsValues = __commonJS({
   }
 });
 
+// node_modules/@octopusdeploy/api-client/dist/features/observability/containerLogs.js
+var require_containerLogs = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/observability/containerLogs.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/observability/liveStatus.js
+var require_liveStatus = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/observability/liveStatus.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/observability/monitorErrorResource.js
+var require_monitorErrorResource = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/observability/monitorErrorResource.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/observability/resource.js
+var require_resource = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/observability/resource.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/observability/resourceEvents.js
+var require_resourceEvents = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/observability/resourceEvents.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/observability/resourceEventsSession.js
+var require_resourceEventsSession = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/observability/resourceEventsSession.js"(exports2) {
+    "use strict";
+    Object.defineProperty(exports2, "__esModule", { value: true });
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/observability/observabilityRepository.js
+var require_observabilityRepository = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/observability/observabilityRepository.js"(exports2) {
+    "use strict";
+    var __awaiter2 = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.ObservabilityRepository = void 0;
+    var __1 = require_dist();
+    var ObservabilityRepository = (
+      /** @class */
+      function() {
+        function ObservabilityRepository2(client, spaceName) {
+          this.client = client;
+          this.spaceName = spaceName;
+        }
+        ObservabilityRepository2.prototype.getLiveStatus = function(projectId, environmentId, tenantId, summaryOnly) {
+          if (summaryOnly === void 0) {
+            summaryOnly = false;
+          }
+          return __awaiter2(this, void 0, void 0, function() {
+            var queryParams, _a, _b, _c;
+            var _d;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  queryParams = summaryOnly ? "?summaryOnly=true" : "";
+                  if (!(tenantId === void 0)) return [3, 2];
+                  _b = (_a = this.client).get;
+                  _c = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/untenanted/livestatus".concat(queryParams)];
+                  _d = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d.projectId = projectId, _d.environmentId = environmentId, _d)]))];
+                case 2:
+                  return [2, this.client.get("~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/tenants/{tenantId}/livestatus".concat(queryParams), {
+                    projectId,
+                    environmentId,
+                    tenantId
+                  })];
+              }
+            });
+          });
+        };
+        ObservabilityRepository2.prototype.getResource = function(projectId, environmentId, tenantId, machineId, resourceId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var _a, _b, _c, _d, _e, _f;
+            var _g, _h;
+            return __generator(this, function(_j) {
+              switch (_j.label) {
+                case 0:
+                  if (!(tenantId === void 0)) return [3, 2];
+                  _b = (_a = this.client).get;
+                  _c = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/untenanted/machines/{machineId}/resources/{desiredOrKubernetesMonitoredResourceId}"];
+                  _g = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_g.spaceId = _j.sent(), _g.projectId = projectId, _g.environmentId = environmentId, _g.machineId = machineId, _g.desiredOrKubernetesMonitoredResourceId = resourceId, _g)]))];
+                case 2:
+                  _e = (_d = this.client).get;
+                  _f = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/tenants/{tenantId}/machines/{machineId}/resources/{desiredOrKubernetesMonitoredResourceId}"];
+                  _h = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 3:
+                  return [2, _e.apply(_d, _f.concat([(_h.spaceId = _j.sent(), _h.projectId = projectId, _h.environmentId = environmentId, _h.tenantId = tenantId, _h.machineId = machineId, _h.desiredOrKubernetesMonitoredResourceId = resourceId, _h)]))];
+              }
+            });
+          });
+        };
+        ObservabilityRepository2.prototype.getResourceManifest = function(projectId, environmentId, tenantId, machineId, resourceId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var _a, _b, _c, _d, _e, _f;
+            var _g, _h;
+            return __generator(this, function(_j) {
+              switch (_j.label) {
+                case 0:
+                  if (!(tenantId === void 0)) return [3, 2];
+                  _b = (_a = this.client).get;
+                  _c = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/untenanted/machines/{machineId}/resources/{desiredOrKubernetesMonitoredResourceId}/manifest"];
+                  _g = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_g.spaceId = _j.sent(), _g.projectId = projectId, _g.environmentId = environmentId, _g.machineId = machineId, _g.desiredOrKubernetesMonitoredResourceId = resourceId, _g)]))];
+                case 2:
+                  _e = (_d = this.client).get;
+                  _f = ["~/api/spaces/{spaceId}/projects/{projectId}/environments/{environmentId}/tenants/{tenantId}/machines/{machineId}/resources/{desiredOrKubernetesMonitoredResourceId}/manifest"];
+                  _h = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 3:
+                  return [2, _e.apply(_d, _f.concat([(_h.spaceId = _j.sent(), _h.projectId = projectId, _h.environmentId = environmentId, _h.tenantId = tenantId, _h.machineId = machineId, _h.desiredOrKubernetesMonitoredResourceId = resourceId, _h)]))];
+              }
+            });
+          });
+        };
+        ObservabilityRepository2.prototype.beginContainerLogsSession = function(projectId, environmentId, tenantId, machineId, resourceId, podName, containerName, showPreviousContainer) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  _b = (_a = this.client).post;
+                  _c = [
+                    "~/api/spaces/{spaceId}/observability/logs/sessions",
+                    {
+                      projectId,
+                      environmentId,
+                      tenantId,
+                      machineId,
+                      podName,
+                      containerName,
+                      showPreviousContainer,
+                      desiredOrKubernetesMonitoredResourceId: resourceId
+                    }
+                  ];
+                  _d = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d)]))];
+              }
+            });
+          });
+        };
+        ObservabilityRepository2.prototype.getContainerLogs = function(sessionId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  _b = (_a = this.client).get;
+                  _c = ["~/api/spaces/{spaceId}/observability/logs/sessions/{sessionId}"];
+                  _d = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d.sessionId = sessionId, _d)]))];
+              }
+            });
+          });
+        };
+        ObservabilityRepository2.prototype.beginResourceEventsSession = function(projectId, environmentId, tenantId, machineId, resourceId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  _b = (_a = this.client).post;
+                  _c = [
+                    "~/api/spaces/{spaceId}/observability/events/sessions",
+                    {
+                      projectId,
+                      environmentId,
+                      tenantId,
+                      machineId,
+                      desiredOrKubernetesMonitoredResourceId: resourceId
+                    }
+                  ];
+                  _d = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d)]))];
+              }
+            });
+          });
+        };
+        ObservabilityRepository2.prototype.getResourceEvents = function(sessionId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  _b = (_a = this.client).get;
+                  _c = ["~/api/spaces/{spaceId}/observability/events/sessions/{sessionId}"];
+                  _d = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d.sessionId = sessionId, _d)]))];
+              }
+            });
+          });
+        };
+        return ObservabilityRepository2;
+      }()
+    );
+    exports2.ObservabilityRepository = ObservabilityRepository;
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/observability/kubernetesMonitorRepository.js
+var require_kubernetesMonitorRepository = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/observability/kubernetesMonitorRepository.js"(exports2) {
+    "use strict";
+    var __awaiter2 = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    };
+    var __generator = exports2 && exports2.__generator || function(thisArg, body) {
+      var _ = { label: 0, sent: function() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: [] }, f, y, t, g;
+      return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step([n, v]);
+        };
+      }
+      function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+            case 4:
+              _.label++;
+              return { value: op[1], done: false };
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+            case 7:
+              op = _.ops.pop();
+              _.trys.pop();
+              continue;
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
+                t = op;
+                break;
+              }
+              if (t && _.label < t[2]) {
+                _.label = t[2];
+                _.ops.push(op);
+                break;
+              }
+              if (t[2]) _.ops.pop();
+              _.trys.pop();
+              continue;
+          }
+          op = body.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return { value: op[0] ? op[1] : void 0, done: true };
+      }
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    exports2.KubernetesMonitorRepository = void 0;
+    var __1 = require_dist();
+    var KubernetesMonitorRepository = (
+      /** @class */
+      function() {
+        function KubernetesMonitorRepository2(client, spaceName) {
+          this.client = client;
+          this.spaceName = spaceName;
+        }
+        KubernetesMonitorRepository2.prototype.registerKubernetesMonitor = function(installationId, machineId) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  _b = (_a = this.client).post;
+                  _c = [
+                    "~/api/spaces/{spaceId}/observability/kubernetes-monitors",
+                    {
+                      installationId,
+                      machineId
+                    }
+                  ];
+                  _d = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d)]))];
+              }
+            });
+          });
+        };
+        KubernetesMonitorRepository2.prototype.getById = function(id) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  _b = (_a = this.client).get;
+                  _c = ["~/api/spaces/{spaceId}/observability/kubernetes-monitors/{id}"];
+                  _d = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d.id = id, _d)]))];
+              }
+            });
+          });
+        };
+        KubernetesMonitorRepository2.prototype.deleteById = function(id) {
+          return __awaiter2(this, void 0, void 0, function() {
+            var _a, _b, _c;
+            var _d;
+            return __generator(this, function(_e) {
+              switch (_e.label) {
+                case 0:
+                  _b = (_a = this.client).del;
+                  _c = ["~/api/spaces/{spaceId}/observability/kubernetes-monitors/{id}"];
+                  _d = {};
+                  return [4, (0, __1.resolveSpaceId)(this.client, this.spaceName)];
+                case 1:
+                  return [2, _b.apply(_a, _c.concat([(_d.spaceId = _e.sent(), _d.id = id, _d)]))];
+              }
+            });
+          });
+        };
+        return KubernetesMonitorRepository2;
+      }()
+    );
+    exports2.KubernetesMonitorRepository = KubernetesMonitorRepository;
+  }
+});
+
+// node_modules/@octopusdeploy/api-client/dist/features/observability/index.js
+var require_observability = __commonJS({
+  "node_modules/@octopusdeploy/api-client/dist/features/observability/index.js"(exports2) {
+    "use strict";
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      var desc = Object.getOwnPropertyDescriptor(m, k);
+      if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+        desc = { enumerable: true, get: function() {
+          return m[k];
+        } };
+      }
+      Object.defineProperty(o, k2, desc);
+    } : function(o, m, k, k2) {
+      if (k2 === void 0) k2 = k;
+      o[k2] = m[k];
+    });
+    var __exportStar = exports2 && exports2.__exportStar || function(m, exports3) {
+      for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports3, p)) __createBinding(exports3, m, p);
+    };
+    Object.defineProperty(exports2, "__esModule", { value: true });
+    __exportStar(require_containerLogs(), exports2);
+    __exportStar(require_liveStatus(), exports2);
+    __exportStar(require_monitorErrorResource(), exports2);
+    __exportStar(require_resource(), exports2);
+    __exportStar(require_resourceEvents(), exports2);
+    __exportStar(require_resourceEventsSession(), exports2);
+    __exportStar(require_observabilityRepository(), exports2);
+    __exportStar(require_kubernetesMonitorRepository(), exports2);
+  }
+});
+
 // node_modules/@octopusdeploy/api-client/dist/features/index.js
 var require_features = __commonJS({
   "node_modules/@octopusdeploy/api-client/dist/features/index.js"(exports2) {
@@ -50275,6 +51399,7 @@ var require_features = __commonJS({
     __exportStar(require_overwriteMode(), exports2);
     __exportStar(require_permission(), exports2);
     __exportStar(require_spaceScopedBasicRepository(), exports2);
+    __exportStar(require_observability(), exports2);
   }
 });
 
@@ -56226,7 +57351,7 @@ var require_spaceScopedRequest = __commonJS({
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.isSpaceScopedRequest = void 0;
     function isSpaceScopedRequest(command) {
-      return "spaceName" in command;
+      return command && "spaceName" in command;
     }
     exports2.isSpaceScopedRequest = isSpaceScopedRequest;
   }
@@ -56758,7 +57883,7 @@ var require_requestDetails = __commonJS({
 });
 
 // node_modules/@octopusdeploy/api-client/dist/resource.js
-var require_resource = __commonJS({
+var require_resource2 = __commonJS({
   "node_modules/@octopusdeploy/api-client/dist/resource.js"(exports2) {
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
@@ -56844,7 +57969,7 @@ var require_dist = __commonJS({
     __exportStar(require_namedResource(), exports2);
     __exportStar(require_requestDetails(), exports2);
     __exportStar(require_resolver(), exports2);
-    __exportStar(require_resource(), exports2);
+    __exportStar(require_resource2(), exports2);
     __exportStar(require_resourceCollection(), exports2);
     __exportStar(require_responseDetails(), exports2);
     __exportStar(require_serverInformation(), exports2);
@@ -56856,6 +57981,7 @@ var require_dist = __commonJS({
     __exportStar(require_spaceScopedRoutePrefix(), exports2);
     __exportStar(require_subscriptionRecord(), exports2);
     __exportStar(require_utils3(), exports2);
+    __exportStar(require_versionCheck(), exports2);
   }
 });
 
