@@ -6,6 +6,7 @@
   "dependencies": {
     "@actions/core": "3.0.0",
     "@octopusdeploy/api-client": "3.7.0",
+    "axios": "^1.17.0",
     "tmp": "0.2.6"
   },
   "description": "GitHub Action to Create a Release in Octopus Deploy",
