@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.1.4](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.3...v4.1.4) (2026-06-08)
+
+
+### Bug Fixes
+
+* **deps:** bump tmp from 0.2.5 to 0.2.6 ([#685](https://github.com/OctopusDeploy/create-release-action/issues/685)) ([e17b9d0](https://github.com/OctopusDeploy/create-release-action/commit/e17b9d0ac90ddd40990bfa8b6afa651617042063))
+* patch transitive axios vulnerability via npm audit fix ([#680](https://github.com/OctopusDeploy/create-release-action/issues/680)) ([f9e708e](https://github.com/OctopusDeploy/create-release-action/commit/f9e708e71c364b855868dd3bc2fd7d44cb99a061))
+* update axios to v1.17.0 ([#690](https://github.com/OctopusDeploy/create-release-action/issues/690)) ([f0fbf09](https://github.com/OctopusDeploy/create-release-action/commit/f0fbf097e183ca26da7480bb28ee120adad5403d))
+
 ## [4.1.3](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.2...v4.1.3) (2026-04-13)
 
 
