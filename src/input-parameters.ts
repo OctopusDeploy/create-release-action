@@ -22,6 +22,7 @@ export interface InputParameters {
   channel?: string
   packageVersion?: string
   packages?: string[]
+  gitResources?: string[]
   gitRef?: string
   gitCommit?: string
   ignoreExisting?: boolean
@@ -58,6 +59,9 @@ export function getInputParameters(): InputParameters {
     channel: getInput('channel') || undefined,
     packageVersion: getInput('package_version') || undefined,
     packages: getMultilineInput('packages').map(p => p.trim()) || undefined,
+    gitResources: getMultilineInput('git_resources')
+      .map(r => r.trim())
+      .filter(r => r.length > 0),
     gitRef: getInput('git_ref') || undefined,
     gitCommit: getInput('git_commit') || undefined,
     ignoreExisting: getBooleanInput('ignore_existing') || undefined,

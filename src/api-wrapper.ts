@@ -18,6 +18,7 @@ export async function createReleaseFromInputs(client: Client, parameters: InputP
     ReleaseVersion: parameters.releaseNumber,
     PackageVersion: parameters.packageVersion,
     Packages: parameters.packages,
+    GitResources: parameters.gitResources,
     GitRef: parameters.gitRef,
     GitCommit: parameters.gitCommit,
     ReleaseNotes: releaseNotes,
