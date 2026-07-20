@@ -79,6 +79,24 @@ steps:
         PackageID:Version
 ```
 
+To target a specific Git reference for a step's Git resource (for example, the source repository of an **Update Argo CD Application Manifests** step) at release-creation time, add the `git_resources` field. Use `github.head_ref` on pull-request events and `github.ref_name` on push events so the release tracks the feature branch (rather than `github.ref`, which is `refs/pull/<n>/merge` on pull requests):
+
+```yml
+env:
+  OCTOPUS_API_KEY: ${{ secrets.API_KEY  }}
+  OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
+  OCTOPUS_SPACE: 'Outer Space'
+steps:
+  # ...
+  - name: Create a release in Octopus Deploy 🐙
+    id: create_a_release_in_octopus_deploy
+    uses: OctopusDeploy/create-release-action@v4
+    with:
+      project: 'MyProject'
+      git_resources: |
+        Update Argo CD Application Manifests:refs/heads/${{ github.head_ref || github.ref_name }}
+```
+
 ## ✍️ Environment Variables
 
 | Name              | Description                                                                                                                                          |
@@ -96,6 +114,7 @@ steps:
 | `channel`            | The name of the channel to use for the new release. If omitted, the best channel will be selected.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | `package_version`    | The version number of all packages to use for this release.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `packages`           | A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("\*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted. **NOTE** these values should not be enclosed in single-quotes (`'`)                                                                                                                                                                                        |
+| `git_resources`      | A multi-line list of Git references to use for a step's Git resource, resolved at release-creation time. Useful for steps that read from a Git repository — such as **Update Argo CD Application Manifests** — so a release can target a specific branch/tag (e.g. a feature branch). Format: StepName:GitRef or StepName:GitResourceName:GitRef (e.g. `Update Argo CD Application Manifests:refs/heads/my-feature`). Note: `git_ref`/`git_commit` select the version-controlled project's own OCL branch; `git_resources` selects the branch/tag of a Git resource used by a step.                                                                                                                                                                                        |
 | `git_ref`            | Git reference, _branch name or tag_, to the specific resources of a version controlled Octopus Project. This should be used for version controlled projects when OCL files are stored in a different repository or branch as the application being built. E.g. Use the `main` branch, regardless of the location of the repository where the application(s) are being built as they are different **or** `${{ github.ref }}` to use the branch or tag ref that triggered the workflow.                                                                                                     |
 | `git_commit`         | Git commit, _commit SHA-1 hash_, pointing to the specific resources of a version controlled Octopus Project. This should be used for version controlled projects when OCL files are stored in the same repository or branch as the application being built. E.g. `${{ github.sha }}` to use the commit that triggered the workflow.   |
 | `ignore_existing`    | Ignore existing releases if present in Octopus Deploy with the matching version number. Defaults to **false**                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
