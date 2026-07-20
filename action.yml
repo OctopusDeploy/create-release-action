@@ -17,6 +17,8 @@ inputs:
     description: 'The default version number of all packages to use for this release.'
   packages:
     description: 'A multi-line list of version numbers to use for a package in the release. Format: StepName:Version or PackageID:Version or StepName:PackageName:Version. StepName, PackageID, and PackageName can be replaced with an asterisk ("*"). An asterisk will be assumed for StepName, PackageID, or PackageName if they are omitted.'
+  git_resources:
+    description: 'A multi-line list of Git references to use for Git resources on specific steps (e.g. the source repository of an "Update Argo CD Application Manifests" step). Format: StepName:GitRef or StepName:GitResourceName:GitRef (for example "Update Argo CD Application Manifests:refs/heads/my-feature"). Resolved at release-creation time.'
   git_ref:
     description: 'Git branch reference to the specific resources of a version controlled Octopus Project. This is required for version controlled projects.'
   git_commit:
