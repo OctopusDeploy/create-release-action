@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.2.0](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.4...v4.2.0) (2026-07-20)
+
+
+### Features
+
+* add git_resources input for per-step Git resource refs (SF-2251) ([#705](https://github.com/OctopusDeploy/create-release-action/issues/705)) ([e565003](https://github.com/OctopusDeploy/create-release-action/commit/e56500323070f631d088629a0b15289332db7d6b))
+
+
+### Bug Fixes
+
+* **deps:** bump undici from 6.24.1 to 6.27.0 ([#701](https://github.com/OctopusDeploy/create-release-action/issues/701)) ([4ef5a94](https://github.com/OctopusDeploy/create-release-action/commit/4ef5a945342e1dd5b8dfbe1a215f8b1eb7544d77))
+* Simplify CaC example step in README ([#689](https://github.com/OctopusDeploy/create-release-action/issues/689)) ([074b146](https://github.com/OctopusDeploy/create-release-action/commit/074b146c8685db00ccac36852f26f2a63fed1040))
+
 ## [4.1.4](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.3...v4.1.4) (2026-06-08)
 
 
