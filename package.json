@@ -5,8 +5,7 @@
   },
   "dependencies": {
     "@actions/core": "3.0.0",
-    "@octopusdeploy/api-client": "3.11.5",
-    "axios": "^1.18.1",
+    "@octopusdeploy/api-client": "3.11.6",
     "tmp": "0.2.7"
   },
   "description": "GitHub Action to Create a Release in Octopus Deploy",
