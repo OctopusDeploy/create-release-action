@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.2.1](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.0...v4.2.1) (2026-07-22)
+
+
+### Bug Fixes
+
+* **deps-dev:** bump js-yaml from 4.1.1 to 4.3.0 ([#709](https://github.com/OctopusDeploy/create-release-action/issues/709)) ([c6d442c](https://github.com/OctopusDeploy/create-release-action/commit/c6d442c9339956febbac123b4b53fc70d090af27))
+* **deps:** bump @octopusdeploy/api-client to 3.11.5 ([#710](https://github.com/OctopusDeploy/create-release-action/issues/710)) ([3451b82](https://github.com/OctopusDeploy/create-release-action/commit/3451b828e2b067e9c75b08f5667ca19345c6dde7))
+* **deps:** bump @octopusdeploy/api-client to 3.11.6 ([#713](https://github.com/OctopusDeploy/create-release-action/issues/713)) ([d1cf773](https://github.com/OctopusDeploy/create-release-action/commit/d1cf773e1ed25749d443c8a6b88509047aa79812))
+* **deps:** bump axios from 1.17.0 to 1.18.1 ([#707](https://github.com/OctopusDeploy/create-release-action/issues/707)) ([8084525](https://github.com/OctopusDeploy/create-release-action/commit/80845253adeeebe9bef4fa9584f27fd033a4227d))
+* **deps:** update js-yaml to resolve DoS advisory ([#712](https://github.com/OctopusDeploy/create-release-action/issues/712)) ([cb3f7b2](https://github.com/OctopusDeploy/create-release-action/commit/cb3f7b2547cbbdea171f176501c6fc0f6a1ef359))
+
 ## [4.2.0](https://github.com/OctopusDeploy/create-release-action/compare/v4.1.4...v4.2.0) (2026-07-20)
 
 
