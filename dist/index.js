@@ -23126,13 +23126,15 @@ var require_brace_expansion = __commonJS({
       parts.push.apply(parts, p);
       return parts;
     }
-    function expandTop(str) {
+    function expandTop(str, options) {
       if (!str)
         return [];
+      options = options || {};
+      var max = options.max == null ? Infinity : options.max;
       if (str.substr(0, 2) === "{}") {
         str = "\\{\\}" + str.substr(2);
       }
-      return expand(escapeBraces(str), true).map(unescapeBraces);
+      return expand(escapeBraces(str), max, true).map(unescapeBraces);
     }
     function embrace(str) {
       return "{" + str + "}";
@@ -23146,18 +23148,20 @@ var require_brace_expansion = __commonJS({
     function gte(i, y) {
       return i >= y;
     }
-    function expand(str, isTop) {
+    function expand(str, max, isTop) {
       var expansions = [];
-      var m = balanced("{", "}", str);
-      if (!m) return [str];
-      var pre = m.pre;
-      var post = m.post.length ? expand(m.post, false) : [""];
-      if (/\$$/.test(m.pre)) {
-        for (var k = 0; k < post.length; k++) {
-          var expansion = pre + "{" + m.body + "}" + post[k];
-          expansions.push(expansion);
+      for (; ; ) {
+        const m = balanced("{", "}", str);
+        if (!m) return [str];
+        const pre = m.pre;
+        if (/\$$/.test(m.pre)) {
+          const post2 = m.post.length ? expand(m.post, max, false) : [""];
+          for (let k2 = 0; k2 < post2.length && k2 < max; k2++) {
+            const expansion2 = pre + "{" + m.body + "}" + post2[k2];
+            expansions.push(expansion2);
+          }
+          return expansions;
         }
-      } else {
         var isNumericSequence = /^-?\d+\.\.-?\d+(?:\.\.-?\d+)?$/.test(m.body);
         var isAlphaSequence = /^[a-zA-Z]\.\.[a-zA-Z](?:\.\.-?\d+)?$/.test(m.body);
         var isSequence = isNumericSequence || isAlphaSequence;
@@ -23165,17 +23169,19 @@ var require_brace_expansion = __commonJS({
         if (!isSequence && !isOptions) {
           if (m.post.match(/,(?!,).*\}/)) {
             str = m.pre + "{" + m.body + escClose + m.post;
-            return expand(str);
+            isTop = true;
+            continue;
           }
           return [str];
         }
+        const post = m.post.length ? expand(m.post, max, false) : [""];
         var n;
         if (isSequence) {
           n = m.body.split(/\.\./);
         } else {
           n = parseCommaParts(m.body);
           if (n.length === 1) {
-            n = expand(n[0], false).map(embrace);
+            n = expand(n[0], max, false).map(embrace);
             if (n.length === 1) {
               return post.map(function(p) {
                 return m.pre + n[0] + p;
@@ -23197,7 +23203,7 @@ var require_brace_expansion = __commonJS({
           }
           var pad = n.some(isPadded);
           N = [];
-          for (var i = x; test(i, y); i += incr) {
+          for (var i = x; test(i, y) && N.length < max; i += incr) {
             var c;
             if (isAlphaSequence) {
               c = String.fromCharCode(i);
@@ -23221,18 +23227,18 @@ var require_brace_expansion = __commonJS({
         } else {
           N = [];
           for (var j = 0; j < n.length; j++) {
-            N.push.apply(N, expand(n[j], false));
+            N.push.apply(N, expand(n[j], max, false));
           }
         }
         for (var j = 0; j < N.length; j++) {
-          for (var k = 0; k < post.length; k++) {
+          for (var k = 0; k < post.length && expansions.length < max; k++) {
             var expansion = pre + N[j] + post[k];
             if (!isTop || isSequence || expansion)
               expansions.push(expansion);
           }
         }
+        return expansions;
       }
-      return expansions;
     }
   }
 });
