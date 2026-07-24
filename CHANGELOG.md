@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.2.2](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.1...v4.2.2) (2026-07-24)
+
+
+### Bug Fixes
+
+* **deps:** bump brace-expansion to resolve DoS advisory ([#714](https://github.com/OctopusDeploy/create-release-action/issues/714)) ([aa07aa3](https://github.com/OctopusDeploy/create-release-action/commit/aa07aa3333161f8cb8ca21c492fac06e72bf7817))
+* **deps:** resolve remaining npm audit advisories ([#716](https://github.com/OctopusDeploy/create-release-action/issues/716)) ([d6806a4](https://github.com/OctopusDeploy/create-release-action/commit/d6806a4284b05c08e82f4a9ffb7e0788018931ea))
+
 ## [4.2.1](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.0...v4.2.1) (2026-07-22)
 
 
