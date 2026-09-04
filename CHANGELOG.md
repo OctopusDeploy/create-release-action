@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.2.2](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.1...v4.2.2) (2026-09-04)
+
+
+### Bug Fixes
+
+* **deps-dev:** bump browserslist from 4.28.1 to 4.28.8 ([#722](https://github.com/OctopusDeploy/create-release-action/issues/722)) ([c26a94b](https://github.com/OctopusDeploy/create-release-action/commit/c26a94bdc34dcf35075b42ece3fd36ec320f27de))
+* **deps:** bump brace-expansion override to resolve DoS bypass ([#720](https://github.com/OctopusDeploy/create-release-action/issues/720)) ([9704250](https://github.com/OctopusDeploy/create-release-action/commit/9704250be468679c1df59d6b6c38099eb2d1dc62))
+* **deps:** bump brace-expansion to resolve DoS advisory ([#714](https://github.com/OctopusDeploy/create-release-action/issues/714)) ([aa07aa3](https://github.com/OctopusDeploy/create-release-action/commit/aa07aa3333161f8cb8ca21c492fac06e72bf7817))
+* **deps:** resolve new brace-expansion and js-yaml advisories ([#718](https://github.com/OctopusDeploy/create-release-action/issues/718)) ([9abfaee](https://github.com/OctopusDeploy/create-release-action/commit/9abfaee723f28f8bbcb7446a35c78663f443da5c))
+* **deps:** resolve remaining npm audit advisories ([#716](https://github.com/OctopusDeploy/create-release-action/issues/716)) ([d6806a4](https://github.com/OctopusDeploy/create-release-action/commit/d6806a4284b05c08e82f4a9ffb7e0788018931ea))
+
 ## [4.2.1](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.0...v4.2.1) (2026-07-22)
 
 
