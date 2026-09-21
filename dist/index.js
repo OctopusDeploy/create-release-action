@@ -20359,6 +20359,7 @@ var require_errors2 = __commonJS({
       /* ZipEntry error messages*/
       NO_DATA: "Nothing to decompress",
       BAD_CRC: "CRC32 checksum failed {0}",
+      MAX_OUTPUT_EXCEEDED: "Decompressed data exceeds the declared uncompressed size",
       FILE_IN_THE_WAY: "There is a file in the way: {0}",
       UNKNOWN_METHOD: "Invalid/unsupported compression method",
       /* Inflater error messages */
@@ -20378,11 +20379,13 @@ var require_errors2 = __commonJS({
       DISK_ENTRY_TOO_LARGE: "Number of disk entries is too large",
       NO_ZIP: "No zip file was loaded",
       NO_ENTRY: "Entry doesn't exist",
+      DUPLICATE_ENTRY: "Duplicate entry name {0}",
       DIRECTORY_CONTENT_ERROR: "A directory cannot have content",
       FILE_NOT_FOUND: 'File not found: "{0}"',
       NOT_IMPLEMENTED: "Not implemented",
       INVALID_FILENAME: "Invalid filename",
       INVALID_FORMAT: "Invalid or unsupported zip format. No END header found",
+      ZIP64_VALUE_TOO_LARGE: "Zip64 value exceeds the maximum safe integer",
       INVALID_PASS_PARAM: "Incompatible password parameter",
       WRONG_PASSWORD: "Wrong Password",
       /* ADM-ZIP */
@@ -20534,8 +20537,42 @@ var require_utils2 = __commonJS({
         });
       });
     };
+    Utils.prototype.assertPathSafe = function(root, target) {
+      const self2 = this;
+      if (typeof self2.fs.lstatSync !== "function") return;
+      const resolvedRoot = pth.resolve(root);
+      const resolvedTarget = pth.resolve(target);
+      if (resolvedTarget === resolvedRoot) return;
+      const rel = pth.relative(resolvedRoot, resolvedTarget);
+      if (!rel || rel === ".." || rel.startsWith(".." + pth.sep) || pth.isAbsolute(rel)) return;
+      let cur = resolvedRoot;
+      for (const part of rel.split(pth.sep)) {
+        if (!part || part === ".") continue;
+        cur = pth.join(cur, part);
+        let stat2;
+        try {
+          stat2 = self2.fs.lstatSync(cur);
+        } catch (e) {
+          break;
+        }
+        if (stat2.isSymbolicLink()) throw Errors.FILE_IN_THE_WAY(`"${cur}"`);
+      }
+    };
     Utils.prototype.findFiles = function(path) {
       const self2 = this;
+      const canLstat = typeof self2.fs.lstatSync === "function";
+      const rootReal = self2.fs.realpathSync(path);
+      function escapesRoot(p) {
+        if (!canLstat) return false;
+        if (!self2.fs.lstatSync(p).isSymbolicLink()) return false;
+        let real;
+        try {
+          real = self2.fs.realpathSync(p);
+        } catch (e) {
+          return true;
+        }
+        return !(real === rootReal || real.startsWith(rootReal + pth.sep));
+      }
       function findSync(dir, pattern, recursive, visited) {
         if (typeof pattern === "boolean") {
           recursive = pattern;
@@ -20544,6 +20581,7 @@ var require_utils2 = __commonJS({
         let files = [];
         self2.fs.readdirSync(dir).forEach(function(file) {
           const path2 = pth.join(dir, file);
+          if (escapesRoot(path2)) return;
           const stat2 = self2.fs.statSync(path2);
           if (!pattern || pattern.test(path2)) {
             files.push(pth.normalize(path2) + (stat2.isDirectory() ? self2.sep : ""));
@@ -20558,7 +20596,7 @@ var require_utils2 = __commonJS({
         });
         return files;
       }
-      return findSync(path, void 0, true, /* @__PURE__ */ new Set([self2.fs.realpathSync(path)]));
+      return findSync(path, void 0, true, /* @__PURE__ */ new Set([rootReal]));
     };
     Utils.prototype.findFilesAsync = function(dir, cb) {
       const self2 = this;
@@ -20569,6 +20607,19 @@ var require_utils2 = __commonJS({
         finished = true;
         cb(err, err ? void 0 : results);
       };
+      const canLstat = typeof self2.fs.lstat === "function";
+      let rootReal = null;
+      const escapesRoot = function(file, cb2) {
+        if (!canLstat) return cb2(null, false);
+        self2.fs.lstat(file, function(err, lst) {
+          if (err) return cb2(err);
+          if (!lst || !lst.isSymbolicLink()) return cb2(null, false);
+          self2.fs.realpath(file, function(err2, real) {
+            if (err2) return cb2(null, true);
+            cb2(null, !(real === rootReal || real.startsWith(rootReal + pth.sep)));
+          });
+        });
+      };
       const walk = function(dir2, visited, done) {
         self2.fs.readdir(dir2, function(err, list) {
           if (err) return done(err);
@@ -20576,27 +20627,34 @@ var require_utils2 = __commonJS({
           if (!pending) return done();
           list.forEach(function(name) {
             const file = pth.join(dir2, name);
-            self2.fs.stat(file, function(err2, stat2) {
+            escapesRoot(file, function(err2, escapes) {
               if (err2) return done(err2);
-              if (!stat2) {
+              if (escapes) {
                 if (!--pending) done();
                 return;
               }
-              results.push(pth.normalize(file) + (stat2.isDirectory() ? self2.sep : ""));
-              if (!stat2.isDirectory()) {
-                if (!--pending) done();
-                return;
-              }
-              self2.fs.realpath(file, function(err3, realDir) {
+              self2.fs.stat(file, function(err3, stat2) {
                 if (err3) return done(err3);
-                if (visited.has(realDir)) {
+                if (!stat2) {
                   if (!--pending) done();
                   return;
                 }
-                visited.add(realDir);
-                walk(file, visited, function(err4) {
-                  if (err4) return done(err4);
+                results.push(pth.normalize(file) + (stat2.isDirectory() ? self2.sep : ""));
+                if (!stat2.isDirectory()) {
                   if (!--pending) done();
+                  return;
+                }
+                self2.fs.realpath(file, function(err4, realDir) {
+                  if (err4) return done(err4);
+                  if (visited.has(realDir)) {
+                    if (!--pending) done();
+                    return;
+                  }
+                  visited.add(realDir);
+                  walk(file, visited, function(err5) {
+                    if (err5) return done(err5);
+                    if (!--pending) done();
+                  });
                 });
               });
             });
@@ -20605,6 +20663,7 @@ var require_utils2 = __commonJS({
       };
       self2.fs.realpath(dir, function(err, realDir) {
         if (err) return finish(err);
+        rootReal = realDir;
         walk(dir, /* @__PURE__ */ new Set([realDir]), finish);
       });
     };
@@ -20677,7 +20736,11 @@ var require_utils2 = __commonJS({
     Utils.readBigUInt64LE = function(buffer, index) {
       const lo = buffer.readUInt32LE(index);
       const hi = buffer.readUInt32LE(index + 4);
-      return hi * 4294967296 + lo;
+      const value = hi * 4294967296 + lo;
+      if (value > Number.MAX_SAFE_INTEGER) {
+        throw Errors.ZIP64_VALUE_TOO_LARGE();
+      }
+      return value;
     };
     Utils.writeBigUInt64LE = function(buffer, value, index) {
       const lo = value >>> 0;
@@ -20940,7 +21003,7 @@ var require_entryHeader = __commonJS({
         },
         // get Unix file permissions
         get fileAttr() {
-          return (_attr || 0) >> 16 & 4095;
+          return (_attr || 0) >> 16 & 511;
         },
         get offset() {
           return _offset;
@@ -20961,6 +21024,9 @@ var require_entryHeader = __commonJS({
           return _localHeader;
         },
         loadLocalHeaderFromBinary: function(input) {
+          if (_offset < 0 || _offset + Constants.LOCHDR > input.length) {
+            throw Utils.Errors.INVALID_LOC();
+          }
           var data = input.slice(_offset, _offset + Constants.LOCHDR);
           if (data.readUInt32LE(0) !== Constants.LOCSIG) {
             throw Utils.Errors.INVALID_LOC();
@@ -21233,20 +21299,37 @@ var require_deflater = __commonJS({
 var require_inflater = __commonJS({
   "node_modules/adm-zip/methods/inflater.js"(exports2, module2) {
     var version = +(process?.versions?.node ?? "").split(".")[0] || 0;
+    var Errors = require_errors2();
     module2.exports = function(inbuf, expectedLength) {
       var zlib = require("zlib");
-      const option = version >= 15 && expectedLength > 0 ? { maxOutputLength: expectedLength } : {};
+      const maxOutputLength = expectedLength > 0 ? expectedLength : 1;
+      const option = version >= 15 ? { maxOutputLength } : {};
       return {
         inflate: function() {
           return zlib.inflateRawSync(inbuf, option);
         },
         inflateAsync: function(callback) {
-          var tmp = zlib.createInflateRaw(option), parts = [], total = 0;
+          var tmp = zlib.createInflateRaw(option), parts = [], total = 0, done = false;
+          const fail = function(err) {
+            if (done) return;
+            done = true;
+            tmp.destroy();
+            callback && callback(Buffer.alloc(0), err);
+          };
+          tmp.on("error", function(err) {
+            fail(err);
+          });
           tmp.on("data", function(data) {
-            parts.push(data);
+            if (done) return;
             total += data.length;
+            if (total > maxOutputLength) {
+              return fail(Errors.MAX_OUTPUT_EXCEEDED());
+            }
+            parts.push(data);
           });
           tmp.on("end", function() {
+            if (done) return;
+            done = true;
             var buf = Buffer.alloc(total), written = 0;
             buf.fill(0);
             for (var i = 0; i < parts.length; i++) {
@@ -21405,7 +21488,12 @@ var require_zipEntry = __commonJS({
           return Buffer.alloc(0);
         }
         _extralocal = _centralHeader.loadLocalHeaderFromBinary(input);
-        return input.slice(_centralHeader.realDataOffset, _centralHeader.realDataOffset + _centralHeader.compressedSize);
+        const dataOffset = _centralHeader.realDataOffset;
+        const dataEnd = dataOffset + _centralHeader.compressedSize;
+        if (dataOffset < 0 || dataEnd < dataOffset || dataEnd > input.length) {
+          throw Utils.Errors.INVALID_LOC();
+        }
+        return input.slice(dataOffset, dataEnd);
       }
       function crc32OK(data) {
         const expectedCrc = _centralHeader.flags_desc || _centralHeader.localHeader.flags_desc ? _centralHeader.crc : _centralHeader.localHeader.crc;
@@ -21422,16 +21510,25 @@ var require_zipEntry = __commonJS({
           }
           return Buffer.alloc(0);
         }
-        var compressedData = getCompressedDataFromZip();
-        if (compressedData.length === 0) {
-          if (async && callback) callback(compressedData);
-          return compressedData;
-        }
-        if (_centralHeader.encrypted) {
-          if ("string" !== typeof pass && !Buffer.isBuffer(pass)) {
-            throw Utils.Errors.INVALID_PASS_PARAM();
+        var compressedData;
+        try {
+          compressedData = getCompressedDataFromZip();
+          if (compressedData.length === 0) {
+            if (async && callback) callback(compressedData);
+            return compressedData;
           }
-          compressedData = Methods.ZipCrypto.decrypt(compressedData, _centralHeader, pass);
+          if (_centralHeader.encrypted) {
+            if ("string" !== typeof pass && !Buffer.isBuffer(pass)) {
+              throw Utils.Errors.INVALID_PASS_PARAM();
+            }
+            compressedData = Methods.ZipCrypto.decrypt(compressedData, _centralHeader, pass);
+          }
+        } catch (err) {
+          if (async && callback) {
+            callback(Buffer.alloc(0), err);
+            return Buffer.alloc(0);
+          }
+          throw err;
         }
         var data;
         switch (_centralHeader.method) {
@@ -21454,13 +21551,14 @@ var require_zipEntry = __commonJS({
               }
               return data;
             } else {
-              inflater.inflateAsync(function(result) {
-                if (callback) {
-                  if (!crc32OK(result)) {
-                    callback(result, Utils.Errors.BAD_CRC());
-                  } else {
-                    callback(result);
-                  }
+              inflater.inflateAsync(function(result, err) {
+                if (!callback) return;
+                if (err) {
+                  callback(Buffer.alloc(0), err);
+                } else if (!crc32OK(result)) {
+                  callback(result, Utils.Errors.BAD_CRC());
+                } else {
+                  callback(result);
                 }
               });
             }
@@ -21748,6 +21846,9 @@ var require_zipFile = __commonJS({
           }
           if (entry.header.commentLength) entry.comment = inBuffer.slice(tmp, tmp + entry.header.commentLength);
           index += entry.header.centralHeaderSize;
+          if (entry.entryName in entryTable) {
+            throw Utils.Errors.DUPLICATE_ENTRY(`"${entry.entryName}"`);
+          }
           entryList[i] = entry;
           entryTable[entry.entryName] = entry;
         }
@@ -22441,7 +22542,7 @@ var require_adm_zip = __commonJS({
         addLocalFolderAsync2: function(options2, callback) {
           const self2 = this;
           options2 = typeof options2 === "object" ? options2 : { localPath: options2 };
-          const localPath = pth.resolve(fixPath(options2.localPath));
+          const localPath = pth.resolve(options2.localPath);
           let { zipPath, filter, namefix } = options2;
           if (filter instanceof RegExp) {
             filter = /* @__PURE__ */ function(rx) {
@@ -22463,14 +22564,14 @@ var require_adm_zip = __commonJS({
           const fileNameFix = (entry) => pth.win32.basename(pth.win32.normalize(namefix(entry)));
           filetools.fs.open(localPath, "r", function(err) {
             if (err && err.code === "ENOENT") {
-              callback(void 0, Utils.Errors.FILE_NOT_FOUND(localPath));
+              callback(Utils.Errors.FILE_NOT_FOUND(localPath), false);
             } else if (err) {
-              callback(void 0, err);
+              callback(err, false);
             } else {
               filetools.findFilesAsync(localPath, function(err2, fileEntries) {
-                if (err2) return callback(err2);
+                if (err2) return callback(err2, false);
                 fileEntries = fileEntries.filter((dir) => filter(relPathFix(dir)));
-                if (!fileEntries.length) callback(void 0, false);
+                if (!fileEntries.length) return callback(void 0, true);
                 setImmediate(
                   fileEntries.reverse().reduce(function(next, entry) {
                     return function(err3, done) {
@@ -22502,7 +22603,7 @@ var require_adm_zip = __commonJS({
         addLocalFolderPromise: function(localPath, props) {
           return new Promise((resolve, reject) => {
             this.addLocalFolderAsync2(Object.assign({ localPath }, props), (err, done) => {
-              if (err) reject(err);
+              if (err) return reject(err);
               if (done) resolve(this);
             });
           });
@@ -22604,6 +22705,7 @@ var require_adm_zip = __commonJS({
               }
               var name = canonical(maintainEntryPath ? child.entryName : child.entryName.substring(item.entryName.length));
               var childName = sanitize(targetPath, name);
+              filetools.assertPathSafe(targetPath, childName);
               const fileAttr2 = keepOriginalPermission ? child.header.fileAttr : void 0;
               filetools.writeFileTo(childName, content2, overwrite, fileAttr2);
             });
@@ -22611,6 +22713,7 @@ var require_adm_zip = __commonJS({
           }
           var content = item.getData(_zip.password);
           if (!content) throw Utils.Errors.CANT_EXTRACT_FILE();
+          filetools.assertPathSafe(targetPath, target);
           if (filetools.fs.existsSync(target) && !overwrite) {
             throw Utils.Errors.CANT_OVERRIDE();
           }
@@ -22659,6 +22762,7 @@ var require_adm_zip = __commonJS({
           const dirEntries = [];
           _zip.entries.forEach(function(entry) {
             var entryName = sanitize(targetPath, canonical(entry.entryName));
+            filetools.assertPathSafe(targetPath, entryName);
             if (entry.isDirectory) {
               filetools.makeDir(entryName);
               if (keepOriginalPermission) dirEntries.push({ path: entryName, attr: entry.header.fileAttr });
@@ -22723,6 +22827,7 @@ var require_adm_zip = __commonJS({
             const dirPath = getPath(entry);
             const dirAttr = keepOriginalPermission ? entry.header.fileAttr : void 0;
             try {
+              filetools.assertPathSafe(targetPath, dirPath);
               filetools.makeDir(dirPath);
             } catch (er) {
               callback(getError("Unable to create folder", dirPath));
@@ -22751,6 +22856,11 @@ var require_adm_zip = __commonJS({
               } else {
                 const entryName = pth.normalize(canonical(entry.entryName));
                 const filePath = sanitize(targetPath, entryName);
+                try {
+                  filetools.assertPathSafe(targetPath, filePath);
+                } catch (er) {
+                  return next(er);
+                }
                 entry.getDataAsync(function(content, err_1) {
                   if (err_1) {
                     next(err_1);
