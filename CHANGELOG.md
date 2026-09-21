@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.3](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.2...v4.2.3) (2026-09-21)
+
+
+### Bug Fixes
+
+* **deps:** resolve npm audit advisories ([#728](https://github.com/OctopusDeploy/create-release-action/issues/728)) ([9906682](https://github.com/OctopusDeploy/create-release-action/commit/99066821991b0b06201aae883fd968f0b24db8e5))
+
 ## [4.2.2](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.1...v4.2.2) (2026-09-04)
 
 
