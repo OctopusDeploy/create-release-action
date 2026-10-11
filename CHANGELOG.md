@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.5](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.4...v4.2.5) (2026-10-11)
+
+
+### Bug Fixes
+
+* **deps-dev:** bump handlebars from 4.7.9 to 4.7.10 ([#735](https://github.com/OctopusDeploy/create-release-action/issues/735)) ([d664655](https://github.com/OctopusDeploy/create-release-action/commit/d6646557e8ed928e66d23b520e640e5eeebc6ab3))
+
 ## [4.2.4](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.3...v4.2.4) (2026-10-04)
 
 
