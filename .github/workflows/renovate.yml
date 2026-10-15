@@ -7,6 +7,8 @@ on:
 jobs:
   renovate:
     uses: OctopusDeploy/team-bmbb-renovate-config/.github/workflows/renovate.yml@main
+    permissions:
+      contents: read
     with:
       configuration-file: renovate-config.cjs
     secrets:
