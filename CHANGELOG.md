@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.2.6](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.5...v4.2.6) (2026-10-20)
+
+
+### Bug Fixes
+
+* **deps-dev:** bump esbuild from 0.25.1 to 0.28.1 ([#693](https://github.com/OctopusDeploy/create-release-action/issues/693)) ([d8feda4](https://github.com/OctopusDeploy/create-release-action/commit/d8feda4d02a4422ff8b06627047eee49aefc267c))
+* **deps:** resolve npm audit advisories ([#739](https://github.com/OctopusDeploy/create-release-action/issues/739)) ([87734cd](https://github.com/OctopusDeploy/create-release-action/commit/87734cd9c53f0e705b1289a4f4f456a9bafffda4))
+
 ## [4.2.5](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.4...v4.2.5) (2026-10-11)
 
 
