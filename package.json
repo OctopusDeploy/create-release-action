@@ -32,7 +32,7 @@
     "js-yaml": "5.4.1",
     "prettier": "3.9.10",
     "ts-jest": "29.4.15",
-    "typescript": "5.9.3"
+    "typescript": "7.0.2"
   },
   "homepage": "https://github.com/OctopusDeploy/create-release-action#readme",
   "jest": {
