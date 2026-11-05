@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.8](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.7...v4.2.8) (2026-11-05)
+
+
+### Bug Fixes
+
+* **deps:** bump follow-redirects from 1.16.1 to 1.16.2 ([#754](https://github.com/OctopusDeploy/create-release-action/issues/754)) ([58c0756](https://github.com/OctopusDeploy/create-release-action/commit/58c075662d23288b1a5f09da88156a8b98d6f693))
+
 ## [4.2.7](https://github.com/OctopusDeploy/create-release-action/compare/v4.2.6...v4.2.7) (2026-10-26)
 
 
