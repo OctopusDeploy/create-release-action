@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       sqlserver:
-        image: mcr.microsoft.com/mssql/server:2019-CU27-ubuntu-20.04
+        image: mcr.microsoft.com/mssql/server:2019-CU27-ubuntu-20.04@sha256:fdd59b5c286899100531cd9f23ad74a8cb75df335513924a8de59964ef9b38d5
         env:
           ACCEPT_EULA: Y
           SA_PASSWORD: ${{ env.SA_PASSWORD }}
@@ -62,7 +62,7 @@ jobs:
         run: npm run all
 
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@31a54ee7ebcacc03a09ea97a7e5465a47b84aea5 # v1.9.1
         if: success() || failure()
         with:
           name: JEST Tests
