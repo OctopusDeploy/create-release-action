@@ -53784,7 +53784,7 @@ var require_follow_redirects = __commonJS({
           options.headers[headerList[i]] = headerList[i + 1];
         }
       }
-      if (!isArray(options.sensitiveHeaders)) {
+      if (!Array.isArray(options.sensitiveHeaders)) {
         options.sensitiveHeaders = [];
       }
       if (options.host) {
@@ -54040,9 +54040,6 @@ var require_follow_redirects = __commonJS({
       assert(isString(subdomain) && isString(domain));
       var dot = subdomain.length - domain.length - 1;
       return dot > 0 && subdomain[dot] === "." && subdomain.endsWith(domain);
-    }
-    function isArray(value) {
-      return value instanceof Array;
     }
     function isString(value) {
       return typeof value === "string" || value instanceof String;
