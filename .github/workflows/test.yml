@@ -62,7 +62,7 @@ jobs:
         run: npm run all
 
       - name: Test Report
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@d1b5dff021aa968b288b02285a8bf47471c5928a # v3
         if: success() || failure()
         with:
           name: JEST Tests
